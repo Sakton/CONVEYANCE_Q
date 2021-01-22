@@ -7,6 +7,7 @@
 #include "Modules/Driver/thedriverform.h"
 #include "Modules/Land/thelandform.h"
 #include "Modules/Note/thenoteform.h"
+#include "Modules/Orders/theorderform.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
   QApplication a( argc, argv );
   //  MainWindow w;
   //  w.show();
-  TheNoteForm df;
+  TheOrderForm df;
   df.show( );
   return a.exec();
 }
