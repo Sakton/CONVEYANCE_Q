@@ -9,13 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Modules/Driver/thedriverform.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    Modules/Driver/thedriverform.h \
     mainwindow.h
 
 FORMS += \
+    Modules/Driver/thedriverform.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
