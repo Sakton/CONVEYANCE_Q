@@ -5,6 +5,7 @@
 #include "Modules/BlackList/theblacklistform.h"
 #include "Modules/Client/theclientform.h"
 #include "Modules/Driver/thedriverform.h"
+#include "Modules/Land/thelandform.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
   QApplication a( argc, argv );
   //  MainWindow w;
   //  w.show();
-  TheBlackListForm df;
+  TheLandForm df;
   df.show( );
   return a.exec();
 }

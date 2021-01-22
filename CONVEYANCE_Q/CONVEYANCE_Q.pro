@@ -14,6 +14,7 @@ SOURCES += \
     Modules/BlackList/theblacklistform.cpp \
     Modules/Client/theclientform.cpp \
     Modules/Driver/thedriverform.cpp \
+    Modules/Land/thelandform.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -23,6 +24,7 @@ HEADERS += \
     Modules/BlackList/theblacklistform.h \
     Modules/Client/theclientform.h \
     Modules/Driver/thedriverform.h \
+    Modules/Land/thelandform.h \
     mainwindow.h
 
 FORMS += \
@@ -31,6 +33,7 @@ FORMS += \
     Modules/BlackList/theblacklistform.ui \
     Modules/Client/theclientform.ui \
     Modules/Driver/thedriverform.ui \
+    Modules/Land/thelandform.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
