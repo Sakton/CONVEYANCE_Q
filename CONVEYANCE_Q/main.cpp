@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
   QApplication a( argc, argv );
   //  MainWindow w;
   //  w.show();
-  ThePostForm df;
+  ThePaymentForm df;
   df.show( );
   return a.exec();
 }
