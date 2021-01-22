@@ -9,6 +9,7 @@
 #include "Modules/Note/thenoteform.h"
 #include "Modules/Orders/theorderform.h"
 #include "Modules/Payment/thepaymentform.h"
+#include "Modules/Post/thepostform.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -16,7 +17,7 @@ int main(int argc, char *argv[])
   QApplication a( argc, argv );
   //  MainWindow w;
   //  w.show();
-  ThePaymentForm df;
+  ThePostForm df;
   df.show( );
   return a.exec();
 }

@@ -18,6 +18,7 @@ SOURCES += \
     Modules/Note/thenoteform.cpp \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
+    Modules/Post/thepostform.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -31,6 +32,7 @@ HEADERS += \
     Modules/Note/thenoteform.h \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
+    Modules/Post/thepostform.h \
     mainwindow.h
 
 FORMS += \
@@ -43,6 +45,7 @@ FORMS += \
     Modules/Note/thenoteform.ui \
     Modules/Orders/theorderform.ui \
     Modules/Payment/thepaymentform.ui \
+    Modules/Post/thepostform.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
