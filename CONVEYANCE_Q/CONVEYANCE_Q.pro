@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     Modules/Adress/theadressform.cpp \
     Modules/Autopark/theautomobilform.cpp \
+    Modules/BlackList/theblacklistform.cpp \
     Modules/Driver/thedriverform.cpp \
     main.cpp \
     mainwindow.cpp
@@ -18,12 +19,14 @@ SOURCES += \
 HEADERS += \
     Modules/Adress/theadressform.h \
     Modules/Autopark/theautomobilform.h \
+    Modules/BlackList/theblacklistform.h \
     Modules/Driver/thedriverform.h \
     mainwindow.h
 
 FORMS += \
     Modules/Adress/theadressform.ui \
     Modules/Autopark/theautomobilform.ui \
+    Modules/BlackList/theblacklistform.ui \
     Modules/Driver/thedriverform.ui \
     mainwindow.ui
 
