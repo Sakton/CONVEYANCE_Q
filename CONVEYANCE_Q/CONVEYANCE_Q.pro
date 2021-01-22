@@ -17,6 +17,7 @@ SOURCES += \
     Modules/Land/thelandform.cpp \
     Modules/Note/thenoteform.cpp \
     Modules/Orders/theorderform.cpp \
+    Modules/Payment/thepaymentform.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -29,6 +30,7 @@ HEADERS += \
     Modules/Land/thelandform.h \
     Modules/Note/thenoteform.h \
     Modules/Orders/theorderform.h \
+    Modules/Payment/thepaymentform.h \
     mainwindow.h
 
 FORMS += \
@@ -40,6 +42,7 @@ FORMS += \
     Modules/Land/thelandform.ui \
     Modules/Note/thenoteform.ui \
     Modules/Orders/theorderform.ui \
+    Modules/Payment/thepaymentform.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
