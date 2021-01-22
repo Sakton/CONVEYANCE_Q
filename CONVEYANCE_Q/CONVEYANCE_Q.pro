@@ -12,6 +12,7 @@ SOURCES += \
     Modules/Adress/theadressform.cpp \
     Modules/Autopark/theautomobilform.cpp \
     Modules/BlackList/theblacklistform.cpp \
+    Modules/Client/theclientform.cpp \
     Modules/Driver/thedriverform.cpp \
     main.cpp \
     mainwindow.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     Modules/Adress/theadressform.h \
     Modules/Autopark/theautomobilform.h \
     Modules/BlackList/theblacklistform.h \
+    Modules/Client/theclientform.h \
     Modules/Driver/thedriverform.h \
     mainwindow.h
 
@@ -27,6 +29,7 @@ FORMS += \
     Modules/Adress/theadressform.ui \
     Modules/Autopark/theautomobilform.ui \
     Modules/BlackList/theblacklistform.ui \
+    Modules/Client/theclientform.ui \
     Modules/Driver/thedriverform.ui \
     mainwindow.ui
 
