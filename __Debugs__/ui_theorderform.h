@@ -12,12 +12,10 @@
 #include <QtCore/QDate>
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
-#include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -25,6 +23,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -94,13 +93,17 @@ public:
     QGroupBox *groupBox_6;
     QGridLayout *gridLayout_7;
     QPlainTextEdit *plainTextEdit;
-    QDialogButtonBox *buttonBox;
+    QHBoxLayout *horizontalLayout_7;
+    QPushButton *pushButton_4;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
 
     void setupUi(QWidget *TheOrderForm)
     {
         if (TheOrderForm->objectName().isEmpty())
             TheOrderForm->setObjectName(QString::fromUtf8("TheOrderForm"));
-        TheOrderForm->resize(400, 790);
+        TheOrderForm->resize(400, 738);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -495,11 +498,29 @@ public:
 
         verticalLayout->addWidget(groupBox_6);
 
-        buttonBox = new QDialogButtonBox(TheOrderForm);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        pushButton_4 = new QPushButton(TheOrderForm);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
 
-        verticalLayout->addWidget(buttonBox);
+        horizontalLayout_7->addWidget(pushButton_4);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer);
+
+        pushButton_5 = new QPushButton(TheOrderForm);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+
+        horizontalLayout_7->addWidget(pushButton_5);
+
+        pushButton_6 = new QPushButton(TheOrderForm);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+
+        horizontalLayout_7->addWidget(pushButton_6);
+
+
+        verticalLayout->addLayout(horizontalLayout_7);
 
 
         gridLayout_2->addLayout(verticalLayout, 0, 0, 1, 1);
@@ -546,6 +567,9 @@ public:
 "original", nullptr));
         checkBox_2->setText(QString());
         groupBox_6->setTitle(QCoreApplication::translate("TheOrderForm", "Notes", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("TheOrderForm", "Create an invoice for the order", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("TheOrderForm", "OK", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("TheOrderForm", "Cancel", nullptr));
     } // retranslateUi
 
 };
