@@ -15,6 +15,7 @@ SOURCES += \
     Modules/Client/theclientform.cpp \
     Modules/Driver/thedriverform.cpp \
     Modules/Land/thelandform.cpp \
+    Modules/Note/thenoteform.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -25,6 +26,7 @@ HEADERS += \
     Modules/Client/theclientform.h \
     Modules/Driver/thedriverform.h \
     Modules/Land/thelandform.h \
+    Modules/Note/thenoteform.h \
     mainwindow.h
 
 FORMS += \
@@ -34,6 +36,7 @@ FORMS += \
     Modules/Client/theclientform.ui \
     Modules/Driver/thedriverform.ui \
     Modules/Land/thelandform.ui \
+    Modules/Note/thenoteform.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
