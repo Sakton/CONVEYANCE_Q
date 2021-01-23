@@ -2,12 +2,16 @@
 
 #include <QDebug>
 #include <QDialogButtonBox>
+#include <QStringList>
 #include <map>
 
 #include "ui_theadressform.h"
 
+const QStringList typeAdress { "Legal Address", "Mailing Address" };
+
 TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheAdressForm ) {
   ui->setupUi( this );
+  ui->comboBoxTypeAdress->addItems( typeAdress );
 
   connect( ui->buttonBoxAdressForm, QOverload<>::of( &QDialogButtonBox::accepted ), this,
 	   QOverload<>::of( &TheAdressForm::slotClick_OK_Button ) );
@@ -18,10 +22,13 @@ TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui:
 TheAdressForm::~TheAdressForm( ) { delete ui; }
 
 void TheAdressForm::slotClick_OK_Button( ) {
-  qDebug( ) << "TheAdressForm::slotClick_OK_Button( )";
   std::map< QString, QString > adressData;
-  adressData[ "adress" ] = ui->lineEditAdress->text( );
-
+  adressData[ "contragentData" ] = ui->lineEditContragent->text( );
+  adressData[ "typeAdressData" ] = ui->comboBoxTypeAdress->currentText( );
+  adressData[ "indexData" ] = ui->lineEditIndex->text( );
+  adressData[ "sityData" ] = ui->lineEditSity->text( );
+  adressData[ "adressData" ] = ui->lineEditAdress->text( );
+  adressData[ "landData" ] = ui->lineEditLand->text( );
   for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
 }
 

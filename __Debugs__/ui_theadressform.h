@@ -43,15 +43,15 @@ public:
     QLineEdit *lineEditContragent;
     QDialogButtonBox *buttonBoxAdressForm;
 
-    void setupUi(QWidget *TheAdress)
+    void setupUi(QWidget *TheAdressForm)
     {
-        if (TheAdress->objectName().isEmpty())
-            TheAdress->setObjectName(QString::fromUtf8("TheAdress"));
-        TheAdress->resize(400, 236);
-        TheAdress->setMinimumSize(QSize(400, 0));
-        gridLayout = new QGridLayout(TheAdress);
+        if (TheAdressForm->objectName().isEmpty())
+            TheAdressForm->setObjectName(QString::fromUtf8("TheAdressForm"));
+        TheAdressForm->resize(400, 236);
+        TheAdressForm->setMinimumSize(QSize(400, 0));
+        gridLayout = new QGridLayout(TheAdressForm);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        groupBox = new QGroupBox(TheAdress);
+        groupBox = new QGroupBox(TheAdressForm);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         gridLayout_2 = new QGridLayout(groupBox);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
@@ -123,21 +123,21 @@ public:
 
         gridLayout->addWidget(groupBox, 0, 0, 1, 1);
 
-        buttonBoxAdressForm = new QDialogButtonBox(TheAdress);
+        buttonBoxAdressForm = new QDialogButtonBox(TheAdressForm);
         buttonBoxAdressForm->setObjectName(QString::fromUtf8("buttonBoxAdressForm"));
         buttonBoxAdressForm->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
         gridLayout->addWidget(buttonBoxAdressForm, 1, 0, 1, 1);
 
 
-        retranslateUi(TheAdress);
+        retranslateUi(TheAdressForm);
 
-        QMetaObject::connectSlotsByName(TheAdress);
+        QMetaObject::connectSlotsByName(TheAdressForm);
     } // setupUi
 
-    void retranslateUi(QWidget *TheAdress)
+    void retranslateUi(QWidget *TheAdressForm)
     {
-        TheAdress->setWindowTitle(QCoreApplication::translate("TheAdressForm", "Adress Adding", nullptr));
+        TheAdressForm->setWindowTitle(QCoreApplication::translate("TheAdressForm", "Adress Adding", nullptr));
         groupBox->setTitle(QString());
         label->setText(QCoreApplication::translate("TheAdressForm", "Type Adress", nullptr));
         label_3->setText(QCoreApplication::translate("TheAdressForm", "Index", nullptr));

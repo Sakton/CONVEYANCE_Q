@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   //  w.show( );
   TheAdressForm df;
   df.show( );
-  TheClientForm cf;
-  cf.show( );
+  //  TheClientForm cf;
+  //  cf.show( );
   return a.exec();
 }
