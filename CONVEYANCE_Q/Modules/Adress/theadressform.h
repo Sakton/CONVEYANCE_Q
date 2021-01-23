@@ -14,6 +14,10 @@ class TheAdressForm : public QWidget {
   explicit TheAdressForm( QWidget *parent = nullptr );
   ~TheAdressForm( );
 
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
+
  private:
   Ui::TheAdressForm *ui;
 };

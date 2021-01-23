@@ -43,33 +43,33 @@ public:
     QLabel *label_2;
     QLabel *label_5;
     QLabel *label;
-    QDateEdit *dateEdit;
+    QDateEdit *dateEditYearOfIssue;
     QHBoxLayout *horizontalLayout;
-    QComboBox *comboBox;
-    QPushButton *pushButton;
+    QComboBox *comboBoxNameAuto;
+    QPushButton *pushButtonAddAuto;
     QHBoxLayout *horizontalLayout_3;
-    QComboBox *comboBox_2;
-    QPushButton *pushButton_2;
-    QLineEdit *lineEdit;
+    QComboBox *comboBoxEcoClass;
+    QPushButton *pushButtonAddEco;
+    QLineEdit *lineEditVIN;
     QLabel *label_4;
     QHBoxLayout *horizontalLayout_7;
-    QDateEdit *dateEdit_2;
-    QCheckBox *checkBox_2;
+    QDateEdit *dateEditNextTechInspection;
+    QCheckBox *checkBoxReminder;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_5;
     QGridLayout *gridLayout_4;
     QHBoxLayout *horizontalLayout_5;
     QFrame *frame_2;
     QGridLayout *gridLayout_7;
-    QLineEdit *lineEdit_5;
-    QComboBox *comboBox_3;
+    QLineEdit *lineEditWolumeCargon;
+    QComboBox *comboBoxNotation;
     QSpacerItem *horizontalSpacer_3;
-    QLineEdit *lineEdit_6;
+    QLineEdit *lineEditMaximalCarring;
     QLabel *label_12;
     QLabel *label_11;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_2;
-    QCheckBox *checkBox;
+    QCheckBox *checkBoxTatLift;
     QSpacerItem *horizontalSpacer;
     QLabel *label_16;
     QLabel *label_6;
@@ -77,26 +77,26 @@ public:
     QFrame *frame;
     QGridLayout *gridLayout_6;
     QLabel *label_13;
-    QLineEdit *lineEdit_2;
+    QLineEdit *lineEditLenthCargon;
     QLabel *label_7;
     QLabel *label_14;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEditWidthCargon;
     QLabel *label_9;
     QLabel *label_8;
-    QLineEdit *lineEdit_4;
+    QLineEdit *lineEditHeightCargoon;
     QLabel *label_15;
     QLabel *label_10;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_8;
-    QPlainTextEdit *plainTextEdit;
+    QPlainTextEdit *plainTextEditComments;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QWidget *TheAutomobilForm)
     {
         if (TheAutomobilForm->objectName().isEmpty())
             TheAutomobilForm->setObjectName(QString::fromUtf8("TheAutomobilForm"));
-        TheAutomobilForm->resize(450, 539);
-        TheAutomobilForm->setMinimumSize(QSize(450, 0));
+        TheAutomobilForm->resize(415, 539);
+        TheAutomobilForm->setMinimumSize(QSize(415, 0));
         gridLayout = new QGridLayout(TheAutomobilForm);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         verticalLayout = new QVBoxLayout();
@@ -127,61 +127,61 @@ public:
 
         gridLayout_2->addWidget(label, 0, 0, 1, 1);
 
-        dateEdit = new QDateEdit(groupBox);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        dateEditYearOfIssue = new QDateEdit(groupBox);
+        dateEditYearOfIssue->setObjectName(QString::fromUtf8("dateEditYearOfIssue"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(dateEdit->sizePolicy().hasHeightForWidth());
-        dateEdit->setSizePolicy(sizePolicy);
-        dateEdit->setMinimumSize(QSize(90, 0));
-        dateEdit->setCalendarPopup(false);
+        sizePolicy.setHeightForWidth(dateEditYearOfIssue->sizePolicy().hasHeightForWidth());
+        dateEditYearOfIssue->setSizePolicy(sizePolicy);
+        dateEditYearOfIssue->setMinimumSize(QSize(90, 0));
+        dateEditYearOfIssue->setCalendarPopup(false);
 
-        gridLayout_2->addWidget(dateEdit, 1, 2, 1, 1);
+        gridLayout_2->addWidget(dateEditYearOfIssue, 1, 2, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        comboBox = new QComboBox(groupBox);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBoxNameAuto = new QComboBox(groupBox);
+        comboBoxNameAuto->setObjectName(QString::fromUtf8("comboBoxNameAuto"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(comboBoxNameAuto->sizePolicy().hasHeightForWidth());
+        comboBoxNameAuto->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(comboBox);
+        horizontalLayout->addWidget(comboBoxNameAuto);
 
-        pushButton = new QPushButton(groupBox);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMaximumSize(QSize(30, 16777215));
+        pushButtonAddAuto = new QPushButton(groupBox);
+        pushButtonAddAuto->setObjectName(QString::fromUtf8("pushButtonAddAuto"));
+        pushButtonAddAuto->setMaximumSize(QSize(30, 16777215));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(pushButtonAddAuto);
 
 
         gridLayout_2->addLayout(horizontalLayout, 0, 2, 1, 1);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        comboBox_2 = new QComboBox(groupBox);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        sizePolicy1.setHeightForWidth(comboBox_2->sizePolicy().hasHeightForWidth());
-        comboBox_2->setSizePolicy(sizePolicy1);
+        comboBoxEcoClass = new QComboBox(groupBox);
+        comboBoxEcoClass->setObjectName(QString::fromUtf8("comboBoxEcoClass"));
+        sizePolicy1.setHeightForWidth(comboBoxEcoClass->sizePolicy().hasHeightForWidth());
+        comboBoxEcoClass->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_3->addWidget(comboBox_2);
+        horizontalLayout_3->addWidget(comboBoxEcoClass);
 
-        pushButton_2 = new QPushButton(groupBox);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setMaximumSize(QSize(30, 16777215));
+        pushButtonAddEco = new QPushButton(groupBox);
+        pushButtonAddEco->setObjectName(QString::fromUtf8("pushButtonAddEco"));
+        pushButtonAddEco->setMaximumSize(QSize(30, 16777215));
 
-        horizontalLayout_3->addWidget(pushButton_2);
+        horizontalLayout_3->addWidget(pushButtonAddEco);
 
 
         gridLayout_2->addLayout(horizontalLayout_3, 3, 2, 1, 1);
 
-        lineEdit = new QLineEdit(groupBox);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEditVIN = new QLineEdit(groupBox);
+        lineEditVIN->setObjectName(QString::fromUtf8("lineEditVIN"));
 
-        gridLayout_2->addWidget(lineEdit, 2, 2, 1, 1);
+        gridLayout_2->addWidget(lineEditVIN, 2, 2, 1, 1);
 
         label_4 = new QLabel(groupBox);
         label_4->setObjectName(QString::fromUtf8("label_4"));
@@ -190,18 +190,18 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        dateEdit_2 = new QDateEdit(groupBox);
-        dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
-        dateEdit_2->setMaximumSize(QSize(90, 16777215));
-        dateEdit_2->setCalendarPopup(true);
-        dateEdit_2->setDate(QDate(2021, 1, 1));
+        dateEditNextTechInspection = new QDateEdit(groupBox);
+        dateEditNextTechInspection->setObjectName(QString::fromUtf8("dateEditNextTechInspection"));
+        dateEditNextTechInspection->setMaximumSize(QSize(90, 16777215));
+        dateEditNextTechInspection->setCalendarPopup(true);
+        dateEditNextTechInspection->setDate(QDate(2021, 1, 1));
 
-        horizontalLayout_7->addWidget(dateEdit_2);
+        horizontalLayout_7->addWidget(dateEditNextTechInspection);
 
-        checkBox_2 = new QCheckBox(groupBox);
-        checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
+        checkBoxReminder = new QCheckBox(groupBox);
+        checkBoxReminder->setObjectName(QString::fromUtf8("checkBoxReminder"));
 
-        horizontalLayout_7->addWidget(checkBox_2);
+        horizontalLayout_7->addWidget(checkBoxReminder);
 
 
         gridLayout_2->addLayout(horizontalLayout_7, 4, 2, 1, 1);
@@ -214,7 +214,7 @@ public:
 
         groupBox_2 = new QGroupBox(TheAutomobilForm);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
@@ -227,46 +227,43 @@ public:
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         frame_2 = new QFrame(groupBox_2);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
-        frame_2->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
+        frame_2->setSizePolicy(sizePolicy2);
         frame_2->setFrameShape(QFrame::Box);
         frame_2->setFrameShadow(QFrame::Sunken);
         gridLayout_7 = new QGridLayout(frame_2);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        lineEdit_5 = new QLineEdit(frame_2);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        lineEditWolumeCargon = new QLineEdit(frame_2);
+        lineEditWolumeCargon->setObjectName(QString::fromUtf8("lineEditWolumeCargon"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(lineEditWolumeCargon->sizePolicy().hasHeightForWidth());
+        lineEditWolumeCargon->setSizePolicy(sizePolicy3);
+        lineEditWolumeCargon->setMaximumSize(QSize(70, 16777215));
+
+        gridLayout_7->addWidget(lineEditWolumeCargon, 0, 0, 1, 1);
+
+        comboBoxNotation = new QComboBox(frame_2);
+        comboBoxNotation->setObjectName(QString::fromUtf8("comboBoxNotation"));
+        QSizePolicy sizePolicy4(QSizePolicy::Maximum, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy4);
-        lineEdit_5->setMaximumSize(QSize(70, 16777215));
+        sizePolicy4.setHeightForWidth(comboBoxNotation->sizePolicy().hasHeightForWidth());
+        comboBoxNotation->setSizePolicy(sizePolicy4);
+        comboBoxNotation->setMaximumSize(QSize(50, 16777215));
 
-        gridLayout_7->addWidget(lineEdit_5, 0, 0, 1, 1);
-
-        comboBox_3 = new QComboBox(frame_2);
-        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
-        QSizePolicy sizePolicy5(QSizePolicy::Maximum, QSizePolicy::Fixed);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(comboBox_3->sizePolicy().hasHeightForWidth());
-        comboBox_3->setSizePolicy(sizePolicy5);
-        comboBox_3->setMaximumSize(QSize(50, 16777215));
-
-        gridLayout_7->addWidget(comboBox_3, 0, 1, 1, 1);
+        gridLayout_7->addWidget(comboBoxNotation, 0, 1, 1, 1);
 
         horizontalSpacer_3 = new QSpacerItem(12, 0, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         gridLayout_7->addItem(horizontalSpacer_3, 0, 2, 1, 1);
 
-        lineEdit_6 = new QLineEdit(frame_2);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
-        lineEdit_6->setMaximumSize(QSize(70, 16777215));
+        lineEditMaximalCarring = new QLineEdit(frame_2);
+        lineEditMaximalCarring->setObjectName(QString::fromUtf8("lineEditMaximalCarring"));
+        lineEditMaximalCarring->setMaximumSize(QSize(70, 16777215));
 
-        gridLayout_7->addWidget(lineEdit_6, 0, 4, 1, 1);
+        gridLayout_7->addWidget(lineEditMaximalCarring, 0, 4, 1, 1);
 
         label_12 = new QLabel(frame_2);
         label_12->setObjectName(QString::fromUtf8("label_12"));
@@ -276,8 +273,11 @@ public:
 
         label_11 = new QLabel(frame_2);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        sizePolicy2.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
-        label_11->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy5(QSizePolicy::Maximum, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
+        label_11->setSizePolicy(sizePolicy5);
 
         gridLayout_7->addWidget(label_11, 0, 5, 1, 1);
 
@@ -293,10 +293,10 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_2);
 
-        checkBox = new QCheckBox(groupBox_2);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBoxTatLift = new QCheckBox(groupBox_2);
+        checkBoxTatLift->setObjectName(QString::fromUtf8("checkBoxTatLift"));
 
-        horizontalLayout_6->addWidget(checkBox);
+        horizontalLayout_6->addWidget(checkBoxTatLift);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -328,11 +328,11 @@ public:
 
         gridLayout_6->addWidget(label_13, 0, 2, 1, 1);
 
-        lineEdit_2 = new QLineEdit(frame);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setMaximumSize(QSize(30, 16777215));
+        lineEditLenthCargon = new QLineEdit(frame);
+        lineEditLenthCargon->setObjectName(QString::fromUtf8("lineEditLenthCargon"));
+        lineEditLenthCargon->setMaximumSize(QSize(30, 16777215));
 
-        gridLayout_6->addWidget(lineEdit_2, 0, 1, 1, 1);
+        gridLayout_6->addWidget(lineEditLenthCargon, 0, 1, 1, 1);
 
         label_7 = new QLabel(frame);
         label_7->setObjectName(QString::fromUtf8("label_7"));
@@ -344,11 +344,11 @@ public:
 
         gridLayout_6->addWidget(label_14, 0, 5, 1, 1);
 
-        lineEdit_3 = new QLineEdit(frame);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setMaximumSize(QSize(30, 16777215));
+        lineEditWidthCargon = new QLineEdit(frame);
+        lineEditWidthCargon->setObjectName(QString::fromUtf8("lineEditWidthCargon"));
+        lineEditWidthCargon->setMaximumSize(QSize(30, 16777215));
 
-        gridLayout_6->addWidget(lineEdit_3, 0, 4, 1, 1);
+        gridLayout_6->addWidget(lineEditWidthCargon, 0, 4, 1, 1);
 
         label_9 = new QLabel(frame);
         label_9->setObjectName(QString::fromUtf8("label_9"));
@@ -369,11 +369,11 @@ public:
 
         gridLayout_6->addWidget(label_8, 0, 3, 1, 1);
 
-        lineEdit_4 = new QLineEdit(frame);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setMaximumSize(QSize(30, 16777215));
+        lineEditHeightCargoon = new QLineEdit(frame);
+        lineEditHeightCargoon->setObjectName(QString::fromUtf8("lineEditHeightCargoon"));
+        lineEditHeightCargoon->setMaximumSize(QSize(30, 16777215));
 
-        gridLayout_6->addWidget(lineEdit_4, 0, 7, 1, 1);
+        gridLayout_6->addWidget(lineEditHeightCargoon, 0, 7, 1, 1);
 
         label_15 = new QLabel(frame);
         label_15->setObjectName(QString::fromUtf8("label_15"));
@@ -401,10 +401,10 @@ public:
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         gridLayout_8 = new QGridLayout(groupBox_3);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
-        plainTextEdit = new QPlainTextEdit(groupBox_3);
-        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        plainTextEditComments = new QPlainTextEdit(groupBox_3);
+        plainTextEditComments->setObjectName(QString::fromUtf8("plainTextEditComments"));
 
-        gridLayout_8->addWidget(plainTextEdit, 0, 0, 1, 1);
+        gridLayout_8->addWidget(plainTextEditComments, 0, 0, 1, 1);
 
 
         verticalLayout->addWidget(groupBox_3);
@@ -434,17 +434,17 @@ public:
 "Technical\n"
 "Inspection", nullptr));
         label->setText(QCoreApplication::translate("TheAutomobilForm", "Name Auto", nullptr));
-        dateEdit->setDisplayFormat(QCoreApplication::translate("TheAutomobilForm", "yyyy", nullptr));
-        pushButton->setText(QCoreApplication::translate("TheAutomobilForm", "Add", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("TheAutomobilForm", "Add", nullptr));
+        dateEditYearOfIssue->setDisplayFormat(QCoreApplication::translate("TheAutomobilForm", "yyyy", nullptr));
+        pushButtonAddAuto->setText(QCoreApplication::translate("TheAutomobilForm", "Add", nullptr));
+        pushButtonAddEco->setText(QCoreApplication::translate("TheAutomobilForm", "Add", nullptr));
         label_4->setText(QCoreApplication::translate("TheAutomobilForm", "EKO Class", nullptr));
-        checkBox_2->setText(QCoreApplication::translate("TheAutomobilForm", "Enable Reminder", nullptr));
+        checkBoxReminder->setText(QCoreApplication::translate("TheAutomobilForm", "Enable Reminder", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("TheAutomobilForm", "Options", nullptr));
-        comboBox_3->setCurrentText(QString());
+        comboBoxNotation->setCurrentText(QString());
         label_12->setText(QCoreApplication::translate("TheAutomobilForm", "Maximal\n"
 "\320\241arrying", nullptr));
         label_11->setText(QCoreApplication::translate("TheAutomobilForm", "T", nullptr));
-        checkBox->setText(QString());
+        checkBoxTatLift->setText(QString());
         label_16->setText(QCoreApplication::translate("TheAutomobilForm", "Tail Lift", nullptr));
         label_6->setText(QCoreApplication::translate("TheAutomobilForm", "Dimensions\n"
 "Cargon\n"

@@ -17,7 +17,9 @@ int main(int argc, char *argv[])
   QApplication a( argc, argv );
   //  MainWindow w;
   //  w.show( );
-  TheDriverForm df;
+  TheAdressForm df;
   df.show( );
+  TheClientForm cf;
+  cf.show( );
   return a.exec();
 }
