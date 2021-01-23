@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
+    <width>415</width>
     <height>539</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>450</width>
+    <width>415</width>
     <height>0</height>
    </size>
   </property>
@@ -61,7 +61,7 @@ Inspection</string>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="QDateEdit" name="dateEdit">
+           <widget class="QDateEdit" name="dateEditYearOfIssue">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -85,7 +85,7 @@ Inspection</string>
           <item row="0" column="2">
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QComboBox" name="comboBox">
+             <widget class="QComboBox" name="comboBoxNameAuto">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -95,7 +95,7 @@ Inspection</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="pushButtonAddAuto">
               <property name="maximumSize">
                <size>
                 <width>30</width>
@@ -112,7 +112,7 @@ Inspection</string>
           <item row="3" column="2">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QComboBox" name="comboBox_2">
+             <widget class="QComboBox" name="comboBoxEcoClass">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -122,7 +122,7 @@ Inspection</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="pushButtonAddEco">
               <property name="maximumSize">
                <size>
                 <width>30</width>
@@ -137,7 +137,7 @@ Inspection</string>
            </layout>
           </item>
           <item row="2" column="2">
-           <widget class="QLineEdit" name="lineEdit"/>
+           <widget class="QLineEdit" name="lineEditVIN"/>
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_4">
@@ -149,7 +149,7 @@ Inspection</string>
           <item row="4" column="2">
            <layout class="QHBoxLayout" name="horizontalLayout_7">
             <item>
-             <widget class="QDateEdit" name="dateEdit_2">
+             <widget class="QDateEdit" name="dateEditNextTechInspection">
               <property name="maximumSize">
                <size>
                 <width>90</width>
@@ -169,7 +169,7 @@ Inspection</string>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_2">
+             <widget class="QCheckBox" name="checkBoxReminder">
               <property name="text">
                <string>Enable Reminder</string>
               </property>
@@ -185,7 +185,7 @@ Inspection</string>
      <item>
       <widget class="QGroupBox" name="groupBox_2">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -214,7 +214,7 @@ Inspection</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
                <item row="0" column="0">
-                <widget class="QLineEdit" name="lineEdit_5">
+                <widget class="QLineEdit" name="lineEditWolumeCargon">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -230,7 +230,7 @@ Inspection</string>
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QComboBox" name="comboBox_3">
+                <widget class="QComboBox" name="comboBoxNotation">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -265,7 +265,7 @@ Inspection</string>
                 </spacer>
                </item>
                <item row="0" column="4">
-                <widget class="QLineEdit" name="lineEdit_6">
+                <widget class="QLineEdit" name="lineEditMaximalCarring">
                  <property name="maximumSize">
                   <size>
                    <width>70</width>
@@ -322,7 +322,7 @@ Inspection</string>
              </spacer>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox">
+             <widget class="QCheckBox" name="checkBoxTatLift">
               <property name="text">
                <string/>
               </property>
@@ -378,7 +378,7 @@ Compartment</string>
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QLineEdit" name="lineEdit_2">
+                <widget class="QLineEdit" name="lineEditLenthCargon">
                  <property name="maximumSize">
                   <size>
                    <width>30</width>
@@ -402,7 +402,7 @@ Compartment</string>
                 </widget>
                </item>
                <item row="0" column="4">
-                <widget class="QLineEdit" name="lineEdit_3">
+                <widget class="QLineEdit" name="lineEditWidthCargon">
                  <property name="maximumSize">
                   <size>
                    <width>30</width>
@@ -444,7 +444,7 @@ Compartment</string>
                 </widget>
                </item>
                <item row="0" column="7">
-                <widget class="QLineEdit" name="lineEdit_4">
+                <widget class="QLineEdit" name="lineEditHeightCargoon">
                  <property name="maximumSize">
                   <size>
                    <width>30</width>
@@ -485,7 +485,7 @@ Compartment</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
-         <widget class="QPlainTextEdit" name="plainTextEdit"/>
+         <widget class="QPlainTextEdit" name="plainTextEditComments"/>
         </item>
        </layout>
       </widget>

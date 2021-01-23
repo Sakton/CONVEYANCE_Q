@@ -13,7 +13,11 @@ class TheDriverForm : public QWidget
 
  public:
   explicit TheDriverForm(QWidget *parent = nullptr);
-  ~TheDriverForm();
+  ~TheDriverForm( );
+
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
 
  private:
   Ui::TheDriverForm *ui;

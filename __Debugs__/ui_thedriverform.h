@@ -30,39 +30,39 @@ public:
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
     QLabel *label_3;
-    QComboBox *comboBox_2;
-    QLineEdit *lineEdit;
+    QComboBox *comboBoxNationality;
+    QLineEdit *lineEditFamily;
     QLabel *label;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
-    QGroupBox *groupBox;
+    QLineEdit *lineEditPhone;
+    QGroupBox *groupBoxLanguage;
     QGridLayout *gridLayout_4;
-    QGridLayout *gridLayout_3;
-    QCheckBox *checkBox_3;
-    QCheckBox *checkBox;
-    QCheckBox *checkBox_6;
-    QCheckBox *checkBox_31;
-    QCheckBox *checkBox_2;
-    QCheckBox *checkBox_28;
-    QCheckBox *checkBox_30;
-    QCheckBox *checkBox_36;
-    QCheckBox *checkBox_27;
-    QCheckBox *checkBox_32;
-    QCheckBox *checkBox_38;
-    QCheckBox *checkBox_39;
-    QCheckBox *checkBox_41;
-    QGroupBox *groupBox_2;
+    QGridLayout *gridLayoutLanguage;
+    QCheckBox *checkBoxHungarian;
+    QCheckBox *checkBoxEnglish;
+    QCheckBox *checkBoxSpanish;
+    QCheckBox *checkBoxPortuguese;
+    QCheckBox *checkBoxBulgarian;
+    QCheckBox *checkBoxGerman;
+    QCheckBox *checkBoxPolish;
+    QCheckBox *checkBoxFrench;
+    QCheckBox *checkBoxItalian;
+    QCheckBox *checkBoxRomanian;
+    QCheckBox *checkBoxCzech;
+    QCheckBox *checkBoxSwedish;
+    QCheckBox *checkBoxRussian;
+    QGroupBox *groupBoxDriveLicense;
     QGridLayout *gridLayout_6;
     QGridLayout *gridLayout_5;
-    QCheckBox *checkBox_14;
-    QCheckBox *checkBox_15;
-    QCheckBox *checkBox_16;
-    QCheckBox *checkBox_17;
-    QCheckBox *checkBox_20;
-    QCheckBox *checkBox_21;
-    QCheckBox *checkBox_22;
-    QCheckBox *checkBox_23;
-    QCheckBox *checkBox_24;
+    QCheckBox *checkBoxB1;
+    QCheckBox *checkBoxB;
+    QCheckBox *checkBoxC1;
+    QCheckBox *checkBoxC;
+    QCheckBox *checkBoxBE;
+    QCheckBox *checkBoxC1E;
+    QCheckBox *checkBoxCE;
+    QCheckBox *checkBoxD1E;
+    QCheckBox *checkBoxDE;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QWidget *TheDriverForm)
@@ -80,15 +80,15 @@ public:
 
         gridLayout->addWidget(label_3, 2, 0, 1, 1);
 
-        comboBox_2 = new QComboBox(TheDriverForm);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBoxNationality = new QComboBox(TheDriverForm);
+        comboBoxNationality->setObjectName(QString::fromUtf8("comboBoxNationality"));
 
-        gridLayout->addWidget(comboBox_2, 2, 1, 1, 1);
+        gridLayout->addWidget(comboBoxNationality, 2, 1, 1, 1);
 
-        lineEdit = new QLineEdit(TheDriverForm);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEditFamily = new QLineEdit(TheDriverForm);
+        lineEditFamily->setObjectName(QString::fromUtf8("lineEditFamily"));
 
-        gridLayout->addWidget(lineEdit, 0, 1, 1, 1);
+        gridLayout->addWidget(lineEditFamily, 0, 1, 1, 1);
 
         label = new QLabel(TheDriverForm);
         label->setObjectName(QString::fromUtf8("label"));
@@ -100,147 +100,147 @@ public:
 
         gridLayout->addWidget(label_2, 1, 0, 1, 1);
 
-        lineEdit_2 = new QLineEdit(TheDriverForm);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEditPhone = new QLineEdit(TheDriverForm);
+        lineEditPhone->setObjectName(QString::fromUtf8("lineEditPhone"));
 
-        gridLayout->addWidget(lineEdit_2, 1, 1, 1, 1);
+        gridLayout->addWidget(lineEditPhone, 1, 1, 1, 1);
 
-        groupBox = new QGroupBox(TheDriverForm);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        gridLayout_4 = new QGridLayout(groupBox);
+        groupBoxLanguage = new QGroupBox(TheDriverForm);
+        groupBoxLanguage->setObjectName(QString::fromUtf8("groupBoxLanguage"));
+        groupBoxLanguage->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        gridLayout_4 = new QGridLayout(groupBoxLanguage);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        gridLayout_3 = new QGridLayout();
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        checkBox_3 = new QCheckBox(groupBox);
-        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
+        gridLayoutLanguage = new QGridLayout();
+        gridLayoutLanguage->setObjectName(QString::fromUtf8("gridLayoutLanguage"));
+        checkBoxHungarian = new QCheckBox(groupBoxLanguage);
+        checkBoxHungarian->setObjectName(QString::fromUtf8("checkBoxHungarian"));
 
-        gridLayout_3->addWidget(checkBox_3, 0, 2, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxHungarian, 0, 2, 1, 1);
 
-        checkBox = new QCheckBox(groupBox);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBoxEnglish = new QCheckBox(groupBoxLanguage);
+        checkBoxEnglish->setObjectName(QString::fromUtf8("checkBoxEnglish"));
 
-        gridLayout_3->addWidget(checkBox, 0, 0, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxEnglish, 0, 0, 1, 1);
 
-        checkBox_6 = new QCheckBox(groupBox);
-        checkBox_6->setObjectName(QString::fromUtf8("checkBox_6"));
+        checkBoxSpanish = new QCheckBox(groupBoxLanguage);
+        checkBoxSpanish->setObjectName(QString::fromUtf8("checkBoxSpanish"));
 
-        gridLayout_3->addWidget(checkBox_6, 1, 2, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxSpanish, 1, 2, 1, 1);
 
-        checkBox_31 = new QCheckBox(groupBox);
-        checkBox_31->setObjectName(QString::fromUtf8("checkBox_31"));
+        checkBoxPortuguese = new QCheckBox(groupBoxLanguage);
+        checkBoxPortuguese->setObjectName(QString::fromUtf8("checkBoxPortuguese"));
 
-        gridLayout_3->addWidget(checkBox_31, 2, 2, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxPortuguese, 2, 2, 1, 1);
 
-        checkBox_2 = new QCheckBox(groupBox);
-        checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
+        checkBoxBulgarian = new QCheckBox(groupBoxLanguage);
+        checkBoxBulgarian->setObjectName(QString::fromUtf8("checkBoxBulgarian"));
 
-        gridLayout_3->addWidget(checkBox_2, 0, 1, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxBulgarian, 0, 1, 1, 1);
 
-        checkBox_28 = new QCheckBox(groupBox);
-        checkBox_28->setObjectName(QString::fromUtf8("checkBox_28"));
+        checkBoxGerman = new QCheckBox(groupBoxLanguage);
+        checkBoxGerman->setObjectName(QString::fromUtf8("checkBoxGerman"));
 
-        gridLayout_3->addWidget(checkBox_28, 1, 0, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxGerman, 1, 0, 1, 1);
 
-        checkBox_30 = new QCheckBox(groupBox);
-        checkBox_30->setObjectName(QString::fromUtf8("checkBox_30"));
+        checkBoxPolish = new QCheckBox(groupBoxLanguage);
+        checkBoxPolish->setObjectName(QString::fromUtf8("checkBoxPolish"));
 
-        gridLayout_3->addWidget(checkBox_30, 1, 1, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxPolish, 1, 1, 1, 1);
 
-        checkBox_36 = new QCheckBox(groupBox);
-        checkBox_36->setObjectName(QString::fromUtf8("checkBox_36"));
+        checkBoxFrench = new QCheckBox(groupBoxLanguage);
+        checkBoxFrench->setObjectName(QString::fromUtf8("checkBoxFrench"));
 
-        gridLayout_3->addWidget(checkBox_36, 2, 1, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxFrench, 2, 1, 1, 1);
 
-        checkBox_27 = new QCheckBox(groupBox);
-        checkBox_27->setObjectName(QString::fromUtf8("checkBox_27"));
+        checkBoxItalian = new QCheckBox(groupBoxLanguage);
+        checkBoxItalian->setObjectName(QString::fromUtf8("checkBoxItalian"));
 
-        gridLayout_3->addWidget(checkBox_27, 0, 3, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxItalian, 0, 3, 1, 1);
 
-        checkBox_32 = new QCheckBox(groupBox);
-        checkBox_32->setObjectName(QString::fromUtf8("checkBox_32"));
+        checkBoxRomanian = new QCheckBox(groupBoxLanguage);
+        checkBoxRomanian->setObjectName(QString::fromUtf8("checkBoxRomanian"));
 
-        gridLayout_3->addWidget(checkBox_32, 1, 3, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxRomanian, 1, 3, 1, 1);
 
-        checkBox_38 = new QCheckBox(groupBox);
-        checkBox_38->setObjectName(QString::fromUtf8("checkBox_38"));
+        checkBoxCzech = new QCheckBox(groupBoxLanguage);
+        checkBoxCzech->setObjectName(QString::fromUtf8("checkBoxCzech"));
 
-        gridLayout_3->addWidget(checkBox_38, 2, 0, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxCzech, 2, 0, 1, 1);
 
-        checkBox_39 = new QCheckBox(groupBox);
-        checkBox_39->setObjectName(QString::fromUtf8("checkBox_39"));
+        checkBoxSwedish = new QCheckBox(groupBoxLanguage);
+        checkBoxSwedish->setObjectName(QString::fromUtf8("checkBoxSwedish"));
 
-        gridLayout_3->addWidget(checkBox_39, 2, 3, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxSwedish, 2, 3, 1, 1);
 
-        checkBox_41 = new QCheckBox(groupBox);
-        checkBox_41->setObjectName(QString::fromUtf8("checkBox_41"));
+        checkBoxRussian = new QCheckBox(groupBoxLanguage);
+        checkBoxRussian->setObjectName(QString::fromUtf8("checkBoxRussian"));
 
-        gridLayout_3->addWidget(checkBox_41, 3, 0, 1, 1);
-
-
-        gridLayout_4->addLayout(gridLayout_3, 0, 0, 1, 1);
+        gridLayoutLanguage->addWidget(checkBoxRussian, 3, 0, 1, 1);
 
 
-        gridLayout->addWidget(groupBox, 3, 1, 1, 1);
+        gridLayout_4->addLayout(gridLayoutLanguage, 0, 0, 1, 1);
 
-        groupBox_2 = new QGroupBox(TheDriverForm);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        groupBox_2->setFlat(false);
-        gridLayout_6 = new QGridLayout(groupBox_2);
+
+        gridLayout->addWidget(groupBoxLanguage, 3, 1, 1, 1);
+
+        groupBoxDriveLicense = new QGroupBox(TheDriverForm);
+        groupBoxDriveLicense->setObjectName(QString::fromUtf8("groupBoxDriveLicense"));
+        groupBoxDriveLicense->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        groupBoxDriveLicense->setFlat(false);
+        gridLayout_6 = new QGridLayout(groupBoxDriveLicense);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         gridLayout_5 = new QGridLayout();
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        checkBox_14 = new QCheckBox(groupBox_2);
-        checkBox_14->setObjectName(QString::fromUtf8("checkBox_14"));
+        checkBoxB1 = new QCheckBox(groupBoxDriveLicense);
+        checkBoxB1->setObjectName(QString::fromUtf8("checkBoxB1"));
 
-        gridLayout_5->addWidget(checkBox_14, 0, 0, 1, 1);
+        gridLayout_5->addWidget(checkBoxB1, 0, 0, 1, 1);
 
-        checkBox_15 = new QCheckBox(groupBox_2);
-        checkBox_15->setObjectName(QString::fromUtf8("checkBox_15"));
+        checkBoxB = new QCheckBox(groupBoxDriveLicense);
+        checkBoxB->setObjectName(QString::fromUtf8("checkBoxB"));
 
-        gridLayout_5->addWidget(checkBox_15, 0, 1, 1, 1);
+        gridLayout_5->addWidget(checkBoxB, 0, 1, 1, 1);
 
-        checkBox_16 = new QCheckBox(groupBox_2);
-        checkBox_16->setObjectName(QString::fromUtf8("checkBox_16"));
+        checkBoxC1 = new QCheckBox(groupBoxDriveLicense);
+        checkBoxC1->setObjectName(QString::fromUtf8("checkBoxC1"));
 
-        gridLayout_5->addWidget(checkBox_16, 0, 2, 1, 1);
+        gridLayout_5->addWidget(checkBoxC1, 0, 2, 1, 1);
 
-        checkBox_17 = new QCheckBox(groupBox_2);
-        checkBox_17->setObjectName(QString::fromUtf8("checkBox_17"));
+        checkBoxC = new QCheckBox(groupBoxDriveLicense);
+        checkBoxC->setObjectName(QString::fromUtf8("checkBoxC"));
 
-        gridLayout_5->addWidget(checkBox_17, 0, 3, 1, 1);
+        gridLayout_5->addWidget(checkBoxC, 0, 3, 1, 1);
 
-        checkBox_20 = new QCheckBox(groupBox_2);
-        checkBox_20->setObjectName(QString::fromUtf8("checkBox_20"));
+        checkBoxBE = new QCheckBox(groupBoxDriveLicense);
+        checkBoxBE->setObjectName(QString::fromUtf8("checkBoxBE"));
 
-        gridLayout_5->addWidget(checkBox_20, 1, 0, 1, 1);
+        gridLayout_5->addWidget(checkBoxBE, 1, 0, 1, 1);
 
-        checkBox_21 = new QCheckBox(groupBox_2);
-        checkBox_21->setObjectName(QString::fromUtf8("checkBox_21"));
+        checkBoxC1E = new QCheckBox(groupBoxDriveLicense);
+        checkBoxC1E->setObjectName(QString::fromUtf8("checkBoxC1E"));
 
-        gridLayout_5->addWidget(checkBox_21, 1, 1, 1, 1);
+        gridLayout_5->addWidget(checkBoxC1E, 1, 1, 1, 1);
 
-        checkBox_22 = new QCheckBox(groupBox_2);
-        checkBox_22->setObjectName(QString::fromUtf8("checkBox_22"));
+        checkBoxCE = new QCheckBox(groupBoxDriveLicense);
+        checkBoxCE->setObjectName(QString::fromUtf8("checkBoxCE"));
 
-        gridLayout_5->addWidget(checkBox_22, 1, 2, 1, 1);
+        gridLayout_5->addWidget(checkBoxCE, 1, 2, 1, 1);
 
-        checkBox_23 = new QCheckBox(groupBox_2);
-        checkBox_23->setObjectName(QString::fromUtf8("checkBox_23"));
+        checkBoxD1E = new QCheckBox(groupBoxDriveLicense);
+        checkBoxD1E->setObjectName(QString::fromUtf8("checkBoxD1E"));
 
-        gridLayout_5->addWidget(checkBox_23, 1, 3, 1, 1);
+        gridLayout_5->addWidget(checkBoxD1E, 1, 3, 1, 1);
 
-        checkBox_24 = new QCheckBox(groupBox_2);
-        checkBox_24->setObjectName(QString::fromUtf8("checkBox_24"));
+        checkBoxDE = new QCheckBox(groupBoxDriveLicense);
+        checkBoxDE->setObjectName(QString::fromUtf8("checkBoxDE"));
 
-        gridLayout_5->addWidget(checkBox_24, 2, 0, 1, 1);
+        gridLayout_5->addWidget(checkBoxDE, 2, 0, 1, 1);
 
 
         gridLayout_6->addLayout(gridLayout_5, 0, 0, 1, 1);
 
 
-        gridLayout->addWidget(groupBox_2, 4, 1, 1, 1);
+        gridLayout->addWidget(groupBoxDriveLicense, 4, 1, 1, 1);
 
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
@@ -264,30 +264,30 @@ public:
         label_3->setText(QCoreApplication::translate("TheDriverForm", "Nationality", nullptr));
         label->setText(QCoreApplication::translate("TheDriverForm", "Family", nullptr));
         label_2->setText(QCoreApplication::translate("TheDriverForm", "Phone", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("TheDriverForm", "Language", nullptr));
-        checkBox_3->setText(QCoreApplication::translate("TheDriverForm", "Hungarian", nullptr));
-        checkBox->setText(QCoreApplication::translate("TheDriverForm", "English", nullptr));
-        checkBox_6->setText(QCoreApplication::translate("TheDriverForm", "Spanish", nullptr));
-        checkBox_31->setText(QCoreApplication::translate("TheDriverForm", "Portuguese", nullptr));
-        checkBox_2->setText(QCoreApplication::translate("TheDriverForm", "Bulgarian", nullptr));
-        checkBox_28->setText(QCoreApplication::translate("TheDriverForm", "German", nullptr));
-        checkBox_30->setText(QCoreApplication::translate("TheDriverForm", "Polish", nullptr));
-        checkBox_36->setText(QCoreApplication::translate("TheDriverForm", "French", nullptr));
-        checkBox_27->setText(QCoreApplication::translate("TheDriverForm", "Italian", nullptr));
-        checkBox_32->setText(QCoreApplication::translate("TheDriverForm", "Romanian", nullptr));
-        checkBox_38->setText(QCoreApplication::translate("TheDriverForm", "Czech", nullptr));
-        checkBox_39->setText(QCoreApplication::translate("TheDriverForm", "Swedish", nullptr));
-        checkBox_41->setText(QCoreApplication::translate("TheDriverForm", "Russian", nullptr));
-        groupBox_2->setTitle(QCoreApplication::translate("TheDriverForm", "Drive License", nullptr));
-        checkBox_14->setText(QCoreApplication::translate("TheDriverForm", "B1", nullptr));
-        checkBox_15->setText(QCoreApplication::translate("TheDriverForm", "B", nullptr));
-        checkBox_16->setText(QCoreApplication::translate("TheDriverForm", "C1", nullptr));
-        checkBox_17->setText(QCoreApplication::translate("TheDriverForm", "C", nullptr));
-        checkBox_20->setText(QCoreApplication::translate("TheDriverForm", "BE", nullptr));
-        checkBox_21->setText(QCoreApplication::translate("TheDriverForm", "C1E", nullptr));
-        checkBox_22->setText(QCoreApplication::translate("TheDriverForm", "CE", nullptr));
-        checkBox_23->setText(QCoreApplication::translate("TheDriverForm", "D1E", nullptr));
-        checkBox_24->setText(QCoreApplication::translate("TheDriverForm", "DE", nullptr));
+        groupBoxLanguage->setTitle(QCoreApplication::translate("TheDriverForm", "Language", nullptr));
+        checkBoxHungarian->setText(QCoreApplication::translate("TheDriverForm", "Hungarian", nullptr));
+        checkBoxEnglish->setText(QCoreApplication::translate("TheDriverForm", "English", nullptr));
+        checkBoxSpanish->setText(QCoreApplication::translate("TheDriverForm", "Spanish", nullptr));
+        checkBoxPortuguese->setText(QCoreApplication::translate("TheDriverForm", "Portuguese", nullptr));
+        checkBoxBulgarian->setText(QCoreApplication::translate("TheDriverForm", "Bulgarian", nullptr));
+        checkBoxGerman->setText(QCoreApplication::translate("TheDriverForm", "German", nullptr));
+        checkBoxPolish->setText(QCoreApplication::translate("TheDriverForm", "Polish", nullptr));
+        checkBoxFrench->setText(QCoreApplication::translate("TheDriverForm", "French", nullptr));
+        checkBoxItalian->setText(QCoreApplication::translate("TheDriverForm", "Italian", nullptr));
+        checkBoxRomanian->setText(QCoreApplication::translate("TheDriverForm", "Romanian", nullptr));
+        checkBoxCzech->setText(QCoreApplication::translate("TheDriverForm", "Czech", nullptr));
+        checkBoxSwedish->setText(QCoreApplication::translate("TheDriverForm", "Swedish", nullptr));
+        checkBoxRussian->setText(QCoreApplication::translate("TheDriverForm", "Russian", nullptr));
+        groupBoxDriveLicense->setTitle(QCoreApplication::translate("TheDriverForm", "Drive License", nullptr));
+        checkBoxB1->setText(QCoreApplication::translate("TheDriverForm", "B1", nullptr));
+        checkBoxB->setText(QCoreApplication::translate("TheDriverForm", "B", nullptr));
+        checkBoxC1->setText(QCoreApplication::translate("TheDriverForm", "C1", nullptr));
+        checkBoxC->setText(QCoreApplication::translate("TheDriverForm", "C", nullptr));
+        checkBoxBE->setText(QCoreApplication::translate("TheDriverForm", "BE", nullptr));
+        checkBoxC1E->setText(QCoreApplication::translate("TheDriverForm", "C1E", nullptr));
+        checkBoxCE->setText(QCoreApplication::translate("TheDriverForm", "CE", nullptr));
+        checkBoxD1E->setText(QCoreApplication::translate("TheDriverForm", "D1E", nullptr));
+        checkBoxDE->setText(QCoreApplication::translate("TheDriverForm", "DE", nullptr));
     } // retranslateUi
 
 };

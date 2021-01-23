@@ -43,7 +43,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(782, 550);
+        MainWindow->resize(887, 574);
         MainWindow->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         MainWindow->setDocumentMode(true);
         actionAdd = new QAction(MainWindow);
@@ -76,7 +76,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 782, 20));
+        menubar->setGeometry(QRect(0, 0, 887, 20));
         menuAddTest = new QMenu(menubar);
         menuAddTest->setObjectName(QString::fromUtf8("menuAddTest"));
         menuMenu1 = new QMenu(menubar);

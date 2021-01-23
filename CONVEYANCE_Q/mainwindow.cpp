@@ -9,11 +9,11 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow( QWidget *parent ) : QMainWindow( parent ), ui( new Ui::MainWindow ) {
-  addToolBar( Qt::TopToolBarArea, createTopToolBar( ) );
   ui->setupUi( this );
+  addToolBar( Qt::TopToolBarArea, createTopToolBar( ) );
   setCentralWidget( ui->tabWidget );
-  ui->tabWidget->setTabBarAutoHide( false );
-  ui->tabWidget->clear( );
+  //  ui->tabWidget->setTabBarAutoHide( false );
+  //  ui->tabWidget->clear( );
 
   statusBarOperations( );
 
