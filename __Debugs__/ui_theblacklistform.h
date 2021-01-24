@@ -22,7 +22,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPlainTextEdit>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -32,127 +32,121 @@ class Ui_TheBlackListForm
 {
 public:
     QGridLayout *gridLayout_2;
-    QDialogButtonBox *buttonBox;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
-    QHBoxLayout *horizontalLayout;
-    QComboBox *comboBox;
-    QPushButton *pushButton;
     QLabel *label;
-    QLineEdit *lineEdit_2;
+    QComboBox *comboBoxWhy;
+    QLineEdit *lineEditNIP;
     QLabel *label_4;
-    QLabel *label_3;
-    QComboBox *comboBox_2;
-    QLineEdit *lineEdit;
     QLabel *label_2;
+    QHBoxLayout *horizontalLayout;
+    QLineEdit *lineEditName;
     QLabel *label_5;
-    QDateEdit *dateEdit;
+    QLabel *label_3;
+    QLineEdit *lineEditSity;
+    QHBoxLayout *horizontalLayout_5;
+    QDateEdit *dateEditAdd;
+    QSpacerItem *horizontalSpacer;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_3;
-    QPlainTextEdit *plainTextEdit;
+    QPlainTextEdit *plainTextEditNote;
+    QDialogButtonBox *buttonBoxBlackList;
 
-    void setupUi(QWidget *TheBlackList)
+    void setupUi(QWidget *TheBlackListForm)
     {
-        if (TheBlackList->objectName().isEmpty())
-            TheBlackList->setObjectName(QString::fromUtf8("TheBlackList"));
-        TheBlackList->resize(400, 318);
-        TheBlackList->setMinimumSize(QSize(400, 0));
-        gridLayout_2 = new QGridLayout(TheBlackList);
+        if (TheBlackListForm->objectName().isEmpty())
+            TheBlackListForm->setObjectName(QString::fromUtf8("TheBlackListForm"));
+        TheBlackListForm->resize(400, 304);
+        TheBlackListForm->setMinimumSize(QSize(400, 0));
+        gridLayout_2 = new QGridLayout(TheBlackListForm);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        buttonBox = new QDialogButtonBox(TheBlackList);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-
-        gridLayout_2->addWidget(buttonBox, 1, 0, 1, 1);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        comboBox = new QComboBox(TheBlackList);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy);
-
-        horizontalLayout->addWidget(comboBox);
-
-        pushButton = new QPushButton(TheBlackList);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy1);
-        pushButton->setMaximumSize(QSize(30, 16777215));
-
-        horizontalLayout->addWidget(pushButton);
-
-
-        gridLayout->addLayout(horizontalLayout, 0, 1, 1, 1);
-
-        label = new QLabel(TheBlackList);
+        label = new QLabel(TheBlackListForm);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout->addWidget(label, 0, 0, 1, 1);
 
-        lineEdit_2 = new QLineEdit(TheBlackList);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        comboBoxWhy = new QComboBox(TheBlackListForm);
+        comboBoxWhy->setObjectName(QString::fromUtf8("comboBoxWhy"));
 
-        gridLayout->addWidget(lineEdit_2, 2, 1, 1, 1);
+        gridLayout->addWidget(comboBoxWhy, 3, 1, 1, 1);
 
-        label_4 = new QLabel(TheBlackList);
+        lineEditNIP = new QLineEdit(TheBlackListForm);
+        lineEditNIP->setObjectName(QString::fromUtf8("lineEditNIP"));
+
+        gridLayout->addWidget(lineEditNIP, 1, 1, 1, 1);
+
+        label_4 = new QLabel(TheBlackListForm);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
         gridLayout->addWidget(label_4, 3, 0, 1, 1);
 
-        label_3 = new QLabel(TheBlackList);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        gridLayout->addWidget(label_3, 2, 0, 1, 1);
-
-        comboBox_2 = new QComboBox(TheBlackList);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-
-        gridLayout->addWidget(comboBox_2, 3, 1, 1, 1);
-
-        lineEdit = new QLineEdit(TheBlackList);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        gridLayout->addWidget(lineEdit, 1, 1, 1, 1);
-
-        label_2 = new QLabel(TheBlackList);
+        label_2 = new QLabel(TheBlackListForm);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         gridLayout->addWidget(label_2, 1, 0, 1, 1);
 
-        label_5 = new QLabel(TheBlackList);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        lineEditName = new QLineEdit(TheBlackListForm);
+        lineEditName->setObjectName(QString::fromUtf8("lineEditName"));
+
+        horizontalLayout->addWidget(lineEditName);
+
+
+        gridLayout->addLayout(horizontalLayout, 0, 1, 1, 1);
+
+        label_5 = new QLabel(TheBlackListForm);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
         gridLayout->addWidget(label_5, 4, 0, 1, 1);
 
-        dateEdit = new QDateEdit(TheBlackList);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-        dateEdit->setCalendarPopup(true);
-        dateEdit->setDate(QDate(2021, 1, 1));
+        label_3 = new QLabel(TheBlackListForm);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        gridLayout->addWidget(dateEdit, 4, 1, 1, 1);
+        gridLayout->addWidget(label_3, 2, 0, 1, 1);
+
+        lineEditSity = new QLineEdit(TheBlackListForm);
+        lineEditSity->setObjectName(QString::fromUtf8("lineEditSity"));
+
+        gridLayout->addWidget(lineEditSity, 2, 1, 1, 1);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        dateEditAdd = new QDateEdit(TheBlackListForm);
+        dateEditAdd->setObjectName(QString::fromUtf8("dateEditAdd"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(dateEditAdd->sizePolicy().hasHeightForWidth());
+        dateEditAdd->setSizePolicy(sizePolicy);
+        dateEditAdd->setMinimumSize(QSize(90, 0));
+        dateEditAdd->setCalendarPopup(true);
+        dateEditAdd->setDate(QDate(2021, 1, 1));
+
+        horizontalLayout_5->addWidget(dateEditAdd);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer);
+
+
+        gridLayout->addLayout(horizontalLayout_5, 4, 1, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
 
-        groupBox = new QGroupBox(TheBlackList);
+        groupBox = new QGroupBox(TheBlackListForm);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         gridLayout_3 = new QGridLayout(groupBox);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        plainTextEdit = new QPlainTextEdit(groupBox);
-        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        plainTextEditNote = new QPlainTextEdit(groupBox);
+        plainTextEditNote->setObjectName(QString::fromUtf8("plainTextEditNote"));
 
-        gridLayout_3->addWidget(plainTextEdit, 0, 0, 1, 1);
+        gridLayout_3->addWidget(plainTextEditNote, 0, 0, 1, 1);
 
 
         verticalLayout->addWidget(groupBox);
@@ -160,21 +154,26 @@ public:
 
         gridLayout_2->addLayout(verticalLayout, 0, 0, 1, 1);
 
+        buttonBoxBlackList = new QDialogButtonBox(TheBlackListForm);
+        buttonBoxBlackList->setObjectName(QString::fromUtf8("buttonBoxBlackList"));
+        buttonBoxBlackList->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        retranslateUi(TheBlackList);
+        gridLayout_2->addWidget(buttonBoxBlackList, 1, 0, 1, 1);
 
-        QMetaObject::connectSlotsByName(TheBlackList);
+
+        retranslateUi(TheBlackListForm);
+
+        QMetaObject::connectSlotsByName(TheBlackListForm);
     } // setupUi
 
-    void retranslateUi(QWidget *TheBlackList)
+    void retranslateUi(QWidget *TheBlackListForm)
     {
-        TheBlackList->setWindowTitle(QCoreApplication::translate("TheBlackListForm", "BlackList", nullptr));
-        pushButton->setText(QCoreApplication::translate("TheBlackListForm", "Add", nullptr));
+        TheBlackListForm->setWindowTitle(QCoreApplication::translate("TheBlackListForm", "BlackList", nullptr));
         label->setText(QCoreApplication::translate("TheBlackListForm", "Name", nullptr));
         label_4->setText(QCoreApplication::translate("TheBlackListForm", "Why?", nullptr));
-        label_3->setText(QCoreApplication::translate("TheBlackListForm", "Sity", nullptr));
         label_2->setText(QCoreApplication::translate("TheBlackListForm", "NIP", nullptr));
         label_5->setText(QCoreApplication::translate("TheBlackListForm", "Date Add", nullptr));
+        label_3->setText(QCoreApplication::translate("TheBlackListForm", "Sity", nullptr));
         groupBox->setTitle(QCoreApplication::translate("TheBlackListForm", "Note", nullptr));
     } // retranslateUi
 

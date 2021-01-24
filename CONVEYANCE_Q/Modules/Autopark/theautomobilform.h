@@ -13,7 +13,11 @@ class TheAutomobilForm : public QWidget
 
  public:
   explicit TheAutomobilForm(QWidget *parent = nullptr);
-  ~TheAutomobilForm();
+  ~TheAutomobilForm( );
+
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
 
  private:
   Ui::TheAutomobilForm *ui;

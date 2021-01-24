@@ -30,6 +30,8 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "adressData" ] = ui->lineEditAdress->text( );
   adressData[ "landData" ] = ui->lineEditLand->text( );
   for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
+
+  // TODO this add to DB
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }

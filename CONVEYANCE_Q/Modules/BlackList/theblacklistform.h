@@ -14,6 +14,10 @@ class TheBlackListForm : public QWidget {
   explicit TheBlackListForm( QWidget *parent = nullptr );
   ~TheBlackListForm( );
 
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
+
  private:
   Ui::TheBlackListForm *ui;
 };

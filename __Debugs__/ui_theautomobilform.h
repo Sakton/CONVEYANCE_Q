@@ -89,14 +89,14 @@ public:
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_8;
     QPlainTextEdit *plainTextEditComments;
-    QDialogButtonBox *buttonBox;
+    QDialogButtonBox *buttonBoxAutomobileAdding;
 
     void setupUi(QWidget *TheAutomobilForm)
     {
         if (TheAutomobilForm->objectName().isEmpty())
             TheAutomobilForm->setObjectName(QString::fromUtf8("TheAutomobilForm"));
-        TheAutomobilForm->resize(415, 539);
-        TheAutomobilForm->setMinimumSize(QSize(415, 0));
+        TheAutomobilForm->resize(440, 539);
+        TheAutomobilForm->setMinimumSize(QSize(440, 0));
         gridLayout = new QGridLayout(TheAutomobilForm);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         verticalLayout = new QVBoxLayout();
@@ -412,11 +412,11 @@ public:
 
         gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
 
-        buttonBox = new QDialogButtonBox(TheAutomobilForm);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBoxAutomobileAdding = new QDialogButtonBox(TheAutomobilForm);
+        buttonBoxAutomobileAdding->setObjectName(QString::fromUtf8("buttonBoxAutomobileAdding"));
+        buttonBoxAutomobileAdding->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        gridLayout->addWidget(buttonBox, 1, 0, 1, 1);
+        gridLayout->addWidget(buttonBoxAutomobileAdding, 1, 0, 1, 1);
 
 
         retranslateUi(TheAutomobilForm);
@@ -426,7 +426,7 @@ public:
 
     void retranslateUi(QWidget *TheAutomobilForm)
     {
-        TheAutomobilForm->setWindowTitle(QCoreApplication::translate("TheAutomobilForm", "Automobil Adding", nullptr));
+        TheAutomobilForm->setWindowTitle(QCoreApplication::translate("TheAutomobilForm", "Auto", nullptr));
         groupBox->setTitle(QCoreApplication::translate("TheAutomobilForm", "Common Data", nullptr));
         label_3->setText(QCoreApplication::translate("TheAutomobilForm", "VIN", nullptr));
         label_2->setText(QCoreApplication::translate("TheAutomobilForm", "Year Of Issue", nullptr));
