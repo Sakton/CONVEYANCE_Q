@@ -29,6 +29,8 @@ void TheBlackListForm::slotClick_OK_Button( ) {
   blackListData[ "noteBlackList" ] = ui->plainTextEditNote->toPlainText( );
 
   for ( auto &el : blackListData ) qDebug( ) << el.first << " --> " << el.second;
+
+  // TODO this adding to DB
 }
 
 void TheBlackListForm::slotClick_Cancel_Button( ) { this->close( ); }
