@@ -15,8 +15,10 @@
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -30,24 +32,31 @@ public:
     QGroupBox *groupBox;
     QGridLayout *gridLayout_3;
     QGridLayout *gridLayout_2;
-    QLabel *label_2;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditName;
     QLabel *label;
-    QLineEdit *lineEdit_2;
+    QHBoxLayout *horizontalLayout;
+    QLineEdit *lineEditPhoneCode;
+    QSpacerItem *horizontalSpacer;
     QLabel *label_3;
-    QLineEdit *lineEdit_3;
+    QLabel *label_2;
+    QHBoxLayout *horizontalLayout_2;
+    QLineEdit *lineEditAbbreviated;
+    QSpacerItem *horizontalSpacer_2;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_5;
     QGridLayout *gridLayout_4;
     QLabel *label_4;
-    QLineEdit *lineEdit_4;
-    QDialogButtonBox *buttonBox;
+    QHBoxLayout *horizontalLayout_3;
+    QLineEdit *lineEditVatRate;
+    QLabel *label_5;
+    QSpacerItem *horizontalSpacer_3;
+    QDialogButtonBox *buttonBoxLand;
 
     void setupUi(QWidget *TheLandForm)
     {
         if (TheLandForm->objectName().isEmpty())
             TheLandForm->setObjectName(QString::fromUtf8("TheLandForm"));
-        TheLandForm->resize(400, 254);
+        TheLandForm->resize(400, 260);
         TheLandForm->setMinimumSize(QSize(400, 0));
         gridLayout = new QGridLayout(TheLandForm);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
@@ -59,38 +68,63 @@ public:
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        label_2 = new QLabel(groupBox);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        lineEditName = new QLineEdit(groupBox);
+        lineEditName->setObjectName(QString::fromUtf8("lineEditName"));
 
-        gridLayout_2->addWidget(label_2, 1, 0, 1, 1);
-
-        lineEdit = new QLineEdit(groupBox);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        gridLayout_2->addWidget(lineEdit, 0, 1, 1, 1);
+        gridLayout_2->addWidget(lineEditName, 0, 1, 1, 1);
 
         label = new QLabel(groupBox);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout_2->addWidget(label, 0, 0, 1, 1);
 
-        lineEdit_2 = new QLineEdit(groupBox);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        lineEditPhoneCode = new QLineEdit(groupBox);
+        lineEditPhoneCode->setObjectName(QString::fromUtf8("lineEditPhoneCode"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(lineEditPhoneCode->sizePolicy().hasHeightForWidth());
+        lineEditPhoneCode->setSizePolicy(sizePolicy);
+        lineEditPhoneCode->setMaximumSize(QSize(50, 16777215));
 
-        gridLayout_2->addWidget(lineEdit_2, 1, 1, 1, 1);
+        horizontalLayout->addWidget(lineEditPhoneCode);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+
+        gridLayout_2->addLayout(horizontalLayout, 1, 1, 1, 1);
 
         label_3 = new QLabel(groupBox);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        gridLayout_2->addWidget(label_3, 2, 0, 1, 1);
+        gridLayout_2->addWidget(label_3, 1, 0, 1, 1);
 
-        lineEdit_3 = new QLineEdit(groupBox);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        label_2 = new QLabel(groupBox);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        gridLayout_2->addWidget(lineEdit_3, 2, 1, 1, 1);
+        gridLayout_2->addWidget(label_2, 2, 0, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        lineEditAbbreviated = new QLineEdit(groupBox);
+        lineEditAbbreviated->setObjectName(QString::fromUtf8("lineEditAbbreviated"));
+        lineEditAbbreviated->setMaximumSize(QSize(50, 16777215));
+
+        horizontalLayout_2->addWidget(lineEditAbbreviated);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
 
-        gridLayout_3->addLayout(gridLayout_2, 0, 0, 1, 1);
+        gridLayout_2->addLayout(horizontalLayout_2, 2, 1, 1, 1);
+
+
+        gridLayout_3->addLayout(gridLayout_2, 1, 0, 1, 1);
 
 
         verticalLayout->addWidget(groupBox);
@@ -104,12 +138,27 @@ public:
         label_4 = new QLabel(groupBox_2);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        gridLayout_4->addWidget(label_4, 0, 0, 1, 1);
+        gridLayout_4->addWidget(label_4, 0, 1, 1, 1);
 
-        lineEdit_4 = new QLineEdit(groupBox_2);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        lineEditVatRate = new QLineEdit(groupBox_2);
+        lineEditVatRate->setObjectName(QString::fromUtf8("lineEditVatRate"));
+        lineEditVatRate->setMaximumSize(QSize(50, 16777215));
 
-        gridLayout_4->addWidget(lineEdit_4, 0, 1, 1, 1);
+        horizontalLayout_3->addWidget(lineEditVatRate);
+
+        label_5 = new QLabel(groupBox_2);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        horizontalLayout_3->addWidget(label_5);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+
+        gridLayout_4->addLayout(horizontalLayout_3, 0, 2, 1, 1);
 
 
         gridLayout_5->addLayout(gridLayout_4, 0, 0, 1, 1);
@@ -117,11 +166,11 @@ public:
 
         verticalLayout->addWidget(groupBox_2);
 
-        buttonBox = new QDialogButtonBox(TheLandForm);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBoxLand = new QDialogButtonBox(TheLandForm);
+        buttonBoxLand->setObjectName(QString::fromUtf8("buttonBoxLand"));
+        buttonBoxLand->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        verticalLayout->addWidget(buttonBox);
+        verticalLayout->addWidget(buttonBoxLand);
 
 
         gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
@@ -134,13 +183,14 @@ public:
 
     void retranslateUi(QWidget *TheLandForm)
     {
-        TheLandForm->setWindowTitle(QCoreApplication::translate("TheLandForm", "Land", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("TheLandForm", "Land", nullptr));
-        label_2->setText(QCoreApplication::translate("TheLandForm", "Abbreviated", nullptr));
+        TheLandForm->setWindowTitle(QCoreApplication::translate("TheLandForm", "Country", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("TheLandForm", "Country", nullptr));
         label->setText(QCoreApplication::translate("TheLandForm", "Name", nullptr));
         label_3->setText(QCoreApplication::translate("TheLandForm", "Phone Code", nullptr));
+        label_2->setText(QCoreApplication::translate("TheLandForm", "Abbreviated", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("TheLandForm", "VAT Rate", nullptr));
         label_4->setText(QCoreApplication::translate("TheLandForm", "VAT Rate      ", nullptr));
+        label_5->setText(QCoreApplication::translate("TheLandForm", "%", nullptr));
     } // retranslateUi
 
 };

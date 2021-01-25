@@ -27,6 +27,7 @@ void TheBlackListForm::slotClick_OK_Button( ) {
   blackListData[ "sityBlackList" ] = ui->lineEditSity->text( );
   blackListData[ "dateAddBlackList" ] = ui->dateEditAdd->date( ).toString( );
   blackListData[ "noteBlackList" ] = ui->plainTextEditNote->toPlainText( );
+  blackListData[ "whyBlackList" ] = ui->comboBoxWhy->currentText( );
 
   for ( auto &el : blackListData ) qDebug( ) << el.first << " --> " << el.second;
 

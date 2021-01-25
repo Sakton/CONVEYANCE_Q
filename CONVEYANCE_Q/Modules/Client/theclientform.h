@@ -15,6 +15,10 @@ class TheClientForm : public QWidget
   explicit TheClientForm(QWidget *parent = nullptr);
   ~TheClientForm();
 
+ public slots:
+  void slotClicked_Ok_Button( );
+  void slotClicked_Cancel_Button( );
+
  private:
   Ui::TheClientForm *ui;
 };

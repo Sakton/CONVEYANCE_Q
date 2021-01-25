@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>349</height>
+    <height>374</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -30,12 +30,6 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QGroupBox" name="groupBox">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="title">
         <string>Create Client for a Exist Client</string>
        </property>
@@ -53,7 +47,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_2">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -80,7 +74,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="lineEditNip"/>
             </item>
            </layout>
           </item>
@@ -100,7 +94,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_2"/>
+             <widget class="QLineEdit" name="lineEditFirm"/>
             </item>
            </layout>
           </item>
@@ -109,7 +103,7 @@
         <item row="1" column="0">
          <widget class="QTabWidget" name="tabWidget">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -118,7 +112,7 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -143,7 +137,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_3"/>
+                 <widget class="QLineEdit" name="lineEditCityLegal"/>
                 </item>
                </layout>
               </item>
@@ -163,7 +157,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_4"/>
+                 <widget class="QLineEdit" name="lineEditAdressLegal"/>
                 </item>
                </layout>
               </item>
@@ -189,7 +183,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox">
+                 <widget class="QComboBox" name="comboBoxLandLegal">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -202,7 +196,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_2">
+                 <widget class="QPushButton" name="pushButtonAddLandLegal">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -240,7 +234,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_5">
+                 <widget class="QLineEdit" name="lineEditIndexLegal">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -290,7 +284,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_6"/>
+                 <widget class="QLineEdit" name="lineEditCityMailing"/>
                 </item>
                </layout>
               </item>
@@ -310,7 +304,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_7"/>
+                 <widget class="QLineEdit" name="lineEditAdressMailing"/>
                 </item>
                </layout>
               </item>
@@ -336,7 +330,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_2">
+                 <widget class="QComboBox" name="comboBoxLandMailing">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -352,7 +346,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_3">
+                 <widget class="QPushButton" name="pushButtonAddLandMailing">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -399,7 +393,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_8">
+                 <widget class="QLineEdit" name="lineEditIndexMailing">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -432,7 +426,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
+      <widget class="QDialogButtonBox" name="buttonBoxClient">
        <property name="locale">
         <locale language="English" country="UnitedStates"/>
        </property>

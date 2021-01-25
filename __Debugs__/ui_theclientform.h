@@ -40,49 +40,49 @@ public:
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditNip;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QLineEdit *lineEditFirm;
     QTabWidget *tabWidget;
     QWidget *tab;
     QGridLayout *gridLayout_4;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEditCityLegal;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_4;
-    QLineEdit *lineEdit_4;
+    QLineEdit *lineEditAdressLegal;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_5;
-    QComboBox *comboBox;
-    QPushButton *pushButton_2;
+    QComboBox *comboBoxLandLegal;
+    QPushButton *pushButtonAddLandLegal;
     QLabel *label_6;
-    QLineEdit *lineEdit_5;
+    QLineEdit *lineEditIndexLegal;
     QWidget *tab_2;
     QGridLayout *gridLayout_5;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_7;
-    QLineEdit *lineEdit_6;
+    QLineEdit *lineEditCityMailing;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_8;
-    QLineEdit *lineEdit_7;
+    QLineEdit *lineEditAdressMailing;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label_9;
-    QComboBox *comboBox_2;
-    QPushButton *pushButton_3;
+    QComboBox *comboBoxLandMailing;
+    QPushButton *pushButtonAddLandMailing;
     QLabel *label_10;
-    QLineEdit *lineEdit_8;
-    QDialogButtonBox *buttonBox;
+    QLineEdit *lineEditIndexMailing;
+    QDialogButtonBox *buttonBoxClient;
 
     void setupUi(QWidget *TheClientForm)
     {
         if (TheClientForm->objectName().isEmpty())
             TheClientForm->setObjectName(QString::fromUtf8("TheClientForm"));
-        TheClientForm->resize(400, 349);
-        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+        TheClientForm->resize(400, 374);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(TheClientForm->sizePolicy().hasHeightForWidth());
@@ -94,11 +94,6 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         groupBox = new QGroupBox(TheClientForm);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
-        groupBox->setSizePolicy(sizePolicy1);
         gridLayout_2 = new QGridLayout(groupBox);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         pushButton = new QPushButton(groupBox);
@@ -111,8 +106,8 @@ public:
 
         groupBox_2 = new QGroupBox(TheClientForm);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        sizePolicy1.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
-        groupBox_2->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
+        groupBox_2->setSizePolicy(sizePolicy);
         gridLayout_3 = new QGridLayout(groupBox_2);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         verticalLayout_2 = new QVBoxLayout();
@@ -125,10 +120,10 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(groupBox_2);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEditNip = new QLineEdit(groupBox_2);
+        lineEditNip->setObjectName(QString::fromUtf8("lineEditNip"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(lineEditNip);
 
 
         verticalLayout_2->addLayout(horizontalLayout);
@@ -141,10 +136,10 @@ public:
 
         horizontalLayout_2->addWidget(label_2);
 
-        lineEdit_2 = new QLineEdit(groupBox_2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEditFirm = new QLineEdit(groupBox_2);
+        lineEditFirm->setObjectName(QString::fromUtf8("lineEditFirm"));
 
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_2->addWidget(lineEditFirm);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -154,11 +149,8 @@ public:
 
         tabWidget = new QTabWidget(groupBox_2);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
-        tabWidget->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
+        tabWidget->setSizePolicy(sizePolicy);
         tabWidget->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
@@ -174,10 +166,10 @@ public:
 
         horizontalLayout_3->addWidget(label_3);
 
-        lineEdit_3 = new QLineEdit(tab);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        lineEditCityLegal = new QLineEdit(tab);
+        lineEditCityLegal->setObjectName(QString::fromUtf8("lineEditCityLegal"));
 
-        horizontalLayout_3->addWidget(lineEdit_3);
+        horizontalLayout_3->addWidget(lineEditCityLegal);
 
 
         verticalLayout_3->addLayout(horizontalLayout_3);
@@ -190,10 +182,10 @@ public:
 
         horizontalLayout_5->addWidget(label_4);
 
-        lineEdit_4 = new QLineEdit(tab);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        lineEditAdressLegal = new QLineEdit(tab);
+        lineEditAdressLegal->setObjectName(QString::fromUtf8("lineEditAdressLegal"));
 
-        horizontalLayout_5->addWidget(lineEdit_4);
+        horizontalLayout_5->addWidget(lineEditAdressLegal);
 
 
         verticalLayout_3->addLayout(horizontalLayout_5);
@@ -202,56 +194,56 @@ public:
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         label_5 = new QLabel(tab);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy1);
         label_5->setMinimumSize(QSize(35, 0));
 
         horizontalLayout_6->addWidget(label_5);
 
-        comboBox = new QComboBox(tab);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy4);
-        comboBox->setFocusPolicy(Qt::TabFocus);
+        comboBoxLandLegal = new QComboBox(tab);
+        comboBoxLandLegal->setObjectName(QString::fromUtf8("comboBoxLandLegal"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(comboBoxLandLegal->sizePolicy().hasHeightForWidth());
+        comboBoxLandLegal->setSizePolicy(sizePolicy2);
+        comboBoxLandLegal->setFocusPolicy(Qt::TabFocus);
 
-        horizontalLayout_6->addWidget(comboBox);
+        horizontalLayout_6->addWidget(comboBoxLandLegal);
 
-        pushButton_2 = new QPushButton(tab);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy5);
-        pushButton_2->setMinimumSize(QSize(30, 0));
-        pushButton_2->setMaximumSize(QSize(30, 16777215));
+        pushButtonAddLandLegal = new QPushButton(tab);
+        pushButtonAddLandLegal->setObjectName(QString::fromUtf8("pushButtonAddLandLegal"));
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(pushButtonAddLandLegal->sizePolicy().hasHeightForWidth());
+        pushButtonAddLandLegal->setSizePolicy(sizePolicy3);
+        pushButtonAddLandLegal->setMinimumSize(QSize(30, 0));
+        pushButtonAddLandLegal->setMaximumSize(QSize(30, 16777215));
 
-        horizontalLayout_6->addWidget(pushButton_2);
+        horizontalLayout_6->addWidget(pushButtonAddLandLegal);
 
         label_6 = new QLabel(tab);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy3);
+        sizePolicy1.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy1);
 
         horizontalLayout_6->addWidget(label_6);
 
-        lineEdit_5 = new QLineEdit(tab);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        QSizePolicy sizePolicy6(QSizePolicy::Maximum, QSizePolicy::Fixed);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy6);
-        lineEdit_5->setMinimumSize(QSize(0, 0));
-        lineEdit_5->setMaximumSize(QSize(60, 16777215));
+        lineEditIndexLegal = new QLineEdit(tab);
+        lineEditIndexLegal->setObjectName(QString::fromUtf8("lineEditIndexLegal"));
+        QSizePolicy sizePolicy4(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(lineEditIndexLegal->sizePolicy().hasHeightForWidth());
+        lineEditIndexLegal->setSizePolicy(sizePolicy4);
+        lineEditIndexLegal->setMinimumSize(QSize(0, 0));
+        lineEditIndexLegal->setMaximumSize(QSize(60, 16777215));
 
-        horizontalLayout_6->addWidget(lineEdit_5);
+        horizontalLayout_6->addWidget(lineEditIndexLegal);
 
 
         verticalLayout_3->addLayout(horizontalLayout_6);
@@ -274,10 +266,10 @@ public:
 
         horizontalLayout_7->addWidget(label_7);
 
-        lineEdit_6 = new QLineEdit(tab_2);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
+        lineEditCityMailing = new QLineEdit(tab_2);
+        lineEditCityMailing->setObjectName(QString::fromUtf8("lineEditCityMailing"));
 
-        horizontalLayout_7->addWidget(lineEdit_6);
+        horizontalLayout_7->addWidget(lineEditCityMailing);
 
 
         verticalLayout_4->addLayout(horizontalLayout_7);
@@ -290,10 +282,10 @@ public:
 
         horizontalLayout_8->addWidget(label_8);
 
-        lineEdit_7 = new QLineEdit(tab_2);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
+        lineEditAdressMailing = new QLineEdit(tab_2);
+        lineEditAdressMailing->setObjectName(QString::fromUtf8("lineEditAdressMailing"));
 
-        horizontalLayout_8->addWidget(lineEdit_7);
+        horizontalLayout_8->addWidget(lineEditAdressMailing);
 
 
         verticalLayout_4->addLayout(horizontalLayout_8);
@@ -302,46 +294,46 @@ public:
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         label_9 = new QLabel(tab_2);
         label_9->setObjectName(QString::fromUtf8("label_9"));
-        sizePolicy3.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy3);
+        sizePolicy1.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
+        label_9->setSizePolicy(sizePolicy1);
         label_9->setMinimumSize(QSize(35, 0));
 
         horizontalLayout_9->addWidget(label_9);
 
-        comboBox_2 = new QComboBox(tab_2);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        sizePolicy4.setHeightForWidth(comboBox_2->sizePolicy().hasHeightForWidth());
-        comboBox_2->setSizePolicy(sizePolicy4);
-        comboBox_2->setMinimumSize(QSize(0, 0));
+        comboBoxLandMailing = new QComboBox(tab_2);
+        comboBoxLandMailing->setObjectName(QString::fromUtf8("comboBoxLandMailing"));
+        sizePolicy2.setHeightForWidth(comboBoxLandMailing->sizePolicy().hasHeightForWidth());
+        comboBoxLandMailing->setSizePolicy(sizePolicy2);
+        comboBoxLandMailing->setMinimumSize(QSize(0, 0));
 
-        horizontalLayout_9->addWidget(comboBox_2);
+        horizontalLayout_9->addWidget(comboBoxLandMailing);
 
-        pushButton_3 = new QPushButton(tab_2);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        sizePolicy4.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy4);
-        pushButton_3->setMinimumSize(QSize(30, 0));
-        pushButton_3->setMaximumSize(QSize(30, 16777215));
-        pushButton_3->setAutoDefault(false);
-        pushButton_3->setFlat(false);
+        pushButtonAddLandMailing = new QPushButton(tab_2);
+        pushButtonAddLandMailing->setObjectName(QString::fromUtf8("pushButtonAddLandMailing"));
+        sizePolicy2.setHeightForWidth(pushButtonAddLandMailing->sizePolicy().hasHeightForWidth());
+        pushButtonAddLandMailing->setSizePolicy(sizePolicy2);
+        pushButtonAddLandMailing->setMinimumSize(QSize(30, 0));
+        pushButtonAddLandMailing->setMaximumSize(QSize(30, 16777215));
+        pushButtonAddLandMailing->setAutoDefault(false);
+        pushButtonAddLandMailing->setFlat(false);
 
-        horizontalLayout_9->addWidget(pushButton_3);
+        horizontalLayout_9->addWidget(pushButtonAddLandMailing);
 
         label_10 = new QLabel(tab_2);
         label_10->setObjectName(QString::fromUtf8("label_10"));
-        sizePolicy3.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
-        label_10->setSizePolicy(sizePolicy3);
+        sizePolicy1.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
+        label_10->setSizePolicy(sizePolicy1);
 
         horizontalLayout_9->addWidget(label_10);
 
-        lineEdit_8 = new QLineEdit(tab_2);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-        sizePolicy6.setHeightForWidth(lineEdit_8->sizePolicy().hasHeightForWidth());
-        lineEdit_8->setSizePolicy(sizePolicy6);
-        lineEdit_8->setMinimumSize(QSize(0, 0));
-        lineEdit_8->setMaximumSize(QSize(60, 16777215));
+        lineEditIndexMailing = new QLineEdit(tab_2);
+        lineEditIndexMailing->setObjectName(QString::fromUtf8("lineEditIndexMailing"));
+        sizePolicy4.setHeightForWidth(lineEditIndexMailing->sizePolicy().hasHeightForWidth());
+        lineEditIndexMailing->setSizePolicy(sizePolicy4);
+        lineEditIndexMailing->setMinimumSize(QSize(0, 0));
+        lineEditIndexMailing->setMaximumSize(QSize(60, 16777215));
 
-        horizontalLayout_9->addWidget(lineEdit_8);
+        horizontalLayout_9->addWidget(lineEditIndexMailing);
 
 
         verticalLayout_4->addLayout(horizontalLayout_9);
@@ -356,12 +348,12 @@ public:
 
         verticalLayout->addWidget(groupBox_2);
 
-        buttonBox = new QDialogButtonBox(TheClientForm);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBoxClient = new QDialogButtonBox(TheClientForm);
+        buttonBoxClient->setObjectName(QString::fromUtf8("buttonBoxClient"));
+        buttonBoxClient->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        buttonBoxClient->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        verticalLayout->addWidget(buttonBox);
+        verticalLayout->addWidget(buttonBoxClient);
 
 
         gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
@@ -369,8 +361,8 @@ public:
 
         retranslateUi(TheClientForm);
 
-        tabWidget->setCurrentIndex(0);
-        pushButton_3->setDefault(false);
+        tabWidget->setCurrentIndex(1);
+        pushButtonAddLandMailing->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(TheClientForm);
@@ -387,13 +379,13 @@ public:
         label_3->setText(QCoreApplication::translate("TheClientForm", "City", nullptr));
         label_4->setText(QCoreApplication::translate("TheClientForm", "Adress", nullptr));
         label_5->setText(QCoreApplication::translate("TheClientForm", "Land", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("TheClientForm", "Add", nullptr));
+        pushButtonAddLandLegal->setText(QCoreApplication::translate("TheClientForm", "Add", nullptr));
         label_6->setText(QCoreApplication::translate("TheClientForm", "Index", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("TheClientForm", "Legal Address", nullptr));
         label_7->setText(QCoreApplication::translate("TheClientForm", "City", nullptr));
         label_8->setText(QCoreApplication::translate("TheClientForm", "Adress", nullptr));
         label_9->setText(QCoreApplication::translate("TheClientForm", "Land", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("TheClientForm", "Add", nullptr));
+        pushButtonAddLandMailing->setText(QCoreApplication::translate("TheClientForm", "Add", nullptr));
         label_10->setText(QCoreApplication::translate("TheClientForm", "Index", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("TheClientForm", "Mailing Address", nullptr));
     } // retranslateUi

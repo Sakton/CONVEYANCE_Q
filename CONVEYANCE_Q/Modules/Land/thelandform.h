@@ -13,7 +13,11 @@ class TheLandForm : public QWidget
 
  public:
   explicit TheLandForm(QWidget *parent = nullptr);
-  ~TheLandForm();
+  ~TheLandForm( );
+
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
 
  private:
   Ui::TheLandForm *ui;
