@@ -78,7 +78,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit">
+           <widget class="QDateEdit" name="dateEditDate">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -129,7 +129,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox">
+           <widget class="QComboBox" name="comboBoxPlace">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -171,7 +171,7 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="label_16">
+           <widget class="QLabel" name="labelContractNum">
             <property name="text">
              <string>Contract  № </string>
             </property>
@@ -187,7 +187,7 @@
           <item row="5" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QComboBox" name="comboBox_3"/>
+             <widget class="QComboBox" name="comboBoxContacts"/>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton">
@@ -211,7 +211,7 @@
            </layout>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEdit_5">
+           <widget class="QLineEdit" name="lineEditID">
             <property name="readOnly">
              <bool>true</bool>
             </property>
@@ -223,10 +223,10 @@
           <item row="3" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <widget class="QComboBox" name="comboBox_4"/>
+             <widget class="QComboBox" name="comboBoxCustomer"/>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="pushButtonAddCustomer">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -249,12 +249,12 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_15">
             <property name="text">
-             <string>ID</string>
+             <string>Number</string>
             </property>
            </widget>
           </item>
           <item row="4" column="1">
-           <widget class="QComboBox" name="comboBox_2"/>
+           <widget class="QComboBox" name="comboBoxDriver"/>
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_3">
@@ -277,7 +277,7 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="lineEdit_7"/>
+           <widget class="QLineEdit" name="lineEditOrderNum"/>
           </item>
          </layout>
         </item>
@@ -321,7 +321,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="lineEditPrice">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -353,7 +353,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_5">
+           <widget class="QComboBox" name="comboBoxPeriod">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -385,7 +385,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_6">
+           <widget class="QComboBox" name="comboBoxCurrency">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -427,7 +427,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_2"/>
+           <widget class="QLineEdit" name="lineEditArrival"/>
           </item>
           <item>
            <widget class="QLabel" name="label_10">
@@ -452,7 +452,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_3"/>
+           <widget class="QLineEdit" name="lineEditRoute"/>
           </item>
           <item>
            <widget class="QLabel" name="label_11">
@@ -477,7 +477,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_4"/>
+           <widget class="QLineEdit" name="lineEditRate"/>
           </item>
          </layout>
         </item>
@@ -517,7 +517,7 @@ Processing Post</string>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_7"/>
+           <widget class="QComboBox" name="comboBoxMaxTime"/>
           </item>
           <item>
            <widget class="QLabel" name="label_13">
@@ -537,7 +537,7 @@ CMR</string>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="checkBoxCopyCMR">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -582,7 +582,7 @@ original</string>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="checkBoxContractOriginal">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -606,7 +606,7 @@ original</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_7">
         <item row="0" column="0">
-         <widget class="QPlainTextEdit" name="plainTextEdit"/>
+         <widget class="QPlainTextEdit" name="plainTextEditNotes"/>
         </item>
        </layout>
       </widget>
@@ -614,7 +614,7 @@ original</string>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="pushButtonCreateOrder">
          <property name="text">
           <string>Create an invoice for the order</string>
          </property>
@@ -634,14 +634,14 @@ original</string>
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="pushButtonOKForm">
          <property name="text">
           <string>OK</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="pushButtonCancelForm">
          <property name="text">
           <string>Cancel</string>
          </property>

@@ -14,6 +14,10 @@ class TheNoteForm : public QWidget {
   explicit TheNoteForm( QWidget *parent = nullptr );
   ~TheNoteForm( );
 
+ public slots:
+  void slotClick_Ok_Button( );
+  void slotClick_Cancel_Button( );
+
  private:
   Ui::TheNoteForm *ui;
 };

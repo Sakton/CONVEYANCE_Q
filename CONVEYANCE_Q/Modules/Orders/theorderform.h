@@ -15,6 +15,10 @@ class TheOrderForm : public QWidget
   explicit TheOrderForm(QWidget *parent = nullptr);
   ~TheOrderForm();
 
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
+
  private:
   Ui::TheOrderForm *ui;
 };

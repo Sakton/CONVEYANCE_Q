@@ -41,63 +41,63 @@ public:
     QGridLayout *gridLayout_4;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QDateEdit *dateEdit;
+    QDateEdit *dateEditDate;
     QLabel *label_2;
-    QComboBox *comboBox;
+    QComboBox *comboBoxPlace;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_3;
     QGridLayout *gridLayout;
     QLabel *label_4;
-    QLabel *label_16;
+    QLabel *labelContractNum;
     QLabel *label_5;
     QHBoxLayout *horizontalLayout_3;
-    QComboBox *comboBox_3;
+    QComboBox *comboBoxContacts;
     QPushButton *pushButton;
-    QLineEdit *lineEdit_5;
+    QLineEdit *lineEditID;
     QLineEdit *lineEdit_6;
     QHBoxLayout *horizontalLayout_4;
-    QComboBox *comboBox_4;
-    QPushButton *pushButton_2;
+    QComboBox *comboBoxCustomer;
+    QPushButton *pushButtonAddCustomer;
     QLabel *label_15;
-    QComboBox *comboBox_2;
+    QComboBox *comboBoxDriver;
     QLabel *label_3;
     QLabel *label_17;
-    QLineEdit *lineEdit_7;
+    QLineEdit *lineEditOrderNum;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_6;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditPrice;
     QLabel *label_7;
-    QComboBox *comboBox_5;
+    QComboBox *comboBoxPeriod;
     QLabel *label_8;
-    QComboBox *comboBox_6;
+    QComboBox *comboBoxCurrency;
     QGroupBox *groupBox_4;
     QGridLayout *gridLayout_8;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_9;
-    QLineEdit *lineEdit_2;
+    QLineEdit *lineEditArrival;
     QLabel *label_10;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEditRoute;
     QLabel *label_11;
-    QLineEdit *lineEdit_4;
+    QLineEdit *lineEditRate;
     QGroupBox *groupBox_5;
     QGridLayout *gridLayout_5;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_12;
-    QComboBox *comboBox_7;
+    QComboBox *comboBoxMaxTime;
     QLabel *label_13;
-    QCheckBox *checkBox;
+    QCheckBox *checkBoxCopyCMR;
     QLabel *label_14;
-    QCheckBox *checkBox_2;
+    QCheckBox *checkBoxContractOriginal;
     QGroupBox *groupBox_6;
     QGridLayout *gridLayout_7;
-    QPlainTextEdit *plainTextEdit;
+    QPlainTextEdit *plainTextEditNotes;
     QHBoxLayout *horizontalLayout_7;
-    QPushButton *pushButton_4;
+    QPushButton *pushButtonCreateOrder;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
+    QPushButton *pushButtonOKForm;
+    QPushButton *pushButtonCancelForm;
 
     void setupUi(QWidget *TheOrderForm)
     {
@@ -146,21 +146,21 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        dateEdit = new QDateEdit(groupBox_2);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        dateEditDate = new QDateEdit(groupBox_2);
+        dateEditDate->setObjectName(QString::fromUtf8("dateEditDate"));
         QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(dateEdit->sizePolicy().hasHeightForWidth());
-        dateEdit->setSizePolicy(sizePolicy2);
-        dateEdit->setMinimumSize(QSize(90, 0));
-        dateEdit->setFrame(true);
-        dateEdit->setAccelerated(false);
-        dateEdit->setProperty("showGroupSeparator", QVariant(true));
-        dateEdit->setCalendarPopup(true);
-        dateEdit->setDate(QDate(2020, 1, 1));
+        sizePolicy2.setHeightForWidth(dateEditDate->sizePolicy().hasHeightForWidth());
+        dateEditDate->setSizePolicy(sizePolicy2);
+        dateEditDate->setMinimumSize(QSize(90, 0));
+        dateEditDate->setFrame(true);
+        dateEditDate->setAccelerated(false);
+        dateEditDate->setProperty("showGroupSeparator", QVariant(true));
+        dateEditDate->setCalendarPopup(true);
+        dateEditDate->setDate(QDate(2020, 1, 1));
 
-        horizontalLayout->addWidget(dateEdit);
+        horizontalLayout->addWidget(dateEditDate);
 
         label_2 = new QLabel(groupBox_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -173,15 +173,15 @@ public:
 
         horizontalLayout->addWidget(label_2);
 
-        comboBox = new QComboBox(groupBox_2);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBoxPlace = new QComboBox(groupBox_2);
+        comboBoxPlace->setObjectName(QString::fromUtf8("comboBoxPlace"));
         QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy4);
+        sizePolicy4.setHeightForWidth(comboBoxPlace->sizePolicy().hasHeightForWidth());
+        comboBoxPlace->setSizePolicy(sizePolicy4);
 
-        horizontalLayout->addWidget(comboBox);
+        horizontalLayout->addWidget(comboBoxPlace);
 
 
         gridLayout_4->addLayout(horizontalLayout, 0, 0, 1, 1);
@@ -207,10 +207,10 @@ public:
 
         gridLayout->addWidget(label_4, 4, 0, 1, 1);
 
-        label_16 = new QLabel(groupBox);
-        label_16->setObjectName(QString::fromUtf8("label_16"));
+        labelContractNum = new QLabel(groupBox);
+        labelContractNum->setObjectName(QString::fromUtf8("labelContractNum"));
 
-        gridLayout->addWidget(label_16, 1, 0, 1, 1);
+        gridLayout->addWidget(labelContractNum, 1, 0, 1, 1);
 
         label_5 = new QLabel(groupBox);
         label_5->setObjectName(QString::fromUtf8("label_5"));
@@ -219,10 +219,10 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        comboBox_3 = new QComboBox(groupBox);
-        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
+        comboBoxContacts = new QComboBox(groupBox);
+        comboBoxContacts->setObjectName(QString::fromUtf8("comboBoxContacts"));
 
-        horizontalLayout_3->addWidget(comboBox_3);
+        horizontalLayout_3->addWidget(comboBoxContacts);
 
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -238,11 +238,11 @@ public:
 
         gridLayout->addLayout(horizontalLayout_3, 5, 1, 1, 1);
 
-        lineEdit_5 = new QLineEdit(groupBox);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        lineEdit_5->setReadOnly(true);
+        lineEditID = new QLineEdit(groupBox);
+        lineEditID->setObjectName(QString::fromUtf8("lineEditID"));
+        lineEditID->setReadOnly(true);
 
-        gridLayout->addWidget(lineEdit_5, 0, 1, 1, 1);
+        gridLayout->addWidget(lineEditID, 0, 1, 1, 1);
 
         lineEdit_6 = new QLineEdit(groupBox);
         lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
@@ -251,18 +251,18 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        comboBox_4 = new QComboBox(groupBox);
-        comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
+        comboBoxCustomer = new QComboBox(groupBox);
+        comboBoxCustomer->setObjectName(QString::fromUtf8("comboBoxCustomer"));
 
-        horizontalLayout_4->addWidget(comboBox_4);
+        horizontalLayout_4->addWidget(comboBoxCustomer);
 
-        pushButton_2 = new QPushButton(groupBox);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        sizePolicy6.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy6);
-        pushButton_2->setMinimumSize(QSize(85, 0));
+        pushButtonAddCustomer = new QPushButton(groupBox);
+        pushButtonAddCustomer->setObjectName(QString::fromUtf8("pushButtonAddCustomer"));
+        sizePolicy6.setHeightForWidth(pushButtonAddCustomer->sizePolicy().hasHeightForWidth());
+        pushButtonAddCustomer->setSizePolicy(sizePolicy6);
+        pushButtonAddCustomer->setMinimumSize(QSize(85, 0));
 
-        horizontalLayout_4->addWidget(pushButton_2);
+        horizontalLayout_4->addWidget(pushButtonAddCustomer);
 
 
         gridLayout->addLayout(horizontalLayout_4, 3, 1, 1, 1);
@@ -272,10 +272,10 @@ public:
 
         gridLayout->addWidget(label_15, 0, 0, 1, 1);
 
-        comboBox_2 = new QComboBox(groupBox);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBoxDriver = new QComboBox(groupBox);
+        comboBoxDriver->setObjectName(QString::fromUtf8("comboBoxDriver"));
 
-        gridLayout->addWidget(comboBox_2, 4, 1, 1, 1);
+        gridLayout->addWidget(comboBoxDriver, 4, 1, 1, 1);
 
         label_3 = new QLabel(groupBox);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -289,10 +289,10 @@ public:
 
         gridLayout->addWidget(label_17, 2, 0, 1, 1);
 
-        lineEdit_7 = new QLineEdit(groupBox);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
+        lineEditOrderNum = new QLineEdit(groupBox);
+        lineEditOrderNum->setObjectName(QString::fromUtf8("lineEditOrderNum"));
 
-        gridLayout->addWidget(lineEdit_7, 2, 1, 1, 1);
+        gridLayout->addWidget(lineEditOrderNum, 2, 1, 1, 1);
 
 
         gridLayout_3->addLayout(gridLayout, 0, 0, 1, 1);
@@ -320,12 +320,12 @@ public:
 
         horizontalLayout_5->addWidget(label_6);
 
-        lineEdit = new QLineEdit(groupBox_3);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        sizePolicy4.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy4);
+        lineEditPrice = new QLineEdit(groupBox_3);
+        lineEditPrice->setObjectName(QString::fromUtf8("lineEditPrice"));
+        sizePolicy4.setHeightForWidth(lineEditPrice->sizePolicy().hasHeightForWidth());
+        lineEditPrice->setSizePolicy(sizePolicy4);
 
-        horizontalLayout_5->addWidget(lineEdit);
+        horizontalLayout_5->addWidget(lineEditPrice);
 
         label_7 = new QLabel(groupBox_3);
         label_7->setObjectName(QString::fromUtf8("label_7"));
@@ -336,12 +336,12 @@ public:
 
         horizontalLayout_5->addWidget(label_7);
 
-        comboBox_5 = new QComboBox(groupBox_3);
-        comboBox_5->setObjectName(QString::fromUtf8("comboBox_5"));
-        sizePolicy4.setHeightForWidth(comboBox_5->sizePolicy().hasHeightForWidth());
-        comboBox_5->setSizePolicy(sizePolicy4);
+        comboBoxPeriod = new QComboBox(groupBox_3);
+        comboBoxPeriod->setObjectName(QString::fromUtf8("comboBoxPeriod"));
+        sizePolicy4.setHeightForWidth(comboBoxPeriod->sizePolicy().hasHeightForWidth());
+        comboBoxPeriod->setSizePolicy(sizePolicy4);
 
-        horizontalLayout_5->addWidget(comboBox_5);
+        horizontalLayout_5->addWidget(comboBoxPeriod);
 
         label_8 = new QLabel(groupBox_3);
         label_8->setObjectName(QString::fromUtf8("label_8"));
@@ -352,12 +352,12 @@ public:
 
         horizontalLayout_5->addWidget(label_8);
 
-        comboBox_6 = new QComboBox(groupBox_3);
-        comboBox_6->setObjectName(QString::fromUtf8("comboBox_6"));
-        sizePolicy4.setHeightForWidth(comboBox_6->sizePolicy().hasHeightForWidth());
-        comboBox_6->setSizePolicy(sizePolicy4);
+        comboBoxCurrency = new QComboBox(groupBox_3);
+        comboBoxCurrency->setObjectName(QString::fromUtf8("comboBoxCurrency"));
+        sizePolicy4.setHeightForWidth(comboBoxCurrency->sizePolicy().hasHeightForWidth());
+        comboBoxCurrency->setSizePolicy(sizePolicy4);
 
-        horizontalLayout_5->addWidget(comboBox_6);
+        horizontalLayout_5->addWidget(comboBoxCurrency);
 
 
         gridLayout_6->addLayout(horizontalLayout_5, 2, 0, 1, 1);
@@ -382,10 +382,10 @@ public:
 
         horizontalLayout_6->addWidget(label_9);
 
-        lineEdit_2 = new QLineEdit(groupBox_4);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEditArrival = new QLineEdit(groupBox_4);
+        lineEditArrival->setObjectName(QString::fromUtf8("lineEditArrival"));
 
-        horizontalLayout_6->addWidget(lineEdit_2);
+        horizontalLayout_6->addWidget(lineEditArrival);
 
         label_10 = new QLabel(groupBox_4);
         label_10->setObjectName(QString::fromUtf8("label_10"));
@@ -396,10 +396,10 @@ public:
 
         horizontalLayout_6->addWidget(label_10);
 
-        lineEdit_3 = new QLineEdit(groupBox_4);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        lineEditRoute = new QLineEdit(groupBox_4);
+        lineEditRoute->setObjectName(QString::fromUtf8("lineEditRoute"));
 
-        horizontalLayout_6->addWidget(lineEdit_3);
+        horizontalLayout_6->addWidget(lineEditRoute);
 
         label_11 = new QLabel(groupBox_4);
         label_11->setObjectName(QString::fromUtf8("label_11"));
@@ -413,10 +413,10 @@ public:
 
         horizontalLayout_6->addWidget(label_11);
 
-        lineEdit_4 = new QLineEdit(groupBox_4);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        lineEditRate = new QLineEdit(groupBox_4);
+        lineEditRate->setObjectName(QString::fromUtf8("lineEditRate"));
 
-        horizontalLayout_6->addWidget(lineEdit_4);
+        horizontalLayout_6->addWidget(lineEditRate);
 
 
         gridLayout_8->addLayout(horizontalLayout_6, 1, 0, 1, 1);
@@ -440,10 +440,10 @@ public:
 
         horizontalLayout_2->addWidget(label_12);
 
-        comboBox_7 = new QComboBox(groupBox_5);
-        comboBox_7->setObjectName(QString::fromUtf8("comboBox_7"));
+        comboBoxMaxTime = new QComboBox(groupBox_5);
+        comboBoxMaxTime->setObjectName(QString::fromUtf8("comboBoxMaxTime"));
 
-        horizontalLayout_2->addWidget(comboBox_7);
+        horizontalLayout_2->addWidget(comboBoxMaxTime);
 
         label_13 = new QLabel(groupBox_5);
         label_13->setObjectName(QString::fromUtf8("label_13"));
@@ -453,17 +453,17 @@ public:
 
         horizontalLayout_2->addWidget(label_13);
 
-        checkBox = new QCheckBox(groupBox_5);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        sizePolicy6.setHeightForWidth(checkBox->sizePolicy().hasHeightForWidth());
-        checkBox->setSizePolicy(sizePolicy6);
-        checkBox->setContextMenuPolicy(Qt::CustomContextMenu);
-        checkBox->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        checkBox->setChecked(false);
-        checkBox->setAutoRepeat(false);
-        checkBox->setAutoExclusive(false);
+        checkBoxCopyCMR = new QCheckBox(groupBox_5);
+        checkBoxCopyCMR->setObjectName(QString::fromUtf8("checkBoxCopyCMR"));
+        sizePolicy6.setHeightForWidth(checkBoxCopyCMR->sizePolicy().hasHeightForWidth());
+        checkBoxCopyCMR->setSizePolicy(sizePolicy6);
+        checkBoxCopyCMR->setContextMenuPolicy(Qt::CustomContextMenu);
+        checkBoxCopyCMR->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        checkBoxCopyCMR->setChecked(false);
+        checkBoxCopyCMR->setAutoRepeat(false);
+        checkBoxCopyCMR->setAutoExclusive(false);
 
-        horizontalLayout_2->addWidget(checkBox);
+        horizontalLayout_2->addWidget(checkBoxCopyCMR);
 
         label_14 = new QLabel(groupBox_5);
         label_14->setObjectName(QString::fromUtf8("label_14"));
@@ -473,12 +473,12 @@ public:
 
         horizontalLayout_2->addWidget(label_14);
 
-        checkBox_2 = new QCheckBox(groupBox_5);
-        checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
-        sizePolicy6.setHeightForWidth(checkBox_2->sizePolicy().hasHeightForWidth());
-        checkBox_2->setSizePolicy(sizePolicy6);
+        checkBoxContractOriginal = new QCheckBox(groupBox_5);
+        checkBoxContractOriginal->setObjectName(QString::fromUtf8("checkBoxContractOriginal"));
+        sizePolicy6.setHeightForWidth(checkBoxContractOriginal->sizePolicy().hasHeightForWidth());
+        checkBoxContractOriginal->setSizePolicy(sizePolicy6);
 
-        horizontalLayout_2->addWidget(checkBox_2);
+        horizontalLayout_2->addWidget(checkBoxContractOriginal);
 
 
         gridLayout_5->addLayout(horizontalLayout_2, 0, 0, 1, 1);
@@ -490,34 +490,34 @@ public:
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
         gridLayout_7 = new QGridLayout(groupBox_6);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        plainTextEdit = new QPlainTextEdit(groupBox_6);
-        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        plainTextEditNotes = new QPlainTextEdit(groupBox_6);
+        plainTextEditNotes->setObjectName(QString::fromUtf8("plainTextEditNotes"));
 
-        gridLayout_7->addWidget(plainTextEdit, 0, 0, 1, 1);
+        gridLayout_7->addWidget(plainTextEditNotes, 0, 0, 1, 1);
 
 
         verticalLayout->addWidget(groupBox_6);
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        pushButton_4 = new QPushButton(TheOrderForm);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButtonCreateOrder = new QPushButton(TheOrderForm);
+        pushButtonCreateOrder->setObjectName(QString::fromUtf8("pushButtonCreateOrder"));
 
-        horizontalLayout_7->addWidget(pushButton_4);
+        horizontalLayout_7->addWidget(pushButtonCreateOrder);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer);
 
-        pushButton_5 = new QPushButton(TheOrderForm);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButtonOKForm = new QPushButton(TheOrderForm);
+        pushButtonOKForm->setObjectName(QString::fromUtf8("pushButtonOKForm"));
 
-        horizontalLayout_7->addWidget(pushButton_5);
+        horizontalLayout_7->addWidget(pushButtonOKForm);
 
-        pushButton_6 = new QPushButton(TheOrderForm);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButtonCancelForm = new QPushButton(TheOrderForm);
+        pushButtonCancelForm->setObjectName(QString::fromUtf8("pushButtonCancelForm"));
 
-        horizontalLayout_7->addWidget(pushButton_6);
+        horizontalLayout_7->addWidget(pushButtonCancelForm);
 
 
         verticalLayout->addLayout(horizontalLayout_7);
@@ -541,11 +541,11 @@ public:
         label_2->setText(QCoreApplication::translate("TheOrderForm", "Place", nullptr));
         groupBox->setTitle(QCoreApplication::translate("TheOrderForm", "Contract", nullptr));
         label_4->setText(QCoreApplication::translate("TheOrderForm", "Driver", nullptr));
-        label_16->setText(QCoreApplication::translate("TheOrderForm", "Contract  \342\204\226 ", nullptr));
+        labelContractNum->setText(QCoreApplication::translate("TheOrderForm", "Contract  \342\204\226 ", nullptr));
         label_5->setText(QCoreApplication::translate("TheOrderForm", "Contacts", nullptr));
         pushButton->setText(QCoreApplication::translate("TheOrderForm", "Add Contact", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("TheOrderForm", "Add Customer", nullptr));
-        label_15->setText(QCoreApplication::translate("TheOrderForm", "ID", nullptr));
+        pushButtonAddCustomer->setText(QCoreApplication::translate("TheOrderForm", "Add Customer", nullptr));
+        label_15->setText(QCoreApplication::translate("TheOrderForm", "Number", nullptr));
         label_3->setText(QCoreApplication::translate("TheOrderForm", "Customer", nullptr));
         label_17->setText(QCoreApplication::translate("TheOrderForm", "Order \342\204\226", nullptr));
         groupBox_3->setTitle(QCoreApplication::translate("TheOrderForm", "Cost", nullptr));
@@ -562,14 +562,14 @@ public:
 "Processing Post", nullptr));
         label_13->setText(QCoreApplication::translate("TheOrderForm", "2 copy\n"
 "CMR", nullptr));
-        checkBox->setText(QString());
+        checkBoxCopyCMR->setText(QString());
         label_14->setText(QCoreApplication::translate("TheOrderForm", "Contract\n"
 "original", nullptr));
-        checkBox_2->setText(QString());
+        checkBoxContractOriginal->setText(QString());
         groupBox_6->setTitle(QCoreApplication::translate("TheOrderForm", "Notes", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("TheOrderForm", "Create an invoice for the order", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("TheOrderForm", "OK", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("TheOrderForm", "Cancel", nullptr));
+        pushButtonCreateOrder->setText(QCoreApplication::translate("TheOrderForm", "Create an invoice for the order", nullptr));
+        pushButtonOKForm->setText(QCoreApplication::translate("TheOrderForm", "OK", nullptr));
+        pushButtonCancelForm->setText(QCoreApplication::translate("TheOrderForm", "Cancel", nullptr));
     } // retranslateUi
 
 };

@@ -22,6 +22,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -38,43 +39,50 @@ public:
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
     QGridLayout *gridLayout;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditID;
     QLabel *label_3;
     QLabel *label;
     QLabel *label_2;
-    QDateEdit *dateEdit;
-    QComboBox *comboBox;
+    QComboBox *comboBoxContactor;
+    QHBoxLayout *horizontalLayout_5;
+    QDateEdit *dateEditDate;
+    QSpacerItem *horizontalSpacer_3;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_5;
     QGridLayout *gridLayout_4;
     QLabel *label_6;
     QLabel *label_4;
-    QDateEdit *dateEdit_3;
-    QComboBox *comboBox_2;
-    QLineEdit *lineEdit_2;
-    QDateEdit *dateEdit_2;
+    QComboBox *comboBoxInvoiceVat;
+    QLineEdit *lineEditContract;
     QLabel *label_7;
     QLabel *label_5;
     QLabel *label_8;
     QHBoxLayout *horizontalLayout_2;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEditSum;
     QLabel *label_9;
-    QComboBox *comboBox_3;
+    QComboBox *comboBoxCurrency;
+    QSpacerItem *horizontalSpacer_4;
+    QHBoxLayout *horizontalLayout;
+    QDateEdit *dateEditDateRequisites;
+    QSpacerItem *horizontalSpacer;
+    QHBoxLayout *horizontalLayout_4;
+    QDateEdit *dateEditTermin;
+    QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton_2;
-    QDialogButtonBox *buttonBox;
+    QPushButton *pushButtonPrintNote;
+    QDialogButtonBox *buttonBoxNote;
 
-    void setupUi(QWidget *TheNote)
+    void setupUi(QWidget *TheNoteForm)
     {
-        if (TheNote->objectName().isEmpty())
-            TheNote->setObjectName(QString::fromUtf8("TheNote"));
-        TheNote->resize(400, 422);
-        TheNote->setMinimumSize(QSize(400, 0));
-        gridLayout_2 = new QGridLayout(TheNote);
+        if (TheNoteForm->objectName().isEmpty())
+            TheNoteForm->setObjectName(QString::fromUtf8("TheNoteForm"));
+        TheNoteForm->resize(400, 403);
+        TheNoteForm->setMinimumSize(QSize(400, 0));
+        gridLayout_2 = new QGridLayout(TheNoteForm);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        groupBox = new QGroupBox(TheNote);
+        groupBox = new QGroupBox(TheNoteForm);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
@@ -91,16 +99,17 @@ public:
 
         verticalLayout->addWidget(groupBox);
 
-        groupBox_3 = new QGroupBox(TheNote);
+        groupBox_3 = new QGroupBox(TheNoteForm);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         gridLayout_6 = new QGridLayout(groupBox_3);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        lineEdit = new QLineEdit(groupBox_3);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEditID = new QLineEdit(groupBox_3);
+        lineEditID->setObjectName(QString::fromUtf8("lineEditID"));
+        lineEditID->setMaximumSize(QSize(90, 16777215));
 
-        gridLayout->addWidget(lineEdit, 1, 1, 1, 1);
+        gridLayout->addWidget(lineEditID, 1, 1, 1, 1);
 
         label_3 = new QLabel(groupBox_3);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -117,17 +126,27 @@ public:
 
         gridLayout->addWidget(label_2, 2, 0, 1, 1);
 
-        dateEdit = new QDateEdit(groupBox_3);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-        dateEdit->setCalendarPopup(true);
-        dateEdit->setDate(QDate(2021, 1, 1));
+        comboBoxContactor = new QComboBox(groupBox_3);
+        comboBoxContactor->setObjectName(QString::fromUtf8("comboBoxContactor"));
 
-        gridLayout->addWidget(dateEdit, 2, 1, 1, 1);
+        gridLayout->addWidget(comboBoxContactor, 3, 1, 1, 1);
 
-        comboBox = new QComboBox(groupBox_3);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        dateEditDate = new QDateEdit(groupBox_3);
+        dateEditDate->setObjectName(QString::fromUtf8("dateEditDate"));
+        dateEditDate->setMinimumSize(QSize(90, 0));
+        dateEditDate->setCalendarPopup(true);
+        dateEditDate->setDate(QDate(2021, 1, 1));
 
-        gridLayout->addWidget(comboBox, 3, 1, 1, 1);
+        horizontalLayout_5->addWidget(dateEditDate);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_3);
+
+
+        gridLayout->addLayout(horizontalLayout_5, 2, 1, 1, 1);
 
 
         gridLayout_6->addLayout(gridLayout, 0, 0, 1, 1);
@@ -135,7 +154,7 @@ public:
 
         verticalLayout->addWidget(groupBox_3);
 
-        groupBox_2 = new QGroupBox(TheNote);
+        groupBox_2 = new QGroupBox(TheNoteForm);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         gridLayout_5 = new QGridLayout(groupBox_2);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -151,29 +170,15 @@ public:
 
         gridLayout_4->addWidget(label_4, 0, 0, 1, 1);
 
-        dateEdit_3 = new QDateEdit(groupBox_2);
-        dateEdit_3->setObjectName(QString::fromUtf8("dateEdit_3"));
-        dateEdit_3->setCalendarPopup(true);
-        dateEdit_3->setDate(QDate(2021, 1, 1));
+        comboBoxInvoiceVat = new QComboBox(groupBox_2);
+        comboBoxInvoiceVat->setObjectName(QString::fromUtf8("comboBoxInvoiceVat"));
 
-        gridLayout_4->addWidget(dateEdit_3, 3, 1, 1, 1);
+        gridLayout_4->addWidget(comboBoxInvoiceVat, 1, 1, 1, 1);
 
-        comboBox_2 = new QComboBox(groupBox_2);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        lineEditContract = new QLineEdit(groupBox_2);
+        lineEditContract->setObjectName(QString::fromUtf8("lineEditContract"));
 
-        gridLayout_4->addWidget(comboBox_2, 1, 1, 1, 1);
-
-        lineEdit_2 = new QLineEdit(groupBox_2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-
-        gridLayout_4->addWidget(lineEdit_2, 0, 1, 1, 1);
-
-        dateEdit_2 = new QDateEdit(groupBox_2);
-        dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
-        dateEdit_2->setCalendarPopup(true);
-        dateEdit_2->setDate(QDate(2021, 1, 1));
-
-        gridLayout_4->addWidget(dateEdit_2, 2, 1, 1, 1);
+        gridLayout_4->addWidget(lineEditContract, 0, 1, 1, 1);
 
         label_7 = new QLabel(groupBox_2);
         label_7->setObjectName(QString::fromUtf8("label_7"));
@@ -192,23 +197,63 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        lineEdit_3 = new QLineEdit(groupBox_2);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        lineEditSum = new QLineEdit(groupBox_2);
+        lineEditSum->setObjectName(QString::fromUtf8("lineEditSum"));
+        lineEditSum->setMaximumSize(QSize(90, 16777215));
 
-        horizontalLayout_2->addWidget(lineEdit_3);
+        horizontalLayout_2->addWidget(lineEditSum);
 
         label_9 = new QLabel(groupBox_2);
         label_9->setObjectName(QString::fromUtf8("label_9"));
 
         horizontalLayout_2->addWidget(label_9);
 
-        comboBox_3 = new QComboBox(groupBox_2);
-        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
+        comboBoxCurrency = new QComboBox(groupBox_2);
+        comboBoxCurrency->setObjectName(QString::fromUtf8("comboBoxCurrency"));
+        comboBoxCurrency->setMaximumSize(QSize(50, 16777215));
 
-        horizontalLayout_2->addWidget(comboBox_3);
+        horizontalLayout_2->addWidget(comboBoxCurrency);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_4);
 
 
         gridLayout_4->addLayout(horizontalLayout_2, 4, 1, 1, 1);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        dateEditDateRequisites = new QDateEdit(groupBox_2);
+        dateEditDateRequisites->setObjectName(QString::fromUtf8("dateEditDateRequisites"));
+        dateEditDateRequisites->setMinimumSize(QSize(90, 0));
+        dateEditDateRequisites->setCalendarPopup(true);
+        dateEditDateRequisites->setDate(QDate(2021, 1, 1));
+
+        horizontalLayout->addWidget(dateEditDateRequisites);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+
+        gridLayout_4->addLayout(horizontalLayout, 2, 1, 1, 1);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        dateEditTermin = new QDateEdit(groupBox_2);
+        dateEditTermin->setObjectName(QString::fromUtf8("dateEditTermin"));
+        dateEditTermin->setMinimumSize(QSize(90, 0));
+        dateEditTermin->setCalendarPopup(true);
+        dateEditTermin->setDate(QDate(2021, 1, 1));
+
+        horizontalLayout_4->addWidget(dateEditTermin);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_2);
+
+
+        gridLayout_4->addLayout(horizontalLayout_4, 3, 1, 1, 1);
 
 
         gridLayout_5->addLayout(gridLayout_4, 0, 0, 1, 1);
@@ -218,16 +263,16 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        pushButton_2 = new QPushButton(TheNote);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButtonPrintNote = new QPushButton(TheNoteForm);
+        pushButtonPrintNote->setObjectName(QString::fromUtf8("pushButtonPrintNote"));
 
-        horizontalLayout_3->addWidget(pushButton_2);
+        horizontalLayout_3->addWidget(pushButtonPrintNote);
 
-        buttonBox = new QDialogButtonBox(TheNote);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBoxNote = new QDialogButtonBox(TheNoteForm);
+        buttonBoxNote->setObjectName(QString::fromUtf8("buttonBoxNote"));
+        buttonBoxNote->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        horizontalLayout_3->addWidget(buttonBox);
+        horizontalLayout_3->addWidget(buttonBoxNote);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -236,28 +281,28 @@ public:
         gridLayout_2->addLayout(verticalLayout, 0, 0, 1, 1);
 
 
-        retranslateUi(TheNote);
+        retranslateUi(TheNoteForm);
 
-        QMetaObject::connectSlotsByName(TheNote);
+        QMetaObject::connectSlotsByName(TheNoteForm);
     } // setupUi
 
-    void retranslateUi(QWidget *TheNote)
+    void retranslateUi(QWidget *TheNoteForm)
     {
-        TheNote->setWindowTitle(QCoreApplication::translate("TheNoteForm", "Nota", nullptr));
+        TheNoteForm->setWindowTitle(QCoreApplication::translate("TheNoteForm", "Nota", nullptr));
         groupBox->setTitle(QString());
         pushButton->setText(QCoreApplication::translate("TheNoteForm", "Create from", nullptr));
         groupBox_3->setTitle(QString());
         label_3->setText(QCoreApplication::translate("TheNoteForm", "Contactor", nullptr));
-        label->setText(QCoreApplication::translate("TheNoteForm", "ID", nullptr));
+        label->setText(QCoreApplication::translate("TheNoteForm", "Number", nullptr));
         label_2->setText(QCoreApplication::translate("TheNoteForm", "Date", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("TheNoteForm", "Note requisites", nullptr));
         label_6->setText(QCoreApplication::translate("TheNoteForm", "Date", nullptr));
-        label_4->setText(QCoreApplication::translate("TheNoteForm", "\320\245\320\245\320\245???\320\245\320\245", nullptr));
-        label_7->setText(QCoreApplication::translate("TheNoteForm", "Termin ???", nullptr));
+        label_4->setText(QCoreApplication::translate("TheNoteForm", "Contract", nullptr));
+        label_7->setText(QCoreApplication::translate("TheNoteForm", "Termin", nullptr));
         label_5->setText(QCoreApplication::translate("TheNoteForm", "Invoice VAT", nullptr));
         label_8->setText(QCoreApplication::translate("TheNoteForm", "Sum", nullptr));
         label_9->setText(QCoreApplication::translate("TheNoteForm", "Currency", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("TheNoteForm", "Print Note", nullptr));
+        pushButtonPrintNote->setText(QCoreApplication::translate("TheNoteForm", "Print Note", nullptr));
     } // retranslateUi
 
 };
