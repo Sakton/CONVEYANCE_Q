@@ -54,7 +54,7 @@ public:
     QComboBox *comboBoxContacts;
     QPushButton *pushButton;
     QLineEdit *lineEditID;
-    QLineEdit *lineEdit_6;
+    QLineEdit *lineEditContract;
     QHBoxLayout *horizontalLayout_4;
     QComboBox *comboBoxCustomer;
     QPushButton *pushButtonAddCustomer;
@@ -240,14 +240,14 @@ public:
 
         lineEditID = new QLineEdit(groupBox);
         lineEditID->setObjectName(QString::fromUtf8("lineEditID"));
-        lineEditID->setReadOnly(true);
+        lineEditID->setReadOnly(false);
 
         gridLayout->addWidget(lineEditID, 0, 1, 1, 1);
 
-        lineEdit_6 = new QLineEdit(groupBox);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
+        lineEditContract = new QLineEdit(groupBox);
+        lineEditContract->setObjectName(QString::fromUtf8("lineEditContract"));
 
-        gridLayout->addWidget(lineEdit_6, 1, 1, 1, 1);
+        gridLayout->addWidget(lineEditContract, 1, 1, 1, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
