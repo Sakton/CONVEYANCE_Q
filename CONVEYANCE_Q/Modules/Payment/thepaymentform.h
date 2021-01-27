@@ -13,7 +13,11 @@ class ThePaymentForm : public QWidget
 
  public:
   explicit ThePaymentForm(QWidget *parent = nullptr);
-  ~ThePaymentForm();
+  ~ThePaymentForm( );
+
+ public slots:
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
 
  private:
   Ui::ThePaymentForm *ui;
