@@ -9,3 +9,7 @@ ThePaymentForm::~ThePaymentForm()
 {
   delete ui;
 }
+
+void ThePaymentForm::slotClick_OK_Button( ) {}
+
+void ThePaymentForm::slotClick_Cancel_Button( ) { this->close( ); }
