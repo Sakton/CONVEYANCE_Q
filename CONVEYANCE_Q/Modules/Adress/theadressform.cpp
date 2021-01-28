@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QDialogButtonBox>
+#include <QSqlDatabase>
 #include <QStringList>
 #include <map>
 
@@ -29,9 +30,16 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "sityData" ] = ui->lineEditSity->text( );
   adressData[ "adressData" ] = ui->lineEditAdress->text( );
   adressData[ "landData" ] = ui->lineEditLand->text( );
-  for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
+  //  for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
 
   // TODO this add to DB
+  QSqlDatabase db = QSqlDatabase::addDatabase( "QPSQL" );
+  db.setHostName( "localhost" );
+  db.setPort( 5432 );
+  db.setDatabaseName( "postgres" );
+  db.setUserName( "postgres" );
+  db.setPassword( "123" );
+  if ( !db.open( ) ) qDebug( ) << "Error Open DB";
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
