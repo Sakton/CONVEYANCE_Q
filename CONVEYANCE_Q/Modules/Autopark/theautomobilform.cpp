@@ -5,6 +5,7 @@
 #include <QDialogButtonBox>
 #include <map>
 
+#include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
 #include "ui_theautomobilform.h"
 
 const QStringList nameAuto { "This_Add_Is_Base", "Volvo", "Mrcedes" };
@@ -47,7 +48,20 @@ void TheAutomobilForm::slotClick_OK_Button( ) {
 
   for ( auto &el : autoData ) qDebug( ) << el.first << " --> " << el.second;
 
-  // TODO this adding to DB
+  // TODO this CHEK data
+  // if chek = OK
+  // TODO this INSERT to DB
+  ConveyanceSQLDatabase db;
+  if ( db.openDb( ) ) {
+    qDebug( ) << "OPEN DB";
+    if ( db.createTableAutopark( ) ) {
+      qDebug( ) << "CREATE TABLE AUTOPARK";
+    } else {
+      qDebug( ) << "NOT CREATE TABLE AUTOPARK";
+    }
+  } else {
+    qDebug( ) << "ERROR OPEN DB";
+  }
 };
 
 void TheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }

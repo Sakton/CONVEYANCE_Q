@@ -32,11 +32,20 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "landData" ] = ui->lineEditLand->text( );
   //  for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
 
+  // TODO this CHEK data
+  // if chek = OK
+  // TODO this INSERT to DB
+  // TODO this test method!!!!!
   ConveyanceSQLDatabase db;
   if ( !db.openDb( ) ) {
     qDebug( ) << "ERROR OPEN DB";
   } else {
     qDebug( ) << "DB OK";
+    if ( !db.createTableAdress( ) ) {
+      qDebug( ) << "NO CREATE ADRESS";
+    } else {
+      qDebug( ) << "YES CREATE ADRESS";
+    }
   }
 }
 

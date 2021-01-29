@@ -10,6 +10,19 @@ class ConveyanceSQLDatabase : public QObject {
   ~ConveyanceSQLDatabase( );
 
   bool openDb( );
+  bool createTableAdress( );
+  bool createTableAutopark( );
+  bool createTableBlackList( );
+  bool createTableClient( );
+  bool createTableDriver( );
+  bool createTableLand( );
+  bool createTableNote( );
+  bool createTableOrders( );
+  bool createTablePayment( );
+  bool createTablePost( );
+
+  bool deleteTableAdress( );
+  bool deleteTableAutopark( );
 
  private:
   QSqlDatabase db;
