@@ -2,10 +2,10 @@
 
 #include <QDebug>
 #include <QDialogButtonBox>
-#include <QSqlDatabase>
 #include <QStringList>
 #include <map>
 
+#include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
 #include "ui_theadressform.h"
 
 const QStringList typeAdress { "Legal Address", "Mailing Address" };
@@ -32,14 +32,12 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "landData" ] = ui->lineEditLand->text( );
   //  for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
 
-  // TODO this add to DB
-  QSqlDatabase db = QSqlDatabase::addDatabase( "QPSQL" );
-  db.setHostName( "localhost" );
-  db.setPort( 5432 );
-  db.setDatabaseName( "postgres" );
-  db.setUserName( "postgres" );
-  db.setPassword( "123" );
-  if ( !db.open( ) ) qDebug( ) << "Error Open DB";
+  ConveyanceSQLDatabase db;
+  if ( !db.openDb( ) ) {
+    qDebug( ) << "ERROR OPEN DB";
+  } else {
+    qDebug( ) << "DB OK";
+  }
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }

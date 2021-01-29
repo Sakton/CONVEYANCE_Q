@@ -19,6 +19,7 @@ SOURCES += \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
     Modules/Post/thepostform.cpp \
+    Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -33,6 +34,8 @@ HEADERS += \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
     Modules/Post/thepostform.h \
+    Utility/CreatorDbConveyance/DBConnectConstant.h \
+    Utility/CreatorDbConveyance/conveyancesqldatabase.h \
     mainwindow.h
 
 FORMS += \
