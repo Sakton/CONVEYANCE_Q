@@ -24,6 +24,10 @@ class ConveyanceSQLDatabase : public QObject {
   bool deleteTableAdress( );
   bool deleteTableAutopark( );
 
+  bool insertToDb( const QString &q );
+  bool updateToDb( const QString &q );
+  bool selectFromDb( const QString &q );
+
  private:
   QSqlDatabase db;
 };
