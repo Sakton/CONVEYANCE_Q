@@ -74,7 +74,8 @@ void TheAdressForm::slotClick_OK_Button( ) {
   //  }
 
   QString selectQuery { "SELECT * FROM adress" };
-  db.selectFromDb( selectQuery );
+
+  // db.selectFromDb( selectQuery );
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }

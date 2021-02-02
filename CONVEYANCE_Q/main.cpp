@@ -10,6 +10,7 @@
 #include "Modules/Orders/theorderform.h"
 #include "Modules/Payment/thepaymentform.h"
 #include "Modules/Post/thepostform.h"
+#include "Utility/CreatorDbConveyance/querydriver.h"
 #include "mainwindow.h"
 
 int main( int argc, char *argv[] ) {
@@ -18,6 +19,10 @@ int main( int argc, char *argv[] ) {
   //  w.show( );
   TheAdressForm df;
   df.show( );
+
+  std::vector< std::pair< QString, QString > > data { { "Para1", "Para1_1" } };
+  auto s = QueryDriver::createTableQuery( QString( "testQueryDriver" ), data );
+
   //  TheClientForm cf;
   //  cf.show( );
   return a.exec();

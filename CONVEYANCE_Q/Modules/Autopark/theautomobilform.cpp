@@ -52,16 +52,16 @@ void TheAutomobilForm::slotClick_OK_Button( ) {
   // if chek = OK
   // TODO this INSERT to DB
   ConveyanceSQLDatabase db;
-  if ( db.openDb( ) ) {
-    qDebug( ) << "OPEN DB";
-    if ( db.createTableAutopark( ) ) {
-      qDebug( ) << "CREATE TABLE AUTOPARK";
-    } else {
-      qDebug( ) << "NOT CREATE TABLE AUTOPARK";
-    }
-  } else {
-    qDebug( ) << "ERROR OPEN DB";
-  }
+  //  if ( db.openDb( ) ) {
+  //    qDebug( ) << "OPEN DB";
+  //    if ( db.createTableAutopark( ) ) {
+  //      qDebug( ) << "CREATE TABLE AUTOPARK";
+  //    } else {
+  //      qDebug( ) << "NOT CREATE TABLE AUTOPARK";
+  //    }
+  //  } else {
+  //    qDebug( ) << "ERROR OPEN DB";
+  //  }
 };
 
 void TheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }
