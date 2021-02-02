@@ -3,32 +3,18 @@
 #include <QObject>
 #include <QSqlDatabase>
 
-class ConveyanceSQLDatabase : public QObject {
-  Q_OBJECT
+// отвечает за соединение с БД
+
+class ConveyanceSQLDatabase {
  public:
   explicit ConveyanceSQLDatabase( );
   ~ConveyanceSQLDatabase( );
 
   bool openDb( );
-  //  bool createTableAdress( );
-  //  bool createTableAutopark( );
-  //  bool createTableBlackList( );
-  //  bool createTableClient( );
-  //  bool createTableDriver( );
-  //  bool createTableLand( );
-  //  bool createTableNote( );
-  //  bool createTableOrders( );
-  //  bool createTablePayment( );
-  //  bool createTablePost( );
-
-  //  bool deleteTableAdress( );
-  //  bool deleteTableAutopark( );
 
   //  bool insertToDb( const QString &q );
   //  bool updateToDb( const QString &q );
   //  bool selectFromDb( const QString &q );
-
-  void tttt( );
 
   const QSqlDatabase& database( ) const;
 

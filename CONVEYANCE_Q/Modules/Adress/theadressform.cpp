@@ -7,6 +7,7 @@
 #include <map>
 
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
+#include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theadressform.h"
 
 const QStringList typeAdress { "Legal Address", "Mailing Address" };
@@ -37,17 +38,17 @@ void TheAdressForm::slotClick_OK_Button( ) {
   // if chek = OK
   // TODO this INSERT to DB
   // TODO this test method!!!!!
-  ConveyanceSQLDatabase db;
-  if ( !db.openDb( ) ) {
-    qDebug( ) << "ERROR OPEN DB";
-  } else {
-    qDebug( ) << "DB OK";
-    //    if ( !db.createTableAdress( ) ) {
-    //      qDebug( ) << "NO CREATE ADRESS";
-    //    } else {
-    //      qDebug( ) << "YES CREATE ADRESS";
-    //    }
-  }
+  //  ConveyanceSQLDatabase db;
+  //  if ( !db.openDb( ) ) {
+  //    qDebug( ) << "ERROR OPEN DB";
+  //  } else {
+  //    qDebug( ) << "DB OK";
+  //    //    if ( !db.createTableAdress( ) ) {
+  //    //      qDebug( ) << "NO CREATE ADRESS";
+  //    //    } else {
+  //    //      qDebug( ) << "YES CREATE ADRESS";
+  //    //    }
+  //  }
 
   // adding to db
   // QString strQuery { "INSERT INTO adress  VALUE (" };
