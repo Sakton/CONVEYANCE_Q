@@ -19,6 +19,11 @@ SOURCES += \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
     Modules/Post/thepostform.cpp \
+    Utility/CreatorDbConveyance/BaseClasses/Fabrique/abstractdbfactory.cpp \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractcreatetableobject.cpp \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractinsertobject.cpp \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractselectobject.cpp \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractupdateobject.cpp \
     Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
     main.cpp \
     mainwindow.cpp
@@ -34,6 +39,11 @@ HEADERS += \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
     Modules/Post/thepostform.h \
+    Utility/CreatorDbConveyance/BaseClasses/Fabrique/abstractdbfactory.h \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractcreatetableobject.h \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractinsertobject.h \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractselectobject.h \
+    Utility/CreatorDbConveyance/BaseClasses/Product/abstractupdateobject.h \
     Utility/CreatorDbConveyance/DBConnectConstant.h \
     Utility/CreatorDbConveyance/conveyancesqldatabase.h \
     mainwindow.h
