@@ -1,14 +1,28 @@
 #include "dbtablecreator.h"
 
+#include <QProcess>
 #include <QSqlQuery>
+#include <QStringList>
+#include <memory>
 
 DBTableCreator::DBTableCreator( ) {
   if ( db.openDb( ) ) {
-    createDb( );
+    // createDb( );
   }
 }
 
-bool DBTableCreator::createDb( ) { return createAdressTable( ) && createAutoParkTable( ); }
+bool DBTableCreator::createDb( const QString &nameDb, const QString &nameUser, const QString &password ) {
+  // WARNING !!! this absolute path  worked PC
+  QString prog = "C:/PostgreSQL/bin/createdb.exe";
+  QStringList paramCommandStr;
+
+  std::unique_ptr< QProcess > process;
+  process->start( prog );
+  // process->startDetached( prog );
+
+  // return createAdressTable( ) && createAutoParkTable( );
+  return true;
+}
 
 bool DBTableCreator::createAdressTable( ) {
   QString str {

@@ -10,9 +10,10 @@ class DBTableCreator
 {
  public:
   DBTableCreator( );
-  bool createDb( );
+  bool createDb( const QString &nameDb, const QString &nameUser, const QString &password );
 
  private:
+  bool createDB( );
   bool createAdressTable( );
   bool createAutoParkTable( );
   bool createBlackListTable( );

@@ -22,6 +22,7 @@ SOURCES += \
     Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
     Utility/CreatorDbConveyance/dbtablecreator.cpp \
     Utility/CreatorDbConveyance/querydriver.cpp \
+    Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -40,6 +41,7 @@ HEADERS += \
     Utility/CreatorDbConveyance/conveyancesqldatabase.h \
     Utility/CreatorDbConveyance/dbtablecreator.h \
     Utility/CreatorDbConveyance/querydriver.h \
+    Utility/DataForCreateDBForm/thedataforcreatedbform.h \
     mainwindow.h
 
 FORMS += \
@@ -53,6 +55,7 @@ FORMS += \
     Modules/Orders/theorderform.ui \
     Modules/Payment/thepaymentform.ui \
     Modules/Post/thepostform.ui \
+    Utility/DataForCreateDBForm/thedataforcreatedbform.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
