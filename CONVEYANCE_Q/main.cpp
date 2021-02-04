@@ -18,17 +18,23 @@
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
 
-  MainWindow w;
-  w.show( );
+  ThePostForm pf;
+  pf.show( );
+
+  //  ThePaymentForm pf;
+  //  pf.show( );
+
+  //  MainWindow w;
+  //  w.show( );
 
   //  TheDataForCreateDBForm cf;
   //  cf.show( );
 
-  DBTableCreator creator;
-  if ( creator.createDb( ) )
-    qDebug( ) << "OK CREATE TABLE";
-  else
-    qDebug( ) << "ERROR CREATE TABLE";
+  //  DBTableCreator creator;
+  //  if ( creator.createDb( ) )
+  //    qDebug( ) << "OK CREATE TABLE";
+  //  else
+  //    qDebug( ) << "ERROR CREATE TABLE";
 
   //  DBTableCreator c;
   //  c.createDb( );
