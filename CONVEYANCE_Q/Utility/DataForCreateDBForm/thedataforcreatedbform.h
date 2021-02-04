@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+// TODO уточнить концепцию как и каким образом будет создание БД, или из установщика, или ручками?
+
 namespace Ui {
 class TheDataForCreateDBForm;
 }

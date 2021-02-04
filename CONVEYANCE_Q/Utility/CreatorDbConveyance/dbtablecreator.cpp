@@ -11,17 +11,24 @@ DBTableCreator::DBTableCreator( ) {
   }
 }
 
-bool DBTableCreator::createDb( const QString &nameDb, const QString &nameUser, const QString &password ) {
+bool DBTableCreator::createDb( ) {
   // WARNING !!! this absolute path  worked PC
-  QString prog = "C:/PostgreSQL/bin/createdb.exe";
-  QStringList paramCommandStr;
+  //  QString prog = "C:/PostgreSQL/bin/createdb.exe";
+  //  QStringList paramCommandStr;
 
-  std::unique_ptr< QProcess > process;
-  process->start( prog );
+  //  std::unique_ptr< QProcess > process;
+  //  process->start( prog );
   // process->startDetached( prog );
 
-  // return createAdressTable( ) && createAutoParkTable( );
-  return true;
+  // return true;
+  return createAdressTable( ) && createAutoParkTable( ) && createBlackListTable( ) && createClientTable( ) && createDriverTable( ) &&
+         createLandTable( ) && createNoteTable( ) && createOrdersTable( ) && createPaymentTable( ) && createPostTable( );
+}
+
+bool DBTableCreator::dropTable( ) {
+  QString str { "DROP TABLE adress, autopark, blacklist, client, driver, land, note, orders" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
 }
 
 bool DBTableCreator::createAdressTable( ) {
@@ -40,6 +47,7 @@ bool DBTableCreator::createAdressTable( ) {
 bool DBTableCreator::createAutoParkTable( ) {
   QString str {
       "CREATE TABLE autopark ( "
+      "id SERIAL,"
       "year_autopark date,"
       "name_auto_autopark text,"
       "year_of_issue_data_autopark date,"
@@ -58,3 +66,110 @@ bool DBTableCreator::createAutoParkTable( ) {
   QSqlQuery query( db.database( ) );
   return query.exec( str );
 }
+
+bool DBTableCreator::createBlackListTable( ) {
+  QString str {
+      "CREATE TABLE blacklist ( "
+      "id SERIAL,"
+      "company_name text,"
+      "company_nipb text,"
+      "sity_conpany text,"
+      "date_add date,"
+      "why text"
+      " )" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
+}
+
+bool DBTableCreator::createClientTable( ) {
+  QString str {
+      "CREATE TABLE client ( "
+      "id SERIAL,"
+      "company_name text,"
+      "company_nipb text,"
+      "sity_conpany text,"
+      "date_add date,"
+      "why text"
+      " )" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
+}
+
+bool DBTableCreator::createDriverTable( ) {
+  QString str {
+      "CREATE TABLE driver ( "
+      "id SERIAL,"
+      "family text,"
+      "phone text,"
+      "nationality text,"
+      "language text,"
+      "license text"
+      " )" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
+}
+
+bool DBTableCreator::createLandTable( ) {
+  QString str {
+      "CREATE TABLE land ( "
+      "id SERIAL,"
+      "name text,"
+      "phone_code text,"
+      "abbreviated text,"
+      "vat_rate text"
+      " )" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
+}
+
+bool DBTableCreator::createNoteTable( ) {
+  QString str {
+      "CREATE TABLE note ( "
+      "id SERIAL,"
+      "date_note date,"
+      "contactor text,"
+      "contract text,"
+      "invoice_vat text,"
+      "requires_date date,"
+      "termin text,"
+      "summ text,"
+      "currency text"
+      " )" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
+}
+
+bool DBTableCreator::createOrdersTable( ) {
+  QString str {
+      "CREATE TABLE orders ( "
+      "id SERIAL,"
+      "date_order date,"
+      "place text,"
+      "contract text,"
+      "number text,"
+      "customer date,"
+      "driver text,"
+      "contacts text,"
+      "price text,"
+      "period text,"
+      "currency text,"
+      "arrival text,"
+      "route text,"
+      "rate text,"
+      "max_time text,"
+      "copy_cmr integer,"
+      "order_contract_original integer,"
+      "text_note text"
+      " )" };
+  QSqlQuery query( db.database( ) );
+  return query.exec( str );
+}
+
+bool DBTableCreator::createPaymentTable( ) {
+  QString str {
+      "CREATE TABLE payment ("
+      "" };
+  return true;
+}
+
+bool DBTableCreator::createPostTable( ) { return true; }

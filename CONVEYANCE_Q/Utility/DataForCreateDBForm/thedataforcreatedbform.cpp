@@ -23,6 +23,9 @@ void TheDataForCreateDBForm::slotClicked_OK_Button( ) {
   // 1.читаю форму
   // 2.проверяю на ошибкии ввода
   // 3.делаю базу. (креатор базы сам делает таблицы)
+  QString nameDb = ui->lineEditNameDB->text( );
+  QString nameUser = ui->lineEditUserName->text( );
+  // QString
 }
 
 void TheDataForCreateDBForm::slotClicked_Cancel_Button( ) {}

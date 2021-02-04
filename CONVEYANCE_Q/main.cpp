@@ -17,11 +17,18 @@
 
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
-  //  MainWindow w;
-  //  w.show( );
 
-  TheDataForCreateDBForm cf;
-  cf.show( );
+  MainWindow w;
+  w.show( );
+
+  //  TheDataForCreateDBForm cf;
+  //  cf.show( );
+
+  DBTableCreator creator;
+  if ( creator.createDb( ) )
+    qDebug( ) << "OK CREATE TABLE";
+  else
+    qDebug( ) << "ERROR CREATE TABLE";
 
   //  DBTableCreator c;
   //  c.createDb( );
@@ -32,5 +39,5 @@ int main( int argc, char *argv[] ) {
   //  TheClientForm cf;
   //  cf.show( );
 
-  return a.exec();
+  return a.exec( );
 }

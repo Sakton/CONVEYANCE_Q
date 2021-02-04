@@ -19,6 +19,7 @@ SOURCES += \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
     Modules/Post/thepostform.cpp \
+    Utility/CreatorDbConveyance/abstractdbtablecreator.cpp \
     Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
     Utility/CreatorDbConveyance/dbtablecreator.cpp \
     Utility/CreatorDbConveyance/querydriver.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     Modules/Payment/thepaymentform.h \
     Modules/Post/thepostform.h \
     Utility/CreatorDbConveyance/DBConnectConstant.h \
+    Utility/CreatorDbConveyance/abstractdbtablecreator.h \
     Utility/CreatorDbConveyance/conveyancesqldatabase.h \
     Utility/CreatorDbConveyance/dbtablecreator.h \
     Utility/CreatorDbConveyance/querydriver.h \
@@ -67,4 +69,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Convection/naming.txt
+    Convection/naming.txt \
+    TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.xls
