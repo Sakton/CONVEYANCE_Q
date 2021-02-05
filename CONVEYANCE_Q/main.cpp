@@ -18,8 +18,8 @@
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
 
-  ThePostForm pf;
-  pf.show( );
+  //  ThePostForm pf;
+  //  pf.show( );
 
   //  ThePaymentForm pf;
   //  pf.show( );
@@ -30,17 +30,15 @@ int main( int argc, char *argv[] ) {
   //  TheDataForCreateDBForm cf;
   //  cf.show( );
 
+  // TODO это должно быть не тут
   //  DBTableCreator creator;
   //  if ( creator.createDb( ) )
   //    qDebug( ) << "OK CREATE TABLE";
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
-  //  DBTableCreator c;
-  //  c.createDb( );
-
-  //  TheAdressForm df;
-  //  df.show( );
+  TheAdressForm df;
+  df.show( );
 
   //  TheClientForm cf;
   //  cf.show( );

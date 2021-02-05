@@ -11,8 +11,9 @@ class ConveyanceSQLDatabase {
   ~ConveyanceSQLDatabase( );
 
   bool openDb( );
+  void closeDb( );
 
-  //  bool insertToDb( const QString &q );
+  bool insertToDb( const QString& q );
   //  bool updateToDb( const QString &q );
   //  bool selectFromDb( const QString &q );
 

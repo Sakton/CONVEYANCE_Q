@@ -32,51 +32,18 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "sity_adress" ] = ui->lineEditSity->text( );
   adressData[ "adress_adress" ] = ui->lineEditAdress->text( );
   adressData[ "land_adress" ] = ui->lineEditLand->text( );
-  //  for ( auto &el : adressData ) qDebug( ) << el.first << " --> " << el.second;
 
-  // TODO this CHEK data
-  // if chek = OK
-  // TODO this INSERT to DB
-  // TODO this test method!!!!!
-  //  ConveyanceSQLDatabase db;
-  //  if ( !db.openDb( ) ) {
-  //    qDebug( ) << "ERROR OPEN DB";
-  //  } else {
-  //    qDebug( ) << "DB OK";
-  //    //    if ( !db.createTableAdress( ) ) {
-  //    //      qDebug( ) << "NO CREATE ADRESS";
-  //    //    } else {
-  //    //      qDebug( ) << "YES CREATE ADRESS";
-  //    //    }
-  //  }
-
-  // adding to db
-  // QString strQuery { "INSERT INTO adress  VALUE (" };
-  QString strQuery { "INSERT INTO adress (" };
-  for ( auto &el : adressData ) {
-    strQuery += el.first;
-    strQuery += ",";
+  QueryDriver qdriver;
+  qDebug( ) << qdriver.insertQueryString( "adress", adressData );
+  ConveyanceSQLDatabase db;
+  bool resInsert = db.insertToDb( qdriver.insertQueryString( "adress", adressData ) );
+  qDebug( ) << "resInsert = " << resInsert;
+  if ( resInsert ) {
+    qDebug( ) << "ADD TO DB IS OK";
+  } else {
+    qDebug( ) << "ADD TO DB ERROR";
   }
-  strQuery.chop( 1 );
-  strQuery += ")";
-  strQuery += " VALUES (";
-  for ( auto &el : adressData ) {
-    strQuery += "'";
-    strQuery += el.second;
-    strQuery += "'";
-    strQuery += ",";
-  }
-  strQuery.chop( 1 );
-  strQuery += ")";
-  // qDebug( ) << "strQuery = " << strQuery;
-
-  //  if ( db.insertToDb( strQuery ) ) {
-  //    qDebug( ) << "INSERT OK";
-  //  }
-
-  QString selectQuery { "SELECT * FROM adress" };
-
-  // db.selectFromDb( selectQuery );
+  qDebug( ) << "exit_method";
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
