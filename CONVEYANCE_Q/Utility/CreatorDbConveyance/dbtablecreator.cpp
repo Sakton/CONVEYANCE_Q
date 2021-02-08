@@ -60,9 +60,10 @@ bool DBTableCreator::createDb( ) {
   queries.push_back(
       "CREATE TABLE client ( "
       "id SERIAL,"
-      "company_name text,"
-      "company_nipb text,"
-      "sity_conpany text,"
+      "clientNip text,"
+      "clientFirmName text,"
+      "clientSityLegal text,"
+      "clientAdressLegal text,"
       "date_add date,"
       "why text)" );
 
