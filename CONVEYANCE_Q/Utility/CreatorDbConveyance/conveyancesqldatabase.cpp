@@ -23,8 +23,8 @@ bool ConveyanceSQLDatabase::openDb( ) {
 void ConveyanceSQLDatabase::closeDb( ) { db.close( ); }
 
 bool ConveyanceSQLDatabase::insertToDb( const QString &q ) {
-  QSqlQuery query( q, db );
-  return query.exec( );
+  QSqlQuery query( db );
+  return query.exec( q );
 }
 
 const QSqlDatabase &ConveyanceSQLDatabase::database( ) const { return db; }

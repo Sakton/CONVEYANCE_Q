@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QDialogButtonBox>
+#include <QMessageBox>
 #include <QSqlQuery>
 #include <QStringList>
 #include <map>
@@ -39,11 +40,18 @@ void TheAdressForm::slotClick_OK_Button( ) {
   bool resInsert = db.insertToDb( qdriver.insertQueryString( "adress", adressData ) );
   qDebug( ) << "resInsert = " << resInsert;
   if ( resInsert ) {
-    qDebug( ) << "ADD TO DB IS OK";
+    //после успешной вставки очистка формы
+    ui->lineEditContragent->clear( );
+    ui->comboBoxTypeAdress->clear( );
+    ui->lineEditIndex->clear( );
+    ui->lineEditSity->clear( );
+    ui->lineEditAdress->clear( );
+    ui->lineEditLand->clear( );
   } else {
-    qDebug( ) << "ADD TO DB ERROR";
+    QMessageBox box( QMessageBox::Icon::Critical, tr( "ERROR INSERT TO DB" ), tr( "WOW!! ERROR INSERT TO DB" ), QMessageBox::Ok );
+    box.exec( );
+    this->close( );
   }
-  qDebug( ) << "exit_method";
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
