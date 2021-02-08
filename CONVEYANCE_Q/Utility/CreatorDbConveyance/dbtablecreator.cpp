@@ -56,6 +56,7 @@ bool DBTableCreator::createDb( ) {
       "date_add date,"
       "why text)" );
 
+  // TODO оширбка
   queries.push_back(
       "CREATE TABLE client ( "
       "id SERIAL,"
