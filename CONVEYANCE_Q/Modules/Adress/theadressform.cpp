@@ -6,7 +6,9 @@
 #include <QSqlQuery>
 #include <QStringList>
 #include <map>
+#include <memory>
 
+#include "Modules/Land/thelandform.h"
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theadressform.h"
@@ -16,23 +18,30 @@ const QStringList typeAdress { "Legal Address", "Mailing Address" };
 TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheAdressForm ) {
   ui->setupUi( this );
   ui->comboBoxTypeAdress->addItems( typeAdress );
+  setAttribute( Qt::WA_DeleteOnClose );  //удаляет при закрытии
 
   connect( ui->buttonBoxAdressForm, QOverload<>::of( &QDialogButtonBox::accepted ), this,
-	   QOverload<>::of( &TheAdressForm::slotClick_OK_Button ) );
+           QOverload<>::of( &TheAdressForm::slotClick_OK_Button ) );
   connect( ui->buttonBoxAdressForm, QOverload<>::of( &QDialogButtonBox::rejected ), this,
 	   QOverload<>::of( &TheAdressForm::slotClick_Cancel_Button ) );
+  connect( ui->pushButtonAddCountry, QOverload< bool >::of( &QPushButton::clicked ), this,
+           QOverload<>::of( &TheAdressForm::slotCallAddLandForm ) );
+  qDebug( ) << "create TheAdressForm";
 }
 
-TheAdressForm::~TheAdressForm( ) { delete ui; }
+TheAdressForm::~TheAdressForm( ) {
+  qDebug( ) << "delete TheAdressForm";
+  delete ui;
+}
 
 void TheAdressForm::slotClick_OK_Button( ) {
   std::map< QString, QString > adressData;
   //  adressData[ "contragentData" ] = ui->lineEditContragent->text( );
-  adressData[ "type_adress" ] = ui->comboBoxTypeAdress->currentText( );
-  adressData[ "index_adress" ] = ui->lineEditIndex->text( );
-  adressData[ "sity_adress" ] = ui->lineEditSity->text( );
+  adressData[ "adress_type" ] = ui->comboBoxTypeAdress->currentText( );
+  adressData[ "adress_index" ] = ui->lineEditIndex->text( );
+  adressData[ "adress_sity" ] = ui->lineEditSity->text( );
   adressData[ "adress_adress" ] = ui->lineEditAdress->text( );
-  adressData[ "land_adress" ] = ui->lineEditLand->text( );
+  adressData[ "adress_coutry" ] = ui->comboBoxCountry->currentText( );
 
   QueryDriver qdriver;
   qDebug( ) << qdriver.insertQueryString( "adress", adressData );
@@ -46,7 +55,7 @@ void TheAdressForm::slotClick_OK_Button( ) {
     ui->lineEditIndex->clear( );
     ui->lineEditSity->clear( );
     ui->lineEditAdress->clear( );
-    ui->lineEditLand->clear( );
+    // ui->lineEditLand->clear( );
   } else {
     QMessageBox box( QMessageBox::Icon::Critical, tr( "ERROR INSERT TO DB" ), tr( "WOW!! ERROR INSERT TO DB" ), QMessageBox::Ok );
     box.exec( );
@@ -55,3 +64,8 @@ void TheAdressForm::slotClick_OK_Button( ) {
 }
 
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
+
+void TheAdressForm::slotCallAddLandForm( ) {
+  TheLandForm *lf = new TheLandForm;
+  lf->show( );
+}

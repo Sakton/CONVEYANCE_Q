@@ -13,6 +13,11 @@ class DBTableCreator {
   DBTableCreator( );
   bool createDb( );
   bool dropTable( );
+  ~DBTableCreator( );
+
+ private:
+  bool createLandTable( );
+  bool createAutoBrandTable( );
 
  private:
   std::vector< QString > queries;

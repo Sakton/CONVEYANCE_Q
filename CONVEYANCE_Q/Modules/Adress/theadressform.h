@@ -17,6 +17,7 @@ class TheAdressForm : public QWidget {
  public slots:
   void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
+  void slotCallAddLandForm( );
 
  private:
   Ui::TheAdressForm *ui;

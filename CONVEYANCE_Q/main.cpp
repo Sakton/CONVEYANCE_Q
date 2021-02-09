@@ -31,14 +31,15 @@ int main( int argc, char *argv[] ) {
   //  cf.show( );
 
   // TODO это должно быть не тут
-  //  DBTableCreator creator;
-  //  if ( creator.createDb( ) )
-  //    qDebug( ) << "OK CREATE TABLE";
-  //  else
-  //    qDebug( ) << "ERROR CREATE TABLE";
 
-  TheAdressForm df;
-  df.show( );
+  DBTableCreator creator;
+  if ( creator.createDb( ) )
+    qDebug( ) << "OK CREATE TABLE";
+  else
+    qDebug( ) << "ERROR CREATE TABLE";
+
+  TheAdressForm *df = new TheAdressForm;
+  df->show( );
 
   //  TheClientForm cf;
   //  cf.show( );

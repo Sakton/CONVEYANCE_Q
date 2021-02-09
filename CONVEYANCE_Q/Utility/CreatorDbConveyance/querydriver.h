@@ -8,7 +8,7 @@
 class QueryDriver {
  public:
   using typeCollection = std::map< QString, QString >;
-  QString insertQueryString( const QString& tableName, const typeCollection& coll );
+  static QString insertQueryString( const QString& tableName, const typeCollection& coll );
   QString selectQueryString( const typeCollection& coll );
   QString updateQueryString( const typeCollection& coll );
 };

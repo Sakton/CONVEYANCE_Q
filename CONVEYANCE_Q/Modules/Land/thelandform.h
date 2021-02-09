@@ -19,6 +19,8 @@ class TheLandForm : public QWidget
   void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
 
+ signals:
+
  private:
   Ui::TheLandForm *ui;
 };

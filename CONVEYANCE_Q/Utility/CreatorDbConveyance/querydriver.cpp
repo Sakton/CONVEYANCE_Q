@@ -2,6 +2,7 @@
 
 #include <numeric>
 
+//идея не очень,
 QString QueryDriver::insertQueryString( const QString &tableName, const QueryDriver::typeCollection &coll ) {
   using para = std::pair< QString, QString >;
   QString res = "INSERT INTO " + tableName + "(";
