@@ -13,12 +13,10 @@ TheLandForm::TheLandForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::The
   connect( ui->buttonBoxLand, QOverload<>::of( &QDialogButtonBox::accepted ), this, QOverload<>::of( &TheLandForm::slotClick_OK_Button ) );
   connect( ui->buttonBoxLand, QOverload<>::of( &QDialogButtonBox::rejected ), this,
            QOverload<>::of( &TheLandForm::slotClick_Cancel_Button ) );
-  qDebug( ) << "create LandForm";
 }
 
 TheLandForm::~TheLandForm()
 {
-  qDebug( ) << "delete LandForm";
   delete ui;
 }
 
@@ -29,14 +27,8 @@ void TheLandForm::slotClick_OK_Button( ) {
   landData[ "land_abbriviated" ] = ui->lineEditAbbreviated->text( );
   landData[ "land_vatrate" ] = ui->lineEditVatRate->text( );
 
-  //  for ( auto &el : landData ) qDebug( ) << el.first << " ---> " << el.second;
   ConveyanceSQLDatabase db;
-  QString que =
-      "INSERT INTO land(land_abbriviated,land_name,land_phonecode,land_vatrate)VALUES('RUS','namesaassaas','095',13)"; /*QueryDriver::insertQueryString(
-                                                                                                                            "land", landData
-                                                                                                                            );*/
-  qDebug( ) << que;
-  if ( db.insertToDb( que /*QueryDriver::insertQueryString(  "land", landData*/ ) ) {
+  if ( db.insertToDb( QueryDriver::insertQueryString( "land", landData ) ) ) {
     qDebug( ) << "OK LAND";
   } else {
     qDebug( ) << "ERROR LAND";

@@ -2,6 +2,7 @@
 #define CONVEYANCESQLDATABASE_H
 #include <QObject>
 #include <QSqlDatabase>
+#include <memory>
 
 // отвечает за соединение с БД
 
@@ -13,9 +14,9 @@ class ConveyanceSQLDatabase {
   bool openDb( );
   void closeDb( );
 
+  //пробники
   bool insertToDb( const QString& q );
-  //  bool updateToDb( const QString &q );
-  //  bool selectFromDb( const QString &q );
+  std::unique_ptr< QSqlQuery > readAllTable( const QString& tableName );
 
   const QSqlDatabase& database( ) const;
 

@@ -4,6 +4,7 @@
 #include <QDialogButtonBox>
 #include <QMessageBox>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QStringList>
 #include <map>
 #include <memory>
@@ -18,6 +19,7 @@ const QStringList typeAdress { "Legal Address", "Mailing Address" };
 TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheAdressForm ) {
   ui->setupUi( this );
   ui->comboBoxTypeAdress->addItems( typeAdress );
+  ui->comboBoxCountry->addItems( lands( ) );
   setAttribute( Qt::WA_DeleteOnClose );  //удаляет при закрытии
 
   connect( ui->buttonBoxAdressForm, QOverload<>::of( &QDialogButtonBox::accepted ), this,
@@ -26,7 +28,6 @@ TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui:
 	   QOverload<>::of( &TheAdressForm::slotClick_Cancel_Button ) );
   connect( ui->pushButtonAddCountry, QOverload< bool >::of( &QPushButton::clicked ), this,
            QOverload<>::of( &TheAdressForm::slotCallAddLandForm ) );
-  qDebug( ) << "create TheAdressForm";
 }
 
 TheAdressForm::~TheAdressForm( ) {
@@ -68,4 +69,13 @@ void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
 void TheAdressForm::slotCallAddLandForm( ) {
   TheLandForm *lf = new TheLandForm;
   lf->show( );
+}
+
+QStringList TheAdressForm::lands( ) {
+  ConveyanceSQLDatabase db;
+  auto res = db.readAllTable( "land" );
+  if ( res == nullptr ) return { };
+  QStringList lands;
+  while ( res->next( ) ) lands << res->value( "land_name" ).toString( );
+  return lands;
 }

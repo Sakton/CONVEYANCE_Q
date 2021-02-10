@@ -41,7 +41,7 @@ DBTableCreator::~DBTableCreator( ) { db.closeDb( ); }
 bool DBTableCreator::createLandTable( ) {
   QString qs {
       "CREATE TABLE land ("
-      "land_id integer PRIMARY KEY,"
+      "land_id serial PRIMARY KEY,"
       "land_name text,"
       "land_phonecode text,"
       "land_abbriviated text,"
@@ -54,7 +54,7 @@ bool DBTableCreator::createLandTable( ) {
 bool DBTableCreator::createAutoBrandTable( ) {
   QString qs {
       "CREATE TABLE auto_brand ("
-      "autobrand_id integer PRIMARY KEY,"
+      "autobrand_id serial PRIMARY KEY,"
       "autobrand_name text"
       ")" };
   QSqlQuery query( db.database( ) );

@@ -20,6 +20,9 @@ class TheAdressForm : public QWidget {
   void slotCallAddLandForm( );
 
  private:
+  QStringList lands( );
+
+ private:
   Ui::TheAdressForm *ui;
 };
 

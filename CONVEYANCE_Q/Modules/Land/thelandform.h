@@ -19,6 +19,9 @@ class TheLandForm : public QWidget
   void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
 
+ private:
+  QStringList readLands( );
+
  signals:
 
  private:

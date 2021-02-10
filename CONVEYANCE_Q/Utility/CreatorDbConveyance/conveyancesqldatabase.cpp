@@ -1,5 +1,7 @@
 #include "conveyancesqldatabase.h"
 
+#include <QSqlRecord>
+
 #include "DBConnectConstant.h"
 #include "QSqlQuery"
 #include "querydriver.h"
@@ -25,6 +27,13 @@ void ConveyanceSQLDatabase::closeDb( ) { db.close( ); }
 bool ConveyanceSQLDatabase::insertToDb( const QString &q ) {
   QSqlQuery query( db );
   return query.exec( q );
+}
+
+std::unique_ptr< QSqlQuery > ConveyanceSQLDatabase::readAllTable( const QString &tableName ) {
+  QString qs { "SELECT * FROM " + tableName };
+  QSqlQuery query( db );
+  if ( !query.exec( qs ) ) return { nullptr };
+  return std::unique_ptr< QSqlQuery >( new QSqlQuery( std::move( query ) ) );
 }
 
 const QSqlDatabase &ConveyanceSQLDatabase::database( ) const { return db; }
