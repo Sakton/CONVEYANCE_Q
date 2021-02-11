@@ -15,7 +15,7 @@ class DBTableCreator {
   bool dropTable( );
   ~DBTableCreator( );
 
- private:
+  // private:
   bool createLandTable( );
   bool createAutoBrandTable( );
 

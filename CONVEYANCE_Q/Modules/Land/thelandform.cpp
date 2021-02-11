@@ -29,9 +29,10 @@ void TheLandForm::slotClick_OK_Button( ) {
   landData[ "land_vatrate" ] = ui->lineEditVatRate->text( );
 
   ConveyanceSQLDatabase db;
-  if ( !db.insertToDb( QueryDriver::insertQueryString( "land", landData ) ) )
+  if ( !db.insertToDb( QueryDriver::insertQueryString( "land", landData ) ) ) {
     QMessageBox::critical( this, "ERROR", "ERROR INSRT TO DB", QMessageBox::Ok );
-  this->close( );
+    this->close( );
+  }
 }
 
 void TheLandForm::slotClick_Cancel_Button( ) {

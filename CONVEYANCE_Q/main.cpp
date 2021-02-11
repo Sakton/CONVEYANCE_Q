@@ -38,6 +38,13 @@ int main( int argc, char *argv[] ) {
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
+  DBTableCreator creator;
+  if ( creator.createLandTable( ) ) {
+    qDebug( ) << "OK CREATE TABLE";
+  } else {
+    qDebug( ) << "ERROR CREATE TABLE";
+  }
+
   TheAdressForm *df = new TheAdressForm;
   df->show( );
 
