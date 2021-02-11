@@ -1,6 +1,7 @@
 #include "thelandform.h"
 
 #include <QDialogButtonBox>
+#include <QMessageBox>
 #include <map>
 
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
@@ -28,11 +29,9 @@ void TheLandForm::slotClick_OK_Button( ) {
   landData[ "land_vatrate" ] = ui->lineEditVatRate->text( );
 
   ConveyanceSQLDatabase db;
-  if ( db.insertToDb( QueryDriver::insertQueryString( "land", landData ) ) ) {
-    qDebug( ) << "OK LAND";
-  } else {
-    qDebug( ) << "ERROR LAND";
-  }
+  if ( !db.insertToDb( QueryDriver::insertQueryString( "land", landData ) ) )
+    QMessageBox::critical( this, "ERROR", "ERROR INSRT TO DB", QMessageBox::Ok );
+  this->close( );
 }
 
 void TheLandForm::slotClick_Cancel_Button( ) {

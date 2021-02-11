@@ -37,7 +37,7 @@ TheAdressForm::~TheAdressForm( ) {
 
 void TheAdressForm::slotClick_OK_Button( ) {
   std::map< QString, QString > adressData;
-  //  adressData[ "contragentData" ] = ui->lineEditContragent->text( );
+  // adressData[ "contragentData" ] = ui->lineEditContragent->text( );
   adressData[ "adress_type" ] = ui->comboBoxTypeAdress->currentText( );
   adressData[ "adress_index" ] = ui->lineEditIndex->text( );
   adressData[ "adress_sity" ] = ui->lineEditSity->text( );
@@ -50,7 +50,7 @@ void TheAdressForm::slotClick_OK_Button( ) {
   bool resInsert = db.insertToDb( qdriver.insertQueryString( "adress", adressData ) );
   qDebug( ) << "resInsert = " << resInsert;
   if ( resInsert ) {
-    //после успешной вставки очистка формы
+    // после успешной вставки очистка формы
     ui->lineEditContragent->clear( );
     ui->comboBoxTypeAdress->clear( );
     ui->lineEditIndex->clear( );
