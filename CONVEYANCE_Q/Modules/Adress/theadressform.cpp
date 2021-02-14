@@ -9,7 +9,7 @@
 #include <map>
 #include <memory>
 
-#include "Modules/Land/thelandform.h"
+#include "Modules/Land/thecountryform.h"
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theadressform.h"
@@ -67,8 +67,15 @@ void TheAdressForm::slotClick_OK_Button( ) {
 void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
 
 void TheAdressForm::slotCallAddLandForm( ) {
-  TheLandForm *lf = new TheLandForm;
+  TheCountryForm *lf = new TheCountryForm;
+  connect( lf, QOverload<>::of( &TheCountryForm::signalInsertToDb ), this,
+	   QOverload<>::of( &TheAdressForm::slotInsertToDb ) );
   lf->show( );
+}
+
+void TheAdressForm::slotInsertToDb( ) {
+  ui->comboBoxCountry->clear( );
+  ui->comboBoxCountry->addItems( lands( ) );
 }
 
 QStringList TheAdressForm::lands( ) {

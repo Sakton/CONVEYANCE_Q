@@ -14,7 +14,7 @@ SOURCES += \
     Modules/BlackList/theblacklistform.cpp \
     Modules/Client/theclientform.cpp \
     Modules/Driver/thedriverform.cpp \
-    Modules/Land/thelandform.cpp \
+    Modules/Land/thecountryform.cpp \
     Modules/Note/thenoteform.cpp \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
@@ -32,7 +32,7 @@ HEADERS += \
     Modules/BlackList/theblacklistform.h \
     Modules/Client/theclientform.h \
     Modules/Driver/thedriverform.h \
-    Modules/Land/thelandform.h \
+    Modules/Land/thecountryform.h \
     Modules/Note/thenoteform.h \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
@@ -50,7 +50,7 @@ FORMS += \
     Modules/BlackList/theblacklistform.ui \
     Modules/Client/theclientform.ui \
     Modules/Driver/thedriverform.ui \
-    Modules/Land/thelandform.ui \
+    Modules/Land/thecountryform.ui \
     Modules/Note/thenoteform.ui \
     Modules/Orders/theorderform.ui \
     Modules/Payment/thepaymentform.ui \

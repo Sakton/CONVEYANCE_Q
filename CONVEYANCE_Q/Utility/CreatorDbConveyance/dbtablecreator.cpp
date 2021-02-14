@@ -40,12 +40,14 @@ DBTableCreator::~DBTableCreator( ) { db.closeDb( ); }
 
 bool DBTableCreator::createLandTable( ) {
   QString qs {
-      "CREATE TABLE land ("
-      "land_id serial PRIMARY KEY,"
-      "land_name text NOT NULL,"
-      "land_phonecode text UNIQUE NOT NULL,"
-      "land_abbriviated text NOT NULL,"
-      "land_vatrate numeric CHECK(land_vatrate > 0)"
+      "CREATE TABLE country ("
+      "country_id serial,"
+      "country_name text NOT NULL,"
+      "country_phonecode text NOT NULL,"
+      "country_abbriviated text NOT NULL,"
+      "PRIMARY KEY ( country_id ),"
+      "country_vatrate numeric CHECK(land_vatrate > 0),"
+      "UNIQUE ( country_name, country_phonecode, country_abbriviated )"
       ")" };
   QSqlQuery query( db.database( ) );
   return query.exec( qs );
@@ -54,8 +56,9 @@ bool DBTableCreator::createLandTable( ) {
 bool DBTableCreator::createAutoBrandTable( ) {
   QString qs {
       "CREATE TABLE auto_brand ("
-      "autobrand_id serial PRIMARY KEY,"
-      "autobrand_name text UNIQUE NOT NULL"
+      "autobrand_id serial,"
+      "autobrand_name text NOT NULL,"
+      "PRIMARY KEY ( autobrand_id, autobrand_name )"
       ")" };
   QSqlQuery query( db.database( ) );
   return query.exec( qs );
