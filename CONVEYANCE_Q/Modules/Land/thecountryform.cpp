@@ -20,13 +20,13 @@ TheCountryForm::TheCountryForm( QWidget *parent ) : QWidget( parent ), ui( new U
 TheCountryForm::~TheCountryForm( ) { delete ui; }
 
 void TheCountryForm::slotClick_OK_Button( ) {
-  std::map< QString, QString > landData;
-  landData[ "country_name" ] = ui->lineEditName->text( );
-  landData[ "country_phonecode" ] = ui->lineEditPhoneCode->text( );
-  landData[ "country_abbriviated" ] = ui->lineEditAbbreviated->text( );
-  landData[ "country_vatrate" ] = ui->lineEditVatRate->text( );
+  std::map< QString, QString > countryData;
+  countryData[ "country_name" ] = ui->lineEditName->text( );
+  countryData[ "country_phonecode" ] = ui->lineEditPhoneCode->text( );
+  countryData[ "country_abbriviated" ] = ui->lineEditAbbreviated->text( );
+  countryData[ "country_vatrate" ] = ui->lineEditVatRate->text( );
   ConveyanceSQLDatabase db;
-  if ( !db.insertToDb( QueryDriver::insertQueryString( "land", landData ) ) ) {
+  if ( !db.insertToDb( QueryDriver::insertQueryString( "country", countryData ) ) ) {
     QMessageBox::critical( this, "ERROR", "ERROR INSERT TO DB", QMessageBox::Ok );
     this->close( );
   }
