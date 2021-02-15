@@ -18,7 +18,7 @@ class TheAdressForm : public QWidget {
   void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
   void slotCallAddLandForm( );
-  void slotInsertToDb( );
+  void slotLoadCountry( );
 
  private:
   QStringList lands( );

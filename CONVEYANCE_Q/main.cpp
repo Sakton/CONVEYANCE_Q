@@ -4,6 +4,7 @@
 #include "Modules/Autopark/theautomobilform.h"
 #include "Modules/BlackList/theblacklistform.h"
 #include "Modules/Client/theclientform.h"
+#include "Modules/ContactPerson/thecontactpersonform.h"
 #include "Modules/Driver/thedriverform.h"
 #include "Modules/Land/thecountryform.h"
 #include "Modules/Note/thenoteform.h"
@@ -38,15 +39,20 @@ int main( int argc, char *argv[] ) {
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
-  DBTableCreator creator;
-  if ( creator.createLandTable( ) ) {
-    qDebug( ) << "OK CREATE TABLE";
-  } else {
-    qDebug( ) << "ERROR CREATE TABLE";
-  }
+  //  DBTableCreator creator;
+  //  if ( creator.createLandTable( ) ) {
+  //    qDebug( ) << "OK CREATE TABLE";
+  //  } else {
+  //    qDebug( ) << "ERROR CREATE TABLE";
+  //  }
+
+  //  TheContactPersonForm cp;
+  //  cp.show( );
 
   TheAdressForm *df = new TheAdressForm;
   df->show( );
+  TheClientForm *cl = new TheClientForm;
+  cl->show( );
 
   //  TheClientForm cf;
   //  cf.show( );

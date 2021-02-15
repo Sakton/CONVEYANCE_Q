@@ -48,11 +48,11 @@
                           </DElement>
                          </base-DElement>
                          <object>{8a9a4d67-aa57-4303-b3b7-f227d220c4c0}</object>
-                         <name>LandTable</name>
-                         <pos>x:-545;y:-535</pos>
-                         <rect>x:-90;y:-45;w:180;h:90</rect>
-                         <auto-sized>false</auto-sized>
+                         <name>Country</name>
+                         <pos>x:-585;y:-525</pos>
+                         <rect>x:-110;y:-75;w:220;h:150</rect>
                          <visual-role>0</visual-role>
+                         <visual-role2>1</visual-role2>
                         </DObject>
                        </base-DObject>
                        <show-all-members>true</show-all-members>
@@ -61,7 +61,7 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1612869606589</last-modified>
+                  <last-modified>1613384791285</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -83,23 +83,44 @@
                     <uid>{8a9a4d67-aa57-4303-b3b7-f227d220c4c0}</uid>
                    </MElement>
                   </base-MElement>
-                  <name>LandTable</name>
+                  <name>Country</name>
                  </MObject>
                 </base-MObject>
                 <members>
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{c2165372-3cac-4647-9b15-2631aea8a46d}</uid>
-                    <type>1</type>
-                    <declaration>id: PRIMARY KEY</declaration>
+                    <uid>{5062ce84-32c6-4f77-8739-a4d91a75de36}</uid>
+                    <type>2</type>
+                    <declaration>country_id: PRIMARY KEY (autoincrement)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{86ff8879-0ab9-4d51-a1ae-dad3cf5cee86}</uid>
+                    <uid>{e8ccea24-2a01-4311-a864-a8083e5db246}</uid>
                     <type>1</type>
-                    <declaration>nameLand: text</declaration>
+                    <declaration>country_name: varchar(64) NOT NULL</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{d144c015-ff91-4d3c-81d6-fbb702fb1036}</uid>
+                    <type>1</type>
+                    <declaration>country_phonecode: varchar(8) NOT NULL</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{4522b3a4-c436-4188-98cd-4b052db7a63b}</uid>
+                    <type>1</type>
+                    <declaration>country_abbriviated: varchar(4) NOT NULL</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{f367a6cf-8675-48c0-bbd5-6ca7ae9ef5ea}</uid>
+                    <type>2</type>
+                    <declaration>country_vatrate: real NOT NULL CHEK( &gt; 0)</declaration>
                    </MClassMember>
                   </item>
                  </qlist>

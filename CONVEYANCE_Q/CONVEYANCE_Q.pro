@@ -13,6 +13,7 @@ SOURCES += \
     Modules/Autopark/theautomobilform.cpp \
     Modules/BlackList/theblacklistform.cpp \
     Modules/Client/theclientform.cpp \
+    Modules/ContactPerson/thecontactpersonform.cpp \
     Modules/Driver/thedriverform.cpp \
     Modules/Land/thecountryform.cpp \
     Modules/Note/thenoteform.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     Modules/Autopark/theautomobilform.h \
     Modules/BlackList/theblacklistform.h \
     Modules/Client/theclientform.h \
+    Modules/ContactPerson/thecontactpersonform.h \
     Modules/Driver/thedriverform.h \
     Modules/Land/thecountryform.h \
     Modules/Note/thenoteform.h \
@@ -49,6 +51,7 @@ FORMS += \
     Modules/Autopark/theautomobilform.ui \
     Modules/BlackList/theblacklistform.ui \
     Modules/Client/theclientform.ui \
+    Modules/ContactPerson/thecontactpersonform.ui \
     Modules/Driver/thedriverform.ui \
     Modules/Land/thecountryform.ui \
     Modules/Note/thenoteform.ui \

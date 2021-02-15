@@ -18,6 +18,8 @@ class TheClientForm : public QWidget
  public slots:
   void slotClicked_Ok_Button( );
   void slotClicked_Cancel_Button( );
+  void readCountryFromDbAndSetup( );
+  void slotCallTheCountryForm( );
 
  private:
   Ui::TheClientForm *ui;

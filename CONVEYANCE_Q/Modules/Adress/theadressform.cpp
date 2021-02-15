@@ -37,7 +37,6 @@ TheAdressForm::~TheAdressForm( ) {
 
 void TheAdressForm::slotClick_OK_Button( ) {
   std::map< QString, QString > adressData;
-  // adressData[ "contragentData" ] = ui->lineEditContragent->text( );
   adressData[ "adress_type" ] = ui->comboBoxTypeAdress->currentText( );
   adressData[ "adress_index" ] = ui->lineEditIndex->text( );
   adressData[ "adress_sity" ] = ui->lineEditSity->text( );
@@ -51,7 +50,7 @@ void TheAdressForm::slotClick_OK_Button( ) {
   qDebug( ) << "resInsert = " << resInsert;
   if ( resInsert ) {
     // после успешной вставки очистка формы
-    ui->lineEditContragent->clear( );
+    // ui->lineEditContragent->clear( );
     ui->comboBoxTypeAdress->clear( );
     ui->lineEditIndex->clear( );
     ui->lineEditSity->clear( );
@@ -68,21 +67,20 @@ void TheAdressForm::slotClick_Cancel_Button( ) { this->close( ); }
 
 void TheAdressForm::slotCallAddLandForm( ) {
   TheCountryForm *lf = new TheCountryForm;
-  connect( lf, QOverload<>::of( &TheCountryForm::signalInsertToDb ), this,
-	   QOverload<>::of( &TheAdressForm::slotInsertToDb ) );
+  connect( lf, QOverload<>::of( &TheCountryForm::signalInsertToDb ), this, QOverload<>::of( &TheAdressForm::slotLoadCountry ) );
   lf->show( );
 }
 
-void TheAdressForm::slotInsertToDb( ) {
+void TheAdressForm::slotLoadCountry( ) {
   ui->comboBoxCountry->clear( );
   ui->comboBoxCountry->addItems( lands( ) );
 }
 
 QStringList TheAdressForm::lands( ) {
   ConveyanceSQLDatabase db;
-  auto res = db.readAllTable( "land" );
+  auto res = db.readAllTable( "country" );
   if ( res == nullptr ) return { };
   QStringList lands;
-  while ( res->next( ) ) lands << res->value( "land_name" ).toString( );
+  while ( res->next( ) ) lands << res->value( "country_name" ).toString( );
   return lands;
 }

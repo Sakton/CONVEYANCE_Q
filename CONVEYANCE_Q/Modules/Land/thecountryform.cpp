@@ -17,7 +17,10 @@ TheCountryForm::TheCountryForm( QWidget *parent ) : QWidget( parent ), ui( new U
 	   QOverload<>::of( &TheCountryForm::slotClick_Cancel_Button ) );
 }
 
-TheCountryForm::~TheCountryForm( ) { delete ui; }
+TheCountryForm::~TheCountryForm( ) {
+  qDebug( ) << "delete TheCountryForm";
+  delete ui;
+}
 
 void TheCountryForm::slotClick_OK_Button( ) {
   std::map< QString, QString > countryData;
@@ -28,14 +31,10 @@ void TheCountryForm::slotClick_OK_Button( ) {
   ConveyanceSQLDatabase db;
   if ( !db.insertToDb( QueryDriver::insertQueryString( "country", countryData ) ) ) {
     QMessageBox::critical( this, "ERROR", "ERROR INSERT TO DB", QMessageBox::Ok );
-    this->close( );
+  } else {
+    emit signalInsertToDb( );  //сигнал что добавление в базу
   }
-  emit signalInsertToDb( );  //сигнал что добавление в базу
-  //очистка формы, подготовка к новым вводам
-  ui->lineEditName->clear( );
-  ui->lineEditPhoneCode->clear( );
-  ui->lineEditAbbreviated->clear( );
-  ui->lineEditVatRate->clear( );
+  this->close( );
 }
 
 void TheCountryForm::slotClick_Cancel_Button( ) { this->close( ); }

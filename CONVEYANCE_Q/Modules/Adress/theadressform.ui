@@ -75,9 +75,6 @@
         <item row="4" column="2">
          <widget class="QLineEdit" name="lineEditSity"/>
         </item>
-        <item row="0" column="2">
-         <widget class="QLineEdit" name="lineEditContragent"/>
-        </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_6">
           <property name="text">
@@ -110,6 +107,9 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item row="0" column="2">
+         <widget class="QComboBox" name="comboBoxContragent"/>
         </item>
        </layout>
       </item>

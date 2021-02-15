@@ -18,6 +18,8 @@ class DBTableCreator {
   // private:
   bool createLandTable( );
   bool createAutoBrandTable( );
+  bool createClientTable( );
+  bool createAdressTable( );
 
  private:
   std::vector< QString > queries;
