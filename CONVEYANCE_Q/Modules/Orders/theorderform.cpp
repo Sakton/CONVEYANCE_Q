@@ -19,6 +19,7 @@ TheOrderForm::TheOrderForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::T
   ui->comboBoxContacts->addItem( "from DB" );
   ui->comboBoxCustomer->addItem( "from DB" );
   ui->comboBoxMaxTime->addItems( postPeriod );
+  setAttribute( Qt::WA_DeleteOnClose );  //удаление при закрытии
 
   connect( ui->pushButtonOKForm, QOverload< bool >::of( &QPushButton::clicked ), this,
 	   QOverload<>::of( &TheOrderForm::slotClick_OK_Button ) );

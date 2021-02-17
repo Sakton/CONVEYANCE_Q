@@ -49,10 +49,12 @@ int main( int argc, char *argv[] ) {
   //  TheContactPersonForm cp;
   //  cp.show( );
 
-  TheAdressForm *df = new TheAdressForm;
-  df->show( );
-  TheClientForm *cl = new TheClientForm;
-  cl->show( );
+  //  TheAdressForm *df = new TheAdressForm;
+  //  df->show( );
+  //  TheClientForm *cl = new TheClientForm;
+  //  cl->show( );
+  TheOrderForm *of = new TheOrderForm;
+  of->show( );
 
   //  TheClientForm cf;
   //  cf.show( );
