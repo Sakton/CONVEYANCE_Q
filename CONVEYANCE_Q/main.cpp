@@ -19,18 +19,6 @@
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
 
-  //  ThePostForm pf;
-  //  pf.show( );
-
-  //  ThePaymentForm pf;
-  //  pf.show( );
-
-  //  MainWindow w;
-  //  w.show( );
-
-  //  TheDataForCreateDBForm cf;
-  //  cf.show( );
-
   // TODO это должно быть не тут
 
   //  DBTableCreator creator;
@@ -46,18 +34,15 @@ int main( int argc, char *argv[] ) {
   //    qDebug( ) << "ERROR CREATE TABLE";
   //  }
 
-  //  TheContactPersonForm cp;
-  //  cp.show( );
-
   //  TheAdressForm *df = new TheAdressForm;
   //  df->show( );
   //  TheClientForm *cl = new TheClientForm;
   //  cl->show( );
-  TheOrderForm *of = new TheOrderForm;
-  of->show( );
+  //  TheOrderForm *of = new TheOrderForm;
+  //  of->show( );
 
-  //  TheClientForm cf;
-  //  cf.show( );
+  QWidget *w = new TheAutomobilForm;
+  w->show( );
 
   return a.exec( );
 }

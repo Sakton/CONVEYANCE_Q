@@ -13,6 +13,7 @@ const QStringList ecoClasses { "Euro-4", "Euro-5", "Euro-6" };
 const QStringList volumeNotation { "m3", "l3" };
 
 TheAutomobilForm::TheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheAutomobilForm ) {
+  setAttribute( Qt::WA_DeleteOnClose );
   ui->setupUi( this );
   ui->comboBoxNameAuto->addItems( nameAuto );
   ui->comboBoxEcoClass->addItems( ecoClasses );
