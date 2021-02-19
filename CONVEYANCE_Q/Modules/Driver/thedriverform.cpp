@@ -12,6 +12,7 @@ const QStringList nationality { "Russian", "Ukranian", "Belarus", "Poland", "Ger
 
 TheDriverForm::TheDriverForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheDriverForm ) {
   ui->setupUi( this );
+  setAttribute( Qt::WA_DeleteOnClose );
   ui->comboBoxNationality->addItems( nationality );
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::accepted ), this,
 	   QOverload<>::of( &TheDriverForm::slotClick_OK_Button ) );

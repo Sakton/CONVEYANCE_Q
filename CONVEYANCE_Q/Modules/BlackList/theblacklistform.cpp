@@ -9,6 +9,7 @@ const QStringList recovery { QObject::tr( "Recovery TransEU" ), QObject::tr( "Re
 			     QObject::tr( "Delay Of Payment" ), QObject::tr( "Not Payment" ), QObject::tr( "Other" ) };
 
 TheBlackListForm::TheBlackListForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheBlackListForm ) {
+  setAttribute( Qt::WA_DeleteOnClose );  // del on close
   ui->setupUi( this );
   ui->comboBoxWhy->addItems( recovery );
 
