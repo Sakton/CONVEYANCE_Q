@@ -9,6 +9,7 @@ QString s { "this adding from db" };
 
 ThePaymentForm::ThePaymentForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::ThePaymentForm ) {
   ui->setupUi( this );
+  setAttribute( Qt::WA_DeleteOnClose );
   ui->comboBoxCounter->addItem( s );
   ui->comboBoxBaseDocument->addItem( s );
 

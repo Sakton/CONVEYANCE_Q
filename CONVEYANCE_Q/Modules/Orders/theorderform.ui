@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>738</height>
+    <height>792</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -199,12 +199,18 @@
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="text">
-               <string>Add Contact</string>
+               <string>...</string>
               </property>
              </widget>
             </item>
@@ -228,19 +234,25 @@
             <item>
              <widget class="QPushButton" name="pushButtonAddCustomer">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="text">
-               <string>Add Customer</string>
+               <string>...</string>
               </property>
              </widget>
             </item>
@@ -265,7 +277,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Customer</string>
+             <string>Counterparty</string>
             </property>
            </widget>
           </item>
@@ -606,7 +618,14 @@ original</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_7">
         <item row="0" column="0">
-         <widget class="QPlainTextEdit" name="plainTextEditNotes"/>
+         <widget class="QPlainTextEdit" name="plainTextEditNotes">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

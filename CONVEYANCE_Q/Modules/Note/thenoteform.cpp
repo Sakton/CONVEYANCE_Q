@@ -11,6 +11,7 @@ const QStringList currency { "PLN", "EUR" };
 
 TheNoteForm::TheNoteForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheNoteForm ) {
   ui->setupUi( this );
+  setAttribute( Qt::WA_DeleteOnClose );  // delete on close
   ui->comboBoxCurrency->addItems( currency );
   ui->comboBoxContactor->addItem( "This Addig from DB" );
   ui->comboBoxInvoiceVat->addItem( "This Addig from DB" );

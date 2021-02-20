@@ -15,7 +15,7 @@ SOURCES += \
     Modules/Client/theclientform.cpp \
     Modules/ContactPerson/thecontactpersonform.cpp \
     Modules/Driver/thedriverform.cpp \
-    Modules/Land/thecountryform.cpp \
+    Modules/Country/thecountryform.cpp \
     Modules/Note/thenoteform.cpp \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
@@ -34,7 +34,7 @@ HEADERS += \
     Modules/Client/theclientform.h \
     Modules/ContactPerson/thecontactpersonform.h \
     Modules/Driver/thedriverform.h \
-    Modules/Land/thecountryform.h \
+    Modules/Country/thecountryform.h \
     Modules/Note/thenoteform.h \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
@@ -53,7 +53,7 @@ FORMS += \
     Modules/Client/theclientform.ui \
     Modules/ContactPerson/thecontactpersonform.ui \
     Modules/Driver/thedriverform.ui \
-    Modules/Land/thecountryform.ui \
+    Modules/Country/thecountryform.ui \
     Modules/Note/thenoteform.ui \
     Modules/Orders/theorderform.ui \
     Modules/Payment/thepaymentform.ui \

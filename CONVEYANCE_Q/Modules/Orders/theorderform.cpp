@@ -12,6 +12,7 @@ const QStringList postPeriod { "5 day", "7 day", "10 day", "14 day", "20 day", "
 
 TheOrderForm::TheOrderForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheOrderForm ) {
   ui->setupUi( this );
+  setAttribute( Qt::WA_DeleteOnClose );
   ui->comboBoxPlace->addItems( place );
   ui->comboBoxCurrency->addItems( currency );
   ui->comboBoxPeriod->addItems( period );

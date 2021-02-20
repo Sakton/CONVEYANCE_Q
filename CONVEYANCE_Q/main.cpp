@@ -5,8 +5,8 @@
 #include "Modules/BlackList/theblacklistform.h"
 #include "Modules/Client/theclientform.h"
 #include "Modules/ContactPerson/thecontactpersonform.h"
+#include "Modules/Country/thecountryform.h"
 #include "Modules/Driver/thedriverform.h"
-#include "Modules/Land/thecountryform.h"
 #include "Modules/Note/thenoteform.h"
 #include "Modules/Orders/theorderform.h"
 #include "Modules/Payment/thepaymentform.h"
@@ -41,7 +41,7 @@ int main( int argc, char *argv[] ) {
   //  TheOrderForm *of = new TheOrderForm;
   //  of->show( );
 
-  QWidget *w = new TheDriverForm;
+  QWidget *w = new ThePaymentForm;
   w->show( );
 
   return a.exec( );
