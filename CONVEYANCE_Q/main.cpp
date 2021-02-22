@@ -41,7 +41,7 @@ int main( int argc, char *argv[] ) {
   //  TheOrderForm *of = new TheOrderForm;
   //  of->show( );
 
-  QWidget *w = new ThePaymentForm;
+  QWidget *w = new TheAdressForm;
   w->show( );
 
   return a.exec( );

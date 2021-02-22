@@ -10,8 +10,9 @@ constexpr int regim { 0 };
 const QString driverBase = "QPSQL";
 const QString hostName { "localhost" };
 const int port { 5432 };
-const QString databaseName { "testdb" };
 const QString userName { "postgres" };
+// const QString databaseName { "testdb" };
+const QString databaseName { "conveyance_db" };
 const QString password { "123" };
 
 // table Adress

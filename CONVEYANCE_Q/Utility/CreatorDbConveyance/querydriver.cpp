@@ -13,6 +13,6 @@ QString QueryDriver::insertQueryString( const QString &tableName, const QueryDri
   res = std::accumulate( coll.begin( ), coll.end( ), res,
                          []( const QString &tRes, const para &el ) { return ( tRes + "'" + el.second + "'," ); } );
   res.chop( 1 );
-  res += ")";
+  res += ");";
   return res;
 }
