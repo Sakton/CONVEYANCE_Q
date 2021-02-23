@@ -5,79 +5,81 @@
 #include <QStringList>
 #include <memory>
 
-DBTableCreator::DBTableCreator( ) {
+#include "Utility/CreatorDbConveyance/DBConnectConstant.h"
 
+DBTableCreator::DBTableCreator( ) {}
+
+bool DBTableCreator::createDb( /*const QString &userName, const QString &password*/ ) {
+  // return createUser( userName, password );
+  return createDatabase( );
 }
 
-bool DBTableCreator::createDb( ) {
-  // WARNING !!! this absolute path  worked PC
-  //  QString prog = "C:/PostgreSQL/bin/createdb.exe";
-  //  QStringList paramCommandStr;
-
-  //  std::unique_ptr< QProcess > process;
-  //  process->start( prog );
-  // process->startDetached( prog );
-
-  //  if ( !db.openDb( ) ) {
-  //    // TODO выкинуть исключение (ошибка) ???
-  //    qDebug( ) << "NOT OPEN DB";
-  //  }
-  //  QSqlQuery query( db.database( ) );
-  //  for ( auto &q : queries ) {
-  //    if ( !query.exec( q ) ) return false;
-  //  }
-  //  db.closeDb( );
-  return createLandTable( ) /* && createAutoBrandTable( )*/;
-}
-
-bool DBTableCreator::dropTable( ) {
-  QString str { "" };
-  QSqlQuery query( db.database( ) );
-  return query.exec( str );
-}
+bool DBTableCreator::dropTable( ) { return 1; }
 
 DBTableCreator::~DBTableCreator( ) { db.closeDb( ); }
 
-bool DBTableCreator::createLandTable( ) {
-  QString qs {
-      "CREATE TABLE country ("
-      "country_name varchar(64) NOT NULL,"
-      "country_phonecode varchar(8) NOT NULL,"
-      "country_abbriviated varchar(4) NOT NULL,"
-      "country_vatrate real NOT NULL,"
-      "PRIMARY KEY ( country_name ),"
-      "CHECK ( country_vatrate > 0 ),"
-      "UNIQUE ( country_name, country_phonecode, country_abbriviated )"
-      ");" };
+bool DBTableCreator::queryToDb( const QString &queryString ) {
   QSqlQuery query( db.database( ) );
-  return query.exec( qs );
+  return query.exec( queryString );
 }
 
-bool DBTableCreator::createAutoBrandTable( ) {
-  QString qs {
-      "CREATE TABLE auto_brand ("
-      "autobrand_id serial,"
-      "autobrand_name varchar( 64 ) NOT NULL,"
-      "PRIMARY KEY ( autobrand_id ),"
-      "UNIQUE ( autobrand_name )"
-      ");" };
-  QSqlQuery query( db.database( ) );
-  return query.exec( qs );
+bool DBTableCreator::createDatabase( ) {
+  //$ createdb -p 5000 -h eden -T template0 -e demo
+
+  QProcess process;
+  // где устанвлена DB !!!
+  QObject::connect( &process, QOverload< QProcess::ProcessError >::of( &QProcess::errorOccurred ), this,
+		    QOverload<>::of( &DBTableCreator::slotProessError ) );
+  process.setProgram( "createdb.exe" );
+  process.setNativeArguments( "-p 5432 -h localhost -w bbbbbb" /*+ DBConnectConstatnt::databaseName*/ );
+  process.open( );
+  // process.start( "C:/PostgreSQL/bin/createdb.exe", QStringList( ) << DBConnectConstatnt::databaseName );
+  qDebug( ) << "programm " << process.program( );
+  qDebug( ) << "argumenty " << process.nativeArguments( );
+  //  if ( process.waitForFinished( 5000 ) ) process.close( );
+  return process.waitForFinished( 5000 );
 }
 
-bool DBTableCreator::createAdressTable( ) {
-  QString qs {
-      "CREATE TABLE adress ("
-      "adress_" };
-  return true;
+bool DBTableCreator::createUser( const QString &userName, const QString &password ) {
+  // CREATE USER tes WITH PASSWORD '12345';
+  QString qs { "CREATE USER " + userName + " WITH PASSWORD '" + password + "';" };
+  qDebug( ) << qs;
+  return queryToDb( qs );
 }
 
-bool DBTableCreator::createClientTable( ) {
-  QString qs {
-      "CREATE TABLE counterparty ( "
-      "counterparty_nip varchar( 32 ) NOT NULL,"
-      "counterparty_name varchar( 128 ) NOT NULL,"
-      "PRIMARY KEY ( counterparty_nip, counterparty_name )"
-      " );" };
-  return true;
+bool DBTableCreator::createShema( ) {
+  QString qs { "CREATE SCHEMA IF NOT EXIST" + DBConnectConstatnt::sheme + ";" };
+  return queryToDb( qs );
 }
+
+bool DBTableCreator::createTableNationality( ) {
+  QString qs { "CREATE TABLE IF NOT EXIST" + DBConnectConstatnt::sheme +
+	       ".nationality ("
+	       "name varchar(256) NOT NULL,"
+	       "PRIMARY KEY (name)"
+	       ");" };
+  return queryToDb( qs );
+}
+
+bool DBTableCreator::createCounter( ) {
+  QString qs { "CREATE TABLE IF NOT EXIST" + DBConnectConstatnt::sheme +
+	       ".country ("
+	       "name varchar(64) NOT NULL,"
+	       "phonecode varchar(8) NOT NULL,"
+	       "abbriviated varchar(4) NOT NULL,"
+	       "nds_vat numeric(4,2) NOT NULL,"
+	       "UNIQUE(name, phonecode, abbriviated),"
+	       "PRIMARY KEY (name)"
+	       ");" };
+  return queryToDb( qs );
+}
+
+bool DBTableCreator::createLandTable( ) { return 1; }
+
+bool DBTableCreator::createAutoBrandTable( ) { return 1; }
+
+bool DBTableCreator::createAdressTable( ) { return 1; }
+
+void DBTableCreator::slotProessError( ) { qDebug( ) << "ERROR PROCESS"; }
+
+bool DBTableCreator::createClientTable( ) { return 1; }

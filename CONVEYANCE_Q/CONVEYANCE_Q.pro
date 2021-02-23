@@ -22,6 +22,7 @@ SOURCES += \
     Modules/Post/thepostform.cpp \
     Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
     Utility/CreatorDbConveyance/dbtablecreator.cpp \
+    Utility/CreatorDbConveyance/errordatabase.cpp \
     Utility/CreatorDbConveyance/querydriver.cpp \
     Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
     main.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     Utility/CreatorDbConveyance/DBConnectConstant.h \
     Utility/CreatorDbConveyance/conveyancesqldatabase.h \
     Utility/CreatorDbConveyance/dbtablecreator.h \
+    Utility/CreatorDbConveyance/errordatabase.h \
     Utility/CreatorDbConveyance/querydriver.h \
     Utility/DataForCreateDBForm/thedataforcreatedbform.h \
     mainwindow.h

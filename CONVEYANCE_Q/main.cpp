@@ -27,8 +27,13 @@ int main( int argc, char *argv[] ) {
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
-  //  DBTableCreator creator;
-  //  if ( creator.createLandTable( ) ) {
+  DBTableCreator creator;
+  if ( creator.createDb( ) ) {
+    qDebug( ) << "OK CREATE DB";
+  } else {
+    qDebug( ) << "ERROR CREATE DB";
+  }
+  //  if ( creator.createDb( ) ) {
   //    qDebug( ) << "OK CREATE TABLE";
   //  } else {
   //    qDebug( ) << "ERROR CREATE TABLE";
@@ -41,8 +46,8 @@ int main( int argc, char *argv[] ) {
   //  TheOrderForm *of = new TheOrderForm;
   //  of->show( );
 
-  QWidget *w = new TheAdressForm;
-  w->show( );
+  //  QWidget *w = new TheAdressForm;
+  //  w->show( );
 
   return a.exec( );
 }

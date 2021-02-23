@@ -19,7 +19,12 @@ bool ConveyanceSQLDatabase::openDb( ) {
   db.setDatabaseName( DBConnectConstatnt::databaseName );
   db.setUserName( DBConnectConstatnt::userName );
   db.setPassword( DBConnectConstatnt::password );
-  return db.open( );
+  if ( db.open( ) ) {
+    qDebug( ) << "OPEN DB";
+    return true;
+  }
+  qDebug( ) << "NOT OPEN DB";
+  return false;
 }
 
 void ConveyanceSQLDatabase::closeDb( ) { db.close( ); }
