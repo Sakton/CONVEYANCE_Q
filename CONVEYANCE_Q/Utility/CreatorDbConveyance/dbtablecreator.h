@@ -9,6 +9,8 @@
 // отвечает за создание всех таблиц в базе данных
 // вызывается единожды при первом запуске приложения
 
+class QProcess;
+
 class DBTableCreator : public QObject {
   Q_OBJECT
 
@@ -31,10 +33,13 @@ class DBTableCreator : public QObject {
   bool createAdressTable( );
 
  public slots:
-  void slotProessError( );
+  void slotProessError( int error );
+  void slotReadStdOut( );
+  void slotStarted( );
+  void slotFinished( );
 
  private:
-  // std::vector< QString > queries;
+  QProcess *process { nullptr };
   ConveyanceSQLDatabase db;
 };
 

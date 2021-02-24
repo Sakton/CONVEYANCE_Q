@@ -14,6 +14,7 @@ class ErrorDatabase : public std::exception {
 };
 
 class ErrorCreateDatabase : public ErrorDatabase {
+ public:
   explicit ErrorCreateDatabase( const QString& str );
 };
 

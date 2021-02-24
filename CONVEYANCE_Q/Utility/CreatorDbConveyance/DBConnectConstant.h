@@ -11,8 +11,8 @@ const QString driverBase = "QPSQL";
 const QString hostName { "localhost" };
 const int port { 5432 };
 const QString userName { "postgres" };
-// const QString databaseName { "testdb" };
-const QString databaseName { "conveyance_db" };
+const QString databaseName { "testdb" };
+// const QString databaseName { "conveyance_db" };
 const QString password { "123" };
 const QString sheme { "conveyance" };
 

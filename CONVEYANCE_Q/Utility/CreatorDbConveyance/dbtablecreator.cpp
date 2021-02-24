@@ -1,13 +1,21 @@
 #include "dbtablecreator.h"
 
+#include <QMessageBox>
 #include <QProcess>
 #include <QSqlQuery>
 #include <QStringList>
 #include <memory>
 
 #include "Utility/CreatorDbConveyance/DBConnectConstant.h"
+#include "errordatabase.h"
 
-DBTableCreator::DBTableCreator( ) {}
+DBTableCreator::DBTableCreator( ) : process { new QProcess( this ) } {
+  connect( process, QOverload< QProcess::ProcessError >::of( &QProcess::errorOccurred ), this,
+           QOverload< int >::of( &DBTableCreator::slotProessError ) );
+  connect( process, &QProcess::readyReadStandardOutput, this, QOverload<>::of( &DBTableCreator::slotReadStdOut ) );
+  connect( process, &QProcess::started, this, QOverload<>::of( &DBTableCreator::slotStarted ) );
+  connect( process, &QProcess::finished, this, QOverload<>::of( &DBTableCreator::slotFinished ) );
+}
 
 bool DBTableCreator::createDb( /*const QString &userName, const QString &password*/ ) {
   // return createUser( userName, password );
@@ -16,7 +24,10 @@ bool DBTableCreator::createDb( /*const QString &userName, const QString &passwor
 
 bool DBTableCreator::dropTable( ) { return 1; }
 
-DBTableCreator::~DBTableCreator( ) { db.closeDb( ); }
+DBTableCreator::~DBTableCreator( ) {
+  db.closeDb( );
+  process->deleteLater( );
+}
 
 bool DBTableCreator::queryToDb( const QString &queryString ) {
   QSqlQuery query( db.database( ) );
@@ -24,20 +35,23 @@ bool DBTableCreator::queryToDb( const QString &queryString ) {
 }
 
 bool DBTableCreator::createDatabase( ) {
-  //$ createdb -p 5000 -h eden -T template0 -e demo
-
-  QProcess process;
-  // где устанвлена DB !!!
-  QObject::connect( &process, QOverload< QProcess::ProcessError >::of( &QProcess::errorOccurred ), this,
-		    QOverload<>::of( &DBTableCreator::slotProessError ) );
-  process.setProgram( "createdb.exe" );
-  process.setNativeArguments( "-p 5432 -h localhost -w bbbbbb" /*+ DBConnectConstatnt::databaseName*/ );
-  process.open( );
-  // process.start( "C:/PostgreSQL/bin/createdb.exe", QStringList( ) << DBConnectConstatnt::databaseName );
-  qDebug( ) << "programm " << process.program( );
-  qDebug( ) << "argumenty " << process.nativeArguments( );
-  //  if ( process.waitForFinished( 5000 ) ) process.close( );
-  return process.waitForFinished( 5000 );
+  /*
+  решение задачи создания базы занных из программы.
+    создать базу можно войдя в базу по умолчанию, которая существует всегда (гарантия производителя)
+  -с - -c команда
+  --command=команда
+Передаёт psql команду для выполнения. Этот ключ можно повторять и комбинировать в любом порядке с ключом -f.
+Когда указывается -c или -f, psql не читает команды со стандартного ввода;
+вместо этого она завершается сразу после обработки всех ключей -c и -f по порядку.
+  Для создания базы данных вы должны сначала подключиться к другой базе данных (postgres). Это не подразумевает иерархию баз данных.
+  */
+  process->setProgram( "psql" );
+  QString arguments = QString( "-c \"CREATE DATABASE " ) + DBConnectConstatnt::databaseName +
+                      QString( "\" \"user=postgres dbname=postgres password=" + DBConnectConstatnt::password + "\"" );
+  process->setNativeArguments( arguments.toStdString( ).c_str( ) );
+  process->start( );
+  process->waitForFinished( );
+  return 1;
 }
 
 bool DBTableCreator::createUser( const QString &userName, const QString &password ) {
@@ -80,6 +94,42 @@ bool DBTableCreator::createAutoBrandTable( ) { return 1; }
 
 bool DBTableCreator::createAdressTable( ) { return 1; }
 
-void DBTableCreator::slotProessError( ) { qDebug( ) << "ERROR PROCESS"; }
+void DBTableCreator::slotProessError( int error ) {
+  QString errorstring;
+  switch ( error ) {
+    case QProcess::ProcessError::FailedToStart:
+      errorstring =
+          tr( "Не удалось запустить процесс создания базыданных."
+              "Либо запущенная программа отсутствует, "
+              "либо у вас может быть недостаточно прав или ресурсов для "
+              "ее запуска." );
+      break;
+    case QProcess::ProcessError::Crashed:
+      errorstring = tr( "Через некоторое время после успешного запуска процесс остановился." );
+      break;
+    case QProcess::ProcessError::Timedout:
+      errorstring = tr( "Истекло время ожидания" );
+      break;
+    case QProcess::ProcessError::WriteError:
+      errorstring = tr( "Произошла ошибка при попытке записи в процесс." );
+      break;
+    case QProcess::ProcessError::ReadError:
+      errorstring = tr( "Произошла ошибка при попытке чтения из процесса" );
+      break;
+    case QProcess::ProcessError::UnknownError:
+      errorstring = tr( "Произошла неизвестная ошибка." );
+      break;
+  }
+  throw ErrorCreateDatabase( errorstring );
+}
+
+void DBTableCreator::slotReadStdOut( ) {
+  auto t = process->readAll( );
+  qDebug( ) << t;
+}
+
+void DBTableCreator::slotStarted( ) { qDebug( ) << "started"; }
+
+void DBTableCreator::slotFinished( ) { qDebug( ) << "slotFinished"; }
 
 bool DBTableCreator::createClientTable( ) { return 1; }
