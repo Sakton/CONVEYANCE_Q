@@ -30,7 +30,7 @@ int main( int argc, char *argv[] ) {
   //    qDebug( ) << "ERROR CREATE TABLE";
 
   DBCreator creator;
-  creator.createDb( );
+  creator.createDatabase( "test1", "123" );
 
   //  if ( creator.createDb( ) ) {
   //    qDebug( ) << "OK CREATE TABLE";

@@ -26,6 +26,7 @@ SOURCES += \
     Utility/CreatorDbConveyance/errordatabase.cpp \
     Utility/CreatorDbConveyance/querydriver.cpp \
     Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
+    Utility/User/user.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -48,6 +49,7 @@ HEADERS += \
     Utility/CreatorDbConveyance/errordatabase.h \
     Utility/CreatorDbConveyance/querydriver.h \
     Utility/DataForCreateDBForm/thedataforcreatedbform.h \
+    Utility/User/user.h \
     mainwindow.h
 
 FORMS += \

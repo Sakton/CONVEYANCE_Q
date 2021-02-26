@@ -28,12 +28,12 @@ void TheCountryForm::slotClick_OK_Button( ) {
   countryData[ "country_phonecode" ] = ui->lineEditPhoneCode->text( );
   countryData[ "country_abbriviated" ] = ui->lineEditAbbreviated->text( );
   countryData[ "country_vatrate" ] = ui->lineEditVatRate->text( );
-  ConveyanceSQLDatabase db;
-  if ( !db.insertToDb( QueryDriver::insertQueryString( "country", countryData ) ) ) {
-    QMessageBox::critical( this, "ERROR", "ERROR INSERT TO DB", QMessageBox::Ok );
-  } else {
-    emit signalInsertToDb( );  //сигнал что добавление в базу
-  }
+  //  ConveyanceSQLDatabase db;
+  //  if ( !db.insertToDb( QueryDriver::insertQueryString( "country", countryData ) ) ) {
+  //    QMessageBox::critical( this, "ERROR", "ERROR INSERT TO DB", QMessageBox::Ok );
+  //  } else {
+  //    emit signalInsertToDb( );  //сигнал что добавление в базу
+  //  }
   this->close( );
 }
 

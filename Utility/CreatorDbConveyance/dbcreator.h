@@ -13,9 +13,6 @@ class DBCreator : public QObject {
 
  public:
   DBCreator( );
-  void createDb( );
-
- private:
   void createDatabase( const QString &nameDataBase, const QString &userPassword );
 
  public slots:
@@ -23,6 +20,10 @@ class DBCreator : public QObject {
   void slotReadStdOut( );
   void slotStarted( );
   void slotFinished( );
+  void testSlotDBCreated( bool res );
+
+ signals:
+  void signalDataBaseCreated( bool ok );
 
  private:
   QProcess *process { nullptr };

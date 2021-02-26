@@ -53,17 +53,17 @@ void TheClientForm::slotClicked_Ok_Button( ) {
 void TheClientForm::slotClicked_Cancel_Button( ) { this->close( ); }
 
 void TheClientForm::readCountryFromDbAndSetup( ) {
-  ConveyanceSQLDatabase db;
-  auto p_QueryAnswer = db.readAllTable( "country" );
-  if ( p_QueryAnswer == nullptr ) return;
-  QStringList list;
-  while ( p_QueryAnswer->next( ) ) {
-    list << p_QueryAnswer->value( "country_name" ).toString( );
-  }
-  ui->comboBoxLandLegal->clear( );
-  ui->comboBoxLandLegal->addItems( list );
-  ui->comboBoxLandMailing->clear( );
-  ui->comboBoxLandMailing->addItems( list );
+  //  ConveyanceSQLDatabase db;
+  //  auto p_QueryAnswer = db.readAllTable( "country" );
+  //  if ( p_QueryAnswer == nullptr ) return;
+  //  QStringList list;
+  //  while ( p_QueryAnswer->next( ) ) {
+  //    list << p_QueryAnswer->value( "country_name" ).toString( );
+  //  }
+  //  ui->comboBoxLandLegal->clear( );
+  //  ui->comboBoxLandLegal->addItems( list );
+  //  ui->comboBoxLandMailing->clear( );
+  //  ui->comboBoxLandMailing->addItems( list );
 }
 
 void TheClientForm::slotCallTheCountryForm( ) {
