@@ -17,8 +17,6 @@ class DBCreator : public QObject {
 
  public slots:
   void slotProessError( int error );
-  void slotReadStdOut( );
-  void slotStarted( );
   void slotFinished( );
 
  signals:

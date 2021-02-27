@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QSettings>
 
 #include "Modules/Adress/theadressform.h"
 #include "Modules/Autopark/theautomobilform.h"
@@ -11,6 +12,7 @@
 #include "Modules/Orders/theorderform.h"
 #include "Modules/Payment/thepaymentform.h"
 #include "Modules/Post/thepostform.h"
+#include "Utility/CreatorDbConveyance/DBConnectConstant.h"
 #include "Utility/CreatorDbConveyance/dbcreator.h"
 #include "Utility/CreatorDbConveyance/dbtablecreator.h"
 #include "Utility/CreatorDbConveyance/errordatabase.h"
@@ -29,9 +31,9 @@ int main( int argc, char *argv[] ) {
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
-  DBCreator creator;
+  // DBCreator creator;
   // creator.cleaningPostgresUser();
-  creator.createDatabase("test1");
+  // creator.createDatabase(DBConnectConstatnt::databaseName);
 
   //  if ( creator.createDb( ) ) {
   //    qDebug( ) << "OK CREATE TABLE";
@@ -49,5 +51,31 @@ int main( int argc, char *argv[] ) {
   //  QWidget *w = new TheAdressForm;
   //  w->show( );
 
-  return a.exec( );
+  QSettings *s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  s->setValue("myKey1", QVariant(100));
+  s->setValue("myKey2", "KEY_2");
+  s->setValue("myKey3", 123456);
+
+  s->sync();
+  delete s;
+
+  s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  qDebug() << s->value("myKey1").toInt();
+  qDebug() << s->value("myKey2");
+  qDebug() << s->value("myKey3").toInt();
+
+  delete s;
+
+  s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  s->setValue("myKey1", QVariant(11111));
+  s->setValue("myKey11", "KEY_111");
+  s->setValue("myKey12", QVariant(12.01212));
+
+  delete s;
+
+  s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  auto keys = s->allKeys();
+  qDebug() << keys;
+
+  return a.exec();
 }

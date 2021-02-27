@@ -8,15 +8,11 @@
 
 class ConveyanceSQLDatabase {
  public:
-  explicit ConveyanceSQLDatabase( );
+  explicit ConveyanceSQLDatabase();
   ~ConveyanceSQLDatabase( );
 
   bool openDb( );
   void closeDb( );
-
-  //пробники
-  //  bool insertToDb( const QString& q );
-  //  std::unique_ptr< QSqlQuery > readAllTable( const QString& tableName );
 
   const QSqlDatabase& database( ) const;
 

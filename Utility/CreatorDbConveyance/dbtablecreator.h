@@ -11,7 +11,7 @@ class DBTableCreator : public QObject {
   Q_OBJECT
   // private:
  public:
-  DBTableCreator( );
+  DBTableCreator();
 
  public:
   void createAllTableDb( /*const QString &userName, const QString &password*/ );

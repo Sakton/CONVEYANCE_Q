@@ -11,11 +11,7 @@ DBCreator::DBCreator() : process(new QProcess(this)) {
   connect(process,
           QOverload<QProcess::ProcessError>::of(&QProcess::errorOccurred), this,
           QOverload<int>::of(&DBCreator::slotProessError));
-  connect(process, &QProcess::started, this,
-          QOverload<>::of(&DBCreator::slotStarted));
   connect(process, &QProcess::finished, this, &DBCreator::slotFinished);
-  connect(process, &QProcess::readyReadStandardOutput, this,
-          &DBCreator::slotReadStdOut);
 }
 
 void DBCreator::createDatabase(const QString &nameDataBase) {
@@ -71,13 +67,9 @@ void DBCreator::slotProessError(int error) {
       errorstring = tr("Произошла неизвестная ошибка.");
       break;
   }
-  QMessageBox::critical(nullptr, "CRITICAL", errorstring);
   throw ErrorCreateDatabase(errorstring);
 }
 
 void DBCreator::slotFinished() {
-  auto code = process->exitStatus();
-  if (code == QProcess::ExitStatus::NormalExit) {
-    QMessageBox::information(nullptr, "INFO", "DB CREATED SUCEFULL");
-  }
+  emit signalDataBaseCreated(process->exitStatus());
 }
