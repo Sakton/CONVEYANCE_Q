@@ -9,10 +9,10 @@ class QFile;
 
 class User {
  public:
-  User( );
+  User();
 
   bool saveUser( const QString &path );
-  bool readUser( const QString &path );
+  bool readUser(const QString &path);
 
   // TODO ТУТ сериализация
  private:

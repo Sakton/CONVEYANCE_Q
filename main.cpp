@@ -30,7 +30,8 @@ int main( int argc, char *argv[] ) {
   //    qDebug( ) << "ERROR CREATE TABLE";
 
   DBCreator creator;
-  creator.createDatabase( "test1", "123" );
+  // creator.cleaningPostgresUser();
+  creator.createDatabase("test1");
 
   //  if ( creator.createDb( ) ) {
   //    qDebug( ) << "OK CREATE TABLE";
@@ -47,8 +48,6 @@ int main( int argc, char *argv[] ) {
 
   //  QWidget *w = new TheAdressForm;
   //  w->show( );
-
-  /// lalalal
 
   return a.exec( );
 }

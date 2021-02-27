@@ -22,6 +22,7 @@ SOURCES += \
     Modules/Post/thepostform.cpp \
     Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
     Utility/CreatorDbConveyance/dbcreator.cpp \
+    Utility/CreatorDbConveyance/dbcreator.cpp \
     Utility/CreatorDbConveyance/dbtablecreator.cpp \
     Utility/CreatorDbConveyance/errordatabase.cpp \
     Utility/CreatorDbConveyance/querydriver.cpp \

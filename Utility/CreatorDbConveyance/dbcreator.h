@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-// класс создает базу данных Зщ
+// класс создает базу данных
 // TODO отделение класса ТУТ
 
 class QProcess;
@@ -13,20 +13,19 @@ class DBCreator : public QObject {
 
  public:
   DBCreator( );
-  void createDatabase( const QString &nameDataBase, const QString &userPassword );
+  void createDatabase(const QString &nameDataBase);
 
  public slots:
   void slotProessError( int error );
   void slotReadStdOut( );
   void slotStarted( );
   void slotFinished( );
-  void testSlotDBCreated( bool res );
 
  signals:
-  void signalDataBaseCreated( bool ok );
+  void signalDataBaseCreated(bool ok);
 
  private:
-  QProcess *process { nullptr };
+  QProcess *process{nullptr};
 };
 
 #endif // DBCREATOR_H

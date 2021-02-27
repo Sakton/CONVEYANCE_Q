@@ -4,9 +4,9 @@
 #include <QException>
 #include <QFile>
 
-User::User()
-{
-  
+User::User() {
+  parameters["typeParam1"] = "valueParameters1";
+  parameters["typeParam2"] = "valueParameters2";
 }
 
 bool User::saveUser( const QString &path ) {
@@ -15,6 +15,7 @@ bool User::saveUser( const QString &path ) {
     // throw
   }
   QDataStream dataStream;
+  return true;
 }
 
-bool User::readUser( const QString &path ) {}
+bool User::readUser(const QString &path) { return 1; }
