@@ -51,6 +51,9 @@ int main( int argc, char *argv[] ) {
   //  QWidget *w = new TheAdressForm;
   //  w->show( );
 
+  DBTableCreator cr;
+  cr.createAllTableDb();
+
   QSettings *s = new QSettings("config.ini", QSettings::Format::IniFormat);
   s->setValue("myKey1", QVariant(100));
   s->setValue("myKey2", "KEY_2");

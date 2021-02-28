@@ -13,11 +13,12 @@ DBTableCreator::DBTableCreator( ) {}
 
 void DBTableCreator::createAllTableDb( ) {
   try {
-    createShema( );
-  } catch ( const ErrorCreateDatabase &e ) {
+    createShema();
+    createTableCountry();
+  } catch (const ErrorCreateDatabase &e) {
     int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
     if ( okBtn ) exit( 1 );
-  } catch ( const ErrorDatabase &e ) {
+  } catch (const ErrorDatabase &e) {
     int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
     if ( okBtn ) exit( 1 );
   }
@@ -40,12 +41,12 @@ bool DBTableCreator::createUser( const QString &userName, const QString &passwor
 }
 
 void DBTableCreator::createShema( ) {
-  QString qs { "CREATE SCHEMA IF NOT EXIST" + DBConnectConstatnt::sheme + ";" };
-  if ( !queryToDb( qs ) ) throw ErrorDatabase( "ERROR CREATE SHEME" );
+  QString qs{"CREATE SCHEMA " + DBConnectConstatnt::sheme + ";"};
+  queryToDb(qs);
 }
 
 bool DBTableCreator::createTableNationality( ) {
-  QString qs{"CREATE TABLE IF NOT EXIST" + DBConnectConstatnt::sheme +
+  QString qs{"CREATE TABLE " + DBConnectConstatnt::sheme +
              ".nationality ("
              "name varchar(256) NOT NULL,"
              "PRIMARY KEY (name)"
@@ -53,8 +54,8 @@ bool DBTableCreator::createTableNationality( ) {
   return queryToDb( qs );
 }
 
-bool DBTableCreator::createCounter( ) {
-  QString qs{"CREATE TABLE IF NOT EXIST" + DBConnectConstatnt::sheme +
+void DBTableCreator::createTableCountry() {
+  QString qs{"CREATE TABLE " + DBConnectConstatnt::sheme +
              ".country ("
              "name varchar(64) NOT NULL,"
              "phonecode varchar(8) NOT NULL,"
@@ -63,7 +64,7 @@ bool DBTableCreator::createCounter( ) {
              "UNIQUE(name, phonecode, abbriviated),"
              "PRIMARY KEY (name)"
              ");"};
-  return queryToDb( qs );
+  queryToDb(qs);
 }
 
 bool DBTableCreator::createLandTable( ) { return 1; }

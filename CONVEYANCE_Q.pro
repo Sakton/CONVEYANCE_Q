@@ -43,7 +43,7 @@ HEADERS += \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
     Modules/Post/thepostform.h \
-    Utility/CreatorDbConveyance/DBConnectConstant.h \
+    Utility/AllConstants.h \
     Utility/CreatorDbConveyance/conveyancesqldatabase.h \
     Utility/CreatorDbConveyance/dbcreator.h \
     Utility/CreatorDbConveyance/dbtablecreator.h \

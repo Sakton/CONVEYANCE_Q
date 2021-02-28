@@ -24,7 +24,7 @@ class DBTableCreator : public QObject {
   bool createUser( const QString &userName, const QString &password );
   void createShema( );
   bool createTableNationality( );
-  bool createCounter( );
+  void createTableCountry();
   bool createLandTable( );
   bool createAutoBrandTable( );
   bool createClientTable( );

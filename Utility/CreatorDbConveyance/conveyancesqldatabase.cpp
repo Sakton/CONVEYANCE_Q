@@ -3,24 +3,26 @@
 #include <QMessageBox>
 #include <QSqlRecord>
 
-#include "DBConnectConstant.h"
+#include "../AllConstants.h"
 #include "QSqlError"
 #include "QSqlQuery"
 #include "querydriver.h"
 
+// TODO тут можно добавить запись в настройки и чтение с них
+
 ConveyanceSQLDatabase::ConveyanceSQLDatabase() {
-  db = QSqlDatabase::addDatabase( DBConnectConstatnt::driverBase );
+  db = QSqlDatabase::addDatabase( AllConstatnts::driverBase );
   openDb( );
 }
 
 ConveyanceSQLDatabase::~ConveyanceSQLDatabase( ) { db.close( ); }
 
 bool ConveyanceSQLDatabase::openDb( ) {
-  db.setHostName( DBConnectConstatnt::hostName );
-  db.setPort( DBConnectConstatnt::port );
-  db.setDatabaseName( DBConnectConstatnt::databaseName );
-  db.setUserName( DBConnectConstatnt::userName );
-  db.setPassword( DBConnectConstatnt::password );
+  db.setHostName( AllConstatnts::hostName );
+  db.setPort( AllConstatnts::port );
+  db.setDatabaseName( AllConstatnts::dbName );
+  db.setUserName( AllConstatnts::userName );
+  db.setPassword( AllConstatnts::password );
   if ( !db.open( ) ) {
     QMessageBox::critical( nullptr, "ERROR OPEN DB", db.lastError( ).text( ) );
   }
