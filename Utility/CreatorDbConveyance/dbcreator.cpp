@@ -1,10 +1,8 @@
 #include "dbcreator.h"
 
 #include <QDebug>
-#include <QMessageBox>
 #include <QProcess>
 
-#include "DBConnectConstant.h"
 #include "errordatabase.h"
 
 DBCreator::DBCreator() : process(new QProcess(this)) {
@@ -64,7 +62,7 @@ void DBCreator::slotProessError(int error) {
       errorstring = tr("Произошла ошибка при попытке чтения из процесса");
       break;
     case QProcess::ProcessError::UnknownError:
-      errorstring = tr("Произошла неизвестная ошибка.");
+      errorstring = tr( "Произошла неизвестная ошибка." );
       break;
   }
   throw ErrorCreateDatabase(errorstring);

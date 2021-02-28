@@ -6,7 +6,7 @@
 #include <QStringList>
 #include <memory>
 
-#include "Utility/CreatorDbConveyance/DBConnectConstant.h"
+#include "../AllConstants.h"
 #include "Utility/CreatorDbConveyance/errordatabase.h"
 
 DBTableCreator::DBTableCreator( ) {}
@@ -41,29 +41,29 @@ bool DBTableCreator::createUser( const QString &userName, const QString &passwor
 }
 
 void DBTableCreator::createShema( ) {
-  QString qs{"CREATE SCHEMA " + DBConnectConstatnt::sheme + ";"};
+  QString qs { "CREATE SCHEMA " + QString( AllConstatnts::dbSheme ) + ";" };
   queryToDb(qs);
 }
 
 bool DBTableCreator::createTableNationality( ) {
-  QString qs{"CREATE TABLE " + DBConnectConstatnt::sheme +
-             ".nationality ("
-             "name varchar(256) NOT NULL,"
-             "PRIMARY KEY (name)"
-             ");"};
+  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+               ".nationality ("
+               "name varchar(256) NOT NULL,"
+               "PRIMARY KEY (name)"
+               ");" };
   return queryToDb( qs );
 }
 
 void DBTableCreator::createTableCountry() {
-  QString qs{"CREATE TABLE " + DBConnectConstatnt::sheme +
-             ".country ("
-             "name varchar(64) NOT NULL,"
-             "phonecode varchar(8) NOT NULL,"
-             "abbriviated varchar(4) NOT NULL,"
-             "nds_vat numeric(4,2) NOT NULL,"
-             "UNIQUE(name, phonecode, abbriviated),"
-             "PRIMARY KEY (name)"
-             ");"};
+  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+               ".country ("
+               "name varchar(64) NOT NULL,"
+               "phonecode varchar(8) NOT NULL,"
+               "abbriviated varchar(4) NOT NULL,"
+               "nds_vat numeric(4,2) NOT NULL,"
+               "UNIQUE(name, phonecode, abbriviated),"
+               "PRIMARY KEY (name)"
+               ");" };
   queryToDb(qs);
 }
 
