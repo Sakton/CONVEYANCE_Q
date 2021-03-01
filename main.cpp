@@ -12,7 +12,7 @@
 #include "Modules/Orders/theorderform.h"
 #include "Modules/Payment/thepaymentform.h"
 #include "Modules/Post/thepostform.h"
-#include "Utility/CreatorDbConveyance/DBConnectConstant.h"
+#include "Utility/AllConstants.h"
 #include "Utility/CreatorDbConveyance/dbcreator.h"
 #include "Utility/CreatorDbConveyance/dbtablecreator.h"
 #include "Utility/CreatorDbConveyance/errordatabase.h"
@@ -31,9 +31,9 @@ int main( int argc, char *argv[] ) {
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
-  // DBCreator creator;
+  DBCreator creator;
   // creator.cleaningPostgresUser();
-  // creator.createDatabase(DBConnectConstatnt::databaseName);
+  creator.createDatabase( AllConstatnts::dbName );
 
   //  if ( creator.createDb( ) ) {
   //    qDebug( ) << "OK CREATE TABLE";

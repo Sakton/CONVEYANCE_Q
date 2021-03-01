@@ -10,10 +10,7 @@
 
 // TODO тут можно добавить запись в настройки и чтение с них
 
-ConveyanceSQLDatabase::ConveyanceSQLDatabase() {
-  db = QSqlDatabase::addDatabase( AllConstatnts::driverBase );
-  openDb( );
-}
+ConveyanceSQLDatabase::ConveyanceSQLDatabase( ) : db { QSqlDatabase::addDatabase( AllConstatnts::driverBase ) } { openDb( ); }
 
 ConveyanceSQLDatabase::~ConveyanceSQLDatabase( ) { db.close( ); }
 

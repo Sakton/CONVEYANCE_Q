@@ -4,17 +4,17 @@
 namespace AllConstatnts {
 
 // file settings
-const char* nameFileSettingsApplication = "config.ini";
+static const char* nameFileSettingsApplication = "config.ini";
 // key's settings
 
 // db
-const char* driverBase = "QPSQL";
-const char* hostName = "localhost";
-const int port = 5432;
-const char* userName = "postgres";
-const char* dbName = "conveyance_db";
-const char* password = "postgres";
-const char* dbSheme = "conveyance";
+static const char* driverBase = "QPSQL";
+static const char* hostName = "localhost";
+static const int port = 5432;
+static const char* userName = "postgres";
+static const char* dbName = "conveyance_db";
+static const char* password = "postgres";
+static const char* dbSheme = "conveyance";
 
 }  // namespace AllConstatnts
 
