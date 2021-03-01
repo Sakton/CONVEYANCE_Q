@@ -11,7 +11,7 @@ class DBTableCreator : public QObject {
   Q_OBJECT
   // private:
  public:
-  DBTableCreator();
+  DBTableCreator( );
 
  public:
   void createAllTableDb( /*const QString &userName, const QString &password*/ );
@@ -23,12 +23,9 @@ class DBTableCreator : public QObject {
   void createDatabase( );
   bool createUser( const QString &userName, const QString &password );
   void createShema( );
-  bool createTableNationality( );
-  void createTableCountry();
-  bool createLandTable( );
-  bool createAutoBrandTable( );
-  bool createClientTable( );
-  bool createAdressTable( );
+  void createTableCountry( );
+  void createAdressTable( );
+  void createAutoparkTable( );
 
  private:
   ConveyanceSQLDatabase db;

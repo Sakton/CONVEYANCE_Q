@@ -12,16 +12,18 @@
 DBTableCreator::DBTableCreator( ) {}
 
 void DBTableCreator::createAllTableDb( ) {
-  try {
-    createShema();
-    createTableCountry();
-  } catch (const ErrorCreateDatabase &e) {
-    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
-    if ( okBtn ) exit( 1 );
-  } catch (const ErrorDatabase &e) {
-    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
-    if ( okBtn ) exit( 1 );
-  }
+  //  try {
+  createShema( );
+  createTableCountry( );
+  createAdressTable( );
+  createAutoparkTable( );
+  //  } catch (const ErrorCreateDatabase &e) {
+  //    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
+  //    if ( okBtn ) exit( 1 );
+  //  } catch (const ErrorDatabase &e) {
+  //    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
+  //    if ( okBtn ) exit( 1 );
+  //  }
 }
 
 bool DBTableCreator::dropTable( ) { return 1; }
@@ -45,15 +47,6 @@ void DBTableCreator::createShema( ) {
   queryToDb(qs);
 }
 
-bool DBTableCreator::createTableNationality( ) {
-  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
-               ".nationality ("
-               "name varchar(256) NOT NULL,"
-               "PRIMARY KEY (name)"
-               ");" };
-  return queryToDb( qs );
-}
-
 void DBTableCreator::createTableCountry() {
   QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
                ".country ("
@@ -67,10 +60,42 @@ void DBTableCreator::createTableCountry() {
   queryToDb(qs);
 }
 
-bool DBTableCreator::createLandTable( ) { return 1; }
+void DBTableCreator::createAdressTable( ) {
+  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+               ".adress ("
+               "country_name varchar(64) NOT NULL,"
+               "type varchar(16) DEFAULT 'Legal Adress',"
+               "index varchar(16) NOT NULL,"
+               "sity varchar(256) NOT NULL,"
+               "adress varchar(256) NOT NULL,"
+               "CHECK( type IN ('Legal Adress', 'Mail Adress') ),"
+               "FOREIGN KEY ( country_name ) REFERENCES " +
+               QString( AllConstatnts::dbSheme ) +
+               ".country ( name ) "
+               "ON DELETE CASCADE "
+               "ON UPDATE CASCADE );" };
+  queryToDb( qs );
+}
 
-bool DBTableCreator::createAutoBrandTable( ) { return 1; }
-
-bool DBTableCreator::createAdressTable( ) { return 1; }
-
-bool DBTableCreator::createClientTable( ) { return 1; }
+void DBTableCreator::createAutoparkTable( ) {
+  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+               ".autopark ("
+               "id_auto SERIAL,"
+               "brand varchar( 16 ) NOT NULL,"
+               "model varchar( 16),"
+               "issue date NOT NULL,"
+               "vin varchar( 17 ),"
+               "eco varchar(5),"
+               "inspection date NOT NULL,"
+               "reminder boolean DEFAULT true,"
+               "days_before interval DAY NOT NULL,"
+               "lenth numeric( 4, 2 ),"
+               "width numeric( 4, 2 ),"
+               "wheight numeric( 4, 2 ),"
+               "space numeric( 5, 2 ),"
+               "lift boolean DEFAULT false,"
+               "commentary text,"
+               "PRIMARY KEY ( id_auto ),"
+               "CHECK( ( issue + days_before ) <= inspection ) );" };
+  queryToDb( qs );
+}

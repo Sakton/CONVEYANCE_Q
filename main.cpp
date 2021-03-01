@@ -31,9 +31,9 @@ int main( int argc, char *argv[] ) {
   //  else
   //    qDebug( ) << "ERROR CREATE TABLE";
 
-  DBCreator creator;
-  // creator.cleaningPostgresUser();
-  creator.createDatabase( AllConstatnts::dbName );
+  //  DBCreator creator;
+  //  // creator.cleaningPostgresUser();
+  //  creator.createDatabase( AllConstatnts::dbName );
 
   //  if ( creator.createDb( ) ) {
   //    qDebug( ) << "OK CREATE TABLE";
@@ -48,37 +48,37 @@ int main( int argc, char *argv[] ) {
   //  TheOrderForm *of = new TheOrderForm;
   //  of->show( );
 
-  //  QWidget *w = new TheAdressForm;
-  //  w->show( );
+  QWidget *w = new TheAdressForm;
+  w->show( );
 
   DBTableCreator cr;
-  cr.createAllTableDb();
+  cr.createAllTableDb( );
 
-  QSettings *s = new QSettings("config.ini", QSettings::Format::IniFormat);
-  s->setValue("myKey1", QVariant(100));
-  s->setValue("myKey2", "KEY_2");
-  s->setValue("myKey3", 123456);
+  //  QSettings *s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  //  s->setValue("myKey1", QVariant(100));
+  //  s->setValue("myKey2", "KEY_2");
+  //  s->setValue("myKey3", 123456);
 
-  s->sync();
-  delete s;
+  //  s->sync();
+  //  delete s;
 
-  s = new QSettings("config.ini", QSettings::Format::IniFormat);
-  qDebug() << s->value("myKey1").toInt();
-  qDebug() << s->value("myKey2");
-  qDebug() << s->value("myKey3").toInt();
+  //  s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  //  qDebug() << s->value("myKey1").toInt();
+  //  qDebug() << s->value("myKey2");
+  //  qDebug() << s->value("myKey3").toInt();
 
-  delete s;
+  //  delete s;
 
-  s = new QSettings("config.ini", QSettings::Format::IniFormat);
-  s->setValue("myKey1", QVariant(11111));
-  s->setValue("myKey11", "KEY_111");
-  s->setValue("myKey12", QVariant(12.01212));
+  //  s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  //  s->setValue("myKey1", QVariant(11111));
+  //  s->setValue("myKey11", "KEY_111");
+  //  s->setValue("myKey12", QVariant(12.01212));
 
-  delete s;
+  //  delete s;
 
-  s = new QSettings("config.ini", QSettings::Format::IniFormat);
-  auto keys = s->allKeys();
-  qDebug() << keys;
+  //  s = new QSettings("config.ini", QSettings::Format::IniFormat);
+  //  auto keys = s->allKeys();
+  //  qDebug() << keys;
 
   return a.exec();
 }
