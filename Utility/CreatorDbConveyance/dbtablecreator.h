@@ -26,6 +26,7 @@ class DBTableCreator : public QObject {
   void createTableCountry( );
   void createAdressTable( );
   void createAutoparkTable( );
+  void createBrandAuto( );
 
  private:
   ConveyanceSQLDatabase db;

@@ -16,6 +16,7 @@ void DBTableCreator::createAllTableDb( ) {
   createShema( );
   createTableCountry( );
   createAdressTable( );
+  createBrandAuto( );
   createAutoparkTable( );
   //  } catch (const ErrorCreateDatabase &e) {
   //    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
@@ -36,9 +37,7 @@ bool DBTableCreator::queryToDb( const QString &queryString ) {
 }
 
 bool DBTableCreator::createUser( const QString &userName, const QString &password ) {
-  // CREATE USER tes WITH PASSWORD '12345';
   QString qs { "CREATE USER " + userName + " WITH PASSWORD '" + password + "';" };
-  qDebug( ) << qs;
   return queryToDb( qs );
 }
 
@@ -77,25 +76,41 @@ void DBTableCreator::createAdressTable( ) {
   queryToDb( qs );
 }
 
+void DBTableCreator::createBrandAuto( ) {
+  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+               ".autobrand ("
+               "name_brand varchar(64) NOT NULL,"
+               "marka_brand varchar(64) NOT NULL,"
+               "UNIQUE (marka_brand),"
+               "PRIMARY KEY ( name_brand, marka_brand ) );" };
+  queryToDb( qs );
+}
+
 void DBTableCreator::createAutoparkTable( ) {
   QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
                ".autopark ("
-               "id_auto SERIAL,"
-               "brand varchar( 16 ) NOT NULL,"
+               "name_brand varchar(64) NOT NULL,"
+               "marka_brand varchar(64) NOT NULL,"
                "model varchar( 16),"
                "issue date NOT NULL,"
                "vin varchar( 17 ),"
                "eco varchar(5),"
                "inspection date NOT NULL,"
-               "reminder boolean DEFAULT true,"
-               "days_before interval DAY NOT NULL,"
+               "reminder integer DEFAULT 0,"
+               "days_before interval DAY NOT NULL,"  //???
                "lenth numeric( 4, 2 ),"
                "width numeric( 4, 2 ),"
-               "wheight numeric( 4, 2 ),"
+               "height numeric( 4, 2 ),"
                "space numeric( 5, 2 ),"
+               "carring numeric(4, 2),"
                "lift boolean DEFAULT false,"
                "commentary text,"
-               "PRIMARY KEY ( id_auto ),"
+               "PRIMARY KEY ( vin ),"
+               "UNIQUE ( name_brand, marka_brand ),"
+               "FOREIGN KEY (name_brand, marka_brand) REFERENCES " +
+               QString( AllConstatnts::dbSheme ) +
+               ".autopark ( name_brand, marka_brand ),"
                "CHECK( ( issue + days_before ) <= inspection ) );" };  //???
+  qDebug( ) << qs;
   queryToDb( qs );
 }

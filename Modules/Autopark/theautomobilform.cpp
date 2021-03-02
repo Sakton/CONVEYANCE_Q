@@ -33,19 +33,22 @@ TheAutomobilForm::~TheAutomobilForm()
 void TheAutomobilForm::slotClick_OK_Button( ) {
   std::map< QString, QString > autoData;
   qDebug( ) << "year = " << ui->dateEditYearOfIssue->date( ).year( );
-  autoData[ "nameAutoData" ] = ui->comboBoxNameAuto->currentText( );
-  autoData[ "yearOfIssueData" ] = QString::number( ui->dateEditYearOfIssue->date( ).year( ) );
-  autoData[ "VINData" ] = ui->lineEditVIN->text( );
-  autoData[ "ecoClassData" ] = ui->comboBoxEcoClass->currentText( );
-  autoData[ "nextTechnicalInspection" ] = ui->dateEditNextTechInspection->date( ).toString( );
-  autoData[ "enableReminder" ] = QString::number( ui->checkBoxReminder->checkState( ) );
-  autoData[ "lenthCargon" ] = ui->lineEditLenthCargon->text( );
-  autoData[ "widthCargon" ] = ui->lineEditWidthCargon->text( );
-  autoData[ "heightCargon" ] = ui->lineEditHeightCargoon->text( );
-  autoData[ "wolumeCargon" ] = ui->lineEditWolumeCargon->text( );
-  autoData[ "maximumCarring" ] = ui->lineEditMaximalCarring->text( );
-  autoData[ "tatLiftAuto" ] = QString::number( ui->checkBoxTatLift->checkState( ) );
-  autoData[ "commentsAutoData" ] = ui->plainTextEditComments->toPlainText( );
+  autoData[ "name_brand" ] = ui->comboBoxNameAuto->currentText( );
+  autoData[ "marka_brand" ] = ui->comboBoxMarka->currentText( );
+  autoData[ "issue" ] = QString::number( ui->dateEditYearOfIssue->date( ).year( ) );
+  autoData[ "vin" ] = ui->lineEditVIN->text( );
+  autoData[ "eco" ] = ui->comboBoxEcoClass->currentText( );
+  autoData[ "inspection" ] = ui->dateEditNextTechInspection->date( ).toString( );
+  //  autoData[ "reminder" ] = QString::number( ui->checkBoxReminder->checkState( ) ); //TODO ???????? вычисление остатка в днях ??? или
+  //  задание количества дней с которого начинается отсчет
+  // !!! или вставка в базу сразу вычисленное значение
+  autoData[ "lenth" ] = ui->lineEditLenthCargon->text( );
+  autoData[ "width" ] = ui->lineEditWidthCargon->text( );
+  autoData[ "height" ] = ui->lineEditHeightCargoon->text( );
+  autoData[ "space" ] = ui->lineEditWolumeCargon->text( );
+  autoData[ "carring" ] = ui->lineEditMaximalCarring->text( );
+  autoData[ "lift" ] = QString::number( ui->checkBoxTatLift->checkState( ) );
+  autoData[ "commentary" ] = ui->plainTextEditComments->toPlainText( );
 
   for ( auto &el : autoData ) qDebug( ) << el.first << " --> " << el.second;
 
