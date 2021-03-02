@@ -73,7 +73,7 @@ void DBTableCreator::createAdressTable( ) {
                QString( AllConstatnts::dbSheme ) +
                ".country ( name ) "
                "ON DELETE CASCADE "
-               "ON UPDATE CASCADE );" };
+               ");" };
   queryToDb( qs );
 }
 

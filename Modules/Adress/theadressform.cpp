@@ -14,7 +14,7 @@
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theadressform.h"
 
-const QStringList typeAdress { "Legal Adress", "Mail Adress" };
+const QStringList typeAdress { QObject::tr( "Legal Adress" ), QObject::tr( "Mail Adress" ) };
 
 TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheAdressForm ) {
   ui->setupUi( this );
@@ -31,7 +31,6 @@ TheAdressForm::TheAdressForm( QWidget *parent ) : QWidget( parent ), ui( new Ui:
 }
 
 TheAdressForm::~TheAdressForm( ) {
-  qDebug( ) << "delete TheAdressForm";
   delete ui;
 }
 
@@ -41,22 +40,17 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "index" ] = ui->lineEditIndex->text( );
   adressData[ "sity" ] = ui->lineEditSity->text( );
   adressData[ "adress" ] = ui->lineEditAdress->text( );
-  adressData[ "coutry_name" ] = ui->comboBoxCountry->currentText( );
+  adressData[ "country_name" ] = ui->comboBoxCountry->currentText( );
 
-  qDebug( ) << QueryDriver::insertQueryString( "adress", adressData );
   ConveyanceSQLDatabase db;
   QSqlQuery query( db.database( ) );
   if ( query.exec( QueryDriver::insertQueryString( "adress", adressData ) ) ) {
     // после успешной вставки очистка формы
-    // ui->lineEditContragent->clear( );
-    ui->comboBoxTypeAdress->clear( );
     ui->lineEditIndex->clear( );
     ui->lineEditSity->clear( );
     ui->lineEditAdress->clear( );
-    // ui->lineEditLand->clear( );
   } else {
-    QMessageBox box( QMessageBox::Icon::Critical, tr( "ERROR INSERT TO DB" ), tr( "WOW!! ERROR INSERT TO DB" ), QMessageBox::Ok );
-    box.exec( );
+    QMessageBox::critical( nullptr, tr( "ERROR INSERT TO DB" ), tr( "WOW!! ERROR INSERT TO DB" ) );
     this->close( );
   }
 }
@@ -82,7 +76,7 @@ QStringList TheAdressForm::country( ) {
     while ( query.next( ) ) lands << query.value( "name" ).toString( );
     return lands;
   } else {
-    QMessageBox::
+    QMessageBox::critical( nullptr, tr( "CRITICAL" ), tr( "NO READ FROM DB" ) );
   }
   return { };
 }

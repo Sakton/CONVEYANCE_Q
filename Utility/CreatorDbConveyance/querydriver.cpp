@@ -9,7 +9,7 @@ QString QueryDriver::insertQueryString( const QString &tableName, const QueryDri
   using para = std::pair< QString, QString >;
   QString res = "INSERT INTO " + QString( AllConstatnts::dbSheme ) + "." + tableName + "(";
   res = std::accumulate( coll.begin( ), coll.end( ), res,
-                         []( const QString &tRes, const para &el ) -> QString { return ( tRes + el.first + "," ); } );
+                         []( const QString &tRes, const para &el ) -> QString { return ( tRes + "\"" + el.first + "\"," ); } );
   res.chop( 1 );
   res += ")VALUES(";
   res = std::accumulate( coll.begin( ), coll.end( ), res,
