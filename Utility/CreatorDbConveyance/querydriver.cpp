@@ -2,10 +2,12 @@
 
 #include <numeric>
 
+#include "../AllConstants.h"
+
 //идея не очень,
 QString QueryDriver::insertQueryString( const QString &tableName, const QueryDriver::typeCollection &coll ) {
   using para = std::pair< QString, QString >;
-  QString res = "INSERT INTO " + tableName + "(";
+  QString res = "INSERT INTO " + QString( AllConstatnts::dbSheme ) + "." + tableName + "(";
   res = std::accumulate( coll.begin( ), coll.end( ), res,
                          []( const QString &tRes, const para &el ) -> QString { return ( tRes + el.first + "," ); } );
   res.chop( 1 );
@@ -15,4 +17,8 @@ QString QueryDriver::insertQueryString( const QString &tableName, const QueryDri
   res.chop( 1 );
   res += ");";
   return res;
+}
+
+QString QueryDriver::selectAll( const QString &tableName ) {
+  return QString( "SELECT * FROM " ) + QString( AllConstatnts::dbSheme ) + "." + tableName + ";";
 }

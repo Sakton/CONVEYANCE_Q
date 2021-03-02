@@ -96,6 +96,6 @@ void DBTableCreator::createAutoparkTable( ) {
                "lift boolean DEFAULT false,"
                "commentary text,"
                "PRIMARY KEY ( id_auto ),"
-               "CHECK( ( issue + days_before ) <= inspection ) );" };
+               "CHECK( ( issue + days_before ) <= inspection ) );" };  //???
   queryToDb( qs );
 }

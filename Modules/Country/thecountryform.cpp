@@ -2,6 +2,7 @@
 
 #include <QDialogButtonBox>
 #include <QMessageBox>
+#include <QSqlQuery>
 #include <map>
 
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
@@ -18,22 +19,22 @@ TheCountryForm::TheCountryForm( QWidget *parent ) : QWidget( parent ), ui( new U
 }
 
 TheCountryForm::~TheCountryForm( ) {
-  qDebug( ) << "delete TheCountryForm";
   delete ui;
 }
 
 void TheCountryForm::slotClick_OK_Button( ) {
   std::map< QString, QString > countryData;
-  countryData[ "country_name" ] = ui->lineEditName->text( );
-  countryData[ "country_phonecode" ] = ui->lineEditPhoneCode->text( );
-  countryData[ "country_abbriviated" ] = ui->lineEditAbbreviated->text( );
-  countryData[ "country_vatrate" ] = ui->lineEditVatRate->text( );
-  //  ConveyanceSQLDatabase db;
-  //  if ( !db.insertToDb( QueryDriver::insertQueryString( "country", countryData ) ) ) {
-  //    QMessageBox::critical( this, "ERROR", "ERROR INSERT TO DB", QMessageBox::Ok );
-  //  } else {
-  //    emit signalInsertToDb( );  //сигнал что добавление в базу
-  //  }
+  countryData[ "name" ] = ui->lineEditName->text( );
+  countryData[ "phonecode" ] = ui->lineEditPhoneCode->text( );
+  countryData[ "abbriviated" ] = ui->lineEditAbbreviated->text( );
+  countryData[ "nds_vat" ] = ui->lineEditVatRate->text( );
+  ConveyanceSQLDatabase db;
+  QSqlQuery query;
+  if ( !query.exec( QueryDriver::insertQueryString( "country", countryData ) ) ) {
+    QMessageBox::critical( this, "ERROR", "ERROR INSERT TO DB", QMessageBox::Ok );
+  } else {
+    emit signalInsertToDb( );  //сигнал что добавление в базу
+  }
   this->close( );
 }
 

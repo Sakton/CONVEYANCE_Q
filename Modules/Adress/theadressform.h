@@ -15,13 +15,13 @@ class TheAdressForm : public QWidget {
   ~TheAdressForm( );
 
  public slots:
-  //  void slotClick_OK_Button( );
-  //  void slotClick_Cancel_Button( );
-  //  void slotCallAddLandForm( );
-  //  void slotLoadCountry( );
+  void slotClick_OK_Button( );
+  void slotClick_Cancel_Button( );
+  void slotCallAddLandForm( );
+  void slotLoadCountry( );
 
  private:
-  //  QStringList lands( );
+  QStringList country( );
 
  private:
   Ui::TheAdressForm *ui;
