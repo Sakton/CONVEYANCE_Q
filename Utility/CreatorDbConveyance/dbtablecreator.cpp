@@ -80,6 +80,7 @@ void DBTableCreator::createBrandAuto( ) {
   QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
                ".autobrand ("
                "name_brand varchar(64) NOT NULL,"
+               "series_brand varchar(64) NOT NULL,"
                "marka_brand varchar(64) NOT NULL,"
                "UNIQUE (marka_brand),"
                "PRIMARY KEY ( name_brand, marka_brand ) );" };

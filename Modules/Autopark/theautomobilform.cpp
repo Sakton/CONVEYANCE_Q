@@ -1,5 +1,6 @@
 #include "theautomobilform.h"
 
+#include <QComboBox>
 #include <QDateEdit>
 #include <QDebug>
 #include <QDialogButtonBox>
@@ -13,7 +14,7 @@
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theautomobilform.h"
 
-const QStringList nameAuto { "This_Add_Is_Base", "Volvo", "Mrcedes" };
+const QStringList nameAuto { "...", "Volvo", "Mrcedes" };
 const QStringList ecoClasses { "Euro-4", "Euro-5", "Euro-6" };
 const QStringList volumeNotation { "m3", "l3" };
 
@@ -21,8 +22,11 @@ TheAutomobilForm::TheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( n
   setAttribute( Qt::WA_DeleteOnClose );
   ui->setupUi( this );
   ui->comboBoxNameAuto->addItems( nameAuto );
+  ui->comboBoxSeries->setEnabled( false );
+  ui->comboBoxMarka->setEnabled( false );
   ui->comboBoxEcoClass->addItems( ecoClasses );
   ui->comboBoxNotation->addItems( volumeNotation );
+  slotReadBrand( );
 
   connect( ui->buttonBoxAutomobileAdding, QOverload<>::of( &QDialogButtonBox::accepted ), this,
 	   QOverload<>::of( &TheAutomobilForm::slotClick_OK_Button ) );
@@ -30,6 +34,8 @@ TheAutomobilForm::TheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( n
 	   QOverload<>::of( &TheAutomobilForm::slotClick_Cancel_Button ) );
   connect( ui->pushButtonAddAuto, QOverload< bool >::of( &QPushButton::clicked ), this,
            QOverload<>::of( &TheAutomobilForm::slotCallAutobrandForm ) );
+  connect( ui->comboBoxNameAuto, QOverload< int >::of( &QComboBox::currentIndexChanged ), this,
+           QOverload< int >::of( &TheAutomobilForm::slotBrandChanged ) );
 }
 
 TheAutomobilForm::~TheAutomobilForm()
@@ -39,7 +45,6 @@ TheAutomobilForm::~TheAutomobilForm()
 
 void TheAutomobilForm::slotClick_OK_Button( ) {
   std::map< QString, QString > autoData;
-  qDebug( ) << "year = " << ui->dateEditYearOfIssue->date( ).year( );
   autoData[ "name_brand" ] = ui->comboBoxNameAuto->currentText( );
   autoData[ "marka_brand" ] = ui->comboBoxMarka->currentText( );
   autoData[ "issue" ] = QString::number( ui->dateEditYearOfIssue->date( ).year( ) );
@@ -79,9 +84,41 @@ void TheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }
 void TheAutomobilForm::slotCallAutobrandForm( ) {
   TheAutoBrandForm *autoBrandForm = new TheAutoBrandForm;
   connect( autoBrandForm, QOverload<>::of( &TheAutoBrandForm::signalInsertedToDatabase ), this,
-           QOverload<>::of( &TheAutomobilForm::slotReadBrandAndModel ) );
+           QOverload<>::of( &TheAutomobilForm::slotReadBrand ) );
+  autoBrandForm->show( );
 }
 
-void TheAutomobilForm::slotReadBrandAndModel( ) {
-  // TODO тут
+void TheAutomobilForm::slotReadBrand( ) {
+  QSqlQuery query;
+  if ( !query.exec(
+           QString { "SELECT DISTINCT ON ( name_brand ) name_brand FROM " + QString( AllConstatnts::dbSheme ) + ".autobrand;" } ) ) {
+    QMessageBox::critical( nullptr, "CRITICAl", "ERROR READ AUTOBRAND NAME" );
+  }
+  QStringList brands { "..." };
+  while ( query.next( ) ) {
+    brands << query.value( "name_brand" ).toString( );
+  }
+  ui->comboBoxNameAuto->clear( );
+  ui->comboBoxNameAuto->addItems( brands );
+}
+
+void TheAutomobilForm::slotBrandChanged( int index ) {
+  qDebug( ) << "index = " << index;
+  QSqlQuery query;
+
+  QString qq { "SELECT DISTINCT ON ( series_brand ) series_brand FROM " + QString( AllConstatnts::dbSheme ) +
+               ".autobrand WHERE name_brand = '" + ui->comboBoxNameAuto->currentText( ) + "';" };
+  qDebug( ) << qq;
+
+  if ( !query.exec( QString { "SELECT DISTINCT ON ( series_brand ) series_brand FROM " + QString( AllConstatnts::dbSheme ) +
+                              ".autobrand WHERE name_brand = '" + ui->comboBoxNameAuto->currentText( ) + "';" } ) ) {
+    QMessageBox::critical( nullptr, "CRITICAl", "ERROR READ AUTOBRAND SERIES" );
+  }
+  QStringList series;
+  while ( query.next( ) ) {
+    series << query.value( "series_brand" ).toString( );
+  }
+  ui->comboBoxSeries->setEnabled( true );
+  ui->comboBoxSeries->clear( );
+  ui->comboBoxSeries->addItems( series );
 }

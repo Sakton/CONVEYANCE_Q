@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>123</height>
+    <height>153</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -34,9 +34,6 @@
       </property>
       <item row="0" column="0">
        <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEditBrand"/>
-        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="labelBrand">
           <property name="text">
@@ -44,15 +41,28 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEditBrand"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEditMarka"/>
+        </item>
+        <item row="2" column="0">
          <widget class="QLabel" name="labelModel">
           <property name="text">
            <string>Model Auto</string>
           </property>
          </widget>
         </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Series Auto</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEditMarka"/>
+         <widget class="QLineEdit" name="lineEditSeries"/>
         </item>
        </layout>
       </item>

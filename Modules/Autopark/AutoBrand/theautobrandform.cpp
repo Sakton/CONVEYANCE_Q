@@ -24,8 +24,11 @@ TheAutoBrandForm::~TheAutoBrandForm()
 
 void TheAutoBrandForm::slotButtonOkClicked( ) {
   std::map< QString, QString > data;
-  data[ "name_brand" ] = ui->lineEditBrand->text( );
-  data[ "marka_brand" ] = ui->lineEditMarka->text( );
+  // TODO проверка на пустоту
+  data[ "name_brand" ] = ui->lineEditBrand->text( ).toUpper( );
+  data[ "series_brand" ] = ui->lineEditSeries->text( ).toUpper( );
+  data[ "marka_brand" ] = ui->lineEditMarka->text( ).toUpper( );
+
   ConveyanceSQLDatabase db;
   if ( !QSqlQuery( db.database( ) ).exec( QueryDriver::insertQueryString( "autobrand", data ) ) ) {
     QMessageBox::critical( nullptr, tr( "CRITICAL AUTOBRAND" ), tr( "ERROR INSERT TO DB" ) );
@@ -33,6 +36,7 @@ void TheAutoBrandForm::slotButtonOkClicked( ) {
   }
   emit signalInsertedToDatabase( );
   ui->lineEditBrand->clear( );
+  ui->lineEditSeries->clear( );
   ui->lineEditMarka->clear( );
 }
 

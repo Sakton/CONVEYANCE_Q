@@ -9,7 +9,6 @@
 
 class DBTableCreator : public QObject {
   Q_OBJECT
-  // private:
  public:
   DBTableCreator( );
 
