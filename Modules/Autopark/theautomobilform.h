@@ -18,6 +18,8 @@ class TheAutomobilForm : public QWidget
  public slots:
   void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
+  void slotCallAutobrandForm( );
+  void slotReadBrandAndModel( );
 
  private:
   Ui::TheAutomobilForm *ui;

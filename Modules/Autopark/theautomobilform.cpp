@@ -3,9 +3,14 @@
 #include <QDateEdit>
 #include <QDebug>
 #include <QDialogButtonBox>
+#include <QMessageBox>
+#include <QSqlQuery>
 #include <map>
 
+#include "AutoBrand/theautobrandform.h"
+#include "Utility/AllConstants.h"
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
+#include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theautomobilform.h"
 
 const QStringList nameAuto { "This_Add_Is_Base", "Volvo", "Mrcedes" };
@@ -23,6 +28,8 @@ TheAutomobilForm::TheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( n
 	   QOverload<>::of( &TheAutomobilForm::slotClick_OK_Button ) );
   connect( ui->buttonBoxAutomobileAdding, QOverload<>::of( &QDialogButtonBox::rejected ), this,
 	   QOverload<>::of( &TheAutomobilForm::slotClick_Cancel_Button ) );
+  connect( ui->pushButtonAddAuto, QOverload< bool >::of( &QPushButton::clicked ), this,
+           QOverload<>::of( &TheAutomobilForm::slotCallAutobrandForm ) );
 }
 
 TheAutomobilForm::~TheAutomobilForm()
@@ -50,22 +57,31 @@ void TheAutomobilForm::slotClick_OK_Button( ) {
   autoData[ "lift" ] = QString::number( ui->checkBoxTatLift->checkState( ) );
   autoData[ "commentary" ] = ui->plainTextEditComments->toPlainText( );
 
-  for ( auto &el : autoData ) qDebug( ) << el.first << " --> " << el.second;
-
-  // TODO this CHEK data
-  // if chek = OK
-  // TODO this INSERT to DB
   ConveyanceSQLDatabase db;
-  //  if ( db.openDb( ) ) {
-  //    qDebug( ) << "OPEN DB";
-  //    if ( db.createTableAutopark( ) ) {
-  //      qDebug( ) << "CREATE TABLE AUTOPARK";
-  //    } else {
-  //      qDebug( ) << "NOT CREATE TABLE AUTOPARK";
-  //    }
-  //  } else {
-  //    qDebug( ) << "ERROR OPEN DB";
-  //  }
-};
+  if ( !QSqlQuery( db.database( ) ).exec( QueryDriver::insertQueryString( QString( AllConstatnts::dbSheme ) + ".autopark", autoData ) ) ) {
+    QMessageBox::critical( nullptr, "CRITICAL", "ERROR INSERT TO DB AUTO" );
+    this->close( );
+  }
+  ui->dateEditYearOfIssue->clear( );
+  ui->lineEditVIN->clear( );
+  ui->comboBoxEcoClass->clear( );
+  ui->dateEditNextTechInspection->clear( );
+  ui->lineEditLenthCargon->clear( );
+  ui->lineEditWidthCargon->clear( );
+  ui->lineEditHeightCargoon->clear( );
+  ui->lineEditWolumeCargon->clear( );
+  ui->lineEditMaximalCarring->clear( );
+  ui->plainTextEditComments->clear( );
+}
 
 void TheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }
+
+void TheAutomobilForm::slotCallAutobrandForm( ) {
+  TheAutoBrandForm *autoBrandForm = new TheAutoBrandForm;
+  connect( autoBrandForm, QOverload<>::of( &TheAutoBrandForm::signalInsertedToDatabase ), this,
+           QOverload<>::of( &TheAutomobilForm::slotReadBrandAndModel ) );
+}
+
+void TheAutomobilForm::slotReadBrandAndModel( ) {
+  // TODO тут
+}

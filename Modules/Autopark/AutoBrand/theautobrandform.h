@@ -20,7 +20,7 @@ class TheAutoBrandForm : public QWidget
   void slotButtonCancelClicked( );
 
  signals:
-  void insertedToDatabase( );
+  void signalInsertedToDatabase( );
 
  private:
   Ui::TheAutoBrandForm *ui;

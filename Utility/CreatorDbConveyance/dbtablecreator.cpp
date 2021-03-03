@@ -92,12 +92,12 @@ void DBTableCreator::createAutoparkTable( ) {
                "name_brand varchar(64) NOT NULL,"
                "marka_brand varchar(64) NOT NULL,"
                "model varchar( 16),"
-               "issue date NOT NULL,"
+               "issue interval YEAR NOT NULL,"
                "vin varchar( 17 ),"
                "eco varchar(5),"
                "inspection date NOT NULL,"
                "reminder integer DEFAULT 0,"
-               "days_before interval DAY NOT NULL,"  //???
+               "days_before interval DAY NOT NULL,"
                "lenth numeric( 4, 2 ),"
                "width numeric( 4, 2 ),"
                "height numeric( 4, 2 ),"
@@ -109,8 +109,7 @@ void DBTableCreator::createAutoparkTable( ) {
                "UNIQUE ( name_brand, marka_brand ),"
                "FOREIGN KEY (name_brand, marka_brand) REFERENCES " +
                QString( AllConstatnts::dbSheme ) +
-               ".autopark ( name_brand, marka_brand ),"
-               "CHECK( ( issue + days_before ) <= inspection ) );" };  //???
-  qDebug( ) << qs;
+               ".autopark ( name_brand, marka_brand )"
+               ");" };
   queryToDb( qs );
 }
