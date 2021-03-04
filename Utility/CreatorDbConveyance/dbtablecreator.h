@@ -28,7 +28,7 @@ class DBTableCreator : public QObject {
   void createBrandAuto( );
 
  private:
-  ConveyanceSQLDatabase db;
+  // ConveyanceSQLDatabase db;
 };
 
 #endif // DBTABLECREATOR_H

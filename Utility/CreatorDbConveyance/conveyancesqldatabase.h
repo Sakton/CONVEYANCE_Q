@@ -9,15 +9,6 @@
 class ConveyanceSQLDatabase {
  public:
   explicit ConveyanceSQLDatabase();
-  ~ConveyanceSQLDatabase( );
-
-  bool openDb( );
-  void closeDb( );
-
-  const QSqlDatabase& database( ) const;
-
- private:
-  QSqlDatabase db;
 };
 
 #endif // CONVEYANCESQLDATABASE_H

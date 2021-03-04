@@ -23,9 +23,10 @@
 
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
+  ConveyanceSQLDatabase db;  //Подключение к существующей базе В ОДНОМ МЕСТЕ, ТУТ!!!
 
-  DBTableCreator cr;
-  cr.createAllTableDb( );
+  // DBTableCreator cr;
+  //  cr.createAllTableDb( );
 
   QWidget *w = new TheAutomobilForm;
   w->show( );
@@ -56,5 +57,5 @@ int main( int argc, char *argv[] ) {
   //  auto keys = s->allKeys();
   //  qDebug() << keys;
 
-  return a.exec();
+  return a.exec( );
 }

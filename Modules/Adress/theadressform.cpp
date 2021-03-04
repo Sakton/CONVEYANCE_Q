@@ -42,8 +42,8 @@ void TheAdressForm::slotClick_OK_Button( ) {
   adressData[ "adress" ] = ui->lineEditAdress->text( );
   adressData[ "country_name" ] = ui->comboBoxCountry->currentText( );
 
-  ConveyanceSQLDatabase db;
-  QSqlQuery query( db.database( ) );
+  // ConveyanceSQLDatabase db;
+  QSqlQuery query /*( db.database( ) )*/;
   if ( query.exec( QueryDriver::insertQueryString( "adress", adressData ) ) ) {
     // после успешной вставки очистка формы
     ui->lineEditIndex->clear( );

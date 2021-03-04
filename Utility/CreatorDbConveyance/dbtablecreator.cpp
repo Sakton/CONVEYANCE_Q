@@ -29,10 +29,11 @@ void DBTableCreator::createAllTableDb( ) {
 
 bool DBTableCreator::dropTable( ) { return 1; }
 
-DBTableCreator::~DBTableCreator( ) { db.closeDb( ); }
+DBTableCreator::~DBTableCreator( ) { /*db.closeDb( );*/
+}
 
 bool DBTableCreator::queryToDb( const QString &queryString ) {
-  QSqlQuery query( db.database( ) );
+  QSqlQuery query;
   return query.exec( queryString );
 }
 
@@ -83,7 +84,8 @@ void DBTableCreator::createBrandAuto( ) {
                "series_brand varchar(64) NOT NULL,"
                "marka_brand varchar(64) NOT NULL,"
                "UNIQUE (marka_brand),"
-               "PRIMARY KEY ( name_brand, marka_brand ) );" };
+               "CHECK ( name_brand != '' AND series_brand != '' AND marka_brand != '' ),"
+               "PRIMARY KEY ( name_brand, marka_brand, series_brand ) );" };
   queryToDb( qs );
 }
 
