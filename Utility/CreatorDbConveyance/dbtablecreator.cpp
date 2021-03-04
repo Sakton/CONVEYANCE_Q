@@ -12,30 +12,16 @@
 DBTableCreator::DBTableCreator( ) {}
 
 void DBTableCreator::createAllTableDb( ) {
-  //  try {
   createShema( );
   createTableCountry( );
   createAdressTable( );
   createBrandAuto( );
   createAutoparkTable( );
-  //  } catch (const ErrorCreateDatabase &e) {
-  //    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
-  //    if ( okBtn ) exit( 1 );
-  //  } catch (const ErrorDatabase &e) {
-  //    int okBtn = QMessageBox::critical( nullptr, "ERROR!!!", e.what( ), QMessageBox::StandardButton::Ok );
-  //    if ( okBtn ) exit( 1 );
-  //  }
 }
 
 bool DBTableCreator::dropTable( ) { return 1; }
 
-DBTableCreator::~DBTableCreator( ) { /*db.closeDb( );*/
-}
-
-bool DBTableCreator::queryToDb( const QString &queryString ) {
-  QSqlQuery query;
-  return query.exec( queryString );
-}
+bool DBTableCreator::queryToDb( const QString &queryString ) { return QSqlQuery( ).exec( queryString ); }
 
 bool DBTableCreator::createUser( const QString &userName, const QString &password ) {
   QString qs { "CREATE USER " + userName + " WITH PASSWORD '" + password + "';" };
@@ -93,20 +79,20 @@ void DBTableCreator::createAutoparkTable( ) {
   QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
                ".autopark ("
                "name_brand varchar(64) NOT NULL,"
+               "series_brand varchar(64) NOT NULL,"
                "marka_brand varchar(64) NOT NULL,"
-               "model varchar( 16),"
-               "issue interval YEAR NOT NULL,"
-               "vin varchar( 17 ),"
-               "eco varchar(5),"
+               "issue date NOT NULL,"
+               "vin varchar( 20 ),"
+               "eco varchar( 10 ),"
                "inspection date NOT NULL,"
                "reminder integer DEFAULT 0,"
                "days_before interval DAY NOT NULL,"
-               "lenth numeric( 4, 2 ),"
-               "width numeric( 4, 2 ),"
-               "height numeric( 4, 2 ),"
-               "space numeric( 5, 2 ),"
-               "carring numeric(4, 2),"
-               "lift boolean DEFAULT false,"
+               "lenth numeric( 10, 2 ),"
+               "width numeric( 10, 2 ),"
+               "height numeric( 10, 2 ),"
+               "space numeric( 10, 2 ),"
+               "carring numeric(10, 2),"
+               "lift integer DEFAULT 0,"
                "commentary text,"
                "PRIMARY KEY ( vin ),"
                "UNIQUE ( name_brand, marka_brand ),"
@@ -114,5 +100,6 @@ void DBTableCreator::createAutoparkTable( ) {
                QString( AllConstatnts::dbSheme ) +
                ".autopark ( name_brand, marka_brand )"
                ");" };
+  qDebug( ) << qs;
   queryToDb( qs );
 }

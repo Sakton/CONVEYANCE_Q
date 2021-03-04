@@ -7,7 +7,7 @@
 //идея не очень,
 QString QueryDriver::insertQueryString( const QString &tableName, const QueryDriver::typeCollection &coll ) {
   using para = std::pair< QString, QString >;
-  QString res = "INSERT INTO " + QString( AllConstatnts::dbSheme ) + "." + tableName + "(";
+  QString res = "INSERT INTO " + tableName + "(";
   res = std::accumulate( coll.begin( ), coll.end( ), res,
                          []( const QString &tRes, const para &el ) -> QString { return ( tRes + "\"" + el.first + "\"," ); } );
   res.chop( 1 );

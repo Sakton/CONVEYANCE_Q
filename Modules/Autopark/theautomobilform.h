@@ -1,7 +1,10 @@
 #ifndef THEAUTOMOBILFORM_H
 #define THEAUTOMOBILFORM_H
 
+#include <QDate>
 #include <QWidget>
+
+class QDate;
 
 namespace Ui {
 class TheAutomobilForm;
@@ -22,8 +25,11 @@ class TheAutomobilForm : public QWidget
   void slotReadBrand( );
   void slotReadSeries( int index );
   void slotReadModel( int index );
+  void slotDateChanged( QDate date );
 
  private:
+  static const QStringList ecoClasses;
+  static const QStringList volumeNotation;
   Ui::TheAutomobilForm *ui;
 };
 
