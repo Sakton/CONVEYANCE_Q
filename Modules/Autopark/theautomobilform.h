@@ -26,6 +26,12 @@ class TheAutomobilForm : public QWidget
   void slotReadSeries( int index );
   void slotReadModel( int index );
   void slotDateChanged( QDate date );
+  void slotVinValidate( const QString &vin );
+  void slotVinValidate( );
+
+ private:
+  bool validateVin( const QString &vin );
+  void showMessage( );
 
  private:
   static const QStringList ecoClasses;

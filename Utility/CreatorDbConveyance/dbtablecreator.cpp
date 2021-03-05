@@ -1,6 +1,7 @@
 #include "dbtablecreator.h"
 
 #include <QApplication>
+#include <QLatin1String>
 #include <QMessageBox>
 #include <QSqlQuery>
 #include <QStringList>
@@ -29,12 +30,12 @@ bool DBTableCreator::createUser( const QString &userName, const QString &passwor
 }
 
 void DBTableCreator::createShema( ) {
-  QString qs { "CREATE SCHEMA " + QString( AllConstatnts::dbSheme ) + ";" };
+  QString qs { "CREATE SCHEMA " + QLatin1String( AllConstatnts::dbSheme ) + ";" };
   queryToDb(qs);
 }
 
 void DBTableCreator::createTableCountry() {
-  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
                ".country ("
                "name varchar(64) NOT NULL,"
                "phonecode varchar(8) NOT NULL,"
@@ -47,7 +48,7 @@ void DBTableCreator::createTableCountry() {
 }
 
 void DBTableCreator::createAdressTable( ) {
-  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
                ".adress ("
                "country_name varchar(64) NOT NULL,"
                "type varchar(16) DEFAULT 'Legal Adress',"
@@ -56,7 +57,7 @@ void DBTableCreator::createAdressTable( ) {
                "adress varchar(256) NOT NULL,"
                "CHECK( type IN ('Legal Adress', 'Mail Adress') ),"
                "FOREIGN KEY ( country_name ) REFERENCES " +
-               QString( AllConstatnts::dbSheme ) +
+               QLatin1String( AllConstatnts::dbSheme ) +
                ".country ( name ) "
                "ON DELETE CASCADE "
                ");" };
@@ -64,7 +65,7 @@ void DBTableCreator::createAdressTable( ) {
 }
 
 void DBTableCreator::createBrandAuto( ) {
-  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
                ".autobrand ("
                "name_brand varchar(64) NOT NULL,"
                "series_brand varchar(64) NOT NULL,"
@@ -76,7 +77,7 @@ void DBTableCreator::createBrandAuto( ) {
 }
 
 void DBTableCreator::createAutoparkTable( ) {
-  QString qs { "CREATE TABLE " + QString( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
                ".autopark ("
                "name_brand varchar(64) NOT NULL,"
                "series_brand varchar(64) NOT NULL,"
@@ -84,22 +85,18 @@ void DBTableCreator::createAutoparkTable( ) {
                "issue date NOT NULL,"
                "vin varchar( 20 ),"
                "eco varchar( 10 ),"
-               "inspection date NOT NULL,"
+               "inspection date,"
+               "days_before integer DEFAULT 0,"
                "reminder integer DEFAULT 0,"
-               "days_before interval DAY NOT NULL,"
-               "lenth numeric( 10, 2 ),"
-               "width numeric( 10, 2 ),"
-               "height numeric( 10, 2 ),"
-               "space numeric( 10, 2 ),"
-               "carring numeric(10, 2),"
+               "days_reminder integer DEFAULT 0,"
+               "lenth numeric( 10, 2 ) DEFAULT 0,"
+               "width numeric( 10, 2 ) DEFAULT 0,"
+               "height numeric( 10, 2 ) DEFAULT 0,"
+               "space numeric( 10, 2 ) DEFAULT 0,"
+               "carring numeric(10, 2) DEFAULT 0,"
                "lift integer DEFAULT 0,"
                "commentary text,"
-               "PRIMARY KEY ( vin ),"
-               "UNIQUE ( name_brand, marka_brand ),"
-               "FOREIGN KEY (name_brand, marka_brand) REFERENCES " +
-               QString( AllConstatnts::dbSheme ) +
-               ".autopark ( name_brand, marka_brand )"
+               "PRIMARY KEY ( vin )"
                ");" };
-  qDebug( ) << qs;
   queryToDb( qs );
 }

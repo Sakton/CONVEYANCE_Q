@@ -2,6 +2,7 @@
 
 #include <QDialogButtonBox>
 #include <QMessageBox>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <map>
 
@@ -12,6 +13,7 @@
 TheAutoBrandForm::TheAutoBrandForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheAutoBrandForm ) {
   ui->setupUi( this );
   setAttribute( Qt::WA_DeleteOnClose );
+  setWindowModality( Qt::WindowModality::ApplicationModal );
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::accepted ), this, QOverload<>::of( &TheAutoBrandForm::slotButtonOkClicked ) );
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::rejected ), this,
            QOverload<>::of( &TheAutoBrandForm::slotButtonCancelClicked ) );
@@ -24,19 +26,18 @@ TheAutoBrandForm::~TheAutoBrandForm()
 
 void TheAutoBrandForm::slotButtonOkClicked( ) {
   std::map< QString, QString > data;
-  //проверка на пустоту в БД ( ограничение полей )
   data[ "name_brand" ] = ui->lineEditBrand->text( ).toUpper( ).trimmed( );
   data[ "series_brand" ] = ui->lineEditSeries->text( ).toUpper( ).trimmed( );
   data[ "marka_brand" ] = ui->lineEditMarka->text( ).toUpper( ).trimmed( );
-
-  if ( !QSqlQuery( ).exec( QueryDriver::insertQueryString( "autobrand", data ) ) ) {
-    QMessageBox::critical( nullptr, tr( "CRITICAL AUTOBRAND" ), tr( "ERROR INSERT TO DB" ) );
-    this->close( );
+  QSqlQuery query;
+  if ( !query.exec( QueryDriver::insertQueryString( "autobrand", data ) ) ) {
+    QMessageBox::critical( nullptr, tr( "CRITICAL AUTOBRAND" ), query.lastError( ).text( ) );
+  } else {
+    emit signalInsertedToDatabase( );
+    ui->lineEditBrand->clear( );
+    ui->lineEditSeries->clear( );
+    ui->lineEditMarka->clear( );
   }
-  emit signalInsertedToDatabase( );
-  ui->lineEditBrand->clear( );
-  ui->lineEditSeries->clear( );
-  ui->lineEditMarka->clear( );
 }
 
 void TheAutoBrandForm::slotButtonCancelClicked( ) { this->close( ); }

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QDialogButtonBox>
 #include <QMessageBox>
+#include <QRegularExpression>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <map>
@@ -25,8 +26,10 @@ TheAutomobilForm::TheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( n
   ui->comboBoxModel->setEnabled( false );
   ui->comboBoxEcoClass->addItems( ecoClasses );
   ui->comboBoxNotation->addItems( volumeNotation );
+  ui->spinBoxCountDays->setToolTip( tr( "Remind Before" ) );
+  ui->dateEditNextTechInspection->setDate( QDate::currentDate( ).addYears( 1 ) );
+  ui->labelDayBefore->setText( QString::number( QDate::currentDate( ).daysTo( QDate::currentDate( ).addYears( 1 ) ) ) );
   slotReadBrand( );
-
   connect( ui->buttonBoxAutomobileAdding, QOverload<>::of( &QDialogButtonBox::accepted ), this,
 	   QOverload<>::of( &TheAutomobilForm::slotClick_OK_Button ) );
   connect( ui->buttonBoxAutomobileAdding, QOverload<>::of( &QDialogButtonBox::rejected ), this,
@@ -39,6 +42,9 @@ TheAutomobilForm::TheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( n
            QOverload< int >::of( &TheAutomobilForm::slotReadModel ) );
   connect( ui->dateEditNextTechInspection, QOverload< QDate >::of( &QDateEdit::dateChanged ), this,
            QOverload< QDate >::of( &TheAutomobilForm::slotDateChanged ) );
+  connect( ui->lineEditVIN, QOverload< const QString & >::of( &QLineEdit::textChanged ), this,
+           QOverload< const QString & >::of( &TheAutomobilForm::slotVinValidate ) );
+  connect( ui->lineEditVIN, QOverload<>::of( &QLineEdit::editingFinished ), this, QOverload<>::of( &TheAutomobilForm::slotVinValidate ) );
 }
 
 TheAutomobilForm::~TheAutomobilForm()
@@ -52,36 +58,40 @@ void TheAutomobilForm::slotClick_OK_Button( ) {
   autoData[ "series_brand" ] = ui->comboBoxSeries->currentText( );
   autoData[ "marka_brand" ] = ui->comboBoxModel->currentText( );
   autoData[ "issue" ] = ui->dateEditYearOfIssue->date( ).toString( Qt::ISODate );
-  autoData[ "vin" ] = ui->lineEditVIN->text( );
+  autoData[ "vin" ] = ui->lineEditVIN->text( ).toUpper( );
   autoData[ "eco" ] = ui->comboBoxEcoClass->currentText( );
   autoData[ "inspection" ] = ui->dateEditNextTechInspection->date( ).toString( Qt::ISODate );
   autoData[ "reminder" ] = QString::number( ui->checkBoxReminder->checkState( ) );
-  autoData[ "days_before" ] = QString::number( ui->dateEditNextTechInspection->date( ).daysTo( QDate::currentDate( ) ) );
-  autoData[ "lenth" ] = ui->lineEditLenthCargon->text( );
-  autoData[ "width" ] = ui->lineEditWidthCargon->text( );
-  autoData[ "height" ] = ui->lineEditHeightCargoon->text( );
-  autoData[ "space" ] = ui->lineEditWolumeCargon->text( );
-  autoData[ "carring" ] = ui->lineEditMaximalCarring->text( );
-  autoData[ "lift" ] = QString::number( ui->checkBoxTatLift->checkState( ) );
+  autoData[ "days_before" ] = QString::number( QDate::currentDate( ).daysTo( ui->dateEditNextTechInspection->date( ) ) );
+  autoData[ "days_reminder" ] = QString::number( ui->spinBoxCountDays->value( ) );
+  if ( ui->groupBoxCargoonOptions->isChecked( ) ) {
+    autoData[ "lenth" ] = ui->lineEditLenthCargon->text( );
+    autoData[ "width" ] = ui->lineEditWidthCargon->text( );
+    autoData[ "height" ] = ui->lineEditHeightCargoon->text( );
+    autoData[ "space" ] = ui->lineEditWolumeCargon->text( );
+    autoData[ "carring" ] = ui->lineEditMaximalCarring->text( );
+    autoData[ "lift" ] = QString::number( ui->checkBoxTatLift->checkState( ) );
+  }
   autoData[ "commentary" ] = ui->plainTextEditComments->toPlainText( );
 
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString( QString( AllConstatnts::dbSheme ) + ".autopark", autoData );
-  qDebug( ) << "qs = " << qs;
-  if ( !query.exec( qs ) ) {
-    QMessageBox::critical( nullptr, "CRITICAL", query.lastError( ).text( ) );
-    this->close( );
+  if ( validateVin( autoData[ "vin" ] ) ) {
+    if ( !query.exec( qs ) ) {
+      QMessageBox::critical( nullptr, "CRITICAL", query.lastError( ).text( ) );
+    } else {
+      ui->lineEditVIN->clear( );
+      ui->comboBoxEcoClass->clear( );
+      ui->lineEditLenthCargon->clear( );
+      ui->lineEditWidthCargon->clear( );
+      ui->lineEditHeightCargoon->clear( );
+      ui->lineEditWolumeCargon->clear( );
+      ui->lineEditMaximalCarring->clear( );
+      ui->plainTextEditComments->clear( );
+    }
+  } else {
+    showMessage( );
   }
-  ui->dateEditYearOfIssue->clear( );
-  ui->lineEditVIN->clear( );
-  ui->comboBoxEcoClass->clear( );
-  ui->dateEditNextTechInspection->clear( );
-  ui->lineEditLenthCargon->clear( );
-  ui->lineEditWidthCargon->clear( );
-  ui->lineEditHeightCargoon->clear( );
-  ui->lineEditWolumeCargon->clear( );
-  ui->lineEditMaximalCarring->clear( );
-  ui->plainTextEditComments->clear( );
 }
 
 void TheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }
@@ -94,8 +104,7 @@ void TheAutomobilForm::slotCallAutobrandForm( ) {
 }
 
 void TheAutomobilForm::slotReadBrand( ) {
-  QString queryString =
-      QString( "SELECT DISTINCT ON ( %1 ) %1 FROM %2.%3;" ).arg( "name_brand" ).arg( AllConstatnts::dbSheme ).arg( "autobrand" );
+  QString queryString = QString( "SELECT DISTINCT ON ( name_brand ) name_brand FROM %1.autobrand;" ).arg( AllConstatnts::dbSheme );
   QSqlQuery query;
   if ( !query.exec( queryString ) ) {
     QMessageBox::critical( nullptr, "CRITICAl", query.lastError( ).text( ) );
@@ -109,13 +118,8 @@ void TheAutomobilForm::slotReadBrand( ) {
 }
 
 void TheAutomobilForm::slotReadSeries( int index ) {
-  qDebug( ) << "index = " << index;
-  QString queryString = QString( "SELECT DISTINCT ON ( %1 ) %1 FROM %2.%3 WHERE %4 = '%5' ;" )
-                            .arg( QLatin1String( "series_brand" ) )
-                            .arg( QLatin1String( AllConstatnts::dbSheme ) )
-                            .arg( QLatin1String( "autobrand" ) )
-                            .arg( QLatin1String( "name_brand" ) )
-                            .arg( ui->comboBoxNameAuto->currentText( ) );
+  QString queryString = QString( "SELECT DISTINCT ON ( series_brand ) series_brand FROM %1.autobrand WHERE name_brand = '%2' ;" )
+                            .arg( QLatin1String( AllConstatnts::dbSheme ), ui->comboBoxNameAuto->currentText( ) );
   QSqlQuery query;
   if ( !query.exec( queryString ) ) {
     QMessageBox::critical( nullptr, "CRITICAl", query.lastError( ).text( ) );
@@ -131,14 +135,9 @@ void TheAutomobilForm::slotReadSeries( int index ) {
 }
 
 void TheAutomobilForm::slotReadModel( int index ) {
-  QString queryString = QString( "SELECT DISTINCT ON ( %1 ) %1 FROM %2.%3 WHERE %4 = '%5' AND %6 = '%7'" )
-                            .arg( QLatin1String( "marka_brand" ) )
-                            .arg( QLatin1String( AllConstatnts::dbSheme ) )
-                            .arg( QLatin1String( "autobrand" ) )
-                            .arg( QLatin1String( "name_brand" ) )
-                            .arg( ui->comboBoxNameAuto->currentText( ) )
-                            .arg( QLatin1String( "series_brand" ) )
-                            .arg( ui->comboBoxSeries->currentText( ) );
+  QString queryString =
+      QString( "SELECT DISTINCT ON ( marka_brand ) marka_brand FROM %1.autobrand WHERE name_brand = '%2' AND series_brand = '%3'" )
+          .arg( QLatin1String( AllConstatnts::dbSheme ), ui->comboBoxNameAuto->currentText( ), ui->comboBoxSeries->currentText( ) );
 
   QSqlQuery query;
   if ( !query.exec( queryString ) ) {
@@ -157,3 +156,27 @@ void TheAutomobilForm::slotReadModel( int index ) {
 void TheAutomobilForm::slotDateChanged( QDate date ) {
   ui->labelDayBefore->setText( QString::number( QDate::currentDate( ).daysTo( date ) ) );
 }
+
+void TheAutomobilForm::slotVinValidate( const QString &vin ) {
+  // WP0ZZZ99ZTS392124
+  // SJNFBAF15U6433557
+  // XUFJA696JD3009672
+  if ( validateVin( vin ) ) {
+    ui->labelOkVin->setText( "V" );
+    ui->labelOkVin->setStyleSheet( "color : green" );
+  } else {
+    ui->labelOkVin->setText( "X" );
+    ui->labelOkVin->setStyleSheet( "color : red" );
+  }
+}
+
+void TheAutomobilForm::slotVinValidate( ) {
+  if ( !validateVin( ui->lineEditVIN->text( ).toUpper( ) ) ) showMessage( );
+}
+
+bool TheAutomobilForm::validateVin( const QString &vin ) {
+  QRegularExpression re( "[A-HJ-NPR-Z0-9]{17}" );
+  return re.match( vin.toUpper( ) ).hasMatch( ) && vin.size( ) == 17;
+}
+
+void TheAutomobilForm::showMessage( ) { QMessageBox::critical( nullptr, "VIN", "VIN NOT VALID" ); }
