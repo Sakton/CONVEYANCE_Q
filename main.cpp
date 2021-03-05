@@ -23,13 +23,16 @@
 
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
-  ConveyanceSQLDatabase db;  //Подключение к существующей базе В ОДНОМ МЕСТЕ, ТУТ!!!
+  ConveyanceSQLDatabase db;  //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
 
   DBTableCreator cr;
   cr.createAllTableDb( );
 
-  QWidget *w = new TheAutomobilForm;
-  w->show( );
+  MainWindow w;
+  w.show( );
+
+  //  QWidget *w = new TheAutomobilForm;
+  //  w->show( );
 
   //  QSettings *s = new QSettings("config.ini", QSettings::Format::IniFormat);
   //  s->setValue("myKey1", QVariant(100));
