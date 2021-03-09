@@ -1,5 +1,6 @@
 #include "viewerdataautopark.h"
 
+#include "../Model/modellistauto.h"
 #include "../theautomobilform.h"
 #include "ui_viewerdataautopark.h"
 
@@ -9,6 +10,7 @@ ViewerDataAutopark::ViewerDataAutopark( QWidget *parent ) : QWidget( parent ), u
            QOverload<>::of( &ViewerDataAutopark::slotClickOkButton ) );
   connect( ui->theAutomobilForm, QOverload<>::of( &TheAutomobilForm::signalClickedCancelButton ), this,
            QOverload<>::of( &ViewerDataAutopark::slotClickCancelButton ) );
+  ui->listView->setModel( new ModelListAuto( this ) );
 }
 
 ViewerDataAutopark::~ViewerDataAutopark()

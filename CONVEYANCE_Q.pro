@@ -62,6 +62,7 @@ HEADERS += \
 FORMS += \
     Modules/Adress/theadressform.ui \
     Modules/Autopark/AutoBrand/theautobrandform.ui \
+    Modules/Autopark/Template/TemplateFormDataAuto.ui \
     Modules/Autopark/View/viewerdataautopark.ui \
     Modules/Autopark/theautomobilform.ui \
     Modules/BlackList/theblacklistform.ui \
