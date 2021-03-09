@@ -3,9 +3,11 @@
 #include <QLabel>
 #include <QMdiSubWindow>
 #include <QMouseEvent>
+#include <QTabWidget>
 #include <QToolBar>
 
 //#include "Modules/Orders/orderstable.h"
+#include "Modules/Autopark/theautomobilform.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow( QWidget *parent ) : QMainWindow( parent ), ui( new Ui::MainWindow ) {
@@ -14,6 +16,7 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow( parent ), ui( new Ui::M
   setCentralWidget( ui->tabWidget );
   //  ui->tabWidget->setTabBarAutoHide( false );
   //  ui->tabWidget->clear( );
+  ui->tabWidget->addTab( new TheAutomobilForm, "Auto" );
 
   statusBarOperations( );
 

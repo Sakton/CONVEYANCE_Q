@@ -11,6 +11,8 @@ CONFIG += c++17
 SOURCES += \
     Modules/Adress/theadressform.cpp \
     Modules/Autopark/AutoBrand/theautobrandform.cpp \
+    Modules/Autopark/Model/modellistauto.cpp \
+    Modules/Autopark/View/viewerdataautopark.cpp \
     Modules/Autopark/theautomobilform.cpp \
     Modules/BlackList/theblacklistform.cpp \
     Modules/Client/theclientform.cpp \
@@ -35,6 +37,8 @@ SOURCES += \
 HEADERS += \
     Modules/Adress/theadressform.h \
     Modules/Autopark/AutoBrand/theautobrandform.h \
+    Modules/Autopark/Model/modellistauto.h \
+    Modules/Autopark/View/viewerdataautopark.h \
     Modules/Autopark/theautomobilform.h \
     Modules/BlackList/theblacklistform.h \
     Modules/Client/theclientform.h \
@@ -58,6 +62,7 @@ HEADERS += \
 FORMS += \
     Modules/Adress/theadressform.ui \
     Modules/Autopark/AutoBrand/theautobrandform.ui \
+    Modules/Autopark/View/viewerdataautopark.ui \
     Modules/Autopark/theautomobilform.ui \
     Modules/BlackList/theblacklistform.ui \
     Modules/Client/theclientform.ui \
@@ -82,6 +87,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     Convection/naming.txt \
     DIAGRAMS_AND_OTHER/DB_Description.ods \
-    DIAGRAMS_AND_OTHER/dbmodeldiagramm.qmodel \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.ods \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.xls

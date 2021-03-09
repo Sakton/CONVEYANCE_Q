@@ -3,6 +3,7 @@
 
 #include "Modules/Adress/theadressform.h"
 #include "Modules/Autopark/AutoBrand/theautobrandform.h"
+#include "Modules/Autopark/View/viewerdataautopark.h"
 #include "Modules/Autopark/theautomobilform.h"
 #include "Modules/BlackList/theblacklistform.h"
 #include "Modules/Client/theclientform.h"
@@ -28,8 +29,11 @@ int main( int argc, char *argv[] ) {
   DBTableCreator cr;
   cr.createAllTableDb( );
 
-  MainWindow w;
-  w.show( );
+  ViewerDataAutopark ap;
+  ap.show( );
+
+  //  MainWindow w;
+  //  w.show( );
 
   //  QWidget *w = new TheAutomobilForm;
   //  w->show( );

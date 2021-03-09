@@ -29,6 +29,10 @@ class TheAutomobilForm : public QWidget
   void slotVinValidate( const QString &vin );
   void slotVinValidate( );
 
+ signals:
+  void signalClickOkButton( );
+  void signalClickedCancelButton( );
+
  private:
   bool validateVin( const QString &vin );
   void showMessage( );

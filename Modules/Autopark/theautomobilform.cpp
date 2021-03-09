@@ -92,9 +92,13 @@ void TheAutomobilForm::slotClick_OK_Button( ) {
   } else {
     showMessage( );
   }
+  emit signalClickOkButton( );
 }
 
-void TheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }
+void TheAutomobilForm::slotClick_Cancel_Button( ) {
+  this->close( );
+  emit signalClickedCancelButton( );
+}
 
 void TheAutomobilForm::slotCallAutobrandForm( ) {
   TheAutoBrandForm *autoBrandForm = new TheAutoBrandForm;
