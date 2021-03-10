@@ -16,7 +16,6 @@ class ViewerDataAutopark : public QWidget
   ~ViewerDataAutopark( );
 
  public slots:
-  void slotClickOkButton( );
   void slotClickCancelButton( );
 
  private:

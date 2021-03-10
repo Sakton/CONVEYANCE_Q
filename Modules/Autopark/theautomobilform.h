@@ -19,27 +19,14 @@ class TheAutomobilForm : public QWidget
   ~TheAutomobilForm( );
 
  public slots:
-  void slotClick_OK_Button( );
+  //  void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
-  void slotCallAutobrandForm( );
-  void slotReadBrand( );
-  void slotReadSeries( int index );
-  void slotReadModel( int index );
-  void slotDateChanged( QDate date );
-  void slotVinValidate( const QString &vin );
-  void slotVinValidate( );
 
  signals:
   void signalClickOkButton( );
   void signalClickedCancelButton( );
 
  private:
-  bool validateVin( const QString &vin );
-  void showMessage( );
-
- private:
-  static const QStringList ecoClasses;
-  static const QStringList volumeNotation;
   Ui::TheAutomobilForm *ui;
 };
 

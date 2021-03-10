@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <map>
 
+#include "Utility/AllConstants.h"
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_theautobrandform.h"
@@ -30,7 +31,7 @@ void TheAutoBrandForm::slotButtonOkClicked( ) {
   data[ "series_brand" ] = ui->lineEditSeries->text( ).toUpper( ).trimmed( );
   data[ "marka_brand" ] = ui->lineEditMarka->text( ).toUpper( ).trimmed( );
   QSqlQuery query;
-  if ( !query.exec( QueryDriver::insertQueryString( "autobrand", data ) ) ) {
+  if ( !query.exec( QueryDriver::insertQueryString( QLatin1String( AllConstatnts::dbSheme ) + QLatin1String( ".autobrand" ), data ) ) ) {
     QMessageBox::critical( nullptr, tr( "CRITICAL AUTOBRAND" ), query.lastError( ).text( ) );
   } else {
     emit signalInsertedToDatabase( );

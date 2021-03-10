@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>524</height>
+    <height>532</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -25,58 +25,51 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>10</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QListView" name="listView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>300</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0" colspan="2">
       <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Список автомобилей</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="2" column="0" rowspan="2">
       <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Всего автомобилей</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0" colspan="2">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string/>
+     <item row="3" column="3">
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
-     <item row="0" column="3" rowspan="4">
-      <widget class="TheAutomobilForm" name="theAutomobilForm" native="true">
+     <item row="2" column="1" rowspan="2">
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>10</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3" rowspan="3">
+      <widget class="TemplateTheAutomobilForm" name="templateTheAutomobilForm" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -85,15 +78,18 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QListWidget" name="listWidgetAuto"/>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TheAutomobilForm</class>
+   <class>TemplateTheAutomobilForm</class>
    <extends>QWidget</extends>
-   <header>../CONVEYANCE_Q/Modules/Autopark/theautomobilform.h</header>
+   <header>Modules/Autopark/Template/templatetheautomobilform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

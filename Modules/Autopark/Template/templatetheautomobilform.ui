@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TemplateFormDataAuto</class>
- <widget class="QWidget" name="TemplateFormDataAuto">
+ <class>TemplateTheAutomobilForm</class>
+ <widget class="QWidget" name="TemplateTheAutomobilForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>440</width>
-    <height>656</height>
+    <width>400</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>440</width>
+    <width>400</width>
     <height>0</height>
    </size>
   </property>
@@ -616,13 +616,6 @@ Compartment</string>
          <widget class="QPlainTextEdit" name="plainTextEditComments"/>
         </item>
        </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDialogButtonBox" name="buttonBoxAutomobileAdding">
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-       </property>
       </widget>
      </item>
     </layout>

@@ -3,6 +3,7 @@
 
 #include "Modules/Adress/theadressform.h"
 #include "Modules/Autopark/AutoBrand/theautobrandform.h"
+#include "Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h"
 #include "Modules/Autopark/View/viewerdataautopark.h"
 #include "Modules/Autopark/theautomobilform.h"
 #include "Modules/BlackList/theblacklistform.h"
@@ -28,6 +29,9 @@ int main( int argc, char *argv[] ) {
 
   DBTableCreator cr;
   cr.createAllTableDb( );
+
+  //  TheDelegateFormaAuto dfa;
+  //  dfa.show( );
 
   ViewerDataAutopark ap;
   ap.show( );
