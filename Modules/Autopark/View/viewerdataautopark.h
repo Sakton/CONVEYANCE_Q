@@ -19,6 +19,9 @@ class ViewerDataAutopark : public QWidget
   void slotClickCancelButton( );
 
  private:
+  void setElementsWidget( );
+
+ private:
   Ui::ViewerDataAutopark *ui;
 };
 
