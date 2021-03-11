@@ -16,6 +16,7 @@ SOURCES += \
     Modules/Autopark/Model/modellistauto.cpp \
     Modules/Autopark/Template/templatetheautomobilform.cpp \
     Modules/Autopark/View/viewerdataautopark.cpp \
+    Modules/Autopark/automobil.cpp \
     Modules/Autopark/theautomobilform.cpp \
     Modules/BlackList/theblacklistform.cpp \
     Modules/Client/theclientform.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     Modules/Autopark/Model/modellistauto.h \
     Modules/Autopark/Template/templatetheautomobilform.h \
     Modules/Autopark/View/viewerdataautopark.h \
+    Modules/Autopark/automobil.h \
     Modules/Autopark/theautomobilform.h \
     Modules/BlackList/theblacklistform.h \
     Modules/Client/theclientform.h \
@@ -93,6 +95,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    BUGS \
     Convection/naming.txt \
     DIAGRAMS_AND_OTHER/DB_Description.ods \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.ods \

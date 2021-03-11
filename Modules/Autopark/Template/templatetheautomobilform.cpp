@@ -8,7 +8,6 @@
 #include <QRegularExpression>
 #include <QSqlError>
 #include <QSqlQuery>
-#include <map>
 
 #include "../AutoBrand/theautobrandform.h"
 #include "Utility/AllConstants.h"
@@ -49,8 +48,20 @@ TemplateTheAutomobilForm::~TemplateTheAutomobilForm()
   delete ui;
 }
 
+void TemplateTheAutomobilForm::setData( const TemplateTheAutomobilForm::AutoMap &map ) {
+  ui->comboBoxNameAuto->setCurrentText( map.at( "name_brand" ) );
+  ui->comboBoxSeries->setCurrentText( map.at( "series_brand" ) );
+  ui->comboBoxModel->setCurrentText( map.at( "marka_brand" ) );
+  ui->dateEditYearOfIssue->setDate( QDate::fromString( map.at( "issue" ), Qt::ISODate ) );
+  ui->lineEditVIN->setText( map.at( "vin" ) );
+  ui->comboBoxEcoClass->setCurrentText( map.at( "eco" ) );
+  ui->dateEditNextTechInspection->setDate( QDate::fromString( map.at( "inspection" ), Qt::ISODate ) );
+  ui->checkBoxReminder->setCheckState( static_cast< Qt::CheckState >( map.at( "reminder" ).toInt( ) ) );
+  ui->spinBoxCountDays->setValue( map.at( "days_reminder" ).toInt( ) );
+}
+
 void TemplateTheAutomobilForm::slotClick_OK_Button( ) {
-  std::map< QString, QString > autoData;
+  AutoMap autoData;
   autoData[ "name_brand" ] = ui->comboBoxNameAuto->currentText( );
   autoData[ "series_brand" ] = ui->comboBoxSeries->currentText( );
   autoData[ "marka_brand" ] = ui->comboBoxModel->currentText( );
@@ -59,6 +70,8 @@ void TemplateTheAutomobilForm::slotClick_OK_Button( ) {
   autoData[ "eco" ] = ui->comboBoxEcoClass->currentText( );
   autoData[ "inspection" ] = ui->dateEditNextTechInspection->date( ).toString( Qt::ISODate );
   autoData[ "reminder" ] = QString::number( ui->checkBoxReminder->checkState( ) );
+  // TODO days_before - это глупость хранить количество дней в базе, это вычисляемое
+  // ИСПРАВИТЬ
   autoData[ "days_before" ] = QString::number( QDate::currentDate( ).daysTo( ui->dateEditNextTechInspection->date( ) ) );
   autoData[ "days_reminder" ] = QString::number( ui->spinBoxCountDays->value( ) );
   if ( ui->groupBoxCargoonOptions->isChecked( ) ) {

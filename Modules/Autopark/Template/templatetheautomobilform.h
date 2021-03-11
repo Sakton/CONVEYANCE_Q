@@ -3,6 +3,7 @@
 
 #include <QDate>
 #include <QWidget>
+#include <map>
 
 namespace Ui {
 class TemplateTheAutomobilForm;
@@ -10,6 +11,8 @@ class TemplateTheAutomobilForm;
 
 class TemplateTheAutomobilForm : public QWidget
 {
+  using AutoMap = std::map< QString, QString >;
+
   Q_OBJECT
 
  public:
@@ -26,6 +29,9 @@ class TemplateTheAutomobilForm : public QWidget
   void slotDateChanged( QDate date );
   void slotVinValidate( const QString &vin );
   void slotVinValidate( );
+
+ public:
+  void setData( const AutoMap &map );
 
  private:
   bool validateVin( const QString &vin );

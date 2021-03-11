@@ -13,11 +13,14 @@
 
 ViewerDataAutopark::ViewerDataAutopark( QWidget *parent ) : QWidget( parent ), ui( new Ui::ViewerDataAutopark ) {
   ui->setupUi( this );
-
+  setMouseTracking( true );
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::accepted ), ui->templateTheAutomobilForm,
            QOverload<>::of( &TemplateTheAutomobilForm::slotClick_OK_Button ) );
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::rejected ), this,
            QOverload<>::of( &ViewerDataAutopark::slotClickCancelButton ) );
+  connect( ui->listWidgetAuto, QOverload< QListWidgetItem * >::of( &QListWidget::itemClicked ), this,
+           QOverload< QListWidgetItem * >::of( &ViewerDataAutopark::slotClickedAutoItem ) );
+  readAutosFromDb( );
   setElementsWidget( );
 }
 
@@ -27,26 +30,64 @@ ViewerDataAutopark::~ViewerDataAutopark()
 }
 
 void ViewerDataAutopark::slotClickCancelButton( ) {
-  qDebug( ) << "ViewerDataAutopark::slotClickCancelButton( )";
   this->close( );
 }
 
+void ViewerDataAutopark::slotClickedAutoItem( QListWidgetItem *item ) {
+  TheDelegateFormaAuto *formaDelegateAuto = qobject_cast< TheDelegateFormaAuto * >( item->listWidget( )->itemWidget( item ) );
+  if ( formaDelegateAuto ) {
+    QString vin = qobject_cast< TheDelegateFormaAuto * >( item->listWidget( )->itemWidget( item ) )->key( );
+    auto dataMap = autobase[ vin ];
+    ui->templateTheAutomobilForm->setData( dataMap );
+  }
+}
+
 void ViewerDataAutopark::setElementsWidget( ) {
+  for ( auto &el : autobase ) {
+    auto &t = el.second;  //сама карта
+    auto elem = new TheDelegateFormaAuto;
+    elem->setData( t[ "name_brand" ], t[ "series_brand" ], t[ "marka_brand" ], t[ "days_before" ] );
+    elem->setKey( t[ "vin" ] );  //установка идентификатора (key)
+    auto item = new QListWidgetItem;
+    item->setSizeHint( elem->size( ) );
+    ui->listWidgetAuto->addItem( item );
+    ui->listWidgetAuto->setItemWidget( item, elem );
+  }
+  ui->labelCountAutos->setText( QString::number( autobase.size( ) ) );
+}
+
+void ViewerDataAutopark::readAutosFromDb( ) {
   QSqlQuery query;
-  if ( query.exec( "SELECT name_brand, series_brand, marka_brand, days_before FROM " + QLatin1String( AllConstatnts::dbSheme ) +
-                   ".autopark;" ) ) {
+  if ( query.exec( "SELECT * FROM " + QLatin1String( AllConstatnts::dbSheme ) + ".autopark;" ) ) {
     while ( query.next( ) ) {
-      auto item = new QListWidgetItem;
-      ui->listWidgetAuto->addItem( item );
-      auto elem = new TheDelegateFormaAuto;
-      item->setSizeHint( elem->size( ) );
-      elem->setData( query.value( "name_brand" ).toString( ), query.value( "series_brand" ).toString( ),
-                     query.value( "marka_brand" ).toString( ), query.value( "days_before" ).toString( ) );
-      // connect(item, QOverload<>);
-      ui->listWidgetAuto->setItemWidget( item, elem );
+      MapAuto tmp;
+      // TODO может список полей в БД
+      tmp[ "name_brand" ] = query.value( "name_brand" ).toString( );
+      tmp[ "series_brand" ] = query.value( "series_brand" ).toString( );
+      tmp[ "marka_brand" ] = query.value( "marka_brand" ).toString( );
+      tmp[ "issue" ] = query.value( "issue" ).toString( );
+      tmp[ "vin" ] = query.value( "vin" ).toString( );
+      tmp[ "eco" ] = query.value( "eco" ).toString( );
+      tmp[ "inspection" ] = query.value( "inspection" ).toString( );
+      tmp[ "days_before" ] = query.value( "days_before" ).toString( );
+      tmp[ "reminder" ] = query.value( "reminder" ).toString( );
+      tmp[ "days_reminder" ] = query.value( "days_reminder" ).toString( );
+      tmp[ "lenth" ] = query.value( "lenth" ).toString( );
+      tmp[ "width" ] = query.value( "width" ).toString( );
+      tmp[ "height" ] = query.value( "height" ).toString( );
+      tmp[ "space" ] = query.value( "space" ).toString( );
+      tmp[ "carring" ] = query.value( "carring" ).toString( );
+      tmp[ "lift" ] = query.value( "lift" ).toString( );
+      tmp[ "commentary" ] = query.value( "commentary" ).toString( );
+      tmp[ "__ThisSessionEdit__" ] = QLatin1String( "0" );  //поле для
+      autobase[ tmp[ "vin" ] ] = tmp;
     }
-    ui->labelCountAutos->setText( QString::number( ui->listWidgetAuto->count( ) ) );
   } else {
     qDebug( ) << query.lastError( ).text( );
   }
+}
+
+void ViewerDataAutopark::saveChangesToDb( ) {
+  QString qs = "UPDATE " + QLatin1String( AllConstatnts::dbSheme ) + ".autopark SET ";
+  //
 }

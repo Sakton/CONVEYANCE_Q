@@ -1,7 +1,7 @@
 #include "thedelegateformaauto.h"
 #include "ui_thedelegateformaauto.h"
 
-TheDelegateFormaAuto::TheDelegateFormaAuto( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheDelegateFormaAuto ) {
+TheDelegateFormaAuto::TheDelegateFormaAuto( QWidget *parent ) : QWidget( parent ), ui( new Ui::TheDelegateFormaAuto ), key_ { } {
   ui->setupUi( this );
   QPixmap image;
   image.load( ":/image/volvo.jpg" );
@@ -15,6 +15,10 @@ void TheDelegateFormaAuto::setData( const QString &name, const QString &seria, c
   ui->labelMark->setText( mark );
   ui->labelDays->setText( days );
 }
+
+void TheDelegateFormaAuto::setKey( const QString &key ) { this->key_ = key; }
+
+QString TheDelegateFormaAuto::key( ) { return this->key_; }
 
 TheDelegateFormaAuto::~TheDelegateFormaAuto()
 {
