@@ -19,24 +19,17 @@ const QStringList TemplateTheAutomobilForm::ecoClasses = { QLatin1String( "Euro-
                                                            QLatin1String( "Euro-6" ) };
 const QStringList TemplateTheAutomobilForm::volumeNotation = { QLatin1String( "m3" ), QLatin1String( "l3" ) };
 
+const QLatin1String STYLESHEET_ERROR_VIN { "border: 2px dashed red;" };
+const QLatin1String STYLESHEET_OK_VIN { "border: 2px solid green;" };
+
 TemplateTheAutomobilForm::TemplateTheAutomobilForm( QWidget *parent ) : QWidget( parent ), ui( new Ui::TemplateTheAutomobilForm ) {
   ui->setupUi(this);
-  ui->comboBoxSeries->setEnabled( false );
-  ui->comboBoxModel->setEnabled( false );
+  ui->lineEditVIN->setStyleSheet( STYLESHEET_ERROR_VIN );
   ui->comboBoxEcoClass->addItems( ecoClasses );
   ui->comboBoxNotation->addItems( volumeNotation );
   ui->spinBoxCountDays->setToolTip( tr( "Remind Before" ) );
   ui->dateEditNextTechInspection->setDate( QDate::currentDate( ).addYears( 1 ) );
   ui->labelDayBefore->setText( QString::number( QDate::currentDate( ).daysTo( QDate::currentDate( ).addYears( 1 ) ) ) );
-  slotReadBrand( );
-  connect( ui->pushButtonAddAuto, QOverload< bool >::of( &QPushButton::clicked ), this,
-           QOverload<>::of( &TemplateTheAutomobilForm::slotCallAutobrandForm ) );
-  connect( ui->comboBoxNameAuto, QOverload< int >::of( &QComboBox::currentIndexChanged ), this,
-           QOverload< int >::of( &TemplateTheAutomobilForm::slotReadSeries ) );
-  connect( ui->comboBoxSeries, QOverload< int >::of( &QComboBox::currentIndexChanged ), this,
-           QOverload< int >::of( &TemplateTheAutomobilForm::slotReadModel ) );
-  connect( ui->dateEditNextTechInspection, QOverload< QDate >::of( &QDateEdit::dateChanged ), this,
-           QOverload< QDate >::of( &TemplateTheAutomobilForm::slotDateChanged ) );
   connect( ui->lineEditVIN, QOverload< const QString & >::of( &QLineEdit::textChanged ), this,
            QOverload< const QString & >::of( &TemplateTheAutomobilForm::slotVinValidate ) );
   connect( ui->lineEditVIN, QOverload<>::of( &QLineEdit::editingFinished ), this,
@@ -49,11 +42,12 @@ TemplateTheAutomobilForm::~TemplateTheAutomobilForm()
 }
 
 void TemplateTheAutomobilForm::setData( const TemplateTheAutomobilForm::AutoMap &map ) {
-  ui->comboBoxNameAuto->setCurrentText( map.at( "name_brand" ) );
-  ui->comboBoxSeries->setCurrentText( map.at( "series_brand" ) );
-  ui->comboBoxModel->setCurrentText( map.at( "marka_brand" ) );
+  ui->lineEditBrandAuto->setText( map.at( "name_brand" ) );
+  ui->lineEditSeriesAuto->setText( map.at( "series_brand" ) );
+  ui->lineEditModel->setText( map.at( "marka_brand" ) );
   ui->dateEditYearOfIssue->setDate( QDate::fromString( map.at( "issue" ), Qt::ISODate ) );
   ui->lineEditVIN->setText( map.at( "vin" ) );
+  ui->lineEditGosNumber->setText( map.at( "auto_counry_number" ) );
   ui->comboBoxEcoClass->setCurrentText( map.at( "eco" ) );
   ui->dateEditNextTechInspection->setDate( QDate::fromString( map.at( "inspection" ), Qt::ISODate ) );
   ui->checkBoxReminder->setCheckState( static_cast< Qt::CheckState >( map.at( "reminder" ).toInt( ) ) );
@@ -62,17 +56,15 @@ void TemplateTheAutomobilForm::setData( const TemplateTheAutomobilForm::AutoMap 
 
 void TemplateTheAutomobilForm::slotClick_OK_Button( ) {
   AutoMap autoData;
-  autoData[ "name_brand" ] = ui->comboBoxNameAuto->currentText( );
-  autoData[ "series_brand" ] = ui->comboBoxSeries->currentText( );
-  autoData[ "marka_brand" ] = ui->comboBoxModel->currentText( );
+  autoData[ "name_brand" ] = ui->lineEditBrandAuto->text( );
+  autoData[ "series_brand" ] = ui->lineEditSeriesAuto->text( );
+  autoData[ "marka_brand" ] = ui->lineEditModel->text( );
   autoData[ "issue" ] = ui->dateEditYearOfIssue->date( ).toString( Qt::ISODate );
   autoData[ "vin" ] = ui->lineEditVIN->text( ).toUpper( );
   autoData[ "eco" ] = ui->comboBoxEcoClass->currentText( );
   autoData[ "inspection" ] = ui->dateEditNextTechInspection->date( ).toString( Qt::ISODate );
   autoData[ "reminder" ] = QString::number( ui->checkBoxReminder->checkState( ) );
-  // TODO days_before - это глупость хранить количество дней в базе, это вычисляемое
-  // ИСПРАВИТЬ
-  autoData[ "days_before" ] = QString::number( QDate::currentDate( ).daysTo( ui->dateEditNextTechInspection->date( ) ) );
+  autoData[ "auto_counry_number" ] = ui->lineEditGosNumber->text( );
   autoData[ "days_reminder" ] = QString::number( ui->spinBoxCountDays->value( ) );
   if ( ui->groupBoxCargoonOptions->isChecked( ) ) {
     autoData[ "lenth" ] = ui->lineEditLenthCargon->text( );
@@ -91,6 +83,7 @@ void TemplateTheAutomobilForm::slotClick_OK_Button( ) {
       QMessageBox::critical( nullptr, "CRITICAL", query.lastError( ).text( ) );
     } else {
       ui->lineEditVIN->clear( );
+      ui->lineEditGosNumber->clear( );
       ui->comboBoxEcoClass->clear( );
       ui->lineEditLenthCargon->clear( );
       ui->lineEditWidthCargon->clear( );
@@ -106,77 +99,14 @@ void TemplateTheAutomobilForm::slotClick_OK_Button( ) {
 
 void TemplateTheAutomobilForm::slotClick_Cancel_Button( ) { this->close( ); }
 
-void TemplateTheAutomobilForm::slotCallAutobrandForm( ) {
-  TheAutoBrandForm *autoBrandForm = new TheAutoBrandForm;
-  connect( autoBrandForm, QOverload<>::of( &TheAutoBrandForm::signalInsertedToDatabase ), this,
-           QOverload<>::of( &TemplateTheAutomobilForm::slotReadBrand ) );
-  autoBrandForm->show( );
-}
-
-void TemplateTheAutomobilForm::slotReadBrand( ) {
-  QString queryString = QString( "SELECT DISTINCT ON ( name_brand ) name_brand FROM %1.autobrand;" ).arg( AllConstatnts::dbSheme );
-  QSqlQuery query;
-  if ( !query.exec( queryString ) ) {
-    QMessageBox::critical( nullptr, "CRITICAl", query.lastError( ).text( ) );
-  }
-  QStringList brands;
-  while ( query.next( ) ) {
-    brands << query.value( "name_brand" ).toString( );
-  }
-  ui->comboBoxNameAuto->clear( );
-  ui->comboBoxNameAuto->addItems( brands );
-}
-
-void TemplateTheAutomobilForm::slotReadSeries( int index ) {
-  QString queryString = QString( "SELECT DISTINCT ON ( series_brand ) series_brand FROM %1.autobrand WHERE name_brand = '%2' ;" )
-                            .arg( QLatin1String( AllConstatnts::dbSheme ), ui->comboBoxNameAuto->currentText( ) );
-  QSqlQuery query;
-  if ( !query.exec( queryString ) ) {
-    QMessageBox::critical( nullptr, "CRITICAl", query.lastError( ).text( ) );
-  }
-  QStringList series;
-  while ( query.next( ) ) {
-    series << query.value( "series_brand" ).toString( );
-  }
-  if ( !ui->comboBoxSeries->isEnabled( ) ) ui->comboBoxSeries->setEnabled( true );
-  ui->comboBoxSeries->clear( );
-  ui->comboBoxSeries->addItems( series );
-  Q_UNUSED( index )
-}
-
-void TemplateTheAutomobilForm::slotReadModel( int index ) {
-  QString queryString =
-      QString( "SELECT DISTINCT ON ( marka_brand ) marka_brand FROM %1.autobrand WHERE name_brand = '%2' AND series_brand = '%3'" )
-          .arg( QLatin1String( AllConstatnts::dbSheme ), ui->comboBoxNameAuto->currentText( ), ui->comboBoxSeries->currentText( ) );
-
-  QSqlQuery query;
-  if ( !query.exec( queryString ) ) {
-    QMessageBox::critical( nullptr, "CRITICAl", "ERROR READ AUTOBRAND MODEL" );
-  }
-  QStringList modelsAuto;
-  while ( query.next( ) ) {
-    modelsAuto << query.value( "marka_brand" ).toString( );
-  }
-  if ( !ui->comboBoxModel->isEnabled( ) ) ui->comboBoxModel->setEnabled( true );
-  ui->comboBoxModel->clear( );
-  ui->comboBoxModel->addItems( modelsAuto );
-  Q_UNUSED( index )
-}
-
-void TemplateTheAutomobilForm::slotDateChanged( QDate date ) {
-  ui->labelDayBefore->setText( QString::number( QDate::currentDate( ).daysTo( date ) ) );
-}
-
 void TemplateTheAutomobilForm::slotVinValidate( const QString &vin ) {
   // WP0ZZZ99ZTS392124
   // SJNFBAF15U6433557
   // XUFJA696JD3009672
   if ( validateVin( vin ) ) {
-    ui->labelOkVin->setText( "V" );
-    ui->labelOkVin->setStyleSheet( "color : green" );
+    ui->lineEditVIN->setStyleSheet( STYLESHEET_OK_VIN );
   } else {
-    ui->labelOkVin->setText( "X" );
-    ui->labelOkVin->setStyleSheet( "color : red" );
+    ui->lineEditVIN->setStyleSheet( STYLESHEET_ERROR_VIN );
   }
 }
 

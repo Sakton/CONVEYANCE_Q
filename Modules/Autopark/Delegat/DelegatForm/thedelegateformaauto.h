@@ -15,7 +15,7 @@ class TheDelegateFormaAuto : public QWidget
 
  public:
   explicit TheDelegateFormaAuto( QWidget *parent = nullptr );
-  void setData( const QString &name, const QString &seria, const QString &mark, const QString &days );
+  void setData( const QString &name, const QString &gosNumber );
   void setKey( const QString &key );
   QString key( );
 

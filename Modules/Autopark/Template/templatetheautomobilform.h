@@ -22,11 +22,6 @@ class TemplateTheAutomobilForm : public QWidget
  public slots:
   void slotClick_OK_Button( );
   void slotClick_Cancel_Button( );
-  void slotCallAutobrandForm( );
-  void slotReadBrand( );
-  void slotReadSeries( int index );
-  void slotReadModel( int index );
-  void slotDateChanged( QDate date );
   void slotVinValidate( const QString &vin );
   void slotVinValidate( );
 

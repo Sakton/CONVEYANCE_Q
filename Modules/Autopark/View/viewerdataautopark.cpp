@@ -46,7 +46,7 @@ void ViewerDataAutopark::setElementsWidget( ) {
   for ( auto &el : autobase ) {
     auto &t = el.second;  //сама карта
     auto elem = new TheDelegateFormaAuto;
-    elem->setData( t[ "name_brand" ], t[ "series_brand" ], t[ "marka_brand" ], t[ "days_before" ] );
+    elem->setData( t[ "name_brand" ], t[ "auto_counry_number" ] );
     elem->setKey( t[ "vin" ] );  //установка идентификатора (key)
     auto item = new QListWidgetItem;
     item->setSizeHint( elem->size( ) );
@@ -66,10 +66,10 @@ void ViewerDataAutopark::readAutosFromDb( ) {
       tmp[ "series_brand" ] = query.value( "series_brand" ).toString( );
       tmp[ "marka_brand" ] = query.value( "marka_brand" ).toString( );
       tmp[ "issue" ] = query.value( "issue" ).toString( );
+      tmp[ "auto_counry_number" ] = query.value( "auto_counry_number" ).toString( );
       tmp[ "vin" ] = query.value( "vin" ).toString( );
       tmp[ "eco" ] = query.value( "eco" ).toString( );
       tmp[ "inspection" ] = query.value( "inspection" ).toString( );
-      tmp[ "days_before" ] = query.value( "days_before" ).toString( );
       tmp[ "reminder" ] = query.value( "reminder" ).toString( );
       tmp[ "days_reminder" ] = query.value( "days_reminder" ).toString( );
       tmp[ "lenth" ] = query.value( "lenth" ).toString( );
@@ -79,7 +79,7 @@ void ViewerDataAutopark::readAutosFromDb( ) {
       tmp[ "carring" ] = query.value( "carring" ).toString( );
       tmp[ "lift" ] = query.value( "lift" ).toString( );
       tmp[ "commentary" ] = query.value( "commentary" ).toString( );
-      tmp[ "__ThisSessionEdit__" ] = QLatin1String( "0" );  //поле для
+      tmp[ "__ThisSessionEdit__" ] = QLatin1String( "0" );  //поле для отметки было ли изменение
       autobase[ tmp[ "vin" ] ] = tmp;
     }
   } else {

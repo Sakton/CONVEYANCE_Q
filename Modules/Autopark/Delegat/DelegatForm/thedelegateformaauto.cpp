@@ -5,15 +5,12 @@ TheDelegateFormaAuto::TheDelegateFormaAuto( QWidget *parent ) : QWidget( parent 
   ui->setupUi( this );
   QPixmap image;
   image.load( ":/image/volvo.jpg" );
-  ui->labelImg->resize( image.size( ) );
   ui->labelImg->setPixmap( image );
 }
 
-void TheDelegateFormaAuto::setData( const QString &name, const QString &seria, const QString &mark, const QString &days ) {
+void TheDelegateFormaAuto::setData( const QString &name, const QString &gosNumber ) {
   ui->labelNameBrand->setText( name );
-  ui->labelSeria->setText( seria );
-  ui->labelMark->setText( mark );
-  ui->labelDays->setText( days );
+  ui->labelGosNum->setText( gosNumber );
 }
 
 void TheDelegateFormaAuto::setKey( const QString &key ) { this->key_ = key; }

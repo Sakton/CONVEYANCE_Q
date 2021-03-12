@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QLatin1String>
 #include <QMessageBox>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <QStringList>
 #include <memory>
@@ -16,13 +17,21 @@ void DBTableCreator::createAllTableDb( ) {
   createShema( );
   createTableCountry( );
   createAdressTable( );
-  createBrandAuto( );
+  //  createBrandAuto( );
   createAutoparkTable( );
 }
 
 bool DBTableCreator::dropTable( ) { return 1; }
 
-bool DBTableCreator::queryToDb( const QString &queryString ) { return QSqlQuery( ).exec( queryString ); }
+bool DBTableCreator::queryToDb( const QString &queryString ) {
+  QSqlQuery query;
+  if ( query.exec( queryString ) )
+    return true;
+  else {
+    qDebug( ) << query.lastError( ).text( );
+    return false;
+  }
+}
 
 bool DBTableCreator::createUser( const QString &userName, const QString &password ) {
   QString qs { "CREATE USER " + userName + " WITH PASSWORD '" + password + "';" };
@@ -64,29 +73,29 @@ void DBTableCreator::createAdressTable( ) {
   queryToDb( qs );
 }
 
-void DBTableCreator::createBrandAuto( ) {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
-               ".autobrand ("
-               "name_brand varchar(64) NOT NULL,"
-               "series_brand varchar(64) NOT NULL,"
-               "marka_brand varchar(64) NOT NULL,"
-               "UNIQUE (marka_brand),"
-               "CHECK ( name_brand != '' AND series_brand != '' AND marka_brand != '' ),"
-               "PRIMARY KEY ( name_brand, marka_brand, series_brand ) );" };
-  queryToDb( qs );
-}
+// void DBTableCreator::createBrandAuto( ) {
+//  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
+//               ".autobrand ("
+//               "name_brand varchar(64) NOT NULL,"
+//               "series_brand varchar(64) NOT NULL,"
+//               "marka_brand varchar(64) NOT NULL,"
+//               "UNIQUE (marka_brand),"
+//               "CHECK ( name_brand != '' AND series_brand != '' AND marka_brand != '' ),"
+//               "PRIMARY KEY ( name_brand, marka_brand, series_brand ) );" };
+//  queryToDb( qs );
+//}
 
 void DBTableCreator::createAutoparkTable( ) {
   QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
                ".autopark ("
                "name_brand varchar(64) NOT NULL,"
-               "series_brand varchar(64) NOT NULL,"
+               "series_brand varchar(64),"
                "marka_brand varchar(64) NOT NULL,"
                "issue date NOT NULL,"
+               "auto_counry_number varchar( 8 ),"
                "vin varchar( 20 ),"
                "eco varchar( 10 ),"
                "inspection date,"
-               "days_before integer DEFAULT 0,"
                "reminder integer DEFAULT 0,"
                "days_reminder integer DEFAULT 0,"
                "lenth numeric( 10, 2 ) DEFAULT 0,"
@@ -96,7 +105,7 @@ void DBTableCreator::createAutoparkTable( ) {
                "carring numeric(10, 2) DEFAULT 0,"
                "lift integer DEFAULT 0,"
                "commentary text,"
-               "PRIMARY KEY ( vin )"
+               "PRIMARY KEY ( auto_counry_number, vin )"
                ");" };
   queryToDb( qs );
 }
