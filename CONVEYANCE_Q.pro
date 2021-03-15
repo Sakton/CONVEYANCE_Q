@@ -14,7 +14,11 @@ SOURCES += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.cpp \
     Modules/Autopark/Delegat/delegateauto.cpp \
     Modules/Autopark/Model/modellistauto.cpp \
+    Modules/Autopark/Template/templateformauto.cpp \
     Modules/Autopark/Template/templatetheautomobilform.cpp \
+    Modules/Autopark/Validator/validatorautodata.cpp \
+    Modules/Autopark/View/InsertFormAuto/insertformauto.cpp \
+    Modules/Autopark/View/UpdateFormAuto/updateformauto.cpp \
     Modules/Autopark/View/viewerdataautopark.cpp \
     Modules/Autopark/automobil.cpp \
     Modules/Autopark/theautomobilform.cpp \
@@ -44,7 +48,11 @@ HEADERS += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h \
     Modules/Autopark/Delegat/delegateauto.h \
     Modules/Autopark/Model/modellistauto.h \
+    Modules/Autopark/Template/templateformauto.h \
     Modules/Autopark/Template/templatetheautomobilform.h \
+    Modules/Autopark/Validator/validatorautodata.h \
+    Modules/Autopark/View/InsertFormAuto/insertformauto.h \
+    Modules/Autopark/View/UpdateFormAuto/updateformauto.h \
     Modules/Autopark/View/viewerdataautopark.h \
     Modules/Autopark/automobil.h \
     Modules/Autopark/theautomobilform.h \
@@ -71,7 +79,10 @@ FORMS += \
     Modules/Adress/theadressform.ui \
     Modules/Autopark/AutoBrand/theautobrandform.ui \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.ui \
+    Modules/Autopark/Template/templateformauto.ui \
     Modules/Autopark/Template/templatetheautomobilform.ui \
+    Modules/Autopark/View/InsertFormAuto/insertformauto.ui \
+    Modules/Autopark/View/UpdateFormAuto/updateformauto.ui \
     Modules/Autopark/View/viewerdataautopark.ui \
     Modules/Autopark/theautomobilform.ui \
     Modules/BlackList/theblacklistform.ui \
@@ -98,6 +109,7 @@ DISTFILES += \
     BUGS \
     Convection/naming.txt \
     DIAGRAMS_AND_OTHER/DB_Description.ods \
+    DIAGRAMS_AND_OTHER/autoparkfragment.qmodel \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.ods \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.xls
 

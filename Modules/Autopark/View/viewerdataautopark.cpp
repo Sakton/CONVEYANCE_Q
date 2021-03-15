@@ -14,8 +14,9 @@
 ViewerDataAutopark::ViewerDataAutopark( QWidget *parent ) : QWidget( parent ), ui( new Ui::ViewerDataAutopark ) {
   ui->setupUi( this );
   setMouseTracking( true );
-  connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::accepted ), ui->templateTheAutomobilForm,
-           QOverload<>::of( &TemplateTheAutomobilForm::slotClick_OK_Button ) );
+  //  connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::accepted ), ui->templateTheAutomobilForm,
+  //           QOverload<>::of( &TemplateTheAutomobilForm::slotClick_OK_Button ) );
+
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::rejected ), this,
            QOverload<>::of( &ViewerDataAutopark::slotClickCancelButton ) );
   connect( ui->listWidgetAuto, QOverload< QListWidgetItem * >::of( &QListWidget::itemClicked ), this,
@@ -33,10 +34,14 @@ void ViewerDataAutopark::slotClickCancelButton( ) {
   this->close( );
 }
 
+void ViewerDataAutopark::slotClickedOkButton( ) {
+  // TODO вставка всех изменений в БД
+}
+
 void ViewerDataAutopark::slotClickedAutoItem( QListWidgetItem *item ) {
-  TheDelegateFormaAuto *formaDelegateAuto = qobject_cast< TheDelegateFormaAuto * >( item->listWidget( )->itemWidget( item ) );
-  if ( formaDelegateAuto ) {
-    QString vin = qobject_cast< TheDelegateFormaAuto * >( item->listWidget( )->itemWidget( item ) )->key( );
+  currentDelegate = qobject_cast< TheDelegateFormaAuto * >( item->listWidget( )->itemWidget( item ) );
+  if ( currentDelegate ) {
+    QString vin = currentDelegate->key( );
     auto dataMap = autobase[ vin ];
     ui->templateTheAutomobilForm->setData( dataMap );
   }

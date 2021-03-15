@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 class QListWidgetItem;
+class TheDelegateFormaAuto;
 
 namespace Ui {
 class ViewerDataAutopark;
@@ -24,6 +25,7 @@ class ViewerDataAutopark : public QWidget
 
  public slots:
   void slotClickCancelButton( );
+  void slotClickedOkButton( );
   void slotClickedAutoItem( QListWidgetItem *item );
 
  private:
@@ -33,6 +35,7 @@ class ViewerDataAutopark : public QWidget
 
  private:
   HashAuto autobase;  //организация прокси
+  TheDelegateFormaAuto *currentDelegate;
   Ui::ViewerDataAutopark *ui;
 };
 
