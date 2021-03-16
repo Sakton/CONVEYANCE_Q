@@ -1,4 +1,5 @@
 #include "insertformauto.h"
+#include "../../Template/templateformauto.h"
 #include "ui_insertformauto.h"
 
 InsertFormAuto::InsertFormAuto( QWidget *parent ) : QWidget( parent ), ui( new Ui::InsertFormAuto ) { ui->setupUi( this ); }

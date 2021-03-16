@@ -5,6 +5,7 @@
 #include "Modules/Autopark/AutoBrand/theautobrandform.h"
 #include "Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h"
 #include "Modules/Autopark/Template/templateformauto.h"
+#include "Modules/Autopark/View/InsertFormAuto/insertformauto.h"
 #include "Modules/Autopark/View/viewerdataautopark.h"
 #include "Modules/Autopark/theautomobilform.h"
 #include "Modules/BlackList/theblacklistform.h"
@@ -31,8 +32,11 @@ int main( int argc, char *argv[] ) {
   DBTableCreator cr;
   cr.createAllTableDb( );
 
-  TemplateFormAuto tf;
-  tf.show( );
+  InsertFormAuto iform;
+  iform.show( );
+
+  //  TemplateFormAuto tf;
+  //  tf.show( );
 
   //  TheDelegateFormaAuto dfa;
   //  dfa.show( );

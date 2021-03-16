@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>376</width>
+    <width>379</width>
     <height>608</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
    <item row="0" column="3">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="2" column="1">
-      <widget class="QGroupBox" name="groupBox_4">
+      <widget class="QGroupBox" name="groupBoxRemind">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -43,7 +43,7 @@
            <widget class="QLabel" name="label_17">
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>20</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -124,7 +124,7 @@
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QGroupBox" name="groupBox_2">
+      <widget class="QGroupBox" name="groupBoxDates">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -231,7 +231,7 @@
       </widget>
      </item>
      <item row="3" column="0" colspan="2">
-      <widget class="QGroupBox" name="groupBox_3">
+      <widget class="QGroupBox" name="groupBoxComments">
        <property name="title">
         <string>Комментарии</string>
        </property>
@@ -399,7 +399,7 @@
       </widget>
      </item>
      <item row="1" column="0" colspan="2">
-      <widget class="QGroupBox" name="groupBoxCargoonOptions">
+      <widget class="QGroupBox" name="groupBoxOptions">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -574,6 +574,30 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEditBrandAuto</tabstop>
+  <tabstop>lineEditSeriesAuto</tabstop>
+  <tabstop>lineEditModel</tabstop>
+  <tabstop>lineEditGosNumber</tabstop>
+  <tabstop>lineEditVIN</tabstop>
+  <tabstop>comboBoxEcoClass</tabstop>
+  <tabstop>groupBoxOptions</tabstop>
+  <tabstop>lineEditLenthCargon</tabstop>
+  <tabstop>lineEditWidthCargon</tabstop>
+  <tabstop>lineEditHeightCargoon</tabstop>
+  <tabstop>lineEditWolumeCargon</tabstop>
+  <tabstop>comboBoxNotation</tabstop>
+  <tabstop>lineEditMaximalCarring</tabstop>
+  <tabstop>checkBoxTatLift</tabstop>
+  <tabstop>groupBoxDates</tabstop>
+  <tabstop>groupBoxRemind</tabstop>
+  <tabstop>dateEditYearOfIssue</tabstop>
+  <tabstop>dateEditNextTechInspection</tabstop>
+  <tabstop>checkBoxReminder</tabstop>
+  <tabstop>spinBoxCountDays</tabstop>
+  <tabstop>groupBoxComments</tabstop>
+  <tabstop>plainTextEditComments</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

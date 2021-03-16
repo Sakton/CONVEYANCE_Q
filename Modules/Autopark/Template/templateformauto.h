@@ -1,6 +1,7 @@
 #ifndef TEMPLATEFORMAUTO_H
 #define TEMPLATEFORMAUTO_H
 
+#include <QDate>
 #include <QWidget>
 #include <map>
 
@@ -15,16 +16,32 @@ class TemplateFormAuto : public QWidget {
   explicit TemplateFormAuto( QWidget* parent = nullptr );
   ~TemplateFormAuto( );
 
-  std::map< QString, QString > readForm( ) const;
+  void readConstDataForm( );
+  const std::map< QString, QString >& dataForm( ) const;
   void writeForm( const std::map< QString, QString >& data );
+  void clearForm( );
 
  public slots:
   void slotVinValidate( const QString& vin );
+  void slotDateChangedNextTech( QDate d );
+  //**
+  void slotReadBrand( );
+  void slotReadSeries( );
+  void slotReadModel( );
+  void slotReadGosNumber( );
+  void slotReadVin( );
+  void slotReadLenth( );
+  void slotReadWidth( );
+  void slotReadHeight( );
+  void slotReadSpace( );
+  void slotReadMaximalCarring( );
+  void slotReadComments( );
 
  private:
   static const QStringList ecoClasses;
   static const QStringList volumeNotation;
   Ui::TemplateFormAuto* ui;
+  std::map< QString, QString > autoData;
 };
 
 #endif  // TEMPLATEFORMAUTO_H

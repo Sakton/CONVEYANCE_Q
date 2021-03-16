@@ -43,7 +43,7 @@ void ViewerDataAutopark::slotClickedAutoItem( QListWidgetItem *item ) {
   if ( currentDelegate ) {
     QString vin = currentDelegate->key( );
     auto dataMap = autobase[ vin ];
-    ui->templateTheAutomobilForm->setData( dataMap );
+    ui->templateTheAutomobilForm->writeForm( dataMap );
   }
 }
 
