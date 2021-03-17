@@ -7,7 +7,8 @@
 
 ModelListAuto::ModelListAuto( QObject *parent ) : QAbstractListModel( parent ) {
   QSqlQuery query;
-  if ( query.exec( "SELECT vin FROM " + QLatin1String( AllConstatnts::dbSheme ) + ".autopark;" ) ) {
+  if ( query.exec( "SELECT vin FROM " +
+                   QLatin1String( AllConstatnts::DB_SHEME ) + ".autopark;" ) ) {
     while ( query.next( ) ) listItems << query.value( "vin" ).toString( );
   } else {
     qDebug( ) << query.lastError( );

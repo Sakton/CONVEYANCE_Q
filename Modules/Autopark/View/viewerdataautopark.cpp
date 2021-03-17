@@ -43,7 +43,7 @@ void ViewerDataAutopark::slotClickedAutoItem( QListWidgetItem *item ) {
   if ( currentDelegate ) {
     QString vin = currentDelegate->key( );
     auto dataMap = autobase[ vin ];
-    ui->templateTheAutomobilForm->writeForm( dataMap );
+    // ui->templateTheAutomobilForm->writeForm( dataMap );
   }
 }
 
@@ -63,7 +63,8 @@ void ViewerDataAutopark::setElementsWidget( ) {
 
 void ViewerDataAutopark::readAutosFromDb( ) {
   QSqlQuery query;
-  if ( query.exec( "SELECT * FROM " + QLatin1String( AllConstatnts::dbSheme ) + ".autopark;" ) ) {
+  if ( query.exec( "SELECT * FROM " + QLatin1String( AllConstatnts::DB_SHEME ) +
+                   ".autopark;" ) ) {
     while ( query.next( ) ) {
       MapAuto tmp;
       // TODO может список полей в БД
@@ -93,6 +94,7 @@ void ViewerDataAutopark::readAutosFromDb( ) {
 }
 
 void ViewerDataAutopark::saveChangesToDb( ) {
-  QString qs = "UPDATE " + QLatin1String( AllConstatnts::dbSheme ) + ".autopark SET ";
+  QString qs =
+      "UPDATE " + QLatin1String( AllConstatnts::DB_SHEME ) + ".autopark SET ";
   //
 }

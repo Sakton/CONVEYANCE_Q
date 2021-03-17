@@ -2,15 +2,20 @@
 #define SQLMODELAUTOPARK_H
 
 #include <QObject>
-#include <map>
-#include <unordered_map>
+#include "../../../Utility/AllConstants.h"
 
 class SqlModelAutopark
 {
-  using Table = std::unordered_map< QString, std::map< QString, QVariant > >;
+  using Table = AllConstatnts::Table;
 
  public:
   SqlModelAutopark( );
+
+ private:
+  void selectAll( );
+
+  Table& dataTable( );
+  const Table& dataTable( ) const;
 
  private:
   Table data_;

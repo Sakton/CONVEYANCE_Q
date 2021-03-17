@@ -3,7 +3,7 @@
 
 #include <QDate>
 #include <QWidget>
-#include <map>
+#include "../../../Utility/AllConstants.h"
 
 //Одна запись, по сути это строка таблицы БД, в такой форме
 
@@ -14,7 +14,7 @@ class TemplateFormAuto;
 class TemplateFormAuto : public QWidget {
   Q_OBJECT
 
-  using Line = std::map< QString, QVariant >;
+  using Line = AllConstatnts::Line;
 
  public:
   explicit TemplateFormAuto( QWidget* parent = nullptr );
@@ -22,7 +22,7 @@ class TemplateFormAuto : public QWidget {
 
   void readConstDataForm( );
   const Line& dataForm( ) const;
-  void writeForm( const std::map< QString, QString >& data );
+  void writeForm( const Line& data ) const;
   void clearForm( );
 
  public slots:

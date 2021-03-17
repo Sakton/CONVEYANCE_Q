@@ -39,12 +39,13 @@ bool DBTableCreator::createUser( const QString &userName, const QString &passwor
 }
 
 void DBTableCreator::createShema( ) {
-  QString qs { "CREATE SCHEMA " + QLatin1String( AllConstatnts::dbSheme ) + ";" };
+  QString qs { "CREATE SCHEMA " + QLatin1String( AllConstatnts::DB_SHEME ) +
+               ";" };
   queryToDb(qs);
 }
 
 void DBTableCreator::createTableCountry() {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
                ".country ("
                "name varchar(64) NOT NULL,"
                "phonecode varchar(8) NOT NULL,"
@@ -57,7 +58,7 @@ void DBTableCreator::createTableCountry() {
 }
 
 void DBTableCreator::createAdressTable( ) {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
                ".adress ("
                "country_name varchar(64) NOT NULL,"
                "type varchar(16) DEFAULT 'Legal Adress',"
@@ -66,7 +67,7 @@ void DBTableCreator::createAdressTable( ) {
                "adress varchar(256) NOT NULL,"
                "CHECK( type IN ('Legal Adress', 'Mail Adress') ),"
                "FOREIGN KEY ( country_name ) REFERENCES " +
-               QLatin1String( AllConstatnts::dbSheme ) +
+               QLatin1String( AllConstatnts::DB_SHEME ) +
                ".country ( name ) "
                "ON DELETE CASCADE "
                ");" };
@@ -86,7 +87,7 @@ void DBTableCreator::createAdressTable( ) {
 //}
 
 void DBTableCreator::createAutoparkTable( ) {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::dbSheme ) +
+  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
                ".autopark ("
                "name_brand varchar(64) NOT NULL,"
                "series_brand varchar(64),"

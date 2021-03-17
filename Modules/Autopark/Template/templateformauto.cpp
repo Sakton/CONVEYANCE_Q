@@ -111,28 +111,29 @@ const TemplateFormAuto::Line& TemplateFormAuto::dataForm( ) const {
   return autoData;
 }
 
-void TemplateFormAuto::writeForm( const std::map< QString, QString >& data ) {
-  ui->lineEditBrandAuto->setText( data.at( "name_brand" ) );
-  ui->lineEditSeriesAuto->setText( data.at( "series_brand" ) );
-  ui->lineEditModel->setText( data.at( "marka_brand" ) );
+void TemplateFormAuto::writeForm( const TemplateFormAuto::Line& data ) const {
+  ui->lineEditBrandAuto->setText( data.at( "name_brand" ).toString( ) );
+  ui->lineEditSeriesAuto->setText( data.at( "series_brand" ).toString( ) );
+  ui->lineEditModel->setText( data.at( "marka_brand" ).toString( ) );
   ui->dateEditYearOfIssue->setDate(
-      QDate::fromString( data.at( "issue" ), Qt::ISODate ) );
-  ui->lineEditVIN->setText( data.at( "vin" ) );
-  ui->lineEditGosNumber->setText( data.at( "auto_counry_number" ) );
-  ui->comboBoxEcoClass->setCurrentText( data.at( "eco" ) );
+      QDate::fromString( data.at( "issue" ).toString( ), Qt::ISODate ) );
+  ui->lineEditVIN->setText( data.at( "vin" ).toString( ) );
+  ui->lineEditGosNumber->setText( data.at( "auto_counry_number" ).toString( ) );
+  ui->comboBoxEcoClass->setCurrentText( data.at( "eco" ).toString( ) );
   ui->dateEditNextTechInspection->setDate(
-      QDate::fromString( data.at( "inspection" ), Qt::ISODate ) );
+      QDate::fromString( data.at( "inspection" ).toString( ), Qt::ISODate ) );
   ui->checkBoxReminder->setCheckState(
       static_cast< Qt::CheckState >( data.at( "reminder" ).toInt( ) ) );
   ui->spinBoxCountDays->setValue( data.at( "days_reminder" ).toInt( ) );
-  ui->lineEditLenthCargon->setText( data.at( "lenth" ) );
-  ui->lineEditWidthCargon->setText( data.at( "width" ) );
-  ui->lineEditHeightCargoon->setText( data.at( "height" ) );
-  ui->lineEditWolumeCargon->setText( data.at( "space" ) );
-  ui->lineEditMaximalCarring->setText( data.at( "carring" ) );
+  ui->lineEditLenthCargon->setText( data.at( "lenth" ).toString( ) );
+  ui->lineEditWidthCargon->setText( data.at( "width" ).toString( ) );
+  ui->lineEditHeightCargoon->setText( data.at( "height" ).toString( ) );
+  ui->lineEditWolumeCargon->setText( data.at( "space" ).toString( ) );
+  ui->lineEditMaximalCarring->setText( data.at( "carring" ).toString( ) );
   ui->checkBoxTatLift->setCheckState(
       static_cast< Qt::CheckState >( data.at( "lift" ).toInt( ) ) );
-  ui->plainTextEditComments->setPlaceholderText( data.at( "commentary" ) );
+  ui->plainTextEditComments->setPlaceholderText(
+      data.at( "commentary" ).toString( ) );
 }
 
 void TemplateFormAuto::clearForm( ) {

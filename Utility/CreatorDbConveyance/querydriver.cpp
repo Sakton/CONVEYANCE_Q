@@ -20,5 +20,6 @@ QString QueryDriver::insertQueryString( const QString &tableName, const QueryDri
 }
 
 QString QueryDriver::selectAll( const QString &tableName ) {
-  return QString( "SELECT * FROM " ) + QString( AllConstatnts::dbSheme ) + "." + tableName + ";";
+  return QString( "SELECT * FROM " ) + QString( AllConstatnts::DB_SHEME ) +
+         "." + tableName + ";";
 }
