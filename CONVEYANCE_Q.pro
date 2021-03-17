@@ -14,6 +14,7 @@ SOURCES += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.cpp \
     Modules/Autopark/Delegat/delegateauto.cpp \
     Modules/Autopark/Model/modellistauto.cpp \
+    Modules/Autopark/Model/sqlmodelautopark.cpp \
     Modules/Autopark/Template/templateformauto.cpp \
     Modules/Autopark/Template/templatetheautomobilform.cpp \
     Modules/Autopark/Validator/validatorautodata.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h \
     Modules/Autopark/Delegat/delegateauto.h \
     Modules/Autopark/Model/modellistauto.h \
+    Modules/Autopark/Model/sqlmodelautopark.h \
     Modules/Autopark/Template/templateformauto.h \
     Modules/Autopark/Template/templatetheautomobilform.h \
     Modules/Autopark/Validator/validatorautodata.h \

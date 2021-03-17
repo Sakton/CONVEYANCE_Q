@@ -107,7 +107,7 @@ void TemplateFormAuto::readConstDataForm( ) {
   }
 }
 
-const std::map< QString, QString >& TemplateFormAuto::dataForm( ) const {
+const TemplateFormAuto::Line& TemplateFormAuto::dataForm( ) const {
   return autoData;
 }
 

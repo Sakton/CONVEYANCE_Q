@@ -13,7 +13,11 @@ class InsertFormAuto : public QWidget
 
  public:
   explicit InsertFormAuto(QWidget *parent = nullptr);
-  ~InsertFormAuto();
+  ~InsertFormAuto( );
+
+ public slots:
+  void slotButtonAccepted( );
+  void slotButtonRejected( );
 
  private:
   Ui::InsertFormAuto *ui;

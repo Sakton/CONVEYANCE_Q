@@ -70,9 +70,9 @@
                           </DElement>
                          </base-DElement>
                          <object>{4a4c5489-a4b7-4506-a4d1-8aa758c7024c}</object>
-                         <name>NewFormaAuto</name>
-                         <pos>x:-315;y:295</pos>
-                         <rect>x:-115;y:-75;w:230;h:150</rect>
+                         <name>InsertFormaAuto</name>
+                         <pos>x:-235;y:275</pos>
+                         <rect>x:-90;y:-75;w:180;h:150</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -93,8 +93,8 @@
                          </base-DElement>
                          <object>{f42f75c8-2090-41dd-9e64-e76a98b9db3e}</object>
                          <name>UpdateFormAuto</name>
-                         <pos>x:0;y:290</pos>
-                         <rect>x:-105;y:-80;w:210;h:160</rect>
+                         <pos>x:0;y:275</pos>
+                         <rect>x:-90;y:-75;w:180;h:150</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -114,7 +114,7 @@
                           </DElement>
                          </base-DElement>
                          <object>{042242ed-923b-406e-9f01-369e41305b79}</object>
-                         <name>ModelAutopark</name>
+                         <name>SqlModelAutopark</name>
                          <pos>x:-370;y:505</pos>
                          <rect>x:-170;y:-105;w:340;h:210</rect>
                          <auto-sized>false</auto-sized>
@@ -137,8 +137,8 @@
                          </base-DElement>
                          <object>{1557e65d-fa40-4530-8d1b-71d99255d588}</object>
                          <name>QListWidget</name>
-                         <pos>x:230;y:505</pos>
-                         <rect>x:-60;y:-40;w:120;h:80</rect>
+                         <pos>x:235;y:495</pos>
+                         <rect>x:-60;y:-35;w:120;h:70</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -185,8 +185,8 @@
                           </qlist>
                          </stereotypes>
                          <name>AutoPark</name>
-                         <pos>x:-365;y:715</pos>
-                         <rect>x:-105;y:-50;w:210;h:100</rect>
+                         <pos>x:-365;y:665</pos>
+                         <rect>x:-105;y:-20;w:210;h:40</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -224,8 +224,8 @@
                          </base-DElement>
                          <object>{b94f7907-a2c4-482a-afc7-63dfdaa1f521}</object>
                          <name>MainViewAuto</name>
-                         <pos>x:0;y:485</pos>
-                         <rect>x:-105;y:-60;w:210;h:120</rect>
+                         <pos>x:-5;y:480</pos>
+                         <rect>x:-100;y:-55;w:200;h:110</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -283,24 +283,6 @@
                            </item>
                           </qlist>
                          </points>
-                        </DRelation>
-                       </base-DRelation>
-                      </DDependency>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DDependency">
-                      <DDependency>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{5face4c1-04d9-4bdf-836a-896335b967f5}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{ce6d321b-842f-4ef0-b665-a89cf5a26837}</object>
-                         <a>{648c9bb0-dc4a-4104-bc9e-a062edbc7867}</a>
-                         <b>{f1d950cd-2d7f-4f4c-ab7d-8bfa287b547b}</b>
                         </DRelation>
                        </base-DRelation>
                       </DDependency>
@@ -457,8 +439,8 @@
                          </base-DElement>
                          <object>{73998fb6-02a8-4982-b666-32a6153ab613}</object>
                          <name>TheDelegateMainView</name>
-                         <pos>x:1.77636e-15;y:635</pos>
-                         <rect>x:-65;y:-55;w:130;h:110</rect>
+                         <pos>x:1.77636e-15;y:610</pos>
+                         <rect>x:-65;y:-30;w:130;h:60</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -500,8 +482,8 @@
                          </base-DElement>
                          <object>{e55b737c-9f5c-42a8-86ba-c0d7a8934775}</object>
                          <name>QAbstractListModel</name>
-                         <pos>x:235;y:835</pos>
-                         <rect>x:-75;y:-45;w:150;h:90</rect>
+                         <pos>x:235;y:805</pos>
+                         <rect>x:-55;y:-30;w:110;h:60</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -590,9 +572,72 @@
                       </DInheritance>
                      </instance>
                     </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{ac10d07a-f4a3-490d-bf1f-a6937367a186}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{40c67630-b07e-4595-83ef-36f6c5420bf3}</object>
+                         <a>{f1d950cd-2d7f-4f4c-ab7d-8bfa287b547b}</a>
+                         <b>{1e9d4310-042f-4ef0-90a0-33ab1cea8f3f}</b>
+                         <points>
+                          <qlist>
+                           <item>
+                            <DRelation--IntermediatePoint>
+                             <pos>x:-250;y:375</pos>
+                            </DRelation--IntermediatePoint>
+                           </item>
+                          </qlist>
+                         </points>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{6e10dac5-a1c8-4c60-a8b4-23cc58f5eb15}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{3fbf9848-ddc9-4b90-bd6d-12e39dd0111b}</object>
+                         <a>{98588caf-5df6-4a2a-b184-632645c27f11}</a>
+                         <b>{1e9d4310-042f-4ef0-90a0-33ab1cea8f3f}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{1f87ff8d-4faf-40b0-8557-6063979d2115}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{3c64ce58-41fd-4738-8718-a5049d7a1c06}</object>
+                         <a>{648c9bb0-dc4a-4104-bc9e-a062edbc7867}</a>
+                         <b>{f1d950cd-2d7f-4f4c-ab7d-8bfa287b547b}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
                    </qlist>
                   </elements>
-                  <last-modified>1615808832519</last-modified>
+                  <last-modified>1615964128841</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -712,7 +757,7 @@
                     <uid>{4a4c5489-a4b7-4506-a4d1-8aa758c7024c}</uid>
                    </MElement>
                   </base-MElement>
-                  <name>NewFormaAuto</name>
+                  <name>InsertFormaAuto</name>
                   <relations>
                    <handles>
                     <handles>
@@ -783,6 +828,28 @@
                         </target>
                        </handle>
                       </item>
+                      <item>
+                       <handle>
+                        <uid>{40c67630-b07e-4595-83ef-36f6c5420bf3}</uid>
+                        <target>
+                         <instance type="MDependency">
+                          <MDependency>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{40c67630-b07e-4595-83ef-36f6c5420bf3}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{4a4c5489-a4b7-4506-a4d1-8aa758c7024c}</a>
+                             <b>{042242ed-923b-406e-9f01-369e41305b79}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MDependency>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
                      </qlist>
                     </handles>
                    </handles>
@@ -793,35 +860,35 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{2c55767c-1bb4-4d2c-8768-03597d86e9b0}</uid>
+                    <uid>{226029af-640f-48ec-a7a4-cf88cdf11894}</uid>
                     <type>1</type>
                     <declaration>UI{ TemplateFormAuto tForm</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{fa4662c7-1e12-44ba-9ac3-596287270dbf}</uid>
+                    <uid>{f38eb1d9-56ce-45d3-986e-04d71ef4ed7b}</uid>
                     <type>1</type>
                     <declaration>ButtonBox button</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{9f6dd084-01d8-430f-abe4-86df2f7b3b66}</uid>
+                    <uid>{b6b6cfdc-29c1-4d85-a6ad-776b5cb9a7fb}</uid>
                     <type>1</type>
                     <declaration>}</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{184967fa-64c0-4c54-855a-d543cb8e8001}</uid>
+                    <uid>{2af2bfd2-3251-41bb-b9fd-b1bc129acba3}</uid>
                     <type>2</type>
                     <declaration>+void clickOkButton()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{9a0763e8-d772-46ee-a903-419b4824bdd6}</uid>
+                    <uid>{b16b0346-ca16-4808-8377-0d12b01b6474}</uid>
                     <type>2</type>
                     <declaration>+void clickCancelButton()</declaration>
                    </MClassMember>
@@ -1027,6 +1094,28 @@
                         </target>
                        </handle>
                       </item>
+                      <item>
+                       <handle>
+                        <uid>{3fbf9848-ddc9-4b90-bd6d-12e39dd0111b}</uid>
+                        <target>
+                         <instance type="MDependency">
+                          <MDependency>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{3fbf9848-ddc9-4b90-bd6d-12e39dd0111b}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{f42f75c8-2090-41dd-9e64-e76a98b9db3e}</a>
+                             <b>{042242ed-923b-406e-9f01-369e41305b79}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MDependency>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
                      </qlist>
                     </handles>
                    </handles>
@@ -1037,35 +1126,35 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{14044118-ef46-4f4d-a94c-4d7036fab33d}</uid>
+                    <uid>{9f886ea2-5e6d-4ee0-ba5b-d4474ce4833b}</uid>
                     <type>1</type>
                     <declaration>UI{  TemplateFormAuto tForm</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{114f4371-0099-4109-9406-e5060e212ab4}</uid>
+                    <uid>{4b65366f-2b74-4aa0-8240-1fdb885d2457}</uid>
                     <type>1</type>
                     <declaration>ButtonBox box</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{63e02f1a-1d27-471d-938b-4f1de7fe0eaf}</uid>
+                    <uid>{97f9d575-55ac-4ee4-9b2e-e1e01bf2a282}</uid>
                     <type>1</type>
                     <declaration>QListWidget listWidget</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{7d10bdaa-6577-4821-a49a-8523b378d64d}</uid>
+                    <uid>{62618263-4da7-4bed-8da6-cc8495db53db}</uid>
                     <type>1</type>
                     <declaration>}</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{f33f227c-20e7-45aa-b60c-8e858153a3c7}</uid>
+                    <uid>{98af0fe4-4f6a-4509-b03d-ed91532fcc9b}</uid>
                     <type>2</type>
                     <declaration>+void clickUpdateButton()</declaration>
                    </MClassMember>
@@ -1090,7 +1179,7 @@
                     <uid>{042242ed-923b-406e-9f01-369e41305b79}</uid>
                    </MElement>
                   </base-MElement>
-                  <name>ModelAutopark</name>
+                  <name>SqlModelAutopark</name>
                   <relations>
                    <handles>
                     <handles>
@@ -1127,63 +1216,63 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{4238e09f-e318-4bd6-9ff0-aa71a91eecda}</uid>
+                    <uid>{a3a5b019-7f68-4aed-b039-8ac4eb94b797}</uid>
                     <type>1</type>
                     <declaration>-std::unordered_map&lt;std::map&lt;QString, QString&gt;&gt; cach</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{6bd9701c-88a8-473b-8b3a-50e3ebcbb543}</uid>
+                    <uid>{48a74c97-0957-40d0-8208-623751516893}</uid>
                     <type>2</type>
                     <declaration>+void insertRecord(std::map&lt;QString,QString&gt;)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{7c749905-e1b5-4cfe-8d11-a4034bbb7a06}</uid>
+                    <uid>{4d00574b-8045-420f-a839-28e0ee7ff1b2}</uid>
                     <type>2</type>
                     <declaration>+void updateRecord(constQString &amp;key, std::map&lt;QString, QString&gt;)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{8e02ce18-e0de-47f3-ae5d-c52eaa70ead1}</uid>
+                    <uid>{1e62be20-3055-49ce-8086-a27025127c8f}</uid>
                     <type>2</type>
                     <declaration>+void deleteRecord(const QString &amp;key)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{27519e0e-8900-484f-8b02-4e032d67b707}</uid>
+                    <uid>{5cc2a0ed-8cd7-4dfa-be66-28e45cf5676b}</uid>
                     <type>2</type>
                     <declaration>+std::map&lt;QString, QString&gt; findRecord(const QString &amp;key)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{11d00ca3-befa-4cb5-b0da-f095fe3aebea}</uid>
+                    <uid>{1af282b0-db2f-41cf-af2b-87e1d8743faa}</uid>
                     <type>2</type>
                     <declaration>-select( ... )</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{03263b61-9e38-4714-aa60-0751d6d3a53e}</uid>
+                    <uid>{3b7f2782-ac11-415f-be91-f9b44245b773}</uid>
                     <type>2</type>
                     <declaration>-insert( ... )</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{c2c41021-f1ca-4a2f-b1db-44c81e9ae80e}</uid>
+                    <uid>{79f9d7ce-ad5a-4ac8-a416-896ae619352f}</uid>
                     <type>2</type>
                     <declaration>-update( ... )</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{42a4de8a-6c9a-4078-8d8e-d07bab17c3b4}</uid>
+                    <uid>{189e11c4-b2b6-4f6a-b6ab-c25ed5143f29}</uid>
                     <type>2</type>
                     <declaration>-delete( ... )</declaration>
                    </MClassMember>
@@ -1575,6 +1664,28 @@
                         </target>
                        </handle>
                       </item>
+                      <item>
+                       <handle>
+                        <uid>{3c64ce58-41fd-4738-8718-a5049d7a1c06}</uid>
+                        <target>
+                         <instance type="MDependency">
+                          <MDependency>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{3c64ce58-41fd-4738-8718-a5049d7a1c06}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{b94f7907-a2c4-482a-afc7-63dfdaa1f521}</a>
+                             <b>{4a4c5489-a4b7-4506-a4d1-8aa758c7024c}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MDependency>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
                      </qlist>
                     </handles>
                    </handles>
@@ -1585,7 +1696,7 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{095326a7-07b9-4893-8771-133bc662feec}</uid>
+                    <uid>{77ce90d0-8acc-47e3-94ac-2af75ccc7870}</uid>
                     <type>1</type>
                     <declaration>-Ui::mainViewAuto *view</declaration>
                    </MClassMember>
