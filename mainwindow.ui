@@ -29,7 +29,7 @@
          <locale language="English" country="UnitedStates"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="documentMode">
          <bool>true</bool>
@@ -65,7 +65,7 @@
      <x>0</x>
      <y>0</y>
      <width>887</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAddTest">
@@ -73,6 +73,7 @@
      <string>Test</string>
     </property>
     <addaction name="actionAdd"/>
+    <addaction name="avto"/>
    </widget>
    <widget class="QMenu" name="menuMenu1">
     <property name="title">
@@ -92,6 +93,11 @@
   <action name="actionAdd">
    <property name="text">
     <string>AddTest</string>
+   </property>
+  </action>
+  <action name="avto">
+   <property name="text">
+    <string>Авто</string>
    </property>
   </action>
  </widget>

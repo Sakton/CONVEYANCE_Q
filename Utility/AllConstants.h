@@ -25,6 +25,11 @@ using Para = std::pair< QString, QString >;
 using Line = std::map< QString, QString >;
 using Table = std::unordered_map< QString, Line >;
 
+// names DB
+namespace NAME_TABLE {
+static const char* AUTOPARK = "autopark";
+}
+
 //** name_poles tables "AUTOPARK"
 static const char* NAME_BRAND { "name_brand" };
 static const char* SERIES_BRAND { "series_brand" };

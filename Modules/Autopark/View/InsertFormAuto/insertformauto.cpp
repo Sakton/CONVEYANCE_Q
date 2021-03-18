@@ -1,5 +1,7 @@
 #include "insertformauto.h"
 #include <QDialogButtonBox>
+#include <QMessageBox>
+#include <QSqlError>
 #include <QSqlQuery>
 #include "../../../../Utility/CreatorDbConveyance/querydriver.h"
 #include "../../Template/templateformauto.h"
@@ -30,11 +32,13 @@ void InsertFormAuto::slotButtonAccepted( ) {
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString(
       QLatin1String( "autopark" ), ui->templateFormAuto->dataForm( ) );
-
-  qDebug( ) << qs;
-
-  query.exec( QueryDriver::insertQueryString(
-      QLatin1String( "autopark" ), ui->templateFormAuto->dataForm( ) ) );
+  if ( !query.exec( QueryDriver::insertQueryString(
+           QLatin1String( "autopark" ),
+           ui->templateFormAuto->dataForm( ) ) ) ) {
+    QMessageBox::critical( this, "ERROR INSERT", query.lastError( ).text( ) );
+  }
 }
 
-void InsertFormAuto::slotButtonRejected( ) {}
+void InsertFormAuto::slotButtonRejected( ) {
+  this->close( );
+}

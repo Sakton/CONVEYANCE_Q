@@ -2,7 +2,11 @@
 #include <numeric>
 
 //идея не очень,
-QString QueryDriver::insertQueryString( const QString &tableName, const QueryDriver::typeCollection &coll ) {
+QString QueryDriver::insertQueryString(
+    const QString& tableName,
+    const QueryDriver::typeCollection& coll ) {
+  //  qDebug( ) << "coll = " << coll;
+
   QString res = "INSERT INTO " + QLatin1String( AllConstatnts::DB_SHEME ) +
                 "." + tableName + "(";
   res = std::accumulate( coll.begin( ), coll.end( ), res,

@@ -14,7 +14,7 @@ const QLatin1String STYLESHEET_ERROR_VIN { "border: 2px dashed red;" };
 const QLatin1String STYLESHEET_OK_VIN { "border: 2px solid green;" };
 
 TemplateFormAuto::TemplateFormAuto( QWidget* parent )
-    : QWidget( parent ), ui( new Ui::TemplateFormAuto ), autoData { {} } {
+    : QWidget( parent ), ui( new Ui::TemplateFormAuto ) {
   ui->setupUi( this );
   ui->lineEditVIN->setStyleSheet( STYLESHEET_ERROR_VIN );
   ui->comboBoxEcoClass->addItems( ecoClasses );
@@ -167,26 +167,19 @@ void TemplateFormAuto::slotDateChangedNextTech( QDate d ) {
 }
 
 void TemplateFormAuto::slotReadBrand( ) {
-  //Валидатинг
   autoData[ "name_brand" ] = ui->lineEditBrandAuto->text( );
-  qDebug( ) << R"("autoData[ "name_brand" ] = ")" << autoData[ "name_brand" ];
 }
 
 void TemplateFormAuto::slotReadSeries( ) {
   autoData[ "series_brand" ] = ui->lineEditSeriesAuto->text( );
-  qDebug( ) << R"("autoData[ "series_brand" ] = ")"
-            << autoData[ "series_brand" ];
 }
 
 void TemplateFormAuto::slotReadModel( ) {
   autoData[ "marka_brand" ] = ui->lineEditModel->text( );
-  qDebug( ) << R"("autoData[ "marka_brand" ] = ")" << autoData[ "marka_brand" ];
 }
 
 void TemplateFormAuto::slotReadGosNumber( ) {
   autoData[ "auto_counry_number" ] = ui->lineEditGosNumber->text( );
-  qDebug( ) << R"("autoData[ "auto_counry_number" ] = ")"
-            << autoData[ "auto_counry_number" ];
 }
 
 void TemplateFormAuto::slotReadVin( ) {
@@ -195,36 +188,29 @@ void TemplateFormAuto::slotReadVin( ) {
     QMessageBox::critical( this, "Error vin", "Проверь ВИН" );
   } else {
     autoData[ "vin" ] = vin;
-    qDebug( ) << R"(autoData[ "vin" ] = )" << autoData[ "vin" ];
   }
 }
 
 void TemplateFormAuto::slotReadLenth( ) {
   autoData[ "lenth" ] = ui->lineEditLenthCargon->text( );
-  qDebug( ) << R"("autoData[ "lenth" ] = ")" << autoData[ "lenth" ];
 }
 
 void TemplateFormAuto::slotReadWidth( ) {
   autoData[ "width" ] = ui->lineEditWidthCargon->text( );
-  qDebug( ) << R"("autoData[ "width" ] = ")" << autoData[ "width" ];
 }
 
 void TemplateFormAuto::slotReadHeight( ) {
   autoData[ "height" ] = ui->lineEditHeightCargoon->text( );
-  qDebug( ) << R"("autoData[ "height" ] = ")" << autoData[ "height" ];
 }
 
 void TemplateFormAuto::slotReadSpace( ) {
   autoData[ "space" ] = ui->lineEditWolumeCargon->text( );
-  qDebug( ) << R"("autoData[ "space" ] = ")" << autoData[ "space" ];
 }
 
 void TemplateFormAuto::slotReadMaximalCarring( ) {
   autoData[ "carring" ] = ui->lineEditMaximalCarring->text( );
-  qDebug( ) << R"("autoData[ "carring" ] = ")" << autoData[ "carring" ];
 }
 
 void TemplateFormAuto::slotReadComments( ) {
   autoData[ "commentary" ] = ui->plainTextEditComments->placeholderText( );
-  qDebug( ) << R"("autoData[ "commentary" ] = ")" << autoData[ "commentary" ];
 }

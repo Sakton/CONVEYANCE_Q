@@ -4,8 +4,10 @@
 #include "Modules/Adress/theadressform.h"
 #include "Modules/Autopark/AutoBrand/theautobrandform.h"
 #include "Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h"
+#include "Modules/Autopark/Delegat/MainDelegatAutopark/maindelegatewidgetautopark.h"
 #include "Modules/Autopark/Template/templateformauto.h"
 #include "Modules/Autopark/View/InsertFormAuto/insertformauto.h"
+#include "Modules/Autopark/View/MainFormAutopark/mainformautopark.h"
 #include "Modules/Autopark/View/UpdateFormAuto/updateformauto.h"
 #include "Modules/Autopark/View/viewerdataautopark.h"
 #include "Modules/Autopark/theautomobilform.h"
@@ -33,8 +35,17 @@ int main( int argc, char *argv[] ) {
   DBTableCreator cr;
   cr.createAllTableDb( );
 
-  InsertFormAuto* iform { new InsertFormAuto };
-  iform->show( );
+  MainFormAutopark mf;
+  mf.show( );
+
+  //  MainDelegateWidgetAutopark mf( { } );
+  //  mf.show( );
+
+  //  MainDelegateAutopark md;
+  //  md.show( );
+
+  //  InsertFormAuto* iform { new InsertFormAuto };
+  //  iform->show( );
 
   //  TemplateFormAuto tf;
   //  tf.show( );

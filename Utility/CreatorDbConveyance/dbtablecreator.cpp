@@ -89,14 +89,14 @@ void DBTableCreator::createAdressTable( ) {
 void DBTableCreator::createAutoparkTable( ) {
   QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
                ".autopark ("
-               "name_brand varchar(64) NOT NULL,"
-               "series_brand varchar(64),"
-               "marka_brand varchar(64) NOT NULL,"
-               "issue date NOT NULL,"
-               "auto_counry_number varchar( 8 ),"
-               "vin varchar( 20 ),"
+               "name_brand varchar(64) DEFAULT NULL,"
+               "series_brand varchar(64) DEFAULT NULL,"
+               "marka_brand varchar(64) DEFAULT NULL,"
+               "issue date DEFAULT CURRENT_DATE,"
+               "auto_counry_number varchar( 8 ) DEFAULT NULL,"
+               "vin varchar( 20 ) NOT NULL,"
                "eco varchar( 10 ),"
-               "inspection date,"
+               "inspection date DEFAULT CURRENT_DATE,"
                "reminder integer DEFAULT 0,"
                "days_reminder integer DEFAULT 0,"
                "lenth numeric( 10, 2 ) DEFAULT 0,"
@@ -105,8 +105,8 @@ void DBTableCreator::createAutoparkTable( ) {
                "space numeric( 10, 2 ) DEFAULT 0,"
                "carring numeric(10, 2) DEFAULT 0,"
                "lift integer DEFAULT 0,"
-               "commentary text,"
-               "PRIMARY KEY ( auto_counry_number, vin )"
+               "commentary text DEFAULT NULL,"
+               "PRIMARY KEY ( vin )"
                ");" };
   queryToDb( qs );
 }
