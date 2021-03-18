@@ -1,5 +1,7 @@
 #include "insertformauto.h"
 #include <QDialogButtonBox>
+#include <QSqlQuery>
+#include "../../../../Utility/CreatorDbConveyance/querydriver.h"
 #include "../../Template/templateformauto.h"
 #include "ui_insertformauto.h"
 
@@ -24,7 +26,15 @@ InsertFormAuto::~InsertFormAuto()
 }
 
 void InsertFormAuto::slotButtonAccepted( ) {
-  // просто передать данные в базу
+  ui->templateFormAuto->readConstDataForm( );
+  QSqlQuery query;
+  QString qs = QueryDriver::insertQueryString(
+      QLatin1String( "autopark" ), ui->templateFormAuto->dataForm( ) );
+
+  qDebug( ) << qs;
+
+  query.exec( QueryDriver::insertQueryString(
+      QLatin1String( "autopark" ), ui->templateFormAuto->dataForm( ) ) );
 }
 
 void InsertFormAuto::slotButtonRejected( ) {}

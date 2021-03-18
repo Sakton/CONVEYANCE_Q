@@ -14,9 +14,7 @@ SOURCES += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.cpp \
     Modules/Autopark/Delegat/delegateauto.cpp \
     Modules/Autopark/Model/modellistauto.cpp \
-    Modules/Autopark/Model/sqlmodelautopark.cpp \
     Modules/Autopark/Template/templateformauto.cpp \
-    Modules/Autopark/Template/templatetheautomobilform.cpp \
     Modules/Autopark/Validator/validatorautodata.cpp \
     Modules/Autopark/View/InsertFormAuto/insertformauto.cpp \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.cpp \
@@ -49,9 +47,7 @@ HEADERS += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h \
     Modules/Autopark/Delegat/delegateauto.h \
     Modules/Autopark/Model/modellistauto.h \
-    Modules/Autopark/Model/sqlmodelautopark.h \
     Modules/Autopark/Template/templateformauto.h \
-    Modules/Autopark/Template/templatetheautomobilform.h \
     Modules/Autopark/Validator/validatorautodata.h \
     Modules/Autopark/View/InsertFormAuto/insertformauto.h \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.h \
@@ -82,7 +78,6 @@ FORMS += \
     Modules/Autopark/AutoBrand/theautobrandform.ui \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.ui \
     Modules/Autopark/Template/templateformauto.ui \
-    Modules/Autopark/Template/templatetheautomobilform.ui \
     Modules/Autopark/View/InsertFormAuto/insertformauto.ui \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.ui \
     Modules/Autopark/View/viewerdataautopark.ui \

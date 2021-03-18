@@ -49,7 +49,7 @@
   <customwidget>
    <class>TemplateFormAuto</class>
    <extends>QWidget</extends>
-   <header>/Modules/Autopark/Template/templateformauto.h</header>
+   <header>Modules/Autopark/Template/templateformauto.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

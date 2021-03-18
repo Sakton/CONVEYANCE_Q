@@ -3,11 +3,13 @@
 #include <QDebug>
 #include <QPair>
 #include <QString>
-#include <map>
+#include "../AllConstants.h"
 
 class QueryDriver {
  public:
-  using typeCollection = std::map< QString, QString >;
+  using typeCollection = AllConstatnts::Line;
+  using Para = AllConstatnts::Para;
+
   static QString insertQueryString( const QString& tableName, const typeCollection& coll );
   static QString selectAll( const QString& tableName );
   QString selectQueryString( const typeCollection& coll );

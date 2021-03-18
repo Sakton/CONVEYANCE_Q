@@ -3,8 +3,8 @@
 #include <QDialogButtonBox>
 #include <QMessageBox>
 #include <QSqlQuery>
-#include <map>
 
+#include "../../Utility/AllConstants.h"
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_thecountryform.h"
@@ -23,7 +23,7 @@ TheCountryForm::~TheCountryForm( ) {
 }
 
 void TheCountryForm::slotClick_OK_Button( ) {
-  std::map< QString, QString > countryData;
+  AllConstatnts::Line countryData;
   countryData[ "name" ] = ui->lineEditName->text( );
   countryData[ "phonecode" ] = ui->lineEditPhoneCode->text( );
   countryData[ "abbriviated" ] = ui->lineEditAbbreviated->text( );

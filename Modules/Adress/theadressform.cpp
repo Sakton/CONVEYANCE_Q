@@ -6,8 +6,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QStringList>
-#include <map>
-#include <memory>
+#include "../../Utility/AllConstants.h"
 
 #include "Modules/Country/thecountryform.h"
 #include "Utility/CreatorDbConveyance/conveyancesqldatabase.h"
@@ -35,17 +34,14 @@ TheAdressForm::~TheAdressForm( ) {
 }
 
 void TheAdressForm::slotClick_OK_Button( ) {
-  std::map< QString, QString > adressData;
+  AllConstatnts::Line adressData;
   adressData[ "type" ] = ui->comboBoxTypeAdress->currentText( );
   adressData[ "index" ] = ui->lineEditIndex->text( );
   adressData[ "sity" ] = ui->lineEditSity->text( );
   adressData[ "adress" ] = ui->lineEditAdress->text( );
   adressData[ "country_name" ] = ui->comboBoxCountry->currentText( );
-
-  // ConveyanceSQLDatabase db;
-  QSqlQuery query /*( db.database( ) )*/;
+  QSqlQuery query;
   if ( query.exec( QueryDriver::insertQueryString( "adress", adressData ) ) ) {
-    // после успешной вставки очистка формы
     ui->lineEditIndex->clear( );
     ui->lineEditSity->clear( );
     ui->lineEditAdress->clear( );
