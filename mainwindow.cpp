@@ -7,37 +7,31 @@
 #include <QToolBar>
 
 //#include "Modules/Orders/orderstable.h"
-#include "Modules/Autopark/theautomobilform.h"
+#include "Modules/Autopark/View/MainFormAutopark/mainformautopark.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow( QWidget *parent ) : QMainWindow( parent ), ui( new Ui::MainWindow ) {
   ui->setupUi( this );
+  ui->tabWidget->clear( );
   addToolBar( Qt::TopToolBarArea, createTopToolBar( ) );
   setCentralWidget( ui->tabWidget );
-  //  ui->tabWidget->setTabBarAutoHide( false );
-  //  ui->tabWidget->clear( );
-  ui->tabWidget->addTab( new TheAutomobilForm, "Auto" );
-
   statusBarOperations( );
-
-  connect( ui->actionAdd, QOverload< bool >::of( &QAction::triggered ), this, QOverload<>::of( &MainWindow::slotAddTabWindow ) );
   connect( ui->tabWidget, QOverload< int >::of( &QTabWidget::tabCloseRequested ), this,
            QOverload< int >::of( &MainWindow::slotCloseTabWindow ) );
 }
 
 MainWindow::~MainWindow( ) { delete ui; }
 
-void MainWindow::slotAddTabWindow( ) { /*ui->tabWidget->addTab( new OrdersTable, "lalala" );*/
+void MainWindow::slotAddTabWindow( ) {
+  ui->tabWidget->addTab( new MainFormAutopark, tr( "Автопарк" ) );
 }
+
 void MainWindow::slotCloseTabWindow( int idx ) { ui->tabWidget->removeTab( idx ); }
 
 QToolBar *MainWindow::createTopToolBar( ) {
-  QToolBar *topToolBar = new QToolBar( "topToolBar", this );
-  topToolBar->addAction( "AddTest", this, QOverload<>::of( &MainWindow::slotAddTabWindow ) );
-  topToolBar->addAction( "|||" );
-  topToolBar->addAction( "This" );
-  topToolBar->addAction( "Is" );
-  topToolBar->addAction( "Toolbar" );
+  QToolBar* topToolBar = new QToolBar( "TopToolBar", this );
+  topToolBar->addAction( tr( "Автопарк" ), this,
+                         QOverload<>::of( &MainWindow::slotAddTabWindow ) );
   return topToolBar;
 }
 

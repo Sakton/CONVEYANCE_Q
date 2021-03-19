@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>887</width>
-    <height>574</height>
+    <width>826</width>
+    <height>543</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
          <locale language="English" country="UnitedStates"/>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <property name="documentMode">
          <bool>true</bool>
@@ -64,40 +64,22 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>887</width>
+     <width>826</width>
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuAddTest">
+   <widget class="QMenu" name="menu_1">
     <property name="title">
-     <string>Test</string>
+     <string>Менюха1</string>
     </property>
-    <addaction name="actionAdd"/>
-    <addaction name="avto"/>
+    <addaction name="action_1"/>
    </widget>
-   <widget class="QMenu" name="menuMenu1">
-    <property name="title">
-     <string>Menu1</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuMenu2">
-    <property name="title">
-     <string>Menu2</string>
-    </property>
-   </widget>
-   <addaction name="menuMenu1"/>
-   <addaction name="menuMenu2"/>
-   <addaction name="menuAddTest"/>
+   <addaction name="menu_1"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionAdd">
+  <action name="action_1">
    <property name="text">
-    <string>AddTest</string>
-   </property>
-  </action>
-  <action name="avto">
-   <property name="text">
-    <string>Авто</string>
+    <string>Поменюха1</string>
    </property>
   </action>
  </widget>

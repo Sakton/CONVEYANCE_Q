@@ -32,11 +32,11 @@ int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
   ConveyanceSQLDatabase db;  //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
 
-  DBTableCreator cr;
-  cr.createAllTableDb( );
+  //  DBTableCreator cr;
+  //  cr.createAllTableDb( );
 
-  MainFormAutopark mf;
-  mf.show( );
+  //  MainFormAutopark mf;
+  //  mf.show( );
 
   //  MainDelegateWidgetAutopark mf( { } );
   //  mf.show( );
@@ -56,8 +56,8 @@ int main( int argc, char *argv[] ) {
   //  ViewerDataAutopark ap;
   //  ap.show( );
 
-  //  MainWindow w;
-  //  w.show( );
+  MainWindow w;
+  w.show( );
 
   //  QWidget *w = new TheAutomobilForm;
   //  w->show( );

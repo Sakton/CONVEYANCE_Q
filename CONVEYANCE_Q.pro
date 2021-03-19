@@ -117,6 +117,7 @@ DISTFILES += \
     Convection/naming.txt \
     DIAGRAMS_AND_OTHER/DB_Description.ods \
     DIAGRAMS_AND_OTHER/autoparkfragment.qmodel \
+    DumpDb/backup.sql \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.ods \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.xls
 

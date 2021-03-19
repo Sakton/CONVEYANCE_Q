@@ -28,9 +28,9 @@ void MainDelegateWidgetAutopark::fill( ) {
   ui->labelMarka->setText( data_.at( "marka_brand" ) );
   ui->labelGosNomer->setText( data_.at( "auto_counry_number" ) );
   //**
-  ui->labelLenth->setText( data_.at( "lenth" ) );
-  ui->labelWidth->setText( data_.at( "width" ) );
-  ui->labelHeight->setText( data_.at( "height" ) );
+  ui->labelGabarity->setText( data_.at( "lenth" ) + "/" + data_.at( "width" ) +
+                              "/" + data_.at( "height" ) );
+
   ui->labelSpace->setText( data_.at( "space" ) );
   ui->labelTonnag->setText( data_.at( "carring" ) );
   //**
@@ -39,9 +39,16 @@ void MainDelegateWidgetAutopark::fill( ) {
   ui->labelTechInspection->setText( data_.at( "inspection" ) );
   //  ui->checkBoxReminder->setCheckState(
   //      static_cast< Qt::CheckState >( data.at( "reminder" ).toInt( ) ) );
-  ui->labelReminder->setText( data_.at( "days_reminder" ) );
+  if ( static_cast< Qt::CheckState >( data_.at( "reminder" ).toInt( ) ) ==
+       Qt::CheckState::Checked ) {
+    ui->labelReminder->setText( tr( "Включено" ) );
+  }
   //  ui->checkBoxTatLift->setCheckState(
   //      static_cast< Qt::CheckState >( data.at( "lift" ).toInt( ) ) );
   //**
   ui->labelNote->setText( data_.at( "commentary" ) );
+  if ( data_.at( "commentary" ).isEmpty( ) ) {
+    //если в комментах ничего нет то и скроем его
+    ui->groupBoxNote->hide( );
+  }
 }
