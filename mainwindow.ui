@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>826</width>
-    <height>543</height>
+    <width>1300</width>
+    <height>592</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1300</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>CONVEYANCE</string>
@@ -64,7 +70,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>826</width>
+     <width>1300</width>
      <height>21</height>
     </rect>
    </property>

@@ -810,7 +810,7 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_13">
              <item row="1" column="1">
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="pushButtonDelete">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -824,6 +824,12 @@
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(170, 0, 0);</string>
                </property>
                <property name="text">
                 <string>Удалить</string>
@@ -831,7 +837,7 @@
               </widget>
              </item>
              <item row="1" column="0">
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="pushButtonChange">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -847,7 +853,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Править</string>
+                <string>Изменить</string>
                </property>
               </widget>
              </item>

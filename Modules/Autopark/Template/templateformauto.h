@@ -22,8 +22,11 @@ class TemplateFormAuto : public QWidget {
 
   void readConstDataForm( );
   const Line& dataForm( ) const;
-  void writeForm( const Line& data ) const;
+  void writeForm( const Line& data );
   void clearForm( );
+  void setVinNoChange( );
+
+  // TODO работа с данными по ссылке !!!
 
  public slots:
   void slotVinValidate( const QString& vin );

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "../../../../Utility/AllConstants.h"
 
+class QListWidgetItem;
+
 namespace Ui {
 class MainDelegateWidgetAutopark;
 }
@@ -23,6 +25,14 @@ class MainDelegateWidgetAutopark : public QWidget
 
  private:
   void fill( );
+
+ public slots:
+  void slotClickedChangeButton( );
+  void slotClickedDeleteButton( );
+
+ signals:
+  void signalClickedChangeButton( const QString& vin );
+  void signalClickedDeleteButton( const QString& vin );
 
  private:
   Ui::MainDelegateWidgetAutopark* ui;

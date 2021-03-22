@@ -1,13 +1,12 @@
 #include "mainformautopark.h"
 
-//#include "../../Delegat/MainDelegatAutopark/maindelegate.h"
-//#include "../../Model/modelmainviewautopark.h"
 #include <QListWidgetItem>
 #include <QSqlError>
 #include <QSqlQuery>
-#include "../../../../Utility/AllConstants.h"
-#include "../../../../Utility/CreatorDbConveyance/querydriver.h"
-#include "../../../Autopark/Delegat/MainDelegatAutopark/maindelegatewidgetautopark.h"
+#include "Modules/Autopark/Delegat/MainDelegatAutopark/maindelegatewidgetautopark.h"
+#include "Modules/Autopark/View/UpdateFormAuto/updateformauto.h"
+#include "Utility/AllConstants.h"
+#include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_mainformautopark.h"
 
 MainFormAutopark::MainFormAutopark(QWidget *parent) :
@@ -15,6 +14,7 @@ MainFormAutopark::MainFormAutopark(QWidget *parent) :
       ui(new Ui::MainFormAutopark)
 {
   ui->setupUi( this );
+  ui->listWidget->setSelectionMode( QAbstractItemView::NoSelection );
   read( );
   fill( );
 }
@@ -29,6 +29,21 @@ void MainFormAutopark::fill( ) {
     QListWidgetItem* item = new QListWidgetItem( ui->listWidget );
     MainDelegateWidgetAutopark* widget =
         new MainDelegateWidgetAutopark( el.second, ui->listWidget );
+
+    connect( widget,
+             QOverload< const QString& >::of(
+                 &MainDelegateWidgetAutopark::signalClickedChangeButton ),
+             this,
+             QOverload< const QString& >::of(
+                 &MainFormAutopark::slotItemClickedChangeButton ) );
+
+    connect( widget,
+             QOverload< const QString& >::of(
+                 &MainDelegateWidgetAutopark::signalClickedDeleteButton ),
+             this,
+             QOverload< const QString& >::of(
+                 &MainFormAutopark::slotItemClickedDeleteButton ) );
+
     item->setSizeHint( widget->sizeHint( ) );
     ui->listWidget->setItemWidget( item, widget );
   }
@@ -58,9 +73,33 @@ void MainFormAutopark::read( ) {
       tmp[ "carring" ] = query.value( "carring" ).toString( );
       tmp[ "lift" ] = query.value( "lift" ).toString( );
       tmp[ "commentary" ] = query.value( "commentary" ).toString( );
-      /*      tmp[ "__ThisSessionEdit__" ] =
-                QLatin1String( "0" ); */ //поле для отметки было ли изменение
       data_[ tmp[ "vin" ] ] = tmp;
     }
   }
+}
+
+void MainFormAutopark::slotItemPressed( QListWidgetItem* item ) {
+  qDebug( ) << "item pressed " << item;
+}
+
+void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
+  UpdateFormAuto* updateForm = new UpdateFormAuto( );
+
+  connect( updateForm, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
+           this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
+
+  qDebug( ) << data_.at( vin );
+
+  updateForm->setDataInForm( data_.at( vin ) );
+  updateForm->setWindowModality( Qt::WindowModality::ApplicationModal );
+  updateForm->show( );
+}
+
+void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
+  qDebug( ) << "MainFormAutopark::slotItemClickedDeleteButton " << vin;
+}
+
+void MainFormAutopark::slotItemIsUpdates( ) {
+  qDebug( ) << "MainFormAutopark::slotItemIsUpdates";
+  qDebug( ) << data_.at( "12345678998765432" );
 }

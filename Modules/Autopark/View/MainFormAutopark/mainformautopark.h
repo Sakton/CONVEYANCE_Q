@@ -8,6 +8,8 @@ namespace Ui {
 class MainFormAutopark;
 }
 
+class QListWidgetItem;
+
 class MainFormAutopark : public QWidget
 {
   Q_OBJECT
@@ -22,6 +24,12 @@ class MainFormAutopark : public QWidget
  private:
   void fill( );
   void read( );
+
+ public slots:
+  void slotItemPressed( QListWidgetItem* item );
+  void slotItemClickedChangeButton( const QString& vin );
+  void slotItemClickedDeleteButton( const QString& vin );
+  void slotItemIsUpdates( /*const QString& vin*/ );
 
  private:
   Ui::MainFormAutopark* ui;

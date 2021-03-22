@@ -111,7 +111,8 @@ const TemplateFormAuto::Line& TemplateFormAuto::dataForm( ) const {
   return autoData;
 }
 
-void TemplateFormAuto::writeForm( const TemplateFormAuto::Line& data ) const {
+void TemplateFormAuto::writeForm( const TemplateFormAuto::Line& data ) {
+  autoData = data;
   ui->lineEditBrandAuto->setText( data.at( "name_brand" ) );
   ui->lineEditSeriesAuto->setText( data.at( "series_brand" ) );
   ui->lineEditModel->setText( data.at( "marka_brand" ) );
@@ -150,6 +151,10 @@ void TemplateFormAuto::clearForm( ) {
   ui->lineEditWolumeCargon->clear( );
   ui->lineEditMaximalCarring->clear( );
   ui->plainTextEditComments->clear( );
+}
+
+void TemplateFormAuto::setVinNoChange( ) {
+  ui->lineEditVIN->setEnabled( false );
 }
 
 void TemplateFormAuto::slotVinValidate( const QString& vin ) {

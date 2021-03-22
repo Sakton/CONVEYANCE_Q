@@ -6,7 +6,18 @@ MainDelegateWidgetAutopark::MainDelegateWidgetAutopark( const Line& line,
     : QWidget( parent ),
       ui( new Ui::MainDelegateWidgetAutopark ),
       data_ { line } {
-  ui->setupUi(this);
+  ui->setupUi( this );
+
+  connect(
+      ui->pushButtonChange, QOverload< bool >::of( &QPushButton::clicked ),
+      this,
+      QOverload<>::of( &MainDelegateWidgetAutopark::slotClickedChangeButton ) );
+
+  connect(
+      ui->pushButtonDelete, QOverload< bool >::of( &QPushButton::clicked ),
+      this,
+      QOverload<>::of( &MainDelegateWidgetAutopark::slotClickedDeleteButton ) );
+
   fill( );
 }
 
@@ -51,4 +62,12 @@ void MainDelegateWidgetAutopark::fill( ) {
     //если в комментах ничего нет то и скроем его
     ui->groupBoxNote->hide( );
   }
+}
+
+void MainDelegateWidgetAutopark::slotClickedChangeButton( ) {
+  emit signalClickedChangeButton( data_.at( "vin" ) );
+}
+
+void MainDelegateWidgetAutopark::slotClickedDeleteButton( ) {
+  emit signalClickedDeleteButton( data_.at( "vin" ) );
 }
