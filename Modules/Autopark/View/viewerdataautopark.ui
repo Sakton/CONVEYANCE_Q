@@ -62,7 +62,7 @@
       </widget>
      </item>
      <item row="0" column="3" rowspan="4">
-      <widget class="TemplateFormAuto" name="templateTheAutomobilForm" native="true">
+      <widget class="QWidget" name="templateTheAutomobilForm" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -98,14 +98,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>TemplateFormAuto</class>
-   <extends>QWidget</extends>
-   <header>../Modules/Autopark/Template/templateformauto.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

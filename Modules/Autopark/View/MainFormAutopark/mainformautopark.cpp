@@ -1,9 +1,11 @@
 #include "mainformautopark.h"
 
 #include <QListWidgetItem>
+#include <QPushButton>
 #include <QSqlError>
 #include <QSqlQuery>
 #include "Modules/Autopark/Delegat/MainDelegatAutopark/maindelegatewidgetautopark.h"
+// #include "Modules/Autopark/View/InsertFormAuto/insertformauto.h"
 #include "Modules/Autopark/View/UpdateFormAuto/updateformauto.h"
 #include "Utility/AllConstants.h"
 #include "Utility/CreatorDbConveyance/querydriver.h"
@@ -12,13 +14,13 @@
 MainFormAutopark::MainFormAutopark( QWidget* parent )
     : QWidget( parent ),
       ui( new Ui::MainFormAutopark ),
-      selectedItem { nullptr } {
+      selectedDelegateWidget { nullptr } {
   ui->setupUi( this );
   ui->listWidget->setSelectionMode( QAbstractItemView::NoSelection );
-  connect(
-      ui->listWidget,
-      QOverload< QListWidgetItem* >::of( &QListWidget::itemClicked ), this,
-      QOverload< QListWidgetItem* >::of( &MainFormAutopark::slotItemPressed ) );
+
+  connect( ui->pushButtonAdd, QOverload< bool >::of( &QPushButton::clicked ),
+           this, QOverload<>::of( &MainFormAutopark::slotAddItem ) );
+
   read( );
   fill( );
 }
@@ -82,35 +84,52 @@ void MainFormAutopark::read( ) {
   }
 }
 
-void MainFormAutopark::slotItemPressed( QListWidgetItem* item ) {
-  selectedItem = item;
+void MainFormAutopark::clearCurrents( ) {
+  if ( updateWindow ) {
+    updateWindow->close( );
+    updateWindow->deleteLater( );
+  }
+  currentKey_Vin.clear( );
+  updateWindow = nullptr;
+  selectedDelegateWidget = nullptr;
 }
 
 void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
+  // установка текущих значений
   currentKey_Vin = vin;
-  UpdateFormAuto* updateForm = new UpdateFormAuto( );
-
-  connect( updateForm, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
+  selectedDelegateWidget =
+      static_cast< MainDelegateWidgetAutopark* >( sender( ) );
+  updateWindow = new UpdateFormAuto;
+  // --
+  connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
 
-  //  qDebug( ) << data_.at( vin );
-
-  updateForm->setDataInForm( data_.at( vin ) );
-  updateForm->setWindowModality( Qt::WindowModality::ApplicationModal );
-  updateForm->show( );
+  updateWindow->setDataInForm( data_.at( vin ) );
+  updateWindow->setWindowTitle( "ОБНОВЛЕНИЕ ДАННЫX VIN: " + vin );
+  updateWindow->setWindowModality( Qt::WindowModality::ApplicationModal );
+  updateWindow->show( );
 }
 
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
-  // qDebug( ) << "MainFormAutopark::slotItemClickedDeleteButton " << vin;
+  // тут удаление из базы
+  clearCurrents( );
 }
 
 void MainFormAutopark::slotItemIsUpdates( ) {
-  qDebug( ) << "MainFormAutopark::slotItemIsUpdates";
-  // TODO краш!!!
-  data_[ currentKey_Vin ] = updateWindow->getDataInForm( );
-  //  qDebug( ) << data_.at( "12345678998765432" );
-  auto delegate = static_cast< MainDelegateWidgetAutopark* >(
-      ui->listWidget->itemWidget( selectedItem ) );
-  delegate->setData( data_.at( currentKey_Vin ) );
-  updateWindow->close( );
+  data_.at( currentKey_Vin ) = updateWindow->getDataInForm( );
+  selectedDelegateWidget->setData( data_.at( currentKey_Vin ) );
+  // тут вставка в базу измененных элементов
+}
+
+void MainFormAutopark::slotAddItem( ) {
+  qDebug( ) << "MainFormAutopark::slotAddItem()";
+  updateWindow = new UpdateFormAuto;
+  connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
+           this, QOverload<>::of( &MainFormAutopark::slotItemIsInsert ) );
+  updateWindow->setWindowTitle( "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ" );
+  updateWindow->show( );
+}
+
+void MainFormAutopark::slotItemIsInsert( ) {
+  qDebug( ) << "MainFormAutopark::slotItemIsInsert";
 }

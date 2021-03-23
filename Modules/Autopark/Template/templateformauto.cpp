@@ -83,6 +83,7 @@ TemplateFormAuto::TemplateFormAuto( QWidget* parent )
 }
 
 TemplateFormAuto::~TemplateFormAuto( ) {
+  qDebug( ) << "delete TemplateFormAuto";
   delete ui;
 }
 

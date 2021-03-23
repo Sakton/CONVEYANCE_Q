@@ -8,7 +8,7 @@ namespace Ui {
 class MainFormAutopark;
 }
 
-class QListWidgetItem;
+class MainDelegateWidgetAutopark;
 class UpdateFormAuto;
 
 class MainFormAutopark : public QWidget
@@ -25,17 +25,19 @@ class MainFormAutopark : public QWidget
  private:
   void fill( );
   void read( );
+  void clearCurrents( );
 
  public slots:
-  void slotItemPressed( QListWidgetItem* item );
   void slotItemClickedChangeButton( const QString& vin );
   void slotItemClickedDeleteButton( const QString& vin );
   void slotItemIsUpdates( /*const QString& vin*/ );
+  void slotAddItem( );
+  void slotItemIsInsert( );
 
  private:
   Ui::MainFormAutopark* ui;
   Table data_;
-  QListWidgetItem* selectedItem { nullptr };
+  MainDelegateWidgetAutopark* selectedDelegateWidget { nullptr };
   QString currentKey_Vin;
   UpdateFormAuto* updateWindow;
 };

@@ -3,7 +3,7 @@
 
 #include <QDate>
 #include <QWidget>
-#include "../../../Utility/AllConstants.h"
+#include "Utility/AllConstants.h"
 
 //Одна запись, по сути это строка таблицы БД, в такой форме
 
