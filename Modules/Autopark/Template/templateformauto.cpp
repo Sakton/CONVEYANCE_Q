@@ -113,30 +113,30 @@ const TemplateFormAuto::Line& TemplateFormAuto::dataForm( ) const {
 
 void TemplateFormAuto::writeForm( const TemplateFormAuto::Line& data ) {
   autoData = data;
-  ui->lineEditBrandAuto->setText( data.at( "name_brand" ) );
-  ui->lineEditSeriesAuto->setText( data.at( "series_brand" ) );
-  ui->lineEditModel->setText( data.at( "marka_brand" ) );
+  ui->lineEditBrandAuto->setText( autoData.at( "name_brand" ) );
+  ui->lineEditSeriesAuto->setText( autoData.at( "series_brand" ) );
+  ui->lineEditModel->setText( autoData.at( "marka_brand" ) );
   ui->dateEditYearOfIssue->setDate(
-      QDate::fromString( data.at( "issue" ), Qt::ISODate ) );
-  ui->lineEditVIN->setText( data.at( "vin" ) );
-  ui->lineEditGosNumber->setText( data.at( "auto_counry_number" ) );
-  ui->comboBoxEcoClass->setCurrentText( data.at( "eco" ) );
+      QDate::fromString( autoData.at( "issue" ), Qt::ISODate ) );
+  ui->lineEditVIN->setText( autoData.at( "vin" ) );
+  ui->lineEditGosNumber->setText( autoData.at( "auto_counry_number" ) );
+  ui->comboBoxEcoClass->setCurrentText( autoData.at( "eco" ) );
   ui->dateEditNextTechInspection->setDate(
-      QDate::fromString( data.at( "inspection" ), Qt::ISODate ) );
+      QDate::fromString( autoData.at( "inspection" ), Qt::ISODate ) );
   ui->checkBoxReminder->setCheckState(
-      static_cast< Qt::CheckState >( data.at( "reminder" ).toInt( ) ) );
-  ui->spinBoxCountDays->setValue( data.at( "days_reminder" ).toInt( ) );
-  ui->lineEditLenthCargon->setText( data.at( "lenth" ) );
-  ui->lineEditWidthCargon->setText( data.at( "width" ) );
-  ui->lineEditHeightCargoon->setText( data.at( "height" ) );
-  ui->lineEditWolumeCargon->setText( data.at( "space" ) );
-  ui->lineEditMaximalCarring->setText( data.at( "carring" ) );
+      static_cast< Qt::CheckState >( autoData.at( "reminder" ).toInt( ) ) );
+  ui->spinBoxCountDays->setValue( autoData.at( "days_reminder" ).toInt( ) );
+  ui->lineEditLenthCargon->setText( autoData.at( "lenth" ) );
+  ui->lineEditWidthCargon->setText( autoData.at( "width" ) );
+  ui->lineEditHeightCargoon->setText( autoData.at( "height" ) );
+  ui->lineEditWolumeCargon->setText( autoData.at( "space" ) );
+  ui->lineEditMaximalCarring->setText( autoData.at( "carring" ) );
   ui->checkBoxTatLift->setCheckState(
-      static_cast< Qt::CheckState >( data.at( "lift" ).toInt( ) ) );
-  ui->plainTextEditComments->setPlaceholderText( data.at( "commentary" ) );
+      static_cast< Qt::CheckState >( autoData.at( "lift" ).toInt( ) ) );
+  ui->plainTextEditComments->setPlaceholderText( autoData.at( "commentary" ) );
 }
 
-void TemplateFormAuto::clearForm( ) {
+void TemplateFormAuto::clearForm( ) const {
   ui->lineEditBrandAuto->clear( );
   ui->lineEditSeriesAuto->clear( );
   ui->lineEditModel->clear( );
@@ -153,7 +153,7 @@ void TemplateFormAuto::clearForm( ) {
   ui->plainTextEditComments->clear( );
 }
 
-void TemplateFormAuto::setVinNoChange( ) {
+void TemplateFormAuto::setVinNoChange( ) const {
   ui->lineEditVIN->setEnabled( false );
 }
 

@@ -22,6 +22,7 @@ class MainDelegateWidgetAutopark : public QWidget
   ~MainDelegateWidgetAutopark( );
 
   void setImg( const QString& url = "qrc:/image/empty_photo.jpg" );
+  void setData( const Line& line );
 
  private:
   void fill( );

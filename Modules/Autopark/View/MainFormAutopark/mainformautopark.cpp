@@ -9,12 +9,16 @@
 #include "Utility/CreatorDbConveyance/querydriver.h"
 #include "ui_mainformautopark.h"
 
-MainFormAutopark::MainFormAutopark(QWidget *parent) :
-      QWidget(parent),
-      ui(new Ui::MainFormAutopark)
-{
+MainFormAutopark::MainFormAutopark( QWidget* parent )
+    : QWidget( parent ),
+      ui( new Ui::MainFormAutopark ),
+      selectedItem { nullptr } {
   ui->setupUi( this );
   ui->listWidget->setSelectionMode( QAbstractItemView::NoSelection );
+  connect(
+      ui->listWidget,
+      QOverload< QListWidgetItem* >::of( &QListWidget::itemClicked ), this,
+      QOverload< QListWidgetItem* >::of( &MainFormAutopark::slotItemPressed ) );
   read( );
   fill( );
 }
@@ -79,16 +83,17 @@ void MainFormAutopark::read( ) {
 }
 
 void MainFormAutopark::slotItemPressed( QListWidgetItem* item ) {
-  qDebug( ) << "item pressed " << item;
+  selectedItem = item;
 }
 
 void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
+  currentKey_Vin = vin;
   UpdateFormAuto* updateForm = new UpdateFormAuto( );
 
   connect( updateForm, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
 
-  qDebug( ) << data_.at( vin );
+  //  qDebug( ) << data_.at( vin );
 
   updateForm->setDataInForm( data_.at( vin ) );
   updateForm->setWindowModality( Qt::WindowModality::ApplicationModal );
@@ -96,10 +101,17 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
 }
 
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
-  qDebug( ) << "MainFormAutopark::slotItemClickedDeleteButton " << vin;
+  // qDebug( ) << "MainFormAutopark::slotItemClickedDeleteButton " << vin;
 }
 
 void MainFormAutopark::slotItemIsUpdates( ) {
   qDebug( ) << "MainFormAutopark::slotItemIsUpdates";
+  // TODO краш!!!
+  data_.erase( currentKey_Vin );
+  data_[ currentKey_Vin ] = updateWindow->getDataInForm( );
   qDebug( ) << data_.at( "12345678998765432" );
+  auto delegate = static_cast< MainDelegateWidgetAutopark* >(
+      ui->listWidget->itemWidget( selectedItem ) );
+  delegate->setData( data_.at( currentKey_Vin ) );
+  updateWindow->close( );
 }

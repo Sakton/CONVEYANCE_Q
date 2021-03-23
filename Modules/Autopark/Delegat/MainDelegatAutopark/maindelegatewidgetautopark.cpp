@@ -32,6 +32,12 @@ void MainDelegateWidgetAutopark::setImg( const QString& url ) {
   ui->lblPixmap->setPixmap( img );
 }
 
+void MainDelegateWidgetAutopark::setData(
+    const MainDelegateWidgetAutopark::Line& line ) {
+  data_ = line;
+  fill( );
+}
+
 void MainDelegateWidgetAutopark::fill( ) {
   ui->labelVIN->setText( data_.at( "vin" ) );
   ui->labelBrandName->setText( data_.at( "name_brand" ) );

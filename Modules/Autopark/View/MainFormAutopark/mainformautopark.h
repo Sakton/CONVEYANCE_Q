@@ -9,6 +9,7 @@ class MainFormAutopark;
 }
 
 class QListWidgetItem;
+class UpdateFormAuto;
 
 class MainFormAutopark : public QWidget
 {
@@ -34,6 +35,9 @@ class MainFormAutopark : public QWidget
  private:
   Ui::MainFormAutopark* ui;
   Table data_;
+  QListWidgetItem* selectedItem { nullptr };
+  QString currentKey_Vin;
+  UpdateFormAuto* updateWindow;
 };
 
 #endif // MAINFORMAUTOPARK_H

@@ -18,7 +18,8 @@ class UpdateFormAuto : public QWidget
   explicit UpdateFormAuto( QWidget* parent = nullptr );
   ~UpdateFormAuto( );
 
-  void setDataInForm( Line& data );
+  void setDataInForm( const Line& data );
+  const Line& getDataInForm( ) const;
 
  public slots:
   void slotClickedOkButton( );

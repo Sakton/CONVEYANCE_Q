@@ -23,8 +23,8 @@ class TemplateFormAuto : public QWidget {
   void readConstDataForm( );
   const Line& dataForm( ) const;
   void writeForm( const Line& data );
-  void clearForm( );
-  void setVinNoChange( );
+  void clearForm( ) const;
+  void setVinNoChange( ) const;
 
   // TODO работа с данными по ссылке !!!
 

@@ -19,15 +19,18 @@ UpdateFormAuto::~UpdateFormAuto()
   delete ui;
 }
 
-void UpdateFormAuto::setDataInForm( UpdateFormAuto::Line& data ) {
+void UpdateFormAuto::setDataInForm( const Line& data ) {
   ui->templateFormAuto->writeForm( data );
   ui->templateFormAuto->setVinNoChange( );
   setWindowTitle( "ОБНОВЛЕНИЕ ДАННЫX VIN: " + data.at( "vin" ) );
 }
 
+const UpdateFormAuto::Line& UpdateFormAuto::getDataInForm( ) const {
+  return ui->templateFormAuto->dataForm( );
+}
+
 void UpdateFormAuto::slotClickedOkButton( ) {
   emit signalDataUpdate( );
-  close( );
 }
 
 void UpdateFormAuto::slotClickedCancelButton( ) {
