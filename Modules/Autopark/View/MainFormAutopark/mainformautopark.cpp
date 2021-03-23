@@ -107,9 +107,8 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
 void MainFormAutopark::slotItemIsUpdates( ) {
   qDebug( ) << "MainFormAutopark::slotItemIsUpdates";
   // TODO краш!!!
-  data_.erase( currentKey_Vin );
   data_[ currentKey_Vin ] = updateWindow->getDataInForm( );
-  qDebug( ) << data_.at( "12345678998765432" );
+  //  qDebug( ) << data_.at( "12345678998765432" );
   auto delegate = static_cast< MainDelegateWidgetAutopark* >(
       ui->listWidget->itemWidget( selectedItem ) );
   delegate->setData( data_.at( currentKey_Vin ) );
