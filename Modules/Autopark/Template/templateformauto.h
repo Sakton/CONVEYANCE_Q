@@ -26,8 +26,6 @@ class TemplateFormAuto : public QWidget {
   void clearForm( ) const;
   void setVinNoChange( ) const;
 
-  // TODO работа с данными по ссылке !!!
-
  public slots:
   void slotVinValidate( const QString& vin );
   void slotDateChangedNextTech( QDate d );
