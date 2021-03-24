@@ -1,6 +1,7 @@
 #include "templateformauto.h"
 #include <QDateEdit>
 #include <QMessageBox>
+#include <QPlainTextEdit>
 #include "../Validator/validatorautodata.h"
 #include "ui_templateformauto.h"
 
@@ -15,6 +16,7 @@ const QLatin1String STYLESHEET_OK_VIN { "border: 2px solid green;" };
 
 TemplateFormAuto::TemplateFormAuto( QWidget* parent )
     : QWidget( parent ), ui( new Ui::TemplateFormAuto ) {
+  setAttribute( Qt::WA_DeleteOnClose );
   ui->setupUi( this );
   ui->lineEditVIN->setStyleSheet( STYLESHEET_ERROR_VIN );
   ui->comboBoxEcoClass->addItems( ecoClasses );
@@ -24,15 +26,12 @@ TemplateFormAuto::TemplateFormAuto( QWidget* parent )
       QDate::currentDate( ).addYears( 1 ) );
   ui->labelDayBefore->setText( QString::number(
       QDate::currentDate( ).daysTo( QDate::currentDate( ).addYears( 1 ) ) ) );
+  ui->plainTextEditComments->setLineWrapMode( QPlainTextEdit::WidgetWidth );
 
-  //  connect(
-  //      ui->lineEditVIN,
-  //      QOverload< const QString& >::of( &QLineEdit::textChanged ), this,
-  //      QOverload< const QString& >::of( &TemplateFormAuto::slotVinValidate )
-  //      );
-
-  //  connect( ui->lineEditVIN, QOverload<>::of( &QLineEdit::editingFinished ),
-  //           this, QOverload<>::of( &TemplateFormAuto::slotVinValidate ) );
+  connect(
+      ui->lineEditVIN,
+      QOverload< const QString& >::of( &QLineEdit::textChanged ), this,
+      QOverload< const QString& >::of( &TemplateFormAuto::slotVinValidate ) );
 
   connect(
       ui->dateEditNextTechInspection,
@@ -87,7 +86,6 @@ TemplateFormAuto::TemplateFormAuto( QWidget* parent )
 }
 
 TemplateFormAuto::~TemplateFormAuto( ) {
-  qDebug( ) << "delete TemplateFormAuto";
   delete ui;
 }
 
@@ -112,7 +110,8 @@ void TemplateFormAuto::readConstDataForm( ) {
   }
 }
 
-const TemplateFormAuto::Line& TemplateFormAuto::dataForm( ) const {
+const TemplateFormAuto::Line& TemplateFormAuto::dataForm( ) {
+  read( );
   return autoData;
 }
 
@@ -145,7 +144,6 @@ void TemplateFormAuto::clearForm( ) const {
   ui->lineEditBrandAuto->clear( );
   ui->lineEditSeriesAuto->clear( );
   ui->lineEditModel->clear( );
-  //  ui->dateEditYearOfIssue->clear( );
   ui->lineEditVIN->clear( );
   ui->lineEditGosNumber->clear( );
   ui->checkBoxReminder->setCheckState( Qt::CheckState::Unchecked );
@@ -162,8 +160,22 @@ void TemplateFormAuto::setVinNoChange( ) const {
   ui->lineEditVIN->setEnabled( false );
 }
 
+void TemplateFormAuto::read( ) {
+  slotReadBrand( );
+  slotReadSeries( );
+  slotReadModel( );
+  slotReadGosNumber( );
+  slotReadVin( );
+  slotReadLenth( );
+  slotReadWidth( );
+  slotReadHeight( );
+  slotReadSpace( );
+  slotReadMaximalCarring( );
+  slotReadComments( );
+  readConstDataForm( );
+}
+
 void TemplateFormAuto::slotVinValidate( const QString& vin ) {
-  qDebug( ) << "TemplateFormAuto::slotVinValidate";
   // WP0ZZZ99ZTS392124
   // SJNFBAF15U6433557
   // XUFJA696JD3009672
@@ -173,33 +185,27 @@ void TemplateFormAuto::slotVinValidate( const QString& vin ) {
 }
 
 void TemplateFormAuto::slotDateChangedNextTech( QDate d ) {
-  qDebug( ) << "TemplateFormAuto::slotDateChangedNextTech";
   ui->labelDayBefore->setText(
       QString::number( QDate::currentDate( ).daysTo( d ) ) );
 }
 
 void TemplateFormAuto::slotReadBrand( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadBrand";
   autoData[ "name_brand" ] = ui->lineEditBrandAuto->text( );
 }
 
 void TemplateFormAuto::slotReadSeries( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadSeries";
   autoData[ "series_brand" ] = ui->lineEditSeriesAuto->text( );
 }
 
 void TemplateFormAuto::slotReadModel( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadModel";
   autoData[ "marka_brand" ] = ui->lineEditModel->text( );
 }
 
 void TemplateFormAuto::slotReadGosNumber( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadGosNumber";
   autoData[ "auto_counry_number" ] = ui->lineEditGosNumber->text( );
 }
 
 void TemplateFormAuto::slotReadVin( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadVin";
   QString vin = ui->lineEditVIN->text( ).toUpper( );
   if ( !ValidatorAutoData::validateVin( vin ) ) {
     QMessageBox::critical( this, "Error vin", "Проверь ВИН" );
@@ -209,31 +215,29 @@ void TemplateFormAuto::slotReadVin( ) {
 }
 
 void TemplateFormAuto::slotReadLenth( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadLenth";
   autoData[ "lenth" ] = ui->lineEditLenthCargon->text( );
 }
 
 void TemplateFormAuto::slotReadWidth( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadWidth";
   autoData[ "width" ] = ui->lineEditWidthCargon->text( );
 }
 
 void TemplateFormAuto::slotReadHeight( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadHeight";
   autoData[ "height" ] = ui->lineEditHeightCargoon->text( );
 }
 
 void TemplateFormAuto::slotReadSpace( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadSpace";
   autoData[ "space" ] = ui->lineEditWolumeCargon->text( );
 }
 
 void TemplateFormAuto::slotReadMaximalCarring( ) {
-  qDebug( ) << "TemplateFormAuto::slotReadMaximalCarring";
   autoData[ "carring" ] = ui->lineEditMaximalCarring->text( );
 }
 
 void TemplateFormAuto::slotReadComments( ) {
-  qDebug( ) << "ui->plainTextEditComments changed";
-  autoData[ "commentary" ] = ui->plainTextEditComments->placeholderText( );
+  qDebug( ) << "commentary1 = "
+            << ui->plainTextEditComments->placeholderText( );
+  autoData[ "commentary" ] = ui->plainTextEditComments->toPlainText( );
+  qDebug( ) << "commentary2 = "
+            << ui->plainTextEditComments->placeholderText( );
 }

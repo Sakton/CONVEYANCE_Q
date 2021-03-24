@@ -5,7 +5,7 @@
 #include <QWidget>
 #include "Utility/AllConstants.h"
 
-//Одна запись, по сути это строка таблицы БД, в такой форме
+// Одна запись, по сути это строка таблицы БД, в такой форме
 
 namespace Ui {
 class TemplateFormAuto;
@@ -20,11 +20,14 @@ class TemplateFormAuto : public QWidget {
   explicit TemplateFormAuto( QWidget* parent = nullptr );
   ~TemplateFormAuto( );
 
-  void readConstDataForm( );
-  const Line& dataForm( ) const;
+  const Line& dataForm( );
   void writeForm( const Line& data );
   void clearForm( ) const;
   void setVinNoChange( ) const;
+
+ private:
+  void read( );
+  void readConstDataForm( );
 
  public slots:
   void slotVinValidate( const QString& vin );

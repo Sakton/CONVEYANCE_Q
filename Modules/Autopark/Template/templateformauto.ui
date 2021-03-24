@@ -97,7 +97,7 @@
              <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
             </property>
             <property name="value">
-             <number>10</number>
+             <number>0</number>
             </property>
            </widget>
           </item>
@@ -426,7 +426,11 @@
            </widget>
           </item>
           <item row="0" column="5">
-           <widget class="QLineEdit" name="lineEditWidthCargon"/>
+           <widget class="QLineEdit" name="lineEditWidthCargon">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
           </item>
           <item row="3" column="3">
            <widget class="QComboBox" name="comboBoxNotation">
@@ -458,7 +462,11 @@
            </widget>
           </item>
           <item row="3" column="2">
-           <widget class="QLineEdit" name="lineEditWolumeCargon"/>
+           <widget class="QLineEdit" name="lineEditWolumeCargon">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
           </item>
           <item row="0" column="1">
            <widget class="QLabel" name="label_7">
@@ -504,10 +512,18 @@
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="QLineEdit" name="lineEditLenthCargon"/>
+           <widget class="QLineEdit" name="lineEditLenthCargon">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
           </item>
           <item row="0" column="8">
-           <widget class="QLineEdit" name="lineEditHeightCargoon"/>
+           <widget class="QLineEdit" name="lineEditHeightCargoon">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
           </item>
           <item row="0" column="9">
            <widget class="QLabel" name="label_15">
@@ -533,7 +549,11 @@
            </widget>
           </item>
           <item row="3" column="5">
-           <widget class="QLineEdit" name="lineEditMaximalCarring"/>
+           <widget class="QLineEdit" name="lineEditMaximalCarring">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
           </item>
           <item row="3" column="7">
            <widget class="QLabel" name="label_16">

@@ -28,7 +28,6 @@ InsertFormAuto::~InsertFormAuto()
 }
 
 void InsertFormAuto::slotButtonAccepted( ) {
-  ui->templateFormAuto->readConstDataForm( );
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString(
       QLatin1String( "autopark" ), ui->templateFormAuto->dataForm( ) );

@@ -105,7 +105,6 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
            this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
 
   updateWindow->setDataInForm( data_.at( vin ) );
-  data_.at( vin )[ "changed" ] = "true";
   updateWindow->setWindowTitle( "ОБНОВЛЕНИЕ ДАННЫX VIN: " + vin );
   updateWindow->setWindowModality( Qt::WindowModality::ApplicationModal );
   updateWindow->show( );
@@ -119,13 +118,31 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
 void MainFormAutopark::slotItemIsUpdates( ) {
   data_.at( currentKey_Vin ) = updateWindow->getDataInForm( );
   selectedDelegateWidget->setData( data_.at( currentKey_Vin ) );
-  qDebug( ) << QueryDriver::update( "autopark", data_.at( currentKey_Vin ),
-                                    "vin=" + currentKey_Vin );
-  // тут вставка в базу измененных элементов
+
+  Line& refLine = data_.at( currentKey_Vin );
+
+  QString qs = QueryDriver::update(
+      "autopark",
+      { "name_brand", "series_brand", "marka_brand", "issue",
+        "auto_counry_number", "eco", "inspection", "reminder", "days_reminder",
+        "lenth", "width", "height", "space", "carring", "lift", "commentary" },
+      { refLine.at( "name_brand" ), refLine.at( "series_brand" ),
+        refLine.at( "marka_brand" ), refLine.at( "issue" ),
+        refLine.at( "auto_counry_number" ), refLine.at( "eco" ),
+        refLine.at( "inspection" ), refLine.at( "reminder" ),
+        refLine.at( "days_reminder" ), refLine.at( "lenth" ),
+        refLine.at( "width" ), refLine.at( "height" ), refLine.at( "space" ),
+        refLine.at( "carring" ), refLine.at( "lift" ),
+        refLine.at( "commentary" ) },
+      "vin='" + currentKey_Vin + "'" );
+  QSqlQuery query;
+
+  if ( !query.exec( qs ) ) {
+    qDebug( ) << query.lastError( ).text( );
+  }
 }
 
 void MainFormAutopark::slotAddItem( ) {
-  qDebug( ) << "MainFormAutopark::slotAddItem()";
   updateWindow = new UpdateFormAuto;
   connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsInsert ) );
@@ -135,10 +152,11 @@ void MainFormAutopark::slotAddItem( ) {
 
 void MainFormAutopark::slotItemIsInsert( ) {
   qDebug( ) << "MainFormAutopark::slotItemIsInsert";
+  Line line = updateWindow->getDataInForm( );
   QSqlQuery query;
-  QString qs =
-      QueryDriver::insertQueryString( "autopark", data_.at( currentKey_Vin ) );
+  QString qs = QueryDriver::insertQueryString( "autopark", line );
+  qDebug( ) << qs;
   if ( !query.exec( qs ) ) {
-    qDebug( ) << "EERROR INSERT TO DB";
+    qDebug( ) << query.lastError( ).text( );
   }
 }
