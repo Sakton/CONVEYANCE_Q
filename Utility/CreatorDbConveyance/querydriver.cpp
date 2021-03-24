@@ -1,12 +1,9 @@
 #include "querydriver.h"
 #include <numeric>
 
-//идея не очень,
 QString QueryDriver::insertQueryString(
     const QString& tableName,
-    const QueryDriver::typeCollection& coll ) {
-  //  qDebug( ) << "coll = " << coll;
-
+    const QueryDriver::TypeCollection& coll ) {
   QString res = "INSERT INTO " + QLatin1String( AllConstatnts::DB_SHEME ) +
                 "." + tableName + "(";
   res = std::accumulate( coll.begin( ), coll.end( ), res,
@@ -27,4 +24,21 @@ QString QueryDriver::insertQueryString(
 QString QueryDriver::selectAll( const QString &tableName ) {
   return QString( "SELECT * FROM " ) +
          QLatin1String( AllConstatnts::DB_SHEME ) + "." + tableName + ";";
+}
+
+QString QueryDriver::update( const QString& tableName,
+                             const QueryDriver::TypeCollection& collection,
+                             const QString& wherePredicat ) {
+  QString qs = "UPDATE ";
+  qs += tableName + " SET ";
+  //  for ( auto& elem : collection )
+  //    qs += ;
+  qs = std::accumulate( collection.cbegin( ), collection.cend( ), qs,
+                        []( const QString& s, const Para& el ) {
+                          return s + ( el.first + "=" + el.second + "," );
+                        } );
+  qs.chop( 1 );
+  qs += " ";
+  qs += "WHERE " + wherePredicat + ";";
+  return qs;
 }

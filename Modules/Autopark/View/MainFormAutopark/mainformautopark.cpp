@@ -105,6 +105,7 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
            this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
 
   updateWindow->setDataInForm( data_.at( vin ) );
+  data_.at( vin )[ "changed" ] = "true";
   updateWindow->setWindowTitle( "ОБНОВЛЕНИЕ ДАННЫX VIN: " + vin );
   updateWindow->setWindowModality( Qt::WindowModality::ApplicationModal );
   updateWindow->show( );
@@ -118,6 +119,8 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
 void MainFormAutopark::slotItemIsUpdates( ) {
   data_.at( currentKey_Vin ) = updateWindow->getDataInForm( );
   selectedDelegateWidget->setData( data_.at( currentKey_Vin ) );
+  qDebug( ) << QueryDriver::update( "autopark", data_.at( currentKey_Vin ),
+                                    "vin=" + currentKey_Vin );
   // тут вставка в базу измененных элементов
 }
 
@@ -132,4 +135,10 @@ void MainFormAutopark::slotAddItem( ) {
 
 void MainFormAutopark::slotItemIsInsert( ) {
   qDebug( ) << "MainFormAutopark::slotItemIsInsert";
+  QSqlQuery query;
+  QString qs =
+      QueryDriver::insertQueryString( "autopark", data_.at( currentKey_Vin ) );
+  if ( !query.exec( qs ) ) {
+    qDebug( ) << "EERROR INSERT TO DB";
+  }
 }

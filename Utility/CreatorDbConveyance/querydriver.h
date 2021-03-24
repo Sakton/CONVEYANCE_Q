@@ -7,13 +7,17 @@
 
 class QueryDriver {
  public:
-  using typeCollection = AllConstatnts::Line;
+  using TypeCollection = AllConstatnts::Line;
   using Para = AllConstatnts::Para;
 
-  static QString insertQueryString( const QString& tableName, const typeCollection& coll );
+  static QString insertQueryString( const QString& tableName,
+                                    const TypeCollection& coll );
   static QString selectAll( const QString& tableName );
-  QString selectQueryString( const typeCollection& coll );
-  QString updateQueryString( const typeCollection& coll );
+  static QString update( const QString& tableName,
+                         const TypeCollection& collection,
+                         const QString& wherePredicat );
+  QString selectQueryString( const TypeCollection& coll );
+  QString updateQueryString( const TypeCollection& coll );
 };
 
 #endif // QUERYDRIVER_H
