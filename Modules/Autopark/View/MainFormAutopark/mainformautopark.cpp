@@ -1,11 +1,11 @@
 #include "mainformautopark.h"
 
 #include <QListWidgetItem>
+#include <QMessageBox>
 #include <QPushButton>
 #include <QSqlError>
 #include <QSqlQuery>
 #include "Modules/Autopark/Delegat/MainDelegatAutopark/maindelegatewidgetautopark.h"
-// #include "Modules/Autopark/View/InsertFormAuto/insertformauto.h"
 #include "Modules/Autopark/View/UpdateFormAuto/updateformauto.h"
 #include "Utility/AllConstants.h"
 #include "Utility/CreatorDbConveyance/querydriver.h"
@@ -27,6 +27,7 @@ MainFormAutopark::MainFormAutopark( QWidget* parent )
 
 MainFormAutopark::~MainFormAutopark()
 {
+  delete updateWindow;
   delete ui;
 }
 
@@ -84,7 +85,7 @@ void MainFormAutopark::read( ) {
   }
 }
 
-void MainFormAutopark::clearCurrents( ) {
+void MainFormAutopark::clearCurrents( ) {  // ??? для чего его сделал?
   if ( updateWindow ) {
     updateWindow->close( );
     updateWindow->deleteLater( );
@@ -92,6 +93,13 @@ void MainFormAutopark::clearCurrents( ) {
   currentKey_Vin.clear( );
   updateWindow = nullptr;
   selectedDelegateWidget = nullptr;
+}
+
+void MainFormAutopark::update( ) {
+  ui->listWidget->clear( );
+  data_.clear( );
+  read( );
+  fill( );
 }
 
 void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
@@ -112,7 +120,16 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
 
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
   // тут удаление из базы
-  clearCurrents( );
+  // clearCurrents( );
+  QString s = tr( "ЗАПИСЬ С VIN " ) + vin + tr( " БУДЕТ УДАЛЕНА" );
+  int clickButton =
+      QMessageBox::warning( nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s );
+  if ( clickButton == QMessageBox::StandardButton::Ok ) {
+    QSqlQuery query;
+    QString qs =
+        QueryDriver::delRecord( "autopark", QString( "vin='" + vin + "'" ) );
+    qDebug( ) << "DELETE query = " << qs;
+  }
 }
 
 void MainFormAutopark::slotItemIsUpdates( ) {
@@ -138,8 +155,10 @@ void MainFormAutopark::slotItemIsUpdates( ) {
   QSqlQuery query;
 
   if ( !query.exec( qs ) ) {
-    qDebug( ) << query.lastError( ).text( );
+    QMessageBox::critical( nullptr, "CRITICAL ERROR UPDATE",
+                           query.lastError( ).text( ) );
   }
+  updateWindow->close( );
 }
 
 void MainFormAutopark::slotAddItem( ) {
@@ -151,12 +170,13 @@ void MainFormAutopark::slotAddItem( ) {
 }
 
 void MainFormAutopark::slotItemIsInsert( ) {
-  qDebug( ) << "MainFormAutopark::slotItemIsInsert";
   Line line = updateWindow->getDataInForm( );
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString( "autopark", line );
-  qDebug( ) << qs;
   if ( !query.exec( qs ) ) {
-    qDebug( ) << query.lastError( ).text( );
+    QMessageBox::critical( nullptr, "CRITICAL ERROR INSERT",
+                           query.lastError( ).text( ) );
   }
+  updateWindow->close( );
+  update( );
 }

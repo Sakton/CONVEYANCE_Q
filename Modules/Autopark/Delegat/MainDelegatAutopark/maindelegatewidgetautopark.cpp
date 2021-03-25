@@ -52,22 +52,25 @@ void MainDelegateWidgetAutopark::fill( ) {
   ui->labelTonnag->setText( data_.at( "carring" ) );
   //**
   ui->labelDataIssue->setText( data_.at( "issue" ) );
+
   //  ui->comboBoxEcoClass->setCurrentText( data.at( "eco" ) );
+
   ui->labelTechInspection->setText( data_.at( "inspection" ) );
+
   //  ui->checkBoxReminder->setCheckState(
   //      static_cast< Qt::CheckState >( data.at( "reminder" ).toInt( ) ) );
+
   if ( static_cast< Qt::CheckState >( data_.at( "reminder" ).toInt( ) ) ==
        Qt::CheckState::Checked ) {
     ui->labelReminder->setText( tr( "Включено" ) );
   }
+
   //  ui->checkBoxTatLift->setCheckState(
   //      static_cast< Qt::CheckState >( data.at( "lift" ).toInt( ) ) );
-  //**
+
   ui->labelNote->setText( data_.at( "commentary" ) );
-  if ( data_.at( "commentary" ).isEmpty( ) ) {
-    //если в комментах ничего нет то и скроем его
-    ui->groupBoxNote->hide( );
-  }
+  ( data_.at( "commentary" ).isEmpty( ) ) ? ui->groupBoxNote->hide( )
+                                          : ui->groupBoxNote->show( );
 }
 
 void MainDelegateWidgetAutopark::slotClickedChangeButton( ) {

@@ -65,3 +65,10 @@ QString QueryDriver::update( const QString& tableName,
   qs += wherePredicat + ";";
   return qs;
 }
+
+QString QueryDriver::delRecord( const QString& tableName,
+                                const QString& wherePredicat ) {
+  QString qs = "DELETE FROM " + QLatin1String( AllConstatnts::DB_SHEME ) + "." +
+               tableName + " WHERE " + wherePredicat;
+  return qs;
+}

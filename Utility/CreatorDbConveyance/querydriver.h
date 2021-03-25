@@ -13,14 +13,21 @@ class QueryDriver {
 
   static QString insertQueryString( const QString& tableName,
                                     const TypeCollection& coll );
+
   static QString selectAll( const QString& tableName );
+
   static QString update( const QString& tableName,
                          const TypeCollection& collection,
                          const QString& wherePredicat );
+
   static QString update( const QString& tableName,
                          const std::list< QString >& poles,
                          const std::list< QString >& values,
                          const QString& wherePredicat );
+
+  static QString delRecord( const QString& tableName,
+                            const QString& wherePredicat );
+
   QString selectQueryString( const TypeCollection& coll );
   QString updateQueryString( const TypeCollection& coll );
 };

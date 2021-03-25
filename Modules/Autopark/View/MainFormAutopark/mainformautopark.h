@@ -26,6 +26,7 @@ class MainFormAutopark : public QWidget
   void fill( );
   void read( );
   void clearCurrents( );
+  void update( );
 
  public slots:
   void slotItemClickedChangeButton( const QString& vin );

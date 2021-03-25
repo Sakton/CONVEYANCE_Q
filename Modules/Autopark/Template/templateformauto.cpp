@@ -27,6 +27,7 @@ TemplateFormAuto::TemplateFormAuto( QWidget* parent )
   ui->labelDayBefore->setText( QString::number(
       QDate::currentDate( ).daysTo( QDate::currentDate( ).addYears( 1 ) ) ) );
   ui->plainTextEditComments->setLineWrapMode( QPlainTextEdit::WidgetWidth );
+  ui->plainTextEditComments->setOverwriteMode( false );
 
   connect(
       ui->lineEditVIN,
