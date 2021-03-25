@@ -23,6 +23,7 @@ class MainDelegateWidgetAutopark : public QWidget
 
   void setImg( const QString& url = "qrc:/image/empty_photo.jpg" );
   void setData( const Line& line );
+  void setBoundListWidgetItem( QListWidgetItem* item );
 
  private:
   void fill( );
@@ -34,10 +35,12 @@ class MainDelegateWidgetAutopark : public QWidget
  signals:
   void signalClickedChangeButton( const QString& vin );
   void signalClickedDeleteButton( const QString& vin );
+  void signalBoundedListWidgetItem( QListWidgetItem* item );
 
  private:
   Ui::MainDelegateWidgetAutopark* ui;
   Line data_;
+  QListWidgetItem* boundItem { nullptr };
 };
 
 #endif // MAINDELEGATEWIDGETAUTOPARK_H

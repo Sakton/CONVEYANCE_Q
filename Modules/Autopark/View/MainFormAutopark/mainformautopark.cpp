@@ -14,7 +14,8 @@
 MainFormAutopark::MainFormAutopark( QWidget* parent )
     : QWidget( parent ),
       ui( new Ui::MainFormAutopark ),
-      selectedDelegateWidget { nullptr } {
+      selectedDelegateWidget { nullptr },
+      currentSelectedItemWidget { nullptr } {
   ui->setupUi( this );
   ui->listWidget->setSelectionMode( QAbstractItemView::NoSelection );
 
@@ -27,32 +28,44 @@ MainFormAutopark::MainFormAutopark( QWidget* parent )
 
 MainFormAutopark::~MainFormAutopark()
 {
-  delete updateWindow;
+  updateWindow->deleteLater( );
   delete ui;
+}
+
+void MainFormAutopark::addWidget( const Line& line ) {
+  QListWidgetItem* item = new QListWidgetItem( ui->listWidget );
+  MainDelegateWidgetAutopark* widget =
+      new MainDelegateWidgetAutopark( line, ui->listWidget );
+  widget->setBoundListWidgetItem( item );
+
+  connect( widget,
+           QOverload< const QString& >::of(
+               &MainDelegateWidgetAutopark::signalClickedChangeButton ),
+           this,
+           QOverload< const QString& >::of(
+               &MainFormAutopark::slotItemClickedChangeButton ) );
+
+  connect( widget,
+           QOverload< const QString& >::of(
+               &MainDelegateWidgetAutopark::signalClickedDeleteButton ),
+           this,
+           QOverload< const QString& >::of(
+               &MainFormAutopark::slotItemClickedDeleteButton ) );
+
+  connect( widget,
+           QOverload< QListWidgetItem* >::of(
+               &MainDelegateWidgetAutopark::signalBoundedListWidgetItem ),
+           this,
+           QOverload< QListWidgetItem* >::of(
+               &MainFormAutopark::slotSetCurrentSelectedItem ) );
+
+  item->setSizeHint( widget->sizeHint( ) );
+  ui->listWidget->setItemWidget( item, widget );
 }
 
 void MainFormAutopark::fill( ) {
   for ( auto& el : data_ ) {
-    QListWidgetItem* item = new QListWidgetItem( ui->listWidget );
-    MainDelegateWidgetAutopark* widget =
-        new MainDelegateWidgetAutopark( el.second, ui->listWidget );
-
-    connect( widget,
-             QOverload< const QString& >::of(
-                 &MainDelegateWidgetAutopark::signalClickedChangeButton ),
-             this,
-             QOverload< const QString& >::of(
-                 &MainFormAutopark::slotItemClickedChangeButton ) );
-
-    connect( widget,
-             QOverload< const QString& >::of(
-                 &MainDelegateWidgetAutopark::signalClickedDeleteButton ),
-             this,
-             QOverload< const QString& >::of(
-                 &MainFormAutopark::slotItemClickedDeleteButton ) );
-
-    item->setSizeHint( widget->sizeHint( ) );
-    ui->listWidget->setItemWidget( item, widget );
+    addWidget( el.second );
   }
 }
 
@@ -95,13 +108,6 @@ void MainFormAutopark::clearCurrents( ) {  // ??? для чего его сде�
   selectedDelegateWidget = nullptr;
 }
 
-void MainFormAutopark::update( ) {
-  ui->listWidget->clear( );
-  data_.clear( );
-  read( );
-  fill( );
-}
-
 void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
   // установка текущих значений
   currentKey_Vin = vin;
@@ -120,7 +126,6 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
 
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
   // тут удаление из базы
-  // clearCurrents( );
   QString s = tr( "ЗАПИСЬ С VIN " ) + vin + tr( " БУДЕТ УДАЛЕНА" );
   int clickButton =
       QMessageBox::warning( nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s );
@@ -128,7 +133,12 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
     QSqlQuery query;
     QString qs =
         QueryDriver::delRecord( "autopark", QString( "vin='" + vin + "'" ) );
-    qDebug( ) << "DELETE query = " << qs;
+    if ( !query.exec( qs ) )
+      QMessageBox::critical( nullptr, tr( "CRITICAL" ),
+                             query.lastError( ).text( ) );
+    // TODO тут!!!
+    ui->listWidget->removeItemWidget( currentSelectedItemWidget );
+    currentSelectedItemWidget= nullptr;
   }
 }
 
@@ -171,6 +181,7 @@ void MainFormAutopark::slotAddItem( ) {
 
 void MainFormAutopark::slotItemIsInsert( ) {
   Line line = updateWindow->getDataInForm( );
+  data_[ line.at( "vin" ) ] = line;
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString( "autopark", line );
   if ( !query.exec( qs ) ) {
@@ -178,5 +189,9 @@ void MainFormAutopark::slotItemIsInsert( ) {
                            query.lastError( ).text( ) );
   }
   updateWindow->close( );
-  update( );
+  addWidget( line );
+}
+
+void MainFormAutopark::slotSetCurrentSelectedItem( QListWidgetItem* item ) {
+  currentSelectedItemWidget= item;
 }

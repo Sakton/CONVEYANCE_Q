@@ -5,7 +5,8 @@ MainDelegateWidgetAutopark::MainDelegateWidgetAutopark( const Line& line,
                                                         QWidget* parent )
     : QWidget( parent ),
       ui( new Ui::MainDelegateWidgetAutopark ),
-      data_ { line } {
+      data_ { line },
+      boundItem { nullptr } {
   ui->setupUi( this );
 
   connect(
@@ -38,6 +39,11 @@ void MainDelegateWidgetAutopark::setData(
   fill( );
 }
 
+void MainDelegateWidgetAutopark::setBoundListWidgetItem(
+    QListWidgetItem* item ) {
+  boundItem= item;
+}
+
 void MainDelegateWidgetAutopark::fill( ) {
   ui->labelVIN->setText( data_.at( "vin" ) );
   ui->labelBrandName->setText( data_.at( "name_brand" ) );
@@ -53,20 +59,22 @@ void MainDelegateWidgetAutopark::fill( ) {
   //**
   ui->labelDataIssue->setText( data_.at( "issue" ) );
 
-  //  ui->comboBoxEcoClass->setCurrentText( data.at( "eco" ) );
-
+  ui->labelEcoClass->setText( data_.at( "eco" ) );
   ui->labelTechInspection->setText( data_.at( "inspection" ) );
-
-  //  ui->checkBoxReminder->setCheckState(
-  //      static_cast< Qt::CheckState >( data.at( "reminder" ).toInt( ) ) );
 
   if ( static_cast< Qt::CheckState >( data_.at( "reminder" ).toInt( ) ) ==
        Qt::CheckState::Checked ) {
     ui->labelReminder->setText( tr( "Включено" ) );
+  } else {
+    ui->labelReminder->setText( tr( "Отключено" ) );
   }
 
-  //  ui->checkBoxTatLift->setCheckState(
-  //      static_cast< Qt::CheckState >( data.at( "lift" ).toInt( ) ) );
+  if ( static_cast< Qt::CheckState >( data_.at( "lift" ).toInt( ) ) ==
+       Qt::CheckState::Checked ) {
+    ui->labelLift->setText( "Есть" );
+  } else {
+    ui->labelLift->setText( "Нет" );
+  }
 
   ui->labelNote->setText( data_.at( "commentary" ) );
   ( data_.at( "commentary" ).isEmpty( ) ) ? ui->groupBoxNote->hide( )
@@ -75,8 +83,10 @@ void MainDelegateWidgetAutopark::fill( ) {
 
 void MainDelegateWidgetAutopark::slotClickedChangeButton( ) {
   emit signalClickedChangeButton( data_.at( "vin" ) );
+  emit signalBoundedListWidgetItem( boundItem );
 }
 
 void MainDelegateWidgetAutopark::slotClickedDeleteButton( ) {
   emit signalClickedDeleteButton( data_.at( "vin" ) );
+  emit signalBoundedListWidgetItem( boundItem );
 }

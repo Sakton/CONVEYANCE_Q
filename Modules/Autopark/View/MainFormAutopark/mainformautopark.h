@@ -10,6 +10,7 @@ class MainFormAutopark;
 
 class MainDelegateWidgetAutopark;
 class UpdateFormAuto;
+class QListWidgetItem;
 
 class MainFormAutopark : public QWidget
 {
@@ -26,7 +27,7 @@ class MainFormAutopark : public QWidget
   void fill( );
   void read( );
   void clearCurrents( );
-  void update( );
+  void addWidget( const Line& line );
 
  public slots:
   void slotItemClickedChangeButton( const QString& vin );
@@ -34,6 +35,7 @@ class MainFormAutopark : public QWidget
   void slotItemIsUpdates( /*const QString& vin*/ );
   void slotAddItem( );
   void slotItemIsInsert( );
+  void slotSetCurrentSelectedItem( QListWidgetItem* item );
 
  private:
   Ui::MainFormAutopark* ui;
@@ -41,6 +43,7 @@ class MainFormAutopark : public QWidget
   MainDelegateWidgetAutopark* selectedDelegateWidget { nullptr };
   QString currentKey_Vin;
   UpdateFormAuto* updateWindow;
+  QListWidgetItem* currentSelectedItemWidget;
 };
 
 #endif // MAINFORMAUTOPARK_H
