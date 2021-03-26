@@ -43,7 +43,7 @@ class MainFormAutopark : public QWidget
   MainDelegateWidgetAutopark* selectedDelegateWidget { nullptr };
   QString currentKey_Vin;
   UpdateFormAuto* updateWindow;
-  QListWidgetItem* currentSelectedItemWidget;
+  QListWidgetItem* currentSelectedItemWidget;  // пока не нужен но вдруг
 };
 
 #endif // MAINFORMAUTOPARK_H

@@ -17,17 +17,19 @@ MainFormAutopark::MainFormAutopark( QWidget* parent )
       selectedDelegateWidget { nullptr },
       currentSelectedItemWidget { nullptr } {
   ui->setupUi( this );
+  setAttribute( Qt::WA_DeleteOnClose );
+
   ui->listWidget->setSelectionMode( QAbstractItemView::NoSelection );
 
   connect( ui->pushButtonAdd, QOverload< bool >::of( &QPushButton::clicked ),
            this, QOverload<>::of( &MainFormAutopark::slotAddItem ) );
-
   read( );
   fill( );
 }
 
 MainFormAutopark::~MainFormAutopark()
 {
+  qDebug( ) << "DELETE MainFormAutopark::~MainFormAutopark()";
   updateWindow->deleteLater( );
   delete ui;
 }
@@ -131,13 +133,14 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
       QMessageBox::warning( nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s );
   if ( clickButton == QMessageBox::StandardButton::Ok ) {
     QSqlQuery query;
-    QString qs =
+    QString   qs=
         QueryDriver::delRecord( "autopark", QString( "vin='" + vin + "'" ) );
     if ( !query.exec( qs ) )
       QMessageBox::critical( nullptr, tr( "CRITICAL" ),
                              query.lastError( ).text( ) );
-    // TODO тут!!!
-    ui->listWidget->removeItemWidget( currentSelectedItemWidget );
+    data_.erase( vin );
+    ui->listWidget->clear( );
+    fill( );
     currentSelectedItemWidget= nullptr;
   }
 }

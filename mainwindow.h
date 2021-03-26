@@ -5,6 +5,7 @@
 
 class QMdiSubWindow;
 class QLabel;
+class QWidget;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +22,10 @@ class MainWindow : public QMainWindow
  public slots:
   void slotAddTabWindow( );
   void slotCloseTabWindow( int );
+  void slotAddAutopark( int pos );
+  void slotCloseChildrenWidget( int index );
+  void slotSetCurrentChildrenWidget( int index );
+  void slotCloseChildrenWidgetOnTabClose( int index );
 
  private:
   QToolBar *createTopToolBar( );
@@ -33,5 +38,6 @@ class MainWindow : public QMainWindow
   Ui::MainWindow *ui;
   QLabel *labelMouseX;
   QLabel *labelMouseY;
+  QWidget *currentWidget;
 };
 #endif // MAINWINDOW_H
