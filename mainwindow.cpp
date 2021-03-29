@@ -8,6 +8,7 @@
 #include <QToolBar>
 
 #include "Modules/Autopark/View/MainFormAutopark/mainformautopark.h"
+#include "Modules/Orders/View/MainFormOrders/mainorderform.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow( QWidget *parent ) : QMainWindow( parent ), ui( new Ui::MainWindow ) {
@@ -30,15 +31,24 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow( parent ), ui( new Ui::M
 
 MainWindow::~MainWindow( ) { delete ui; }
 
-void MainWindow::slotAddTabWindow( ) {
-}
+//void MainWindow::slotAddTabWindow( ) {
+//}
 
 void MainWindow::slotCloseTabWindow( int idx ) { ui->tabWidget->removeTab( idx ); }
 
 void MainWindow::slotAddAutopark( int pos ) {
-  ui->tabWidget->addTab( new MainFormAutopark,
-                         tr( "Автопарк" ) );
+  if( !searchOpensWindow("MainFormAutopark") ){
+    ui->tabWidget->addTab( new MainFormAutopark, tr( "Автопарк" ) );
+  }
   Q_UNUSED(pos)
+}
+
+void MainWindow::slotAddOrder(int pos)
+{
+  if ( !searchOpensWindow( "MainOrderForm" ) ) {
+    ui->tabWidget->addTab( new MainOrderForm, tr( "Ордера" ) );
+  }
+  Q_UNUSED( pos )
 }
 
 void MainWindow::slotCloseChildrenWidget( int index ) {
@@ -48,13 +58,11 @@ void MainWindow::slotCloseChildrenWidget( int index ) {
 void MainWindow::slotSetCurrentChildrenWidget( int index )
 {
   currentWidget = ui->tabWidget->widget(index);
-  //qDebug() << "MainWindow::slotSetCurrentChildrenWidget(int index) " << currentWidget;
 }
 
 void MainWindow::slotCloseChildrenWidgetOnTabClose(int index)
 {
   if(currentWidget) {
-    qDebug() << "currentWidget = " << currentWidget;
     currentWidget->deleteLater();
   }
   slotCloseTabWindow( index );
@@ -62,17 +70,29 @@ void MainWindow::slotCloseChildrenWidgetOnTabClose(int index)
 
 QToolBar *MainWindow::createTopToolBar( ) {
   QToolBar* topToolBar = new QToolBar( "TopToolBar", this );
-  topToolBar->addAction( tr( "Автопарк" ), this,
-                         QOverload< int >::of( &MainWindow::slotAddAutopark ) );
+  topToolBar->addAction( tr( "Автопарк" ), this, QOverload< int >::of( &MainWindow::slotAddAutopark ) );
+  topToolBar->addAction( tr( "Ордера" ), this,
+                         QOverload< int >::of( &MainWindow::slotAddOrder ) );
   return topToolBar;
 }
 
 void MainWindow::statusBarOperations( ) {
   labelMouseX = new QLabel( statusBar( ) );
   labelMouseY = new QLabel( statusBar( ) );
-
   statusBar( )->addWidget( labelMouseX );
   statusBar( )->addWidget( labelMouseY );
+}
+
+bool MainWindow::searchOpensWindow(const QString &searchClassName)
+{
+  int count = ui->tabWidget->count();
+  int index = count - 1;
+  while (index >= 0) {
+    QWidget *w = ui->tabWidget->widget(index--);
+    QString nameClass = w->metaObject()->className();
+    if( nameClass == searchClassName ) return true;
+  }
+  return false;
 }
 
 void MainWindow::mouseMoveEvent( QMouseEvent *event ) {

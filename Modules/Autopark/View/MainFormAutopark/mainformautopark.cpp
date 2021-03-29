@@ -30,7 +30,6 @@ MainFormAutopark::MainFormAutopark( QWidget* parent )
 MainFormAutopark::~MainFormAutopark()
 {
   qDebug( ) << "DELETE MainFormAutopark::~MainFormAutopark()";
-  updateWindow->deleteLater( );
   delete ui;
 }
 

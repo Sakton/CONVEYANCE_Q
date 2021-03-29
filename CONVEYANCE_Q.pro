@@ -31,6 +31,7 @@ SOURCES += \
     Modules/Driver/thedriverform.cpp \
     Modules/Country/thecountryform.cpp \
     Modules/Note/thenoteform.cpp \
+    Modules/Orders/View/MainFormOrders/mainorderform.cpp \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
     Modules/Post/thepostform.cpp \
@@ -43,7 +44,8 @@ SOURCES += \
     Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
     Utility/User/user.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mainwindowmdi.cpp
 
 HEADERS += \
     Modules/Adress/theadressform.h \
@@ -68,6 +70,7 @@ HEADERS += \
     Modules/Driver/thedriverform.h \
     Modules/Country/thecountryform.h \
     Modules/Note/thenoteform.h \
+    Modules/Orders/View/MainFormOrders/mainorderform.h \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
     Modules/Post/thepostform.h \
@@ -79,7 +82,8 @@ HEADERS += \
     Utility/CreatorDbConveyance/querydriver.h \
     Utility/DataForCreateDBForm/thedataforcreatedbform.h \
     Utility/User/user.h \
-    mainwindow.h
+    mainwindow.h \
+    mainwindowmdi.h
 
 FORMS += \
     Modules/Adress/theadressform.ui \
@@ -98,11 +102,13 @@ FORMS += \
     Modules/Driver/thedriverform.ui \
     Modules/Country/thecountryform.ui \
     Modules/Note/thenoteform.ui \
+    Modules/Orders/View/MainFormOrders/mainorderform.ui \
     Modules/Orders/theorderform.ui \
     Modules/Payment/thepaymentform.ui \
     Modules/Post/thepostform.ui \
     Utility/DataForCreateDBForm/thedataforcreatedbform.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    mainwindowmdi.ui
 
 TRANSLATIONS += \
     CONVEYANCE_Q_pl_PL.ts

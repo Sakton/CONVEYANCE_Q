@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>500</width>
     <height>792</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>500</width>
     <height>0</height>
    </size>
   </property>
@@ -37,13 +37,13 @@
      <item>
       <widget class="QGroupBox" name="groupBox_7">
        <property name="title">
-        <string>Create an Order for a Exist Order</string>
+        <string>Создать ордер на основе чего то там</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_9">
         <item row="0" column="0">
          <widget class="QPushButton" name="pushButton_3">
           <property name="text">
-           <string>Create an Order for a Exist Order</string>
+           <string>Создать заказ для существующего клиента</string>
           </property>
          </widget>
         </item>
@@ -59,7 +59,7 @@
         </sizepolicy>
        </property>
        <property name="title">
-        <string>Date and Place</string>
+        <string> Дата и площадка</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
@@ -121,7 +121,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Place</string>
+             <string>Площадка</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -146,13 +146,13 @@
      <item>
       <widget class="QGroupBox" name="groupBox">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="title">
-        <string>Contract</string>
+        <string>Договор</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
@@ -166,21 +166,21 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Driver</string>
+             <string>Водитель</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="labelContractNum">
             <property name="text">
-             <string>Contract  № </string>
+             <string>№ Договора</string>
             </property>
            </widget>
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>Contacts</string>
+             <string>Контакты</string>
             </property>
            </widget>
           </item>
@@ -219,7 +219,7 @@
           <item row="0" column="1">
            <widget class="QLineEdit" name="lineEditID">
             <property name="readOnly">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -261,7 +261,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_15">
             <property name="text">
-             <string>Number</string>
+             <string>id</string>
             </property>
            </widget>
           </item>
@@ -277,14 +277,14 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Counterparty</string>
+             <string>Заказчик</string>
             </property>
            </widget>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_17">
             <property name="text">
-             <string>Order №</string>
+             <string>№  Ордера</string>
             </property>
            </widget>
           </item>
@@ -299,7 +299,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_3">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -308,7 +308,7 @@
         <locale language="English" country="UnitedStates"/>
        </property>
        <property name="title">
-        <string>Cost</string>
+        <string>Стоимость</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_6">
         <item row="2" column="0">
@@ -328,7 +328,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Price</string>
+             <string>Цена</string>
             </property>
            </widget>
           </item>
@@ -357,7 +357,8 @@
              </size>
             </property>
             <property name="text">
-             <string>Period</string>
+             <string>Период
+оплаты</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -389,7 +390,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Currency</string>
+             <string>Валюта</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -414,13 +415,13 @@
      <item>
       <widget class="QGroupBox" name="groupBox_4">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="title">
-        <string>Route</string>
+        <string>Данные маршрута</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="1" column="0">
@@ -434,7 +435,11 @@
              </size>
             </property>
             <property name="text">
-             <string>Arrival</string>
+             <string>Доезд
+км.</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -456,7 +461,8 @@
              </size>
             </property>
             <property name="text">
-             <string>Route</string>
+             <string>Маршрут
+км.</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -481,7 +487,8 @@
              </size>
             </property>
             <property name="text">
-             <string>Rate</string>
+             <string>Ставка
+за км.</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -499,7 +506,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_5">
        <property name="title">
-        <string>Return Documents</string>
+        <string>Данные возвратных документов почтой</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
@@ -512,10 +519,12 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
             <property name="text">
-             <string>Max Time
-Sending And
-Processing Post</string>
+             <string>Почтовы
+ перевод</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -540,7 +549,7 @@ Processing Post</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>2 copy
+             <string>2 копии
 CMR</string>
             </property>
             <property name="alignment">
@@ -585,8 +594,8 @@ CMR</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Contract
-original</string>
+             <string>Оригинал
+договора</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -614,13 +623,13 @@ original</string>
      <item>
       <widget class="QGroupBox" name="groupBox_6">
        <property name="title">
-        <string>Notes</string>
+        <string>Заметки</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_7">
         <item row="0" column="0">
          <widget class="QPlainTextEdit" name="plainTextEditNotes">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -635,7 +644,7 @@ original</string>
        <item>
         <widget class="QPushButton" name="pushButtonCreateOrder">
          <property name="text">
-          <string>Create an invoice for the order</string>
+          <string>Создайте счет на заказ</string>
          </property>
         </widget>
        </item>

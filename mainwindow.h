@@ -20,16 +20,19 @@ class MainWindow : public QMainWindow
   ~MainWindow( );
 
  public slots:
-  void slotAddTabWindow( );
+//  void slotAddTabWindow( );
   void slotCloseTabWindow( int );
-  void slotAddAutopark( int pos );
   void slotCloseChildrenWidget( int index );
   void slotSetCurrentChildrenWidget( int index );
   void slotCloseChildrenWidgetOnTabClose( int index );
+  
+  void slotAddAutopark( int pos );
+  void slotAddOrder( int pos );
 
  private:
   QToolBar *createTopToolBar( );
   void statusBarOperations( );
+  bool searchOpensWindow(const QString &searchClassName); //проверяет открыто ли уже такое окошко
 
  protected:
   void mouseMoveEvent( QMouseEvent *event ) override;
