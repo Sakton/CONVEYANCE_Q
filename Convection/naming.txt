@@ -1,1 +1,7 @@
+http://cbrates.rbc.ru/tsv/978/2021/03/31.tsv - брать валюту
+http://cbrates.rbc.ru/tsv/код/год/мес/день
+
+//XML
+https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
+
 forms => The<nameForm>Form

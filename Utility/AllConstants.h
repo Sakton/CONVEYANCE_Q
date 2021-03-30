@@ -40,6 +40,17 @@ static const char* VIN { "vin" };
 static const char* ECO { "eco" };
 static const char* INSPECTION { "inspection" };
 
+//** urls excange rates
+static const char* URL_XML_ECB_EUROPA_EU =
+    "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+
+static const char* NARODOWY_BANK_POLSKI =
+    "http://api.nbp.pl/api/exchangerates/rates/A/";
+static const char* ISO_CODE_EURO = "978";
+static const char* ISO_CODE_PL_ZLOTY = "985";
+static const char* ISO_CODE_USD_DOLLAR = "840";
+static const char* FORMAT_JSON = "/?format=json";
+
 }  // namespace AllConstatnts
 
 #endif  // ALLCONSTANTS_H

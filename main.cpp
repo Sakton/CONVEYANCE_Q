@@ -1,21 +1,27 @@
 #include <QApplication>
+#include <QNetworkAccessManager>
 #include <QSettings>
+#include <memory>
 
 #include "Modules/Orders/TemplateOrderForm/templateformorder.h"
 #include "Modules/Orders/theorderform.h"
 #include "Utility/CreatorDbConveyance/dbtablecreator.h"
+#include "Utility/ExchangeRates/exchangerates.h"
 #include "mainwindow.h"
 #include "mainwindowmdi.h"
 
 int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
-  ConveyanceSQLDatabase db;  //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
+  //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
+  ConveyanceSQLDatabase db;
+
+  ExchangeRates ch;
 
   //  DBTableCreator cr;
   //  cr.createAllTableDb( );
 
-  TemplateFormOrder *tfo = new TemplateFormOrder;
-  tfo->show( );
+  //  TemplateFormOrder *tfo = new TemplateFormOrder;
+  //  tfo->show( );
 
   //  TheOrderForm *order = new TheOrderForm;
   //  order->show( );

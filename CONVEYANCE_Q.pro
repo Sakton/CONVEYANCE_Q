@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -43,6 +43,7 @@ SOURCES += \
     Utility/CreatorDbConveyance/errordatabase.cpp \
     Utility/CreatorDbConveyance/querydriver.cpp \
     Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
+    Utility/ExchangeRates/exchangerates.cpp \
     Utility/User/user.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -83,6 +84,7 @@ HEADERS += \
     Utility/CreatorDbConveyance/errordatabase.h \
     Utility/CreatorDbConveyance/querydriver.h \
     Utility/DataForCreateDBForm/thedataforcreatedbform.h \
+    Utility/ExchangeRates/exchangerates.h \
     Utility/User/user.h \
     mainwindow.h \
     mainwindowmdi.h
