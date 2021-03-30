@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>973</width>
-    <height>567</height>
+    <width>842</width>
+    <height>558</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Orders</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
@@ -32,16 +32,16 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButtonAddOrder">
          <property name="text">
-          <string>PushButton</string>
+          <string>Добавить Ордер</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
      <item>
-      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QTableView" name="tableViewOrders"/>
      </item>
     </layout>
    </item>

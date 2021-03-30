@@ -31,6 +31,7 @@ SOURCES += \
     Modules/Driver/thedriverform.cpp \
     Modules/Country/thecountryform.cpp \
     Modules/Note/thenoteform.cpp \
+    Modules/Orders/TemplateOrderForm/templateformorder.cpp \
     Modules/Orders/View/MainFormOrders/mainorderform.cpp \
     Modules/Orders/theorderform.cpp \
     Modules/Payment/thepaymentform.cpp \
@@ -70,6 +71,7 @@ HEADERS += \
     Modules/Driver/thedriverform.h \
     Modules/Country/thecountryform.h \
     Modules/Note/thenoteform.h \
+    Modules/Orders/TemplateOrderForm/templateformorder.h \
     Modules/Orders/View/MainFormOrders/mainorderform.h \
     Modules/Orders/theorderform.h \
     Modules/Payment/thepaymentform.h \
@@ -102,6 +104,7 @@ FORMS += \
     Modules/Driver/thedriverform.ui \
     Modules/Country/thecountryform.ui \
     Modules/Note/thenoteform.ui \
+    Modules/Orders/TemplateOrderForm/templateformorder.ui \
     Modules/Orders/View/MainFormOrders/mainorderform.ui \
     Modules/Orders/theorderform.ui \
     Modules/Payment/thepaymentform.ui \

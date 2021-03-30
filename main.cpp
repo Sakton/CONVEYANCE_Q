@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QSettings>
 
+#include "Modules/Orders/TemplateOrderForm/templateformorder.h"
 #include "Modules/Orders/theorderform.h"
 #include "Utility/CreatorDbConveyance/dbtablecreator.h"
 #include "mainwindow.h"
@@ -13,8 +14,11 @@ int main( int argc, char *argv[] ) {
   //  DBTableCreator cr;
   //  cr.createAllTableDb( );
 
-  TheOrderForm *order = new TheOrderForm;
-  order->show( );
+  TemplateFormOrder *tfo = new TemplateFormOrder;
+  tfo->show( );
+
+  //  TheOrderForm *order = new TheOrderForm;
+  //  order->show( );
 
   //  MainWindow w;
   //  w.show( );
