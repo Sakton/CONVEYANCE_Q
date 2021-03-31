@@ -1,5 +1,6 @@
 #ifndef EXCHANGERATES_H
 #define EXCHANGERATES_H
+#include <QDate>
 #include <QObject>
 
 class QNetworkAccessManager;
@@ -14,6 +15,10 @@ class ExchangeRates : public QObject {
 
  public slots:
   void replyFinished( QNetworkReply *rep );
+  void slotDateCours( QDate data );
+
+ signals:
+  void signalDateCoursBankNBP( double );  //кому надо то пусть ловит
 
  private:
   QNetworkAccessManager *net;
