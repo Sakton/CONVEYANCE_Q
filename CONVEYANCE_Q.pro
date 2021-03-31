@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Bases/basetemplateform.cpp \
     Modules/Adress/theadressform.cpp \
     Modules/Autopark/AutoBrand/theautobrandform.cpp \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.cpp \
@@ -50,6 +51,7 @@ SOURCES += \
     mainwindowmdi.cpp
 
 HEADERS += \
+    Bases/basetemplateform.h \
     Modules/Adress/theadressform.h \
     Modules/Autopark/AutoBrand/theautobrandform.h \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.h \

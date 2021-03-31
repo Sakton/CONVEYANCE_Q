@@ -20,7 +20,8 @@ UpdateFormAuto::~UpdateFormAuto()
 }
 
 void UpdateFormAuto::setDataInForm( const Line& data ) {
-  ui->templateFormAuto->writeForm( data );
+  // ui->templateFormAuto->writeForm( data );
+  ui->templateFormAuto->setDataInForm( data );
   ui->templateFormAuto->setVinNoChange( );
 }
 

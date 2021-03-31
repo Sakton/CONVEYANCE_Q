@@ -3,7 +3,8 @@
 
 #include <QDate>
 #include <QWidget>
-#include "Utility/AllConstants.h"
+// #include "Utility/AllConstants.h"
+#include "Bases/basetemplateform.h"
 
 // Одна запись, по сути это строка таблицы БД, в такой форме
 
@@ -11,7 +12,7 @@ namespace Ui {
 class TemplateFormAuto;
 }
 
-class TemplateFormAuto : public QWidget {
+class TemplateFormAuto : public BaseTemplateForm {
   Q_OBJECT
 
   using Line = AllConstatnts::Line;
@@ -20,10 +21,15 @@ class TemplateFormAuto : public QWidget {
   explicit TemplateFormAuto( QWidget* parent = nullptr );
   ~TemplateFormAuto( );
 
-  const Line& dataForm( );
-  void writeForm( const Line& data );
-  void clearForm( ) const;
+  //  const Line& dataForm( );
+  // void writeForm( const Line& data );
+  void clearForm( ) const override;
   void setVinNoChange( ) const;
+
+  // BaseTemplateForm interface
+ public:
+  void readDataOfForm( ) override;
+  void setDataInForm( const Line& dataLine ) override;
 
  private:
   void read( );
@@ -49,7 +55,7 @@ class TemplateFormAuto : public QWidget {
   static const QStringList ecoClasses;
   static const QStringList volumeNotation;
   Ui::TemplateFormAuto* ui;
-  Line autoData;
+  // Line autoData;
 };
 
 #endif  // TEMPLATEFORMAUTO_H

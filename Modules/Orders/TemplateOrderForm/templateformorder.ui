@@ -147,7 +147,7 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="QLabel" name="label_19">
+           <widget class="QLabel" name="labelStavkaEur">
             <property name="font">
              <font>
               <family>Verdana</family>
@@ -242,7 +242,7 @@
            <widget class="QComboBox" name="comboBoxPeriod"/>
           </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="label_18">
+           <widget class="QLabel" name="labelCours">
             <property name="font">
              <font>
               <family>Verdana</family>
@@ -572,6 +572,27 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>dateEditDate</tabstop>
+  <tabstop>comboBoxPlace</tabstop>
+  <tabstop>lineEditContract</tabstop>
+  <tabstop>lineEditOrderNum</tabstop>
+  <tabstop>comboBoxCustomer</tabstop>
+  <tabstop>pushButtonAddCustomer</tabstop>
+  <tabstop>comboBoxContacts</tabstop>
+  <tabstop>pushButtonAddContacts</tabstop>
+  <tabstop>comboBoxDriver</tabstop>
+  <tabstop>lineEditArrival</tabstop>
+  <tabstop>lineEditRoute</tabstop>
+  <tabstop>lineEditRate</tabstop>
+  <tabstop>lineEditPrice</tabstop>
+  <tabstop>comboBoxCurrency</tabstop>
+  <tabstop>comboBoxPeriod</tabstop>
+  <tabstop>comboBoxMaxTime</tabstop>
+  <tabstop>checkBoxCopyCMR</tabstop>
+  <tabstop>checkBoxContractOriginal</tabstop>
+  <tabstop>plainTextEditNotes</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

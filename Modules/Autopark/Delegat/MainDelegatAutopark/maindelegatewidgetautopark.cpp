@@ -51,6 +51,7 @@ void MainDelegateWidgetAutopark::fill( ) {
   ui->labelMarka->setText( data_.at( "marka_brand" ) );
   ui->labelGosNomer->setText( data_.at( "auto_counry_number" ) );
   //**
+  // TODO ПАДАЕТ ТУТ, тк. нету члена at( "width" )
   ui->labelGabarity->setText( data_.at( "lenth" ) + "/" + data_.at( "width" ) +
                               "/" + data_.at( "height" ) );
 

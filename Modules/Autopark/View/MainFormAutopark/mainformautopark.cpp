@@ -174,7 +174,8 @@ void MainFormAutopark::slotItemIsUpdates( ) {
 }
 
 void MainFormAutopark::slotAddItem( ) {
-  updateWindow = new UpdateFormAuto;
+  updateWindow = new UpdateFormAuto;  //ИСПОЛЬЗОВАНА ТАЖЕ ФОРМА ЧТО И НА
+                                      //ОБНОВЛЕНИИ, ЕЕ 1 ДОСТАТОЧНО
   connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsInsert ) );
   updateWindow->setWindowTitle( "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ" );
