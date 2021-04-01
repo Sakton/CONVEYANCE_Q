@@ -146,6 +146,9 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
 
 void MainFormAutopark::slotItemIsUpdates( ) {
   data_.at( currentKey_Vin ) = updateWindow->getDataInForm( );
+
+  qDebug( ) << data_.at( currentKey_Vin );
+
   selectedDelegateWidget->setData( data_.at( currentKey_Vin ) );
 
   Line& refLine = data_.at( currentKey_Vin );

@@ -20,7 +20,6 @@ SOURCES += \
     Modules/Autopark/Model/modelmainviewautopark.cpp \
     Modules/Autopark/Template/templateformauto.cpp \
     Modules/Autopark/Validator/validatorautodata.cpp \
-    Modules/Autopark/View/InsertFormAuto/insertformauto.cpp \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.cpp \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.cpp \
     Modules/Autopark/View/viewerdataautopark.cpp \
@@ -62,7 +61,6 @@ HEADERS += \
     Modules/Autopark/Model/modelmainviewautopark.h \
     Modules/Autopark/Template/templateformauto.h \
     Modules/Autopark/Validator/validatorautodata.h \
-    Modules/Autopark/View/InsertFormAuto/insertformauto.h \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.h \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.h \
     Modules/Autopark/View/viewerdataautopark.h \
@@ -97,7 +95,6 @@ FORMS += \
     Modules/Autopark/Delegat/DelegatForm/thedelegateformaauto.ui \
     Modules/Autopark/Delegat/MainDelegatAutopark/maindelegatewidgetautopark.ui \
     Modules/Autopark/Template/templateformauto.ui \
-    Modules/Autopark/View/InsertFormAuto/insertformauto.ui \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.ui \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.ui \
     Modules/Autopark/View/viewerdataautopark.ui \
@@ -130,6 +127,7 @@ DISTFILES += \
     Convection/naming.txt \
     DIAGRAMS_AND_OTHER/DB_Description.ods \
     DIAGRAMS_AND_OTHER/autoparkfragment.qmodel \
+    DIAGRAMS_AND_OTHER/templatesforms.qmodel \
     DumpDb/backup.sql \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.ods \
     TESTES/TESTES_DATA_FILES_FROM_CUSTOMERS/Adresses.xls

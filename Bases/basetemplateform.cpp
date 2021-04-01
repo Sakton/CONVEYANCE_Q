@@ -1,6 +1,3 @@
 #include "basetemplateform.h"
 
-BaseTemplateForm::BaseTemplateForm(QWidget *parent) : QWidget(parent)
-{
-
-}
+BaseTemplateForm::BaseTemplateForm( QWidget *parent ) : QWidget( parent ) {}

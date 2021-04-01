@@ -15,47 +15,24 @@ class TemplateFormAuto;
 class TemplateFormAuto : public BaseTemplateForm {
   Q_OBJECT
 
-  using Line = AllConstatnts::Line;
-
  public:
   explicit TemplateFormAuto( QWidget* parent = nullptr );
   ~TemplateFormAuto( );
-
-  //  const Line& dataForm( );
-  // void writeForm( const Line& data );
-  void clearForm( ) const override;
   void setVinNoChange( ) const;
 
   // BaseTemplateForm interface
  public:
   void readDataOfForm( ) override;
   void setDataInForm( const Line& dataLine ) override;
-
- private:
-  void read( );
-  void readConstDataForm( );
+  void clearForm( ) const override;
 
  public slots:
   void slotVinValidate( const QString& vin );
-  void slotDateChangedNextTech( QDate d );
-  //**
-  void slotReadBrand( );
-  void slotReadSeries( );
-  void slotReadModel( );
-  void slotReadGosNumber( );
-  void slotReadVin( );
-  void slotReadLenth( );
-  void slotReadWidth( );
-  void slotReadHeight( );
-  void slotReadSpace( );
-  void slotReadMaximalCarring( );
-  void slotReadComments( );
 
  private:
   static const QStringList ecoClasses;
   static const QStringList volumeNotation;
   Ui::TemplateFormAuto* ui;
-  // Line autoData;
 };
 
 #endif  // TEMPLATEFORMAUTO_H

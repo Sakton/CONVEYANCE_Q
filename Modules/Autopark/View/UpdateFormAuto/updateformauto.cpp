@@ -20,12 +20,13 @@ UpdateFormAuto::~UpdateFormAuto()
 }
 
 void UpdateFormAuto::setDataInForm( const Line& data ) {
-  // ui->templateFormAuto->writeForm( data );
   ui->templateFormAuto->setDataInForm( data );
   ui->templateFormAuto->setVinNoChange( );
 }
 
 const UpdateFormAuto::Line& UpdateFormAuto::getDataInForm( ) const {
+  auto x = ui->templateFormAuto->dataForm( );
+  qDebug( ) << x;
   return ui->templateFormAuto->dataForm( );
 }
 

@@ -52,6 +52,7 @@ void MainDelegateWidgetAutopark::fill( ) {
   ui->labelGosNomer->setText( data_.at( "auto_counry_number" ) );
   //**
   // TODO ПАДАЕТ ТУТ, тк. нету члена at( "width" )
+  // зполниять все поля независимо от чего
   ui->labelGabarity->setText( data_.at( "lenth" ) + "/" + data_.at( "width" ) +
                               "/" + data_.at( "height" ) );
 

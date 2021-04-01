@@ -6,7 +6,6 @@
 #include "Utility/AllConstants.h"
 
 class BaseTemplateForm : public QWidget
-
 {
   Q_OBJECT
 
@@ -20,7 +19,11 @@ class BaseTemplateForm : public QWidget
   virtual void clearForm( ) const = 0;
 
   // common operations
-  const Line &dataForm( ) const { return data_; };
+  const Line &dataForm( ) {
+    readDataOfForm( );
+    return data_;
+  };
+
   void setData( const Line &data ) {
     data_.clear( );
     data_ = data;
