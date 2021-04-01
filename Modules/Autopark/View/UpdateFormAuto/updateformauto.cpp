@@ -25,8 +25,6 @@ void UpdateFormAuto::setDataInForm( const Line& data ) {
 }
 
 const UpdateFormAuto::Line& UpdateFormAuto::getDataInForm( ) const {
-  auto x = ui->templateFormAuto->dataForm( );
-  qDebug( ) << x;
   return ui->templateFormAuto->dataForm( );
 }
 
@@ -34,6 +32,4 @@ void UpdateFormAuto::slotClickedOkButton( ) {
   emit signalDataUpdate( );
 }
 
-void UpdateFormAuto::slotClickedCancelButton( ) {
-  qDebug( ) << "UpdateFormAuto::slotClickedCancelButton";
-}
+void UpdateFormAuto::slotClickedCancelButton( ) { close( ); }
