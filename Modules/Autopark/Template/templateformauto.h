@@ -1,12 +1,7 @@
 #ifndef TEMPLATEFORMAUTO_H
 #define TEMPLATEFORMAUTO_H
 
-#include <QDate>
-#include <QWidget>
-// #include "Utility/AllConstants.h"
 #include "Bases/basetemplateform.h"
-
-// Одна запись, по сути это строка таблицы БД, в такой форме
 
 namespace Ui {
 class TemplateFormAuto;

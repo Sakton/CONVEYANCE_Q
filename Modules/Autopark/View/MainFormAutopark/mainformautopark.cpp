@@ -146,13 +146,8 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
 
 void MainFormAutopark::slotItemIsUpdates( ) {
   data_.at( currentKey_Vin ) = updateWindow->getDataInForm( );
-
-  qDebug( ) << data_.at( currentKey_Vin );
-
   selectedDelegateWidget->setData( data_.at( currentKey_Vin ) );
-
   Line& refLine = data_.at( currentKey_Vin );
-
   QString qs = QueryDriver::update(
       "autopark",
       { "name_brand", "series_brand", "marka_brand", "issue",
@@ -193,9 +188,10 @@ void MainFormAutopark::slotItemIsInsert( ) {
   if ( !query.exec( qs ) ) {
     QMessageBox::critical( nullptr, "CRITICAL ERROR INSERT",
                            query.lastError( ).text( ) );
+  } else {
+    updateWindow->close( );
+    addWidget( line );
   }
-  updateWindow->close( );
-  addWidget( line );
 }
 
 void MainFormAutopark::slotSetCurrentSelectedItem( QListWidgetItem* item ) {

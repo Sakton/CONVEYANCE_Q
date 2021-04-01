@@ -97,7 +97,6 @@ void TemplateFormAuto::readDataOfForm( ) {
   add( "commentary", ui->plainTextEditComments->toPlainText( ) );
   add( "eco", ui->comboBoxEcoClass->currentText( ) );
   add( "lift", QString::number( ui->checkBoxTatLift->checkState( ) ) );
-
   add( "issue", ui->dateEditYearOfIssue->date( ).toString( Qt::ISODate ) );
   add( "inspection",
        ui->dateEditNextTechInspection->date( ).toString( Qt::ISODate ) );
@@ -109,6 +108,7 @@ void TemplateFormAuto::slotVinValidate( const QString& vin ) {
   // WP0ZZZ99ZTS392124
   // SJNFBAF15U6433557
   // XUFJA696JD3009672
+  qDebug( ) << vin;
   ( ValidatorAutoData::validateVin( vin ) )
       ? ui->lineEditVIN->setStyleSheet( STYLESHEET_OK_VIN )
       : ui->lineEditVIN->setStyleSheet( STYLESHEET_ERROR_VIN );

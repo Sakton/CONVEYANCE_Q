@@ -39,39 +39,39 @@ bool DBTableCreator::createUser( const QString &userName, const QString &passwor
 }
 
 void DBTableCreator::createShema( ) {
-  QString qs { "CREATE SCHEMA " + QLatin1String( AllConstatnts::DB_SHEME ) +
-               ";" };
-  queryToDb(qs);
+  //  QString qs { "CREATE SCHEMA " + QLatin1String( AllConstatnts::DB_SHEME ) +
+  //               ";" };
+  //  queryToDb(qs);
 }
 
-void DBTableCreator::createTableCountry() {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
-               ".country ("
-               "name varchar(64) NOT NULL,"
-               "phonecode varchar(8) NOT NULL,"
-               "abbriviated varchar(4) NOT NULL,"
-               "nds_vat numeric(4,2) NOT NULL,"
-               "UNIQUE(name, phonecode, abbriviated),"
-               "PRIMARY KEY (name)"
-               ");" };
-  queryToDb(qs);
+void DBTableCreator::createTableCountry( ) {
+  //  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
+  //               ".country ("
+  //               "name varchar(64) NOT NULL,"
+  //               "phonecode varchar(8) NOT NULL,"
+  //               "abbriviated varchar(4) NOT NULL,"
+  //               "nds_vat numeric(4,2) NOT NULL,"
+  //               "UNIQUE(name, phonecode, abbriviated),"
+  //               "PRIMARY KEY (name)"
+  //               ");" };
+  //  queryToDb(qs);
 }
 
 void DBTableCreator::createAdressTable( ) {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
-               ".adress ("
-               "country_name varchar(64) NOT NULL,"
-               "type varchar(16) DEFAULT 'Legal Adress',"
-               "index varchar(16) NOT NULL,"
-               "sity varchar(256) NOT NULL,"
-               "adress varchar(256) NOT NULL,"
-               "CHECK( type IN ('Legal Adress', 'Mail Adress') ),"
-               "FOREIGN KEY ( country_name ) REFERENCES " +
-               QLatin1String( AllConstatnts::DB_SHEME ) +
-               ".country ( name ) "
-               "ON DELETE CASCADE "
-               ");" };
-  queryToDb( qs );
+  //  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
+  //               ".adress ("
+  //               "country_name varchar(64) NOT NULL,"
+  //               "type varchar(16) DEFAULT 'Legal Adress',"
+  //               "index varchar(16) NOT NULL,"
+  //               "sity varchar(256) NOT NULL,"
+  //               "adress varchar(256) NOT NULL,"
+  //               "CHECK( type IN ('Legal Adress', 'Mail Adress') ),"
+  //               "FOREIGN KEY ( country_name ) REFERENCES " +
+  //               QLatin1String( AllConstatnts::DB_SHEME ) +
+  //               ".country ( name ) "
+  //               "ON DELETE CASCADE "
+  //               ");" };
+  //  queryToDb( qs );
 }
 
 // void DBTableCreator::createBrandAuto( ) {
@@ -87,26 +87,30 @@ void DBTableCreator::createAdressTable( ) {
 //}
 
 void DBTableCreator::createAutoparkTable( ) {
-  QString qs { "CREATE TABLE " + QLatin1String( AllConstatnts::DB_SHEME ) +
-               ".autopark ("
-               "name_brand varchar(64) DEFAULT NULL,"
-               "series_brand varchar(64) DEFAULT NULL,"
-               "marka_brand varchar(64) DEFAULT NULL,"
-               "issue date DEFAULT CURRENT_DATE,"
-               "auto_counry_number varchar( 8 ) DEFAULT NULL,"
-               "vin varchar( 20 ) NOT NULL,"
-               "eco varchar( 10 ),"
-               "inspection date DEFAULT CURRENT_DATE,"
-               "reminder integer DEFAULT 0,"
-               "days_reminder integer DEFAULT 0,"
-               "lenth numeric( 10, 2 ) DEFAULT 0,"
-               "width numeric( 10, 2 ) DEFAULT 0,"
-               "height numeric( 10, 2 ) DEFAULT 0,"
-               "space numeric( 10, 2 ) DEFAULT 0,"
-               "carring numeric(10, 2) DEFAULT 0,"
-               "lift integer DEFAULT 0,"
-               "commentary text DEFAULT NULL,"
-               "PRIMARY KEY ( vin )"
-               ");" };
-  queryToDb( qs );
+  //  QString qs {
+  //      "CREATE TABLE conveyance.autopark( name_brand character varying( 64 )
+  //      " "COLLATE pg_catalog.\"default\" DEFAULT NULL::character varying,"
+  //      "series_brand character varying( 64 )"
+  //      "COLLATE pg_catalog.\"default\" DEFAULT NULL::character varying,"
+  //      "marka_brand character varying( 64 )"
+  //      "COLLATE pg_catalog.\"default\" DEFAULT NULL::character varying,"
+  //      "issue date DEFAULT CURRENT_DATE,"
+  //      "auto_counry_number character varying( 16 )"
+  //      "COLLATE pg_catalog.\"default\" DEFAULT NULL::character varying,"
+  //      "vin character varying( 20 ) COLLATE pg_catalog.\"default\" NOT NULL,"
+  //      "eco character varying( 10 ) COLLATE pg_catalog.\"default\","
+  //      "inspection date DEFAULT CURRENT_DATE,"
+  //      "reminder integer DEFAULT 0,"
+  //      "days_reminder integer DEFAULT 0,"
+  //      "lenth numeric( 10, 2 ) DEFAULT 0,"
+  //      "width numeric( 10, 2 ) DEFAULT 0,"
+  //      "height numeric( 10, 2 ) DEFAULT 0,"
+  //      "space numeric( 10, 2 ) DEFAULT 0,"
+  //      "carring numeric( 10, 2 ) DEFAULT 0,"
+  //      "lift integer DEFAULT 0,"
+  //      "commentary text COLLATE pg_catalog.\"default\","
+  //      "id integer NOT NULL DEFAULT nextval("
+  //      "'conveyance.autopark_id_seq' ::regclass ),"
+  //      "CONSTRAINT autopark_pkey PRIMARY KEY( id ) );" };
+  //  queryToDb( qs );
 }
