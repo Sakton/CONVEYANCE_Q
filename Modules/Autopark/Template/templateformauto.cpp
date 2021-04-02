@@ -79,10 +79,6 @@ void TemplateFormAuto::clearForm( ) const {
   ui->plainTextEditComments->clear( );
 }
 
-void TemplateFormAuto::setVinNoChange( ) const {
-  ui->lineEditVIN->setEnabled( false );
-}
-
 void TemplateFormAuto::readDataOfForm( ) {
   add( "name_brand", ui->lineEditBrandAuto->text( ) );
   add( "series_brand", ui->lineEditSeriesAuto->text( ) );

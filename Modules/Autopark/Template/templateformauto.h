@@ -13,7 +13,6 @@ class TemplateFormAuto : public BaseTemplateForm {
  public:
   explicit TemplateFormAuto( QWidget* parent = nullptr );
   ~TemplateFormAuto( );
-  void setVinNoChange( ) const;
 
   // BaseTemplateForm interface
  public:
