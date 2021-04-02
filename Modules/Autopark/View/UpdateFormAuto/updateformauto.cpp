@@ -21,7 +21,8 @@ UpdateFormAuto::~UpdateFormAuto()
 
 void UpdateFormAuto::setDataInForm( const Line& data ) {
   ui->templateFormAuto->setDataInForm( data );
-  ui->templateFormAuto->setVinNoChange( );
+  // if(ui->templateFormAuto->)
+  // ui->templateFormAuto->setVinNoChange( );
 }
 
 const UpdateFormAuto::Line& UpdateFormAuto::getDataInForm( ) const {
