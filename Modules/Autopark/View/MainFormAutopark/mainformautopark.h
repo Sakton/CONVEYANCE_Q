@@ -30,8 +30,8 @@ class MainFormAutopark : public QWidget
   void addWidget( const Line& line );
 
  public slots:
-  void slotItemClickedChangeButton( const QString& vin );
-  void slotItemClickedDeleteButton( const QString& vin );
+  void slotItemClickedChangeButton( const QString& id );
+  void slotItemClickedDeleteButton( const QString& id );
   void slotItemIsUpdates( /*const QString& vin*/ );
   void slotAddItem( );
   void slotItemIsInsert( );
@@ -41,7 +41,7 @@ class MainFormAutopark : public QWidget
   Ui::MainFormAutopark* ui;
   Table data_;
   MainDelegateWidgetAutopark* selectedDelegateWidget { nullptr };
-  QString currentKey_Vin;
+  QString currentKey;
   UpdateFormAuto* updateWindow;
   QListWidgetItem* currentSelectedItemWidget;  // пока не нужен но вдруг
 };
