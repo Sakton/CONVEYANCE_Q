@@ -51,8 +51,6 @@ void MainDelegateWidgetAutopark::fill( ) {
   ui->labelMarka->setText( data_.at( "marka_brand" ) );
   ui->labelGosNomer->setText( data_.at( "auto_counry_number" ) );
   //**
-  // TODO ПАДАЕТ ТУТ, тк. нету члена at( "width" )
-  // зполниять все поля независимо от чего
   ui->labelGabarity->setText( data_.at( "lenth" ) + "/" + data_.at( "width" ) +
                               "/" + data_.at( "height" ) );
 
@@ -84,11 +82,11 @@ void MainDelegateWidgetAutopark::fill( ) {
 }
 
 void MainDelegateWidgetAutopark::slotClickedChangeButton( ) {
-  emit signalClickedChangeButton( data_.at( "vin" ) );
+  emit signalClickedChangeButton( data_.at( "id" ) );
   emit signalBoundedListWidgetItem( boundItem );
 }
 
 void MainDelegateWidgetAutopark::slotClickedDeleteButton( ) {
-  emit signalClickedDeleteButton( data_.at( "vin" ) );
+  emit signalClickedDeleteButton( data_.at( "id" ) );
   emit signalBoundedListWidgetItem( boundItem );
 }

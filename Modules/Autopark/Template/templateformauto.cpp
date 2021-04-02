@@ -24,14 +24,19 @@ TemplateFormAuto::TemplateFormAuto( QWidget* parent )
   ui->spinBoxCountDays->setToolTip( tr( "Remind Before" ) );
   ui->dateEditNextTechInspection->setDate(
       QDate::currentDate( ).addYears( 1 ) );
-  ui->labelDayBefore->setText( QString::number(
+  ui->labelDayGTO->setText( QString::number(
       QDate::currentDate( ).daysTo( QDate::currentDate( ).addYears( 1 ) ) ) );
   ui->plainTextEditComments->setLineWrapMode( QPlainTextEdit::WidgetWidth );
   ui->plainTextEditComments->setOverwriteMode( false );
-  connect(
-      ui->lineEditVIN,
-      QOverload< const QString& >::of( &QLineEdit::textChanged ), this,
-      QOverload< const QString& >::of( &TemplateFormAuto::slotVinValidate ) );
+  connect( ui->lineEditVIN,
+           QOverload< const QString& >::of( &QLineEdit::textChanged ), this,
+           QOverload< const QString& >::of(
+               &TemplateFormAuto::slotVinValidate ) );  //подсказка на колчо
+                                                        //цифр в ВИН
+  connect( ui->dateEditNextTechInspection,
+           QOverload< QDate >::of( &QDateEdit::dateChanged ), this,
+           QOverload< QDate >::of(
+               &TemplateFormAuto::slotDateNextTechInspectionChange ) );
 }
 
 TemplateFormAuto::~TemplateFormAuto( ) {
@@ -61,6 +66,8 @@ void TemplateFormAuto::setDataInForm( const TemplateFormAuto::Line& data ) {
   ui->checkBoxTatLift->setCheckState(
       static_cast< Qt::CheckState >( val( "lift" ).toInt( ) ) );
   ui->plainTextEditComments->setPlaceholderText( val( "commentary" ) );
+
+  // days
 }
 
 void TemplateFormAuto::clearForm( ) const {
@@ -107,4 +114,9 @@ void TemplateFormAuto::slotVinValidate( const QString& vin ) {
   ( ValidatorAutoData::validateVin( vin ) )
       ? ui->lineEditVIN->setStyleSheet( STYLESHEET_OK_VIN )
       : ui->lineEditVIN->setStyleSheet( STYLESHEET_ERROR_VIN );
+}
+
+void TemplateFormAuto::slotDateNextTechInspectionChange( QDate date ) {
+  ui->labelDayGTO->setText(
+      QString::number( QDate::currentDate( ).daysTo( date ) ) );
 }

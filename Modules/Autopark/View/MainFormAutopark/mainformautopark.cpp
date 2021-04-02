@@ -29,7 +29,6 @@ MainFormAutopark::MainFormAutopark( QWidget* parent )
 
 MainFormAutopark::~MainFormAutopark()
 {
-  qDebug( ) << "DELETE MainFormAutopark::~MainFormAutopark()";
   delete ui;
 }
 
@@ -116,6 +115,7 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& id ) {
   selectedDelegateWidget =
       static_cast< MainDelegateWidgetAutopark* >( sender( ) );
   updateWindow = new UpdateFormAuto;
+  updateWindow->setState( UpdateFormAuto::State::UPDATE );
   // --
   connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
@@ -128,7 +128,7 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& id ) {
 
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& id ) {
   // тут удаление из базы
-  QString s = tr( "ЗАПИСЬ С VIN " ) + id + tr( " БУДЕТ УДАЛЕНА" );
+  QString s = tr( "ЗАПИСЬ БУДЕТ УДАЛЕНА" );
   int clickButton =
       QMessageBox::warning( nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s );
   if ( clickButton == QMessageBox::StandardButton::Ok ) {
@@ -153,7 +153,8 @@ void MainFormAutopark::slotItemIsUpdates( ) {
       "autopark",
       { "name_brand", "series_brand", "marka_brand", "issue",
         "auto_counry_number", "eco", "inspection", "reminder", "days_reminder",
-        "lenth", "width", "height", "space", "carring", "lift", "commentary" },
+        "lenth", "width", "height", "space", "carring", "lift", "commentary",
+        "vin" },
       { refLine.at( "name_brand" ), refLine.at( "series_brand" ),
         refLine.at( "marka_brand" ), refLine.at( "issue" ),
         refLine.at( "auto_counry_number" ), refLine.at( "eco" ),
@@ -161,7 +162,7 @@ void MainFormAutopark::slotItemIsUpdates( ) {
         refLine.at( "days_reminder" ), refLine.at( "lenth" ),
         refLine.at( "width" ), refLine.at( "height" ), refLine.at( "space" ),
         refLine.at( "carring" ), refLine.at( "lift" ),
-        refLine.at( "commentary" ) },
+        refLine.at( "commentary" ), refLine.at( "vin" ) },
       "id='" + currentKey + "'" );
   QSqlQuery query;
 
@@ -173,24 +174,33 @@ void MainFormAutopark::slotItemIsUpdates( ) {
 }
 
 void MainFormAutopark::slotAddItem( ) {
-  updateWindow = new UpdateFormAuto;  //ИСПОЛЬЗОВАНА ТАЖЕ ФОРМА ЧТО И НА
-                                      //ОБНОВЛЕНИИ, ЕЕ 1 ДОСТАТОЧНО
-  connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
+  updateWindow = new UpdateFormAuto;
+  connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalNewData ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsInsert ) );
   updateWindow->setWindowTitle( "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ" );
   updateWindow->show( );
 }
 
 void MainFormAutopark::slotItemIsInsert( ) {
-  // TODO плохая ошибка - vin не может быть ключем
   Line line = updateWindow->getDataInForm( );
-  data_[ line.at( "id" ) ] = line;
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString( "autopark", line );
+
   if ( !query.exec( qs ) ) {
     QMessageBox::critical( nullptr, "CRITICAL ERROR INSERT",
                            query.lastError( ).text( ) );
   } else {
+    QSqlQuery nowIdQuery;
+    if ( nowIdQuery.exec( "SELECT max( id ) as nowid FROM " +
+                          QLatin1String( AllConstatnts::DB_SHEME ) +
+                          ".autopark" ) ) {
+      int nowId = 0;
+      while ( nowIdQuery.next( ) ) {
+        nowId = nowIdQuery.value( "nowid" ).toInt( );
+      }
+      data_[ QString::number( nowId ) ] = line;
+      qDebug( ) << "id = " << nowId;
+    }
     updateWindow->close( );
     addWidget( line );
   }

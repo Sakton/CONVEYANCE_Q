@@ -33,14 +33,15 @@ class MainDelegateWidgetAutopark : public QWidget
   void slotClickedDeleteButton( );
 
  signals:
-  void signalClickedChangeButton( const QString& vin );
-  void signalClickedDeleteButton( const QString& vin );
+  void signalClickedChangeButton( const QString& id );
+  void signalClickedDeleteButton( const QString& id );
   void signalBoundedListWidgetItem( QListWidgetItem* item );
 
  private:
   Ui::MainDelegateWidgetAutopark* ui;
   Line data_;
-  QListWidgetItem* boundItem { nullptr };
+  QListWidgetItem* boundItem {
+      nullptr };  //связанный WidgetItem, для поиска конкретно этого делегата
 };
 
 #endif // MAINDELEGATEWIDGETAUTOPARK_H

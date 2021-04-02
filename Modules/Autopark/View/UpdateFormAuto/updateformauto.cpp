@@ -3,9 +3,10 @@
 #include "ui_updateformauto.h"
 
 UpdateFormAuto::UpdateFormAuto( QWidget* parent )
-    : QWidget( parent ), ui( new Ui::UpdateFormAuto ) {
+    : QWidget( parent ), ui( new Ui::UpdateFormAuto ), state { State::INSERT } {
   ui->setupUi( this );
   setAttribute( Qt::WA_DeleteOnClose );
+  setWindowModality( Qt::WindowModality::ApplicationModal );
 
   connect( ui->buttonBox, QOverload<>::of( &QDialogButtonBox::accepted ), this,
            QOverload<>::of( &UpdateFormAuto::slotClickedOkButton ) );
@@ -28,7 +29,7 @@ const UpdateFormAuto::Line& UpdateFormAuto::getDataInForm( ) const {
 }
 
 void UpdateFormAuto::slotClickedOkButton( ) {
-  emit signalDataUpdate( );
+  emit( state == State::INSERT ) ? signalNewData( ) : signalDataUpdate( );
 }
-
 void UpdateFormAuto::slotClickedCancelButton( ) { close( ); }
+void UpdateFormAuto::setState( const State& value ) { state = value; }
