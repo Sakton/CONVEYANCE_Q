@@ -1,6 +1,8 @@
 #ifndef TEMPLATEFORMAUTO_H
 #define TEMPLATEFORMAUTO_H
 
+#include <QDate>
+
 #include "Bases/basetemplateform.h"
 
 namespace Ui {
@@ -22,6 +24,7 @@ class TemplateFormAuto : public BaseTemplateForm {
 
  public slots:
   void slotVinValidate( const QString& vin );
+  void slotDateNextTechInspectionChange( QDate date );
 
  private:
   static const QStringList ecoClasses;

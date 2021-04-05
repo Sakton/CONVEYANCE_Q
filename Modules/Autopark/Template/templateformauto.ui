@@ -40,7 +40,7 @@
         <item row="1" column="0">
          <layout class="QGridLayout" name="gridLayout_10">
           <item row="0" column="0">
-           <widget class="QLabel" name="label_17">
+           <widget class="QLabel" name="labelGTO">
             <property name="font">
              <font>
               <pointsize>20</pointsize>
@@ -68,7 +68,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLabel" name="labelDayBefore">
+           <widget class="QLabel" name="labelDayGTO">
             <property name="font">
              <font>
               <pointsize>20</pointsize>

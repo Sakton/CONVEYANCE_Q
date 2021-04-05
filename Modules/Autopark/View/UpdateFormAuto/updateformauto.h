@@ -15,11 +15,13 @@ class UpdateFormAuto : public QWidget
   using Line = AllConstatnts::Line;
 
  public:
+  enum class State { INSERT, UPDATE };
   explicit UpdateFormAuto( QWidget* parent = nullptr );
   ~UpdateFormAuto( );
 
   void setDataInForm( const Line& data );
   const Line& getDataInForm( ) const;
+  void setState( const State& value );
 
  public slots:
   void slotClickedOkButton( );
@@ -27,9 +29,11 @@ class UpdateFormAuto : public QWidget
 
  signals:
   void signalDataUpdate( );
+  void signalNewData( );
 
  private:
-  Ui::UpdateFormAuto *ui;
+  Ui::UpdateFormAuto* ui;
+  State state;
 };
 
 #endif // UPDATEFORMAUTO_H

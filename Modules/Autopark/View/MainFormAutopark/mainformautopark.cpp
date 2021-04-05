@@ -29,7 +29,6 @@ MainFormAutopark::MainFormAutopark( QWidget* parent )
 
 MainFormAutopark::~MainFormAutopark()
 {
-  qDebug( ) << "DELETE MainFormAutopark::~MainFormAutopark()";
   delete ui;
 }
 
@@ -76,6 +75,7 @@ void MainFormAutopark::read( ) {
            QueryDriver::selectAll( AllConstatnts::NAME_TABLE::AUTOPARK ) ) ) {
     while ( query.next( ) ) {
       Line tmp;
+      auto key = tmp[ "id" ] = query.value( "id" ).toString( );
       tmp[ "name_brand" ] = query.value( "name_brand" ).toString( );
       tmp[ "series_brand" ] = query.value( "series_brand" ).toString( );
       tmp[ "marka_brand" ] = query.value( "marka_brand" ).toString( );
@@ -94,7 +94,7 @@ void MainFormAutopark::read( ) {
       tmp[ "carring" ] = query.value( "carring" ).toString( );
       tmp[ "lift" ] = query.value( "lift" ).toString( );
       tmp[ "commentary" ] = query.value( "commentary" ).toString( );
-      data_[ tmp[ "vin" ] ] = tmp;
+      data_[ key ] = tmp;
     }
   }
 }
@@ -104,40 +104,44 @@ void MainFormAutopark::clearCurrents( ) {  // ??? для чего его сде�
     updateWindow->close( );
     updateWindow->deleteLater( );
   }
-  currentKey_Vin.clear( );
+  currentKey.clear( );
   updateWindow = nullptr;
   selectedDelegateWidget = nullptr;
 }
 
-void MainFormAutopark::slotItemClickedChangeButton( const QString& vin ) {
+void MainFormAutopark::slotItemClickedChangeButton( const QString& id ) {
   // установка текущих значений
-  currentKey_Vin = vin;
+  currentKey = id;
   selectedDelegateWidget =
       static_cast< MainDelegateWidgetAutopark* >( sender( ) );
   updateWindow = new UpdateFormAuto;
+  updateWindow->setState( UpdateFormAuto::State::UPDATE );
   // --
   connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsUpdates ) );
 
-  updateWindow->setDataInForm( data_.at( vin ) );
-  updateWindow->setWindowTitle( "ОБНОВЛЕНИЕ ДАННЫX VIN: " + vin );
+  updateWindow->setDataInForm( data_.at( id ) );
+  updateWindow->setWindowTitle( "ОБНОВЛЕНИЕ ДАННЫX" );
   updateWindow->setWindowModality( Qt::WindowModality::ApplicationModal );
   updateWindow->show( );
 }
 
-void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
+void MainFormAutopark::slotItemClickedDeleteButton( const QString& id ) {
+  qDebug( ) << "eraseId = " << id;
   // тут удаление из базы
-  QString s = tr( "ЗАПИСЬ С VIN " ) + vin + tr( " БУДЕТ УДАЛЕНА" );
-  int clickButton =
-      QMessageBox::warning( nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s );
+  QString s = tr( "ЗАПИСЬ БУДЕТ УДАЛЕНА" );
+  int clickButton = QMessageBox::warning(
+      nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s,
+      QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Ok );
   if ( clickButton == QMessageBox::StandardButton::Ok ) {
     QSqlQuery query;
-    QString   qs=
-        QueryDriver::delRecord( "autopark", QString( "vin='" + vin + "'" ) );
+    QString qs =
+        QueryDriver::delRecord( "autopark", QString( "id='" + id + "'" ) );
     if ( !query.exec( qs ) )
       QMessageBox::critical( nullptr, tr( "CRITICAL" ),
                              query.lastError( ).text( ) );
-    data_.erase( vin );
+
+    data_.erase( id );
     ui->listWidget->clear( );
     fill( );
     currentSelectedItemWidget= nullptr;
@@ -145,14 +149,15 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& vin ) {
 }
 
 void MainFormAutopark::slotItemIsUpdates( ) {
-  data_.at( currentKey_Vin ) = updateWindow->getDataInForm( );
-  selectedDelegateWidget->setData( data_.at( currentKey_Vin ) );
-  Line& refLine = data_.at( currentKey_Vin );
+  const Line& refLine = updateWindow->getDataInForm( );
+  data_.at( currentKey ) = refLine;
+  selectedDelegateWidget->setData( refLine );
   QString qs = QueryDriver::update(
       "autopark",
       { "name_brand", "series_brand", "marka_brand", "issue",
         "auto_counry_number", "eco", "inspection", "reminder", "days_reminder",
-        "lenth", "width", "height", "space", "carring", "lift", "commentary" },
+        "lenth", "width", "height", "space", "carring", "lift", "commentary",
+        "vin" },
       { refLine.at( "name_brand" ), refLine.at( "series_brand" ),
         refLine.at( "marka_brand" ), refLine.at( "issue" ),
         refLine.at( "auto_counry_number" ), refLine.at( "eco" ),
@@ -160,8 +165,8 @@ void MainFormAutopark::slotItemIsUpdates( ) {
         refLine.at( "days_reminder" ), refLine.at( "lenth" ),
         refLine.at( "width" ), refLine.at( "height" ), refLine.at( "space" ),
         refLine.at( "carring" ), refLine.at( "lift" ),
-        refLine.at( "commentary" ) },
-      "vin='" + currentKey_Vin + "'" );
+        refLine.at( "commentary" ), refLine.at( "vin" ) },
+      "id='" + currentKey + "'" );
   QSqlQuery query;
 
   if ( !query.exec( qs ) ) {
@@ -172,9 +177,8 @@ void MainFormAutopark::slotItemIsUpdates( ) {
 }
 
 void MainFormAutopark::slotAddItem( ) {
-  updateWindow = new UpdateFormAuto;  //ИСПОЛЬЗОВАНА ТАЖЕ ФОРМА ЧТО И НА
-                                      //ОБНОВЛЕНИИ, ЕЕ 1 ДОСТАТОЧНО
-  connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalDataUpdate ),
+  updateWindow = new UpdateFormAuto;
+  connect( updateWindow, QOverload<>::of( &UpdateFormAuto::signalNewData ),
            this, QOverload<>::of( &MainFormAutopark::slotItemIsInsert ) );
   updateWindow->setWindowTitle( "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ" );
   updateWindow->show( );
@@ -182,13 +186,25 @@ void MainFormAutopark::slotAddItem( ) {
 
 void MainFormAutopark::slotItemIsInsert( ) {
   Line line = updateWindow->getDataInForm( );
-  data_[ line.at( "vin" ) ] = line;
   QSqlQuery query;
   QString qs = QueryDriver::insertQueryString( "autopark", line );
+
   if ( !query.exec( qs ) ) {
     QMessageBox::critical( nullptr, "CRITICAL ERROR INSERT",
                            query.lastError( ).text( ) );
   } else {
+    QSqlQuery nowIdQuery;
+    if ( nowIdQuery.exec( "SELECT max( id ) as nowid FROM " +
+                          QLatin1String( AllConstatnts::DB_SHEME ) +
+                          ".autopark" ) ) {
+      int nowId = 0;
+      while ( nowIdQuery.next( ) ) {
+        nowId = nowIdQuery.value( "nowid" ).toInt( );
+      }
+      line[ "id" ] = QString::number( nowId );
+      data_[ QString::number( nowId ) ] = line;
+      qDebug( ) << "id = " << nowId;
+    }
     updateWindow->close( );
     addWidget( line );
   }
