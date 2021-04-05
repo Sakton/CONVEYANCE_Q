@@ -27,6 +27,7 @@ class MainDelegateWidgetAutopark : public QWidget
 
  private:
   void fill( );
+  void badDataMessage( );
 
  public slots:
   void slotClickedChangeButton( );
@@ -40,8 +41,8 @@ class MainDelegateWidgetAutopark : public QWidget
  private:
   Ui::MainDelegateWidgetAutopark* ui;
   Line data_;
-  QListWidgetItem* boundItem {
-      nullptr };  //связанный WidgetItem, для поиска конкретно этого делегата
+  //связанный WidgetItem, для поиска конкретно этого делегата
+  QListWidgetItem* boundItem { nullptr };
 };
 
 #endif // MAINDELEGATEWIDGETAUTOPARK_H
