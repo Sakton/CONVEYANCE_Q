@@ -22,7 +22,6 @@ SOURCES += \
     Modules/Autopark/Validator/validatorautodata.cpp \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.cpp \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.cpp \
-    Modules/Autopark/View/viewerdataautopark.cpp \
     Modules/Autopark/automobil.cpp \
     Modules/Autopark/theautomobilform.cpp \
     Modules/BlackList/theblacklistform.cpp \
@@ -63,7 +62,6 @@ HEADERS += \
     Modules/Autopark/Validator/validatorautodata.h \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.h \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.h \
-    Modules/Autopark/View/viewerdataautopark.h \
     Modules/Autopark/automobil.h \
     Modules/Autopark/theautomobilform.h \
     Modules/BlackList/theblacklistform.h \
@@ -97,7 +95,6 @@ FORMS += \
     Modules/Autopark/Template/templateformauto.ui \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.ui \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.ui \
-    Modules/Autopark/View/viewerdataautopark.ui \
     Modules/Autopark/theautomobilform.ui \
     Modules/BlackList/theblacklistform.ui \
     Modules/Client/theclientform.ui \

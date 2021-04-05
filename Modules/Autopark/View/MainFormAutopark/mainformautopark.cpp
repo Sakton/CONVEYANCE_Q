@@ -140,7 +140,6 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& id ) {
     if ( !query.exec( qs ) )
       QMessageBox::critical( nullptr, tr( "CRITICAL" ),
                              query.lastError( ).text( ) );
-
     data_.erase( id );
     ui->listWidget->clear( );
     fill( );
@@ -203,7 +202,6 @@ void MainFormAutopark::slotItemIsInsert( ) {
       }
       line[ "id" ] = QString::number( nowId );
       data_[ QString::number( nowId ) ] = line;
-      qDebug( ) << "id = " << nowId;
     }
     updateWindow->close( );
     addWidget( line );
