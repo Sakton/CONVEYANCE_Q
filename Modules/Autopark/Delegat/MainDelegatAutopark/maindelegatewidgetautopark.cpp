@@ -93,6 +93,10 @@ void MainDelegateWidgetAutopark::slotClickedChangeButton( ) {
 }
 
 void MainDelegateWidgetAutopark::slotClickedDeleteButton( ) {
-  emit signalClickedDeleteButton( data_.at( "id" ) );
-  emit signalBoundedListWidgetItem( boundItem );
+  try {
+    emit signalClickedDeleteButton( data_.at( "id" ) );
+    emit signalBoundedListWidgetItem( boundItem );
+  } catch ( ... ) {
+    qDebug( ) << "EXCEPTION";
+  }
 }

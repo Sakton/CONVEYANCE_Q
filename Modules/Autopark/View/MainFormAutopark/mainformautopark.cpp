@@ -127,6 +127,7 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& id ) {
 }
 
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& id ) {
+  qDebug( ) << "eraseId = " << id;
   // тут удаление из базы
   QString s = tr( "ЗАПИСЬ БУДЕТ УДАЛЕНА" );
   int clickButton = QMessageBox::warning(
@@ -139,6 +140,7 @@ void MainFormAutopark::slotItemClickedDeleteButton( const QString& id ) {
     if ( !query.exec( qs ) )
       QMessageBox::critical( nullptr, tr( "CRITICAL" ),
                              query.lastError( ).text( ) );
+
     data_.erase( id );
     ui->listWidget->clear( );
     fill( );
@@ -199,8 +201,9 @@ void MainFormAutopark::slotItemIsInsert( ) {
       while ( nowIdQuery.next( ) ) {
         nowId = nowIdQuery.value( "nowid" ).toInt( );
       }
+      line[ "id" ] = QString::number( nowId );
       data_[ QString::number( nowId ) ] = line;
-      //      qDebug( ) << "id = " << nowId;
+      qDebug( ) << "id = " << nowId;
     }
     updateWindow->close( );
     addWidget( line );
