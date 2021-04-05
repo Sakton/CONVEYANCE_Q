@@ -1,4 +1,7 @@
 #include "maindelegatewidgetautopark.h"
+
+#include <QDate>
+
 #include "ui_maindelegatewidgetautopark.h"
 
 MainDelegateWidgetAutopark::MainDelegateWidgetAutopark( const Line& line,
@@ -61,6 +64,9 @@ void MainDelegateWidgetAutopark::fill( ) {
 
   ui->labelEcoClass->setText( data_.at( "eco" ) );
   ui->labelTechInspection->setText( data_.at( "inspection" ) );
+
+  ui->labelDayTo->setText( QString::number( QDate::currentDate( ).daysTo(
+      QDate::fromString( data_.at( "inspection" ), Qt::ISODate ) ) ) );
 
   if ( static_cast< Qt::CheckState >( data_.at( "reminder" ).toInt( ) ) ==
        Qt::CheckState::Checked ) {

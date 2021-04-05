@@ -129,8 +129,9 @@ void MainFormAutopark::slotItemClickedChangeButton( const QString& id ) {
 void MainFormAutopark::slotItemClickedDeleteButton( const QString& id ) {
   // тут удаление из базы
   QString s = tr( "ЗАПИСЬ БУДЕТ УДАЛЕНА" );
-  int clickButton =
-      QMessageBox::warning( nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s );
+  int clickButton = QMessageBox::warning(
+      nullptr, tr( "ПРЕДУПРЕЖДЕНИЕ О УДАЛЕНИИ" ), s,
+      QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Ok );
   if ( clickButton == QMessageBox::StandardButton::Ok ) {
     QSqlQuery query;
     QString qs =
@@ -199,7 +200,7 @@ void MainFormAutopark::slotItemIsInsert( ) {
         nowId = nowIdQuery.value( "nowid" ).toInt( );
       }
       data_[ QString::number( nowId ) ] = line;
-      qDebug( ) << "id = " << nowId;
+      //      qDebug( ) << "id = " << nowId;
     }
     updateWindow->close( );
     addWidget( line );
