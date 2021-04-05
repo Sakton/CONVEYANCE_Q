@@ -16,6 +16,8 @@ class TemplateFormOrder : public QWidget
 
   using Line = AllConstatnts::Line;
 
+  //***
+
  public:
   explicit TemplateFormOrder(QWidget *parent = nullptr);
   ~TemplateFormOrder( );
