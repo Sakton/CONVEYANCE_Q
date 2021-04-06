@@ -3,7 +3,8 @@
 
 #include <QWidget>
 
-class QSqlTableModel;
+// class QSqlTableModel;
+class ModelOrderData;
 
 namespace Ui {
 class MainOrderForm;
@@ -18,8 +19,13 @@ class MainOrderForm : public QWidget
   ~MainOrderForm( );
 
  private:
+  void modelInit( );
+  void tableViewSettings( );
+  void headerViewSettings( );
+
+ private:
   Ui::MainOrderForm *ui;
-  QSqlTableModel *model;
+  ModelOrderData *model;
 };
 
 #endif // MAINORDERFORM_H
