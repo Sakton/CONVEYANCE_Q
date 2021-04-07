@@ -4,14 +4,14 @@
 #include <QWidget>
 #include <map>
 
+#include "Bases/basetemplateform.h"
 #include "Utility/AllConstants.h"
 
 namespace Ui {
 class TemplateFormOrder;
 }
 
-class TemplateFormOrder : public QWidget
-{
+class TemplateFormOrder : public BaseTemplateForm {
   Q_OBJECT
 
   using Line = AllConstatnts::Line;
@@ -20,14 +20,14 @@ class TemplateFormOrder : public QWidget
   explicit TemplateFormOrder(QWidget *parent = nullptr);
   ~TemplateFormOrder( );
 
-  void clearForm( );
-
- private:
-  void read( );
+  // IBaseForm interface
+ public:
+  void readDataOfForm( ) override;
+  void setDataInForm( const Line &dataLine ) override;
+  void clearForm( ) const override;
 
  private:
   Ui::TemplateFormOrder *ui;
-  Line data_;
 };
 
 #endif // TEMPLATEFORMORDER_H

@@ -33,7 +33,7 @@ SOURCES += \
     Modules/Orders/ModelOrder/modelorderdata.cpp \
     Modules/Orders/TemplateOrderForm/templateformorder.cpp \
     Modules/Orders/View/MainFormOrders/mainorderform.cpp \
-    Modules/Orders/theorderform.cpp \
+    Modules/Orders/View/WorkFormaOrder/workformorder.cpp \
     Modules/Payment/thepaymentform.cpp \
     Modules/Post/thepostform.cpp \
     Utility/CreatorDbConveyance/conveyancesqldatabase.cpp \
@@ -50,6 +50,7 @@ SOURCES += \
     mainwindowmdi.cpp
 
 HEADERS += \
+    Bases/IBaseForm.h \
     Bases/basetemplateform.h \
     Modules/Adress/theadressform.h \
     Modules/Autopark/AutoBrand/theautobrandform.h \
@@ -74,7 +75,7 @@ HEADERS += \
     Modules/Orders/ModelOrder/modelorderdata.h \
     Modules/Orders/TemplateOrderForm/templateformorder.h \
     Modules/Orders/View/MainFormOrders/mainorderform.h \
-    Modules/Orders/theorderform.h \
+    Modules/Orders/View/WorkFormaOrder/workformorder.h \
     Modules/Payment/thepaymentform.h \
     Modules/Post/thepostform.h \
     Utility/AllConstants.h \
@@ -106,7 +107,7 @@ FORMS += \
     Modules/Note/thenoteform.ui \
     Modules/Orders/TemplateOrderForm/templateformorder.ui \
     Modules/Orders/View/MainFormOrders/mainorderform.ui \
-    Modules/Orders/theorderform.ui \
+    Modules/Orders/View/WorkFormaOrder/workformorder.ui \
     Modules/Payment/thepaymentform.ui \
     Modules/Post/thepostform.ui \
     Utility/DataForCreateDBForm/thedataforcreatedbform.ui \

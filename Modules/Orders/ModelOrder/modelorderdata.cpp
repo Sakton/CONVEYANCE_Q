@@ -24,22 +24,16 @@ QVariant ModelOrderData::headerData( int section, Qt::Orientation orientation,
   //  if ( role == Qt::ForegroundRole &&
   //       orientation == Qt::Orientation::Horizontal )
   //    return QBrush( QColor( 255, 0, 0 ) );
-
-  if ( section == 0 && Qt::Orientation::Horizontal == orientation &&
-       role == Qt::DisplayRole )
-    return tr( "id" );
-  if ( section == 1 && Qt::Orientation::Horizontal == orientation &&
-       role == Qt::DisplayRole )
-    return tr( "Номер" );
-  if ( section == 2 && Qt::Orientation::Horizontal == orientation &&
-       role == Qt::DisplayRole )
-    return tr( "Клиент" );
-  if ( section == 3 && Qt::Orientation::Horizontal == orientation &&
-       role == Qt::DisplayRole )
-    return tr( "Цена" );
-  // TODO HeaderData
-  // if ( section == 0 && role == Qt::BackgroundRole ) return QBrush( Qt::green
-  // );
+  bool predicat =
+      Qt::Orientation::Horizontal == orientation && role == Qt::DisplayRole;
+  if ( section == 0 && predicat ) return tr( "id" );
+  if ( section == 1 && predicat ) return tr( "Номер Договора" );
+  if ( section == 2 && predicat ) return tr( "Заказчик" );
+  if ( section == 3 && predicat ) return tr( "Цена" );
+  if ( section == 4 && predicat ) return tr( "Валюта Договора" );
+  if ( section == 5 && predicat ) return tr( "Водитель" );
+  if ( section == 6 && predicat ) return tr( "Почта" );
+  if ( section == 7 && predicat ) return tr( "Термин оплаты" );
 
   if ( role == Qt::BackgroundRole ) {
     QVariant value;

@@ -3,20 +3,14 @@
 
 #include <QWidget>
 
-#include "Utility/AllConstants.h"
+#include "IBaseForm.h"
+// #include "Utility/AllConstants.h"
 
-class BaseTemplateForm : public QWidget
-{
+class BaseTemplateForm : public QWidget, public IBaseForm {
   Q_OBJECT
 
  public:
-  using Line = AllConstatnts::Line;
   explicit BaseTemplateForm( QWidget *parent = nullptr );
-
-  // overload operations
-  virtual void readDataOfForm( ) = 0;
-  virtual void setDataInForm( const Line &dataLine ) = 0;
-  virtual void clearForm( ) const = 0;
 
   // common operations
   const Line &dataForm( ) {
