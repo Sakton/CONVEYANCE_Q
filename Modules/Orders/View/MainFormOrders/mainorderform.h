@@ -19,7 +19,6 @@ class MainOrderForm : public QWidget
   ~MainOrderForm( );
 
  private:
-  void modelInit( );
   void tableViewSettings( );
   void headerViewSettings( );
 

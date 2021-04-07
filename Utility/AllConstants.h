@@ -52,6 +52,10 @@ static const char* ISO_CODE_PL_ZLOTY = "985";
 static const char* ISO_CODE_USD_DOLLAR = "840";
 static const char* FORMAT_JSON = "/?format=json";
 
+// colors
+// static const char* COLOR_SECTION_HEADER_VIEW = "#e34234";
+static const char* COLOR_SECTION_HEADER_VIEW = "#f9301e";
+
 }  // namespace AllConstatnts
 
 #endif  // ALLCONSTANTS_H
