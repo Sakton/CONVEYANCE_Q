@@ -411,7 +411,7 @@
           <item row="2" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <widget class="QComboBox" name="comboBoxCustomer"/>
+             <widget class="QComboBox" name="comboBoxClient"/>
             </item>
             <item>
              <widget class="QPushButton" name="pushButtonAddCustomer">
@@ -577,7 +577,7 @@
   <tabstop>comboBoxPlace</tabstop>
   <tabstop>lineEditContract</tabstop>
   <tabstop>lineEditOrderNum</tabstop>
-  <tabstop>comboBoxCustomer</tabstop>
+  <tabstop>comboBoxClient</tabstop>
   <tabstop>pushButtonAddCustomer</tabstop>
   <tabstop>comboBoxContacts</tabstop>
   <tabstop>pushButtonAddContacts</tabstop>

@@ -17,7 +17,7 @@ class TemplateFormOrder : public BaseTemplateForm {
   using Line = AllConstatnts::Line;
 
  public:
-  explicit TemplateFormOrder(QWidget *parent = nullptr);
+  explicit TemplateFormOrder( QWidget *parent = nullptr );
   ~TemplateFormOrder( );
 
   // IBaseForm interface

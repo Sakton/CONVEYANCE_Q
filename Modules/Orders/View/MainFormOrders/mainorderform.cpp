@@ -35,7 +35,7 @@ MainOrderForm::~MainOrderForm()
 void MainOrderForm::tableViewSettings( ) {
   ui->tableViewOrders->setModel( model );
   ui->tableViewOrders->setGridStyle( Qt::PenStyle::DashLine );
-  ui->tableViewOrders->setColumnHidden( 0, true );
+  //  ui->tableViewOrders->setColumnHidden( 0, true );
   ui->tableViewOrders->resizeColumnsToContents( );
 }
 

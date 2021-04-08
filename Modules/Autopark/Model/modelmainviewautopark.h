@@ -13,7 +13,7 @@ class ModelMainViewAutopark : public QAbstractListModel {
   explicit ModelMainViewAutopark( QObject* parent );
 
  private:
-  void readDataFrokmDb( );
+  // void readDataFrokmDb( );
 
   // QAbstractItemModel interface
  public:

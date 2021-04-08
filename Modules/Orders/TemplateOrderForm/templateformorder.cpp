@@ -16,7 +16,12 @@ TemplateFormOrder::~TemplateFormOrder()
   delete ui;
 }
 
-void TemplateFormOrder::readDataOfForm( ) {}
+void TemplateFormOrder::readDataOfForm( ) {
+  add( "date_create", ui->dateEditDate->date( ).toString( ) );
+  add( "place", ui->comboBoxPlace->currentText( ) );
+  add( "number_contract", ui->lineEditContract->text( ) );
+  add( "number_orders", ui->lineEditOrderNum->text( ) );
+}
 
 void TemplateFormOrder::setDataInForm(
     const TemplateFormOrder::Line &dataLine ) {}

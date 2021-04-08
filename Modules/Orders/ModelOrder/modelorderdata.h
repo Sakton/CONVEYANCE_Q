@@ -2,10 +2,14 @@
 #define MODELORDERDATA_H
 #include <Utility/AllConstants.h>
 
-#include <QSqlTableModel>
+#include <QAbstractTableModel>
 
-class ModelOrderData : public QSqlTableModel {
+#include "Utility/AllConstants.h"
+
+class ModelOrderData : public QAbstractTableModel {
  public:
+  using Table1   = AllConstatnts::Table1;
+  using LineHash = AllConstatnts::LineHash;
   enum OrderRoles { ID = Qt::UserRole + 1 };
 
   ModelOrderData( QObject *parent = nullptr );
@@ -15,9 +19,14 @@ class ModelOrderData : public QSqlTableModel {
   QVariant data( const QModelIndex &index, int role ) const override;
   QVariant headerData( int section, Qt::Orientation orientation,
                        int role ) const override;
+  int      rowCount( const QModelIndex & ) const override;
+  int      columnCount( const QModelIndex & ) const override;
 
  private:
-  void init( );
+  void selectFromDb( );
+
+ private:
+  Table1 tableData_;
 };
 
 #endif // MODELORDERDATA_H

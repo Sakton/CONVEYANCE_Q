@@ -23,7 +23,9 @@ static const char* DB_SHEME { "conveyance" };
 //** types
 using Para = std::pair< QString, QString >;
 using Line = std::map< QString, QString >;
-using Table = std::unordered_map< QString, Line >;
+using LineHash = std::unordered_map< QString, QString >;
+using Table  = std::unordered_map< QString, Line >;
+using Table1   = std::unordered_map< int, LineHash >;
 
 // names DB
 namespace NAME_TABLE {
