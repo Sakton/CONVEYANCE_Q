@@ -20,12 +20,20 @@ int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
   //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
   ConveyanceSQLDatabase db;
-
   //  ModelOrderData od;
   //  od.readDataFromDb( );
 
   MainWindow w;
   w.show( );
+
+  //  ExchangeRates r;
+  //  r.dateCours( QDate::currentDate( ) );
+  //  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
+  //  r.dateCours( QDate::currentDate( ).addDays( -2 ) );
+  //  r.dateCours( QDate::currentDate( ).addDays( -3 ) );
+  //  r.dateCours( QDate::currentDate( ).addDays( -4 ) );
+
+  // exit( 0 );
 
   return a.exec( );
 }

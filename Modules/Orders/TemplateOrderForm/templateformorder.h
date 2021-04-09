@@ -20,6 +20,9 @@ class TemplateFormOrder : public BaseTemplateForm {
   explicit TemplateFormOrder( QWidget *parent = nullptr );
   ~TemplateFormOrder( );
 
+ public slots:
+  void currentCoursValut( double cours );
+
   // IBaseForm interface
  public:
   void readDataOfForm( ) override;

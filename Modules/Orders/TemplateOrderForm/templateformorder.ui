@@ -67,19 +67,23 @@
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
          <layout class="QGridLayout" name="gridLayout_12">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_9">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>0</height>
-             </size>
-            </property>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_15">
             <property name="text">
-             <string>Доезд км.</string>
+             <string>В EU</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEditArrival">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
            </widget>
           </item>
@@ -96,50 +100,10 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="3">
-           <widget class="QLineEdit" name="lineEditRoute">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEditArrival">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_11">
             <property name="text">
              <string>Ставка за км.</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="lineEditRate">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="label_15">
-            <property name="text">
-             <string>В EU</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -161,6 +125,42 @@
             </property>
             <property name="text">
              <string>123.456 EU</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Доезд км.</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLineEdit" name="lineEditRoute">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="lineEditRate">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
            </widget>
           </item>
@@ -239,7 +239,7 @@
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="QComboBox" name="comboBoxPeriod"/>
+           <widget class="QComboBox" name="comboBoxPaymentPeriod"/>
           </item>
           <item row="2" column="1">
            <widget class="QLabel" name="labelCours">
@@ -551,7 +551,7 @@
            </widget>
           </item>
           <item row="0" column="1" colspan="3">
-           <widget class="QComboBox" name="comboBoxMaxTime"/>
+           <widget class="QComboBox" name="comboBoxPostalTransferPeriod"/>
           </item>
           <item row="1" column="2">
            <widget class="QLabel" name="label_14">
@@ -587,8 +587,8 @@
   <tabstop>lineEditRate</tabstop>
   <tabstop>lineEditPrice</tabstop>
   <tabstop>comboBoxCurrency</tabstop>
-  <tabstop>comboBoxPeriod</tabstop>
-  <tabstop>comboBoxMaxTime</tabstop>
+  <tabstop>comboBoxPaymentPeriod</tabstop>
+  <tabstop>comboBoxPostalTransferPeriod</tabstop>
   <tabstop>checkBoxCopyCMR</tabstop>
   <tabstop>checkBoxContractOriginal</tabstop>
   <tabstop>plainTextEditNotes</tabstop>

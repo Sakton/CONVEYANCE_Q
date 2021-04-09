@@ -44,6 +44,7 @@ SOURCES += \
     Utility/CreatorDbConveyance/querydriver.cpp \
     Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
     Utility/ExchangeRates/exchangerates.cpp \
+    Utility/Network/conveyancenetwork.cpp \
     Utility/User/user.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -86,6 +87,7 @@ HEADERS += \
     Utility/CreatorDbConveyance/querydriver.h \
     Utility/DataForCreateDBForm/thedataforcreatedbform.h \
     Utility/ExchangeRates/exchangerates.h \
+    Utility/Network/conveyancenetwork.h \
     Utility/User/user.h \
     mainwindow.h \
     mainwindowmdi.h

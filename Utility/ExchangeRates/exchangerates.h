@@ -13,9 +13,10 @@ class ExchangeRates : public QObject {
   ExchangeRates( QObject *parent = nullptr );
   ~ExchangeRates( );
 
+  void dateCours( QDate data );
+
  public slots:
   void replyFinished( QNetworkReply *rep );
-  void slotDateCours( QDate data );
 
  signals:
   void signalDateCoursBankNBP( double );  //кому надо то пусть ловит
