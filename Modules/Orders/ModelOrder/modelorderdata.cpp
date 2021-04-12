@@ -47,7 +47,7 @@ QVariant ModelOrderData::headerData( int section, Qt::Orientation orientation,
       case 4: return tr( "Валюта Договора" );
       case 5: return tr( "Дата" );
       case 6: return tr( "Водитель" );
-      case 7: return tr( "Почта" );
+      case 7: return tr( "Курс EURO" );
       case 8: return tr( "Термин оплаты" );
     }
   }
@@ -59,7 +59,10 @@ int ModelOrderData::rowCount( const QModelIndex & ) const {
   return tableData_.size( );
 }
 
-int ModelOrderData::columnCount( const QModelIndex & ) const { return 8; }
+int ModelOrderData::columnCount( const QModelIndex & ) const {
+  // TODO !!!! magik literal
+  return 9;
+}
 
 void ModelOrderData::selectFromDb( ) {
   QString   qs = "SELECT * FROM conveyance.orders;";

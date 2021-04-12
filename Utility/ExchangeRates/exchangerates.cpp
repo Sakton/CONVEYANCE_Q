@@ -22,7 +22,7 @@ ExchangeRates::ExchangeRates( QObject* parent )
 ExchangeRates::~ExchangeRates( ) { net->deleteLater( ); }
 
 void ExchangeRates::replyFinished( QNetworkReply* rep ) {
-  qDebug( ) << "rep = " << rep;
+  qDebug( ) << "rep = " << rep->readAll( );
   //  qDebug( ) << rep->readAll( );
   //  QJsonDocument jDoc       = QJsonDocument::fromJson( rep->readAll( ) );
   //  QJsonObject   o          = jDoc.object( );
@@ -31,7 +31,7 @@ void ExchangeRates::replyFinished( QNetworkReply* rep ) {
   //  QJsonValue    mid        = ratesObj.value( "mid" );
   //  double        cours      = mid.toDouble( );
   //  qDebug( ) << "ExchangeRates::replyFinished curs = " << cours;
-  //  emit signalDateCoursBankNBP( cours );
+  emit signalDateCoursBankNBP( /*cours*/ 1.1111 );
   // rep->deleteLater( );
 }
 

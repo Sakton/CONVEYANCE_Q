@@ -32,6 +32,8 @@ int main( int argc, char *argv[] ) {
   //  r.dateCours( QDate::currentDate( ).addDays( -2 ) );
   //  r.dateCours( QDate::currentDate( ).addDays( -3 ) );
   //  r.dateCours( QDate::currentDate( ).addDays( -4 ) );
+  //  r.dateCours( QDate::currentDate( ).addDays( -5 ) );
+  //  r.dateCours( QDate::currentDate( ).addDays( -6 ) );
 
   // exit( 0 );
 

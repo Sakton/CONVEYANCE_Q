@@ -15,7 +15,7 @@ TemplateFormOrder::TemplateFormOrder( QWidget *parent )
            QOverload< double >::of( &ExchangeRates::signalDateCoursBankNBP ),
            this,
            QOverload< double >::of( &TemplateFormOrder::currentCoursValut ) );
-  changeRates.dateCours( QDate::currentDate( ) );
+  changeRates.dateCours( QDate::currentDate( ).addDays( -3 ) );
 }
 
 TemplateFormOrder::~TemplateFormOrder()
