@@ -9,6 +9,7 @@ TemplateFormOrder::TemplateFormOrder( QWidget *parent )
     : BaseTemplateForm( parent ), ui( new Ui::TemplateFormOrder ) {
   ui->setupUi(this);
   setAttribute( Qt::WA_DeleteOnClose );
+  qDebug( ) << "ctor TemplateFormOrder";
   // TODO ПОЧЕМУ ТО НЕ РАБОАТЕТ
   ExchangeRates changeRates;
   connect( &changeRates,
@@ -24,7 +25,7 @@ TemplateFormOrder::~TemplateFormOrder()
 }
 
 void TemplateFormOrder::currentCoursValut( double cours ) {
-  qDebug( ) << "current cours = " << cours;
+  qDebug( ) << "slot current cours = " << cours;
   ui->labelStavkaEur->setText( QString::number( cours ) );
 }
 

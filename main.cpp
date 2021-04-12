@@ -1,3 +1,5 @@
+#include <Utility/Network/conveyancenetwork.h>
+
 #include <QApplication>
 #include <QNetworkAccessManager>
 #include <QSettings>
@@ -22,6 +24,8 @@ int main( int argc, char *argv[] ) {
   ConveyanceSQLDatabase db;
   //  ModelOrderData od;
   //  od.readDataFromDb( );
+
+  // ConveyanceNetwork::getNetworkManager( );
 
   MainWindow w;
   w.show( );

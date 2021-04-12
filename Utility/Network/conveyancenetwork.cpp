@@ -5,7 +5,11 @@
 QNetworkAccessManager* ConveyanceNetwork::netManager = nullptr;
 
 QNetworkAccessManager* ConveyanceNetwork::getNetworkManager( ) {
-  qDebug( ) << "QNetworkAccessManager* ConveyanceNetwork";
-  if ( netManager == nullptr ) netManager = new QNetworkAccessManager;
+  if ( netManager == nullptr ) {
+    netManager = new QNetworkAccessManager;
+    qDebug( ) << "create QNetworkAccessManager* ConveyanceNetwork";
+  } else {
+    qDebug( ) << "return QNetworkAccessManager* ConveyanceNetwork";
+  }
   return netManager;
 }
