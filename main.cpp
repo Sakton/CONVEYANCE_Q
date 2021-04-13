@@ -22,19 +22,19 @@ int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
   //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
   ConveyanceSQLDatabase db;
-  ConveyanceNetwork::init( &a );
+  //  ConveyanceNetwork::init(  );
   //  ModelOrderData od;
   //  od.readDataFromDb( );
-
+  
   // ConveyanceNetwork::getNetworkManager( );
   
-  ExchangeRates r;
-  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
+  //  ExchangeRates r;
+  //  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
   
-
+  
   MainWindow w;
   w.show( );
-
+  
   //  ExchangeRates r;
   //  r.dateCours( QDate::currentDate( ) );
   //  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
@@ -43,8 +43,8 @@ int main( int argc, char *argv[] ) {
   //  r.dateCours( QDate::currentDate( ).addDays( -4 ) );
   //  r.dateCours( QDate::currentDate( ).addDays( -5 ) );
   //  r.dateCours( QDate::currentDate( ).addDays( -6 ) );
-
+  
   // exit( 0 );
-
+  
   return a.exec( );
 }

@@ -45,6 +45,7 @@ SOURCES += \
     Utility/DataForCreateDBForm/thedataforcreatedbform.cpp \
     Utility/ExchangeRates/exchangerates.cpp \
     Utility/Network/conveyancenetwork.cpp \
+    Utility/Network/downloader.cpp \
     Utility/User/user.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -88,6 +89,7 @@ HEADERS += \
     Utility/DataForCreateDBForm/thedataforcreatedbform.h \
     Utility/ExchangeRates/exchangerates.h \
     Utility/Network/conveyancenetwork.h \
+    Utility/Network/downloader.h \
     Utility/User/user.h \
     mainwindow.h \
     mainwindowmdi.h

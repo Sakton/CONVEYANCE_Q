@@ -5,30 +5,23 @@
 #include <QObject>
 
 class QNetworkAccessManager;
+class DownLoader;
 
 class ExchangeRates : public QObject {
   Q_OBJECT
   
  public:
-  ExchangeRates(QObject* parent = nullptr);
+  ExchangeRates( QObject* parent = nullptr );
   ~ExchangeRates();
   
   void dateCours(QDate data);
   void QueryNet(const QString* q);
   
  public slots:
-  void replyFinished(QNetworkReply* rep);
-  void slotReadyRead();
-  void slotFinished();
-  void slotError(QNetworkReply::NetworkError err);
-  
- signals:
-  void signalDateCoursBankNBP(double);  //кому надо то пусть ловит
-  
+  void slotReadData();
+
  private:
-  //  QNetworkAccessManager* net;
-  //  QNetworkReply* reply;
-  QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> * rep;
+  DownLoader *dwn;
 };
 
 #endif  // EXCHANGERATES_H
