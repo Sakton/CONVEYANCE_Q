@@ -11,14 +11,14 @@
 #include "Utility/AllConstants.h"
 #include "Utility/Network/conveyancenetwork.h"
 
-ExchangeRates::ExchangeRates(QObject* parent)
-    : QObject(parent),
+ExchangeRates::ExchangeRates(QObject* parent) 
+    : QObject(parent) {/*,
       net{ConveyanceNetwork::getNetworkManager()},
       reply{nullptr} {
   connect(net, QOverload<QNetworkReply*>::of(&QNetworkAccessManager::finished),
-          this, QOverload<QNetworkReply*>::of(&ExchangeRates::replyFinished));
-  connect(reply, QOverload<>::of(&QIODevice::readyRead), this,
-          QOverload<>::of(&ExchangeRates::slotReadyRead));
+          this, QOverload<QNetworkReply*>::of(&ExchangeRates::replyFinished));*/
+  //  connect(reply, QOverload<>::of(&QIODevice::readyRead), this,
+  //          QOverload<>::of(&ExchangeRates::slotReadyRead));
   // connect(reply, QOverload<>::of( &QNetworkReply::err ), this,
   // QOverload<>::of());
 }
@@ -42,11 +42,21 @@ void ExchangeRates::replyFinished(QNetworkReply* rep) {
 }
 
 void ExchangeRates::slotReadyRead() {
-  qDebug() << "ExchangeRates::slotReadyRead";
+  // qDebug() << "ExchangeRates::slotReadyRead";
+  // reply = net->get();
+}
+
+void ExchangeRates::slotFinished()
+{
+  qDebug() << "ExchangeRates::slotFinished() " << rep->get()->readAll();
+}
+
+void ExchangeRates::slotError(QNetworkReply::NetworkError err)
+{
+  qDebug() << "ExchangeRates::slotError() errCode  = " << err;
 }
 
 void ExchangeRates::dateCours(QDate data) {
-  //  qDebug( ) << "ExchangeRates::dateCours";
   //  data = data.addDays( -1 );
   QUrl url = QLatin1String(AllConstatnts::NARODOWY_BANK_POLSKI) +
              QLatin1String(AllConstatnts::ISO_CODE_EURO) +
@@ -55,6 +65,12 @@ void ExchangeRates::dateCours(QDate data) {
   //  qDebug( ) << "url = " << url;
   //  net->get( QNetworkRequest( url ) );
   //  qDebug( ) << "net = " << net;
-
+  
   //  reply = net->get(QNetworkRequest(url));
+  
+  rep = ConveyanceNetwork::getNetworkManager()->get( QNetworkRequest(url) );
+  connect(rep, QOverload<>::of( &QNetworkReply::readyRead ), this, QOverload<>::of( &ExchangeRates::slotFinished ));
+  connect( rep, QOverload<QNetworkReply::NetworkError>::of( &QNetworkReply::errorOccurred ), this, QOverload<QNetworkReply::NetworkError>::of( &ExchangeRates::slotError ) );
+  
+  qDebug( ) << "ExchangeRates::dateCours rep = " << rep;
 }

@@ -22,10 +22,15 @@ int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
   //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
   ConveyanceSQLDatabase db;
+  ConveyanceNetwork::init( &a );
   //  ModelOrderData od;
   //  od.readDataFromDb( );
 
   // ConveyanceNetwork::getNetworkManager( );
+  
+  ExchangeRates r;
+  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
+  
 
   MainWindow w;
   w.show( );

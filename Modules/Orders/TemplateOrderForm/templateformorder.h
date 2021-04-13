@@ -19,6 +19,8 @@ class TemplateFormOrder : public BaseTemplateForm {
  public:
   explicit TemplateFormOrder( QWidget *parent = nullptr );
   ~TemplateFormOrder( );
+  
+  void testMethod();
 
  public slots:
   void currentCoursValut( double cours );

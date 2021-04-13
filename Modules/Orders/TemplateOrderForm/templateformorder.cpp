@@ -11,17 +11,25 @@ TemplateFormOrder::TemplateFormOrder( QWidget *parent )
   setAttribute( Qt::WA_DeleteOnClose );
   qDebug( ) << "ctor TemplateFormOrder";
   // TODO ПОЧЕМУ ТО НЕ РАБОАТЕТ
-  ExchangeRates changeRates;
-  connect( &changeRates,
-           QOverload< double >::of( &ExchangeRates::signalDateCoursBankNBP ),
-           this,
-           QOverload< double >::of( &TemplateFormOrder::currentCoursValut ) );
-  changeRates.dateCours( QDate::currentDate( ).addDays( -3 ) );
+  //  ExchangeRates changeRates;
+  //  connect( &changeRates,
+  //           QOverload< double >::of( &ExchangeRates::signalDateCoursBankNBP ),
+  //           this,
+  //           QOverload< double >::of( &TemplateFormOrder::currentCoursValut ) );
+  //  changeRates.dateCours( QDate::currentDate( ).addDays( -1 ) );
+  testMethod();
 }
 
 TemplateFormOrder::~TemplateFormOrder()
 {
   delete ui;
+}
+
+void TemplateFormOrder::testMethod()
+{
+  qDebug( ) << "TemplateFormOrder::testMethod() = ";
+  ExchangeRates changeRates;
+  changeRates.dateCours( QDate::currentDate( ).addDays( -1 ) );
 }
 
 void TemplateFormOrder::currentCoursValut( double cours ) {

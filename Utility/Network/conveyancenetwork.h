@@ -7,6 +7,7 @@ class ConveyanceNetwork : public QObject {
   Q_OBJECT
 
  public:
+  static void init( QObject *parent = nullptr );
   static QNetworkAccessManager* getNetworkManager( );
 
  private:
