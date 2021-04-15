@@ -45,6 +45,8 @@ void TemplateFormOrder::readDataOfForm( ) {
 }
 
 void TemplateFormOrder::setDataInForm(
-    const TemplateFormOrder::Line &dataLine ) {}
+    const TemplateFormOrder::Line &dataLine ) {
+  
+}
 
 void TemplateFormOrder::clearForm( ) const {}

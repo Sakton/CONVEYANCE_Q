@@ -10,6 +10,7 @@
 #include "Modules/Orders/TemplateOrderForm/templateformorder.h"
 #include "Utility/CreatorDbConveyance/dbtablecreator.h"
 #include "Utility/ExchangeRates/exchangerates.h"
+#include "Utility/Network/downloader.h"
 #include "mainwindow.h"
 #include "mainwindowmdi.h"
 
@@ -28,12 +29,17 @@ int main( int argc, char *argv[] ) {
   
   // ConveyanceNetwork::getNetworkManager( );
   
-  //  ExchangeRates r;
-  //  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
+//    ExchangeRates r;
+//    r.dateCours( QDate::currentDate( ).addDays( -1 ) );
+  
+  DownLoader dwn;
+  dwn.download( QUrl("http://api.nbp.pl/api/exchangerates/rates/a/eur/2021-04-14/?format=json") );
+  
+  qDebug() << dwn.getAnswer();
   
   
-  MainWindow w;
-  w.show( );
+//  MainWindow w;
+//  w.show( );
   
   //  ExchangeRates r;
   //  r.dateCours( QDate::currentDate( ) );
