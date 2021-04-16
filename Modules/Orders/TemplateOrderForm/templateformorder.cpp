@@ -6,17 +6,18 @@
 #include "ui_templateformorder.h"
 
 TemplateFormOrder::TemplateFormOrder( QWidget *parent )
-    : BaseTemplateForm( parent ), ui( new Ui::TemplateFormOrder ) {
+    : BaseTemplateForm( parent ), ui( new Ui::TemplateFormOrder ), cours{nullptr} {
   ui->setupUi(this);
   setAttribute( Qt::WA_DeleteOnClose );
   qDebug( ) << "ctor TemplateFormOrder";
-    ExchangeRates changeRates;
-    changeRates.dateCours( QDate::currentDate( ).addDays( -1 ) );
+  cours = new ExchangeRates;
+  cours->dateCours( QDate::currentDate( ).addDays( -1 ) );
 }
 
 TemplateFormOrder::~TemplateFormOrder()
 {
   delete ui;
+  cours->deleteLater();
 }
 
 void TemplateFormOrder::testMethod()
@@ -44,9 +45,7 @@ void TemplateFormOrder::readDataOfForm( ) {
   add( "number_orders", ui->lineEditOrderNum->text( ) );
 }
 
-void TemplateFormOrder::setDataInForm(
-    const TemplateFormOrder::Line &dataLine ) {
-  
+void TemplateFormOrder::setDataInForm ( const TemplateFormOrder::Line &dataLine ) {
 }
 
 void TemplateFormOrder::clearForm( ) const {}

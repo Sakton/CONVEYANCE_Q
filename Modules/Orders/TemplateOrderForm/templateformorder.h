@@ -11,6 +11,8 @@ namespace Ui {
 class TemplateFormOrder;
 }
 
+class ExchangeRates;
+
 class TemplateFormOrder : public BaseTemplateForm {
   Q_OBJECT
 
@@ -33,6 +35,7 @@ class TemplateFormOrder : public BaseTemplateForm {
 
  private:
   Ui::TemplateFormOrder *ui;
+  ExchangeRates *cours;
 };
 
 #endif // TEMPLATEFORMORDER_H

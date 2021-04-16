@@ -1,7 +1,6 @@
 #ifndef EXCHANGERATES_H
 #define EXCHANGERATES_H
 #include <QDate>
-#include <QNetworkReply>
 #include <QObject>
 
 class QNetworkAccessManager;
@@ -12,16 +11,21 @@ class ExchangeRates : public QObject {
   
  public:
   ExchangeRates( QObject* parent = nullptr );
-  ~ExchangeRates();
+  virtual ~ExchangeRates();
   
   void dateCours(QDate data);
   void QueryNet(const QString* q);
   
  public slots:
-  void slotReadData();
+  void slotData();
+  
+ private:
+  QString cours(const QByteArray &arr);
+  void sendToServer(QDate data);
 
  private:
   DownLoader *dwn;
+  QByteArray data_;
 };
 
 #endif  // EXCHANGERATES_H

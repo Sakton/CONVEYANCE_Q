@@ -9,19 +9,16 @@
 class QNetworkAccessManager;
 class QNetworkReply;
 
-class DownLoader : public QObject
-{
+class DownLoader : public QObject {
   Q_OBJECT
   
  public:
   explicit DownLoader( QObject *parent = nullptr );
   virtual ~DownLoader();
   void download( QUrl url );
-  void wait();
   
  public slots:
   void slotFinished( QNetworkReply *rep );
-  //  void slotReadyRead();
   QByteArray getAnswer();
   
  signals:
@@ -30,7 +27,6 @@ class DownLoader : public QObject
  private:
   QNetworkAccessManager *net;
   QByteArray answer;
-  // std::unique_ptr<QByteArray> answer;
 };
 
 #endif // DOWNLOADER_H
