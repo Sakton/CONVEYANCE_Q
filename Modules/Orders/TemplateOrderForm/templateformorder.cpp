@@ -2,47 +2,44 @@
 
 #include <QDebug>
 
+#include "../OrderConstatnt/dbcolumnnames.h"
 #include "Utility/ExchangeRates/exchangerates.h"
 #include "ui_templateformorder.h"
 
-TemplateFormOrder::TemplateFormOrder( QWidget *parent )
-    : BaseTemplateForm( parent ), ui( new Ui::TemplateFormOrder ), cours{nullptr} {
-  ui->setupUi(this);
-  setAttribute( Qt::WA_DeleteOnClose );
-  qDebug( ) << "ctor TemplateFormOrder";
-  cours = new ExchangeRates;
-  cours->dateCours( QDate::currentDate( ).addDays( -1 ) );
+//const QStringList TemplateFormOrder::PLOSHADKA = QStringList( "timo.com", "none" );
+
+TemplateFormOrder::TemplateFormOrder( QWidget *parent ) :
+    BaseTemplateForm( parent ), ui( new Ui::TemplateFormOrder ), cours { nullptr } {
+    ui->setupUi( this );
+    setAttribute( Qt::WA_DeleteOnClose );
+    //   ui->comboBoxPlace->addItems( PLOSHADKA );
+
+    cours = new ExchangeRates;
+    connect( cours, QOverload< double >::of( &ExchangeRates::signalCurrentCours ), this, QOverload< double >::of( &TemplateFormOrder::slotCurrentCoursValut ) );
+    cours->dateCours( QDate::currentDate( ) );
 }
 
-TemplateFormOrder::~TemplateFormOrder()
-{
-  delete ui;
-  cours->deleteLater();
+TemplateFormOrder::~TemplateFormOrder( ) {
+    delete ui;
+    cours->deleteLater( );
 }
 
-void TemplateFormOrder::testMethod()
-{
-  qDebug( ) << "TemplateFormOrder::testMethod() = ";
-  ExchangeRates changeRates;
-  changeRates.dateCours( QDate::currentDate( ).addDays( -1 ) );
-}
-
-void TemplateFormOrder::currentCoursValut( double cours ) {
-  qDebug( ) << "slot current cours = " << cours;
-  ui->labelStavkaEur->setText( QString::number( cours ) );
+void TemplateFormOrder::slotCurrentCoursValut( double cours ) {
+    ui->labelCours->setText( "1EU = " + QString::number( cours ) + " PL" );
 }
 
 void TemplateFormOrder::readDataOfForm( ) {
-  add( "number_contract", ui->lineEditContract->text( ) );
-  add( "client", ui->comboBoxClient->currentText( ) );
-  add( "price", ui->lineEditPrice->text( ) );
-  add( "valute", ui->comboBoxCurrency->currentText( ) );
-  add( "driver", ui->comboBoxDriver->currentText( ) );
-  add( "termin_oplaty", ui->comboBoxPaymentPeriod->currentText( ) );
-  // add( "exchange_rates_eu_pl" )
-  add( "date_create", ui->dateEditDate->date( ).toString( ) );
-  add( "place", ui->comboBoxPlace->currentText( ) );
-  add( "number_orders", ui->lineEditOrderNum->text( ) );
+    add( /*"order_number_contract"*/ orders::NUMBER_CONTRACT, ui->lineEditContract->text( ) );
+    add( /*"order_client"*/ orders::CLIENT, ui->comboBoxClient->currentText( ) );
+    add( /*"order_price"*/ orders::PRICE, ui->lineEditPrice->text( ) );
+    add( /*"order_valute"*/ orders::VALYTA, ui->comboBoxCurrency->currentText( ) );
+    add( /*"order_driver"*/ orders::DRIVER, ui->comboBoxDriver->currentText( ) );
+    add( /*"order_termin_oplaty"*/ orders::TERMIN_OPLATY, ui->comboBoxPaymentPeriod->currentText( ) );
+    add( /*"order_exchange_rates_eu_pl"*/ orders::EXCHANGE, ui->labelCours->text( ) );
+    add( /*"order_date_create"*/ orders::DATE_CREATE, ui->dateEditDate->date( ).toString( ) );
+    add( /*"order_place"*/ orders::NET_PLOSCHADKA, ui->comboBoxPlace->currentText( ) );
+    //add( "order_number_orders", ui->lineEditOrderNum->text( ) );
+    //add();
 }
 
 void TemplateFormOrder::setDataInForm ( const TemplateFormOrder::Line &dataLine ) {

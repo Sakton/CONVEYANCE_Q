@@ -124,7 +124,7 @@
              <string notr="true">color: rgb(255, 0, 255);</string>
             </property>
             <property name="text">
-             <string>123.456 EU</string>
+             <string>NO DATA</string>
             </property>
            </widget>
           </item>
@@ -255,7 +255,7 @@
              <string notr="true">color: rgb(255, 0, 255);</string>
             </property>
             <property name="text">
-             <string>1EU = 4.1234PL</string>
+             <string>NO DATA</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

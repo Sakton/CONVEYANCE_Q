@@ -75,6 +75,7 @@ HEADERS += \
     Modules/Country/thecountryform.h \
     Modules/Note/thenoteform.h \
     Modules/Orders/ModelOrder/modelorderdata.h \
+    Modules/Orders/OrderConstatnt/dbcolumnnames.h \
     Modules/Orders/TemplateOrderForm/templateformorder.h \
     Modules/Orders/View/MainFormOrders/mainorderform.h \
     Modules/Orders/View/WorkFormaOrder/workformorder.h \

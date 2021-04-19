@@ -12,9 +12,8 @@ class ExchangeRates : public QObject {
  public:
   ExchangeRates( QObject* parent = nullptr );
   virtual ~ExchangeRates();
-  
+
   void dateCours(QDate data);
-  void QueryNet(const QString* q);
   
  public slots:
   void slotData();
@@ -22,10 +21,15 @@ class ExchangeRates : public QObject {
  private:
   QString cours(const QByteArray &arr);
   void sendToServer(QDate data);
+  QDate correctDataToCours(QDate currentDate );
+  
+ signals:
+  void signalCurrentCours(double);
 
  private:
   DownLoader *dwn;
   QByteArray data_;
+  double currentCours;
 };
 
 #endif  // EXCHANGERATES_H

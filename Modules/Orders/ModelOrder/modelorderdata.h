@@ -4,8 +4,6 @@
 
 #include <QAbstractTableModel>
 
-#include "Utility/AllConstants.h"
-
 class ModelOrderData : public QAbstractTableModel {
  public:
   using Table1   = AllConstatnts::Table1;

@@ -21,11 +21,9 @@ class TemplateFormOrder : public BaseTemplateForm {
  public:
   explicit TemplateFormOrder( QWidget *parent = nullptr );
   ~TemplateFormOrder( );
-  
-  void testMethod();
 
  public slots:
-  void currentCoursValut( double cours );
+  void slotCurrentCoursValut( double cours );
 
   // IBaseForm interface
  public:
@@ -36,6 +34,7 @@ class TemplateFormOrder : public BaseTemplateForm {
  private:
   Ui::TemplateFormOrder *ui;
   ExchangeRates *cours;
+  // static const QStringList PLOSHADKA;
 };
 
 #endif // TEMPLATEFORMORDER_H
