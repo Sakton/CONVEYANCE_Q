@@ -6,15 +6,15 @@
 #include "Utility/ExchangeRates/exchangerates.h"
 #include "ui_templateformorder.h"
 
-//const QStringList TemplateFormOrder::PLOSHADKA = QStringList( "timo.com", "none" );
-
 TemplateFormOrder::TemplateFormOrder( QWidget *parent ) :
     BaseTemplateForm( parent ), ui( new Ui::TemplateFormOrder ), cours { nullptr } {
     ui->setupUi( this );
     setAttribute( Qt::WA_DeleteOnClose );
-    //   ui->comboBoxPlace->addItems( PLOSHADKA );
-
-    cours = new ExchangeRates;
+    setDataToPloshcadka( );
+    setDataToPaymentPeriod( );
+    ui->comboBoxPlace->addItems( ploschadka );
+    cours
+        = new ExchangeRates;
     connect( cours, QOverload< double >::of( &ExchangeRates::signalCurrentCours ), this, QOverload< double >::of( &TemplateFormOrder::slotCurrentCoursValut ) );
     cours->dateCours( QDate::currentDate( ) );
 }
@@ -29,20 +29,40 @@ void TemplateFormOrder::slotCurrentCoursValut( double cours ) {
 }
 
 void TemplateFormOrder::readDataOfForm( ) {
-    add( /*"order_number_contract"*/ orders::NUMBER_CONTRACT, ui->lineEditContract->text( ) );
-    add( /*"order_client"*/ orders::CLIENT, ui->comboBoxClient->currentText( ) );
-    add( /*"order_price"*/ orders::PRICE, ui->lineEditPrice->text( ) );
-    add( /*"order_valute"*/ orders::VALYTA, ui->comboBoxCurrency->currentText( ) );
-    add( /*"order_driver"*/ orders::DRIVER, ui->comboBoxDriver->currentText( ) );
-    add( /*"order_termin_oplaty"*/ orders::TERMIN_OPLATY, ui->comboBoxPaymentPeriod->currentText( ) );
-    add( /*"order_exchange_rates_eu_pl"*/ orders::EXCHANGE, ui->labelCours->text( ) );
-    add( /*"order_date_create"*/ orders::DATE_CREATE, ui->dateEditDate->date( ).toString( ) );
-    add( /*"order_place"*/ orders::NET_PLOSCHADKA, ui->comboBoxPlace->currentText( ) );
-    //add( "order_number_orders", ui->lineEditOrderNum->text( ) );
-    //add();
+    add( orders::DATE_CREATE, ui->dateEditDate->date( ).toString( ) );
+    add( orders::NET_PLOSCHADKA, ui->comboBoxPlace->currentText( ) );
+    add( orders::NUMBER_CONTRACT, ui->lineEditContract->text( ) );
+    add( orders::NUMBER_ORDERS, ui->lineEditOrderNum->text( ) );
+    add( orders::CLIENT, ui->comboBoxClient->currentText( ) );
+    add( orders::CONTACTS, ui->comboBoxContacts->currentText( ) );
+    add( orders::DRIVER, ui->comboBoxDriver->currentText( ) );
+    add( orders::DOEZD, ui->lineEditArrival->text( ) );
+    add( orders::ROUTE, ui->lineEditRoute->text( ) );
+    add( orders::RATE, ui->lineEditRate->text( ) );
+    add( orders::PRICE, ui->lineEditPrice->text( ) );
+    add( orders::VALYTA, ui->comboBoxCurrency->currentText( ) );
+    add( orders::EXCHANGE, ui->labelCours->text( ) );
+    add( orders::PAYMENT_PERIOD, ui->comboBoxPaymentPeriod->currentText( ) );
+    add( orders::POSTAL_TRANSFER, ui->comboBoxPostalTransferPeriod->currentText( ) );
+    add( orders::SEND_TWO_COPY, QString::number( ui->checkBoxCopyCMR->checkState( ) ) );
+    add( orders::SEND_ORIGINAL, QString::number( ui->checkBoxContractOriginal->checkState( ) ) );
+    add( orders::NOTE, ui->plainTextEditNotes->toPlainText( ) );
 }
 
 void TemplateFormOrder::setDataInForm ( const TemplateFormOrder::Line &dataLine ) {
 }
 
 void TemplateFormOrder::clearForm( ) const {}
+
+void TemplateFormOrder::setDataToPloshcadka( ) {
+    ploschadka << "timo.com"
+               << "none";
+}
+
+void TemplateFormOrder::setDataToPaymentPeriod( ) {
+    paymentPeriod << "";
+}
+
+void TemplateFormOrder::setPostalTrasferPeriod( ) {
+    postalPeriods << "";
+}

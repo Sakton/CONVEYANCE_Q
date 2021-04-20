@@ -12,50 +12,47 @@
 #include "../Network/downloader.h"
 #include "Utility/AllConstants.h"
 
-ExchangeRates::ExchangeRates(QObject* parent) : QObject(parent), dwn{ new DownLoader } {
-  connect(dwn, QOverload<>::of( &DownLoader::signalByteArray ), this, QOverload<>::of( &ExchangeRates::slotData ));
+int ExchangeRates::countSend = 0;
+
+ExchangeRates::ExchangeRates( QObject* parent ) :
+    QObject( parent ), dwn { new DownLoader } {
+    connect( dwn, QOverload<>::of( &DownLoader::signalByteArray ), this, QOverload<>::of( &ExchangeRates::slotData ) );
+    connect( dwn, QOverload<>::of( &DownLoader::signalError ), this, QOverload<>::of( &ExchangeRates::slotErrorCours ) );
 }
 
 ExchangeRates::~ExchangeRates() {
 }
 
-void ExchangeRates::dateCours(QDate data) {
-  sendToServer(data);
+void ExchangeRates::dateCours( QDate date ) {
+    date_ = date;
+    sendToServer( date_ );
 }
 
-void ExchangeRates::slotData()
-{
-  auto res = dwn->getAnswer();
-  qDebug() << "ExchangeRates::slotReadData() res =  " << res;
-  cours(res);
+void ExchangeRates::slotData( ) {
+    auto res = dwn->getAnswer( );
+    cours( res );
 }
 
-QString ExchangeRates::cours(const QByteArray &arr)
-{
-  QRegularExpression expr;
-  expr.setPattern("(\\d.\\d\\d\\d\\d)");
-  QString s = QString(arr);
-  QRegularExpressionMatch xx = expr.match(QString(arr));
-  currentCours = xx.captured().toDouble();
-  emit signalCurrentCours( currentCours );
-  return xx.captured(1);
+void ExchangeRates::slotErrorCours( ) {
+    //слот отвечает за отматывание дней назад и отправку повторных запросов, организация цикла через события
+    if ( countSend < 14 ) {
+        date_ = date_.addDays( -1 );
+        sendToServer( date_ );
+    }
 }
 
-void ExchangeRates::sendToServer(QDate data)
-{
-  data = correctDataToCours(data);
-  QUrl url = QLatin1String(AllConstatnts::NARODOWY_BANK_POLSKI) +
-             QLatin1String(AllConstatnts::ISO_CODE_EURO) +
-             data.toString("yyyy-MM-dd") +
-             QLatin1String(AllConstatnts::FORMAT_JSON);
-  dwn->download(url);
+QString ExchangeRates::cours( const QByteArray& arr ) {
+    QRegularExpression expr;
+    expr.setPattern( "(\\d.\\d\\d\\d\\d)" );
+    QString s = QString( arr );
+    QRegularExpressionMatch xx = expr.match( QString( arr ) );
+    currentCours = xx.captured( ).toDouble( );
+    emit signalCurrentCours( currentCours );
+    return xx.captured( 1 );
 }
 
-QDate ExchangeRates::correctDataToCours(QDate currentDate)
-{
-  auto day = currentDate.dayOfWeek();
-  if( day == 1 ) currentDate = currentDate.addDays(-3);
-  if( day == 6 ) currentDate = currentDate.addDays(-1);
-  if( day == 7 ) currentDate = currentDate.addDays(-2);
-  return currentDate;
+void ExchangeRates::sendToServer( QDate date ) {
+    QUrl url = QLatin1String( AllConstatnts::NARODOWY_BANK_POLSKI ) + QLatin1String( AllConstatnts::ISO_CODE_EURO ) + date.toString( "yyyy-MM-dd" ) + QLatin1String( AllConstatnts::FORMAT_JSON );
+    qDebug( ) << url;
+    dwn->download( url );
 }

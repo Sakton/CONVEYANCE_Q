@@ -31,10 +31,17 @@ class TemplateFormOrder : public BaseTemplateForm {
   void setDataInForm( const Line &dataLine ) override;
   void clearForm( ) const override;
 
- private:
+  private:
+  void setDataToPloshcadka( );
+  void setDataToPaymentPeriod( );
+  void setPostalTrasferPeriod( );
+
+  private:
   Ui::TemplateFormOrder *ui;
   ExchangeRates *cours;
-  // static const QStringList PLOSHADKA;
+  QStringList ploschadka;
+  QStringList paymentPeriod;
+  QStringList postalPeriods;
 };
 
 #endif // TEMPLATEFORMORDER_H

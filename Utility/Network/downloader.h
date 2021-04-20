@@ -23,8 +23,9 @@ class DownLoader : public QObject {
   
  signals:
   void signalByteArray(  );
-  
- private:
+  void signalError( );
+
+  private:
   QNetworkAccessManager *net;
   QByteArray answer;
 };

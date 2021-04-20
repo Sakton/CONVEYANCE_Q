@@ -19,19 +19,17 @@ void DownLoader::download( QUrl url ) {
   net->get( req );
 }
 
-
 void DownLoader::slotFinished( QNetworkReply *rep ) {
-  if( rep->error() != QNetworkReply::NoError ) {
-    qDebug() << "ERROR REPLY";
-  } else {
-    answer = rep->readAll( );
-    emit signalByteArray( );
-  }
-  rep->deleteLater();
+    if ( rep->error( ) != QNetworkReply::NoError ) {
+        qDebug( ) << "DownLoader::slotFinished ERROR REPLY";
+        emit signalError( );
+    } else {
+        answer = rep->readAll( );
+        emit signalByteArray( );
+    }
+    rep->deleteLater( );
 }
 
 QByteArray DownLoader::getAnswer() {
   return std::move(answer);
-  // return std::forward<QByteArray>(answer);
-  // return answer;
 }
