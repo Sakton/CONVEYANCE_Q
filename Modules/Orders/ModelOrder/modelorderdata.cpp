@@ -39,7 +39,7 @@ QVariant ModelOrderData::data( const QModelIndex& index, int role ) const {
         case 7:
             return line.at( orders::EXCHANGE );
         case 8:
-            return line.at( orders::TERMIN_OPLATY );
+            return line.at( orders::POSTAL_TRANSFER );
         }
     }
     return { };
@@ -92,7 +92,7 @@ void ModelOrderData::selectFromDb( ) {
         + QString( orders::DATE_CREATE ) + ","
         + QString( orders::DRIVER ) + ","
         + QString( orders::EXCHANGE ) + ","
-        + QString( orders::TERMIN_OPLATY );
+        + QString( orders::POSTAL_TRANSFER );
 
     QString qs = "SELECT " + columns + " FROM conveyance.orders ORDER BY " + QString( orders::ID ) + " DESC;";
     QSqlQuery query;
@@ -109,7 +109,7 @@ void ModelOrderData::selectFromDb( ) {
         tmp[ orders::DATE_CREATE ] = query.value( orders::DATE_CREATE ).toString( );
         tmp[ orders::DRIVER ] = query.value( orders::DRIVER ).toString( );
         tmp[ orders::EXCHANGE ] = query.value( orders::EXCHANGE ).toString( );
-        tmp[ orders::TERMIN_OPLATY ] = query.value( orders::TERMIN_OPLATY ).toString( );
+        tmp[ orders::POSTAL_TRANSFER ] = query.value( orders::POSTAL_TRANSFER ).toString( );
         tableData_[ query.at( ) ] = std::move( tmp );
     }
 }
