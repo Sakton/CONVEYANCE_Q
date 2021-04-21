@@ -27,7 +27,8 @@ class BaseTemplateForm : public QWidget, public IBaseForm {
   void add( const QString &key, const QString &val ) { data_[ key ] = val; }
   const QString &val( const QString &key ) { return data_[ key ]; }
 
- private:
+  //private:
+  protected:
   Line data_;
 };
 

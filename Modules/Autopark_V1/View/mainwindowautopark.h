@@ -3,12 +3,20 @@
 
 #include <QWidget>
 
-class MainWindowAutopark
+namespace Ui {
+class MainWindowAutopark;
+}
+
+class MainWindowAutopark : public QWidget
 {
+    Q_OBJECT
+
 public:
-    MainWindowAutopark();
+    explicit MainWindowAutopark(QWidget *parent = nullptr);
+    ~MainWindowAutopark();
 
 private:
+    Ui::MainWindowAutopark *ui;
 };
 
 #endif // MAINWINDOWAUTOPARK_H

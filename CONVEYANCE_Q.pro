@@ -106,6 +106,7 @@ FORMS += \
     Modules/Autopark/View/MainFormAutopark/mainformautopark.ui \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.ui \
     Modules/Autopark/theautomobilform.ui \
+    Modules/Autopark_V1/View/mainwindowautopark.ui \
     Modules/BlackList/theblacklistform.ui \
     Modules/Client/theclientform.ui \
     Modules/ContactPerson/thecontactpersonform.ui \

@@ -47,6 +47,8 @@ void TemplateFormOrder::readDataOfForm( ) {
     add( orders::SEND_TWO_COPY, QString::number( ui->checkBoxCopyCMR->checkState( ) ) );
     add( orders::SEND_ORIGINAL, QString::number( ui->checkBoxContractOriginal->checkState( ) ) );
     add( orders::NOTE, ui->plainTextEditNotes->toPlainText( ) );
+
+    qDebug( ) << "data_ = " << data_;
 }
 
 void TemplateFormOrder::setDataInForm ( const TemplateFormOrder::Line &dataLine ) {
