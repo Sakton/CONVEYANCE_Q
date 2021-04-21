@@ -23,34 +23,10 @@ int main( int argc, char *argv[] ) {
   QApplication a( argc, argv );
   //Подключение к существующей базе В ОДНОМ МЕСТЕ, пока ТУТ!!!
   ConveyanceSQLDatabase db;
-  //  ConveyanceNetwork::init(  );
-  //  ModelOrderData od;
-  //  od.readDataFromDb( );
-  
-  // ConveyanceNetwork::getNetworkManager( );
-  
-//    ExchangeRates r;
-//    r.dateCours( QDate::currentDate( ).addDays( -1 ) );
-  
-//  DownLoader dwn;
-//  dwn.download( QUrl("http://api.nbp.pl/api/exchangerates/rates/a/eur/2021-04-14/?format=json") );
-  
-  //qDebug() << dwn.getAnswer();
   
   
   MainWindow w;
   w.show( );
-  
-  //  ExchangeRates r;
-  //  r.dateCours( QDate::currentDate( ) );
-  //  r.dateCours( QDate::currentDate( ).addDays( -1 ) );
-  //  r.dateCours( QDate::currentDate( ).addDays( -2 ) );
-  //  r.dateCours( QDate::currentDate( ).addDays( -3 ) );
-  //  r.dateCours( QDate::currentDate( ).addDays( -4 ) );
-  //  r.dateCours( QDate::currentDate( ).addDays( -5 ) );
-  //  r.dateCours( QDate::currentDate( ).addDays( -6 ) );
-  
-  // exit( 0 );
   
   return a.exec( );
 }
