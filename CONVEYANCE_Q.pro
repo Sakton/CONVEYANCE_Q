@@ -24,6 +24,7 @@ SOURCES += \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.cpp \
     Modules/Autopark/automobil.cpp \
     Modules/Autopark/theautomobilform.cpp \
+    Modules/Autopark_V1/View/mainwindowautopark.cpp \
     Modules/BlackList/theblacklistform.cpp \
     Modules/Client/theclientform.cpp \
     Modules/ContactPerson/thecontactpersonform.cpp \
@@ -68,6 +69,7 @@ HEADERS += \
     Modules/Autopark/View/UpdateFormAuto/updateformauto.h \
     Modules/Autopark/automobil.h \
     Modules/Autopark/theautomobilform.h \
+    Modules/Autopark_V1/View/mainwindowautopark.h \
     Modules/BlackList/theblacklistform.h \
     Modules/Client/theclientform.h \
     Modules/ContactPerson/thecontactpersonform.h \
