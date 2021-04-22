@@ -24,13 +24,14 @@ ExchangeRates::~ExchangeRates() {
 }
 
 void ExchangeRates::dateCours( QDate date ) {
-    date_ = date;
+    date_ = date.addDays( -1 ); //поправка на день предшествующий
     sendToServer( date_ );
 }
 
 void ExchangeRates::slotData( ) {
     auto res = dwn->getAnswer( );
-    cours( res );
+    currentCours = cours( res ).toDouble( );
+    emit signalCurrentCours( currentCours );
 }
 
 void ExchangeRates::slotErrorCours( ) {
@@ -42,17 +43,21 @@ void ExchangeRates::slotErrorCours( ) {
 }
 
 QString ExchangeRates::cours( const QByteArray& arr ) {
+    return exchange( arr );
+}
+
+QString ExchangeRates::exchange( const QString& arr ) const {
     QRegularExpression expr;
     expr.setPattern( "(\\d.\\d\\d\\d\\d)" );
-    QString s = QString( arr );
     QRegularExpressionMatch xx = expr.match( QString( arr ) );
-    currentCours = xx.captured( ).toDouble( );
-    emit signalCurrentCours( currentCours );
-    return xx.captured( 1 );
+    return xx.captured( );
 }
 
 void ExchangeRates::sendToServer( QDate date ) {
     QUrl url = QLatin1String( AllConstatnts::NARODOWY_BANK_POLSKI ) + QLatin1String( AllConstatnts::ISO_CODE_EURO ) + date.toString( "yyyy-MM-dd" ) + QLatin1String( AllConstatnts::FORMAT_JSON );
-    qDebug( ) << url;
     dwn->download( url );
+}
+
+double ExchangeRates::getCurrentCours( ) const {
+    return currentCours;
 }

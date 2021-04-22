@@ -43,31 +43,31 @@ TemplateFormAuto::~TemplateFormAuto( ) {
   delete ui;
 }
 
-void TemplateFormAuto::setDataInForm( const TemplateFormAuto::Line& data ) {
-  setData( data );
-  ui->lineEditBrandAuto->setText( val( "name_brand" ) );
-  ui->lineEditSeriesAuto->setText( val( "series_brand" ) );
-  ui->lineEditModel->setText( val( "marka_brand" ) );
-  ui->dateEditYearOfIssue->setDate(
-      QDate::fromString( val( "issue" ), Qt::ISODate ) );
-  ui->lineEditVIN->setText( val( "vin" ) );
-  ui->lineEditGosNumber->setText( val( "auto_counry_number" ) );
-  ui->comboBoxEcoClass->setCurrentText( val( "eco" ) );
-  ui->dateEditNextTechInspection->setDate(
-      QDate::fromString( val( "inspection" ), Qt::ISODate ) );
-  ui->checkBoxReminder->setCheckState(
-      static_cast< Qt::CheckState >( val( "reminder" ).toInt( ) ) );
-  ui->spinBoxCountDays->setValue( val( "days_reminder" ).toInt( ) );
-  ui->lineEditLenthCargon->setText( val( "lenth" ) );
-  ui->lineEditWidthCargon->setText( val( "width" ) );
-  ui->lineEditHeightCargoon->setText( val( "height" ) );
-  ui->lineEditWolumeCargon->setText( val( "space" ) );
-  ui->lineEditMaximalCarring->setText( val( "carring" ) );
-  ui->checkBoxTatLift->setCheckState(
-      static_cast< Qt::CheckState >( val( "lift" ).toInt( ) ) );
-  ui->plainTextEditComments->setPlaceholderText( val( "commentary" ) );
+void TemplateFormAuto::setDataInForm( const LineType& data ) {
+    setData( data );
+    ui->lineEditBrandAuto->setText( val( "name_brand" ) );
+    ui->lineEditSeriesAuto->setText( val( "series_brand" ) );
+    ui->lineEditModel->setText( val( "marka_brand" ) );
+    ui->dateEditYearOfIssue->setDate(
+        QDate::fromString( val( "issue" ), Qt::ISODate ) );
+    ui->lineEditVIN->setText( val( "vin" ) );
+    ui->lineEditGosNumber->setText( val( "auto_counry_number" ) );
+    ui->comboBoxEcoClass->setCurrentText( val( "eco" ) );
+    ui->dateEditNextTechInspection->setDate(
+        QDate::fromString( val( "inspection" ), Qt::ISODate ) );
+    ui->checkBoxReminder->setCheckState(
+        static_cast< Qt::CheckState >( val( "reminder" ).toInt( ) ) );
+    ui->spinBoxCountDays->setValue( val( "days_reminder" ).toInt( ) );
+    ui->lineEditLenthCargon->setText( val( "lenth" ) );
+    ui->lineEditWidthCargon->setText( val( "width" ) );
+    ui->lineEditHeightCargoon->setText( val( "height" ) );
+    ui->lineEditWolumeCargon->setText( val( "space" ) );
+    ui->lineEditMaximalCarring->setText( val( "carring" ) );
+    ui->checkBoxTatLift->setCheckState(
+        static_cast< Qt::CheckState >( val( "lift" ).toInt( ) ) );
+    ui->plainTextEditComments->setPlaceholderText( val( "commentary" ) );
 
-  // days
+    // days
 }
 
 void TemplateFormAuto::clearForm( ) const {

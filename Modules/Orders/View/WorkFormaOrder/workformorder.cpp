@@ -1,4 +1,6 @@
 #include "workformorder.h"
+#include "Modules/Orders/ModelOrder/modelorderdata.h"
+#include "Utility/AllConstants.h"
 #include "ui_workformorder.h"
 #include <QDialogButtonBox>
 
@@ -20,8 +22,10 @@ void WorkFormOrder::connects( ) {
 }
 
 void WorkFormOrder::slotOkButton( ) {
-    ui->templateFormOrder->readDataOfForm( );
-    qDebug( ) << "WorkFormOrder::slotOkButton";
+    using Line = AllConstatnts::LineHash;
+    Line tmp;
+    ui->templateFormOrder->readDataOfForm( tmp );
+    model_->insert( tmp );
 }
 
 void WorkFormOrder::slotCancelButton( ) {

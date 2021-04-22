@@ -2,10 +2,12 @@
 
 #include <QBrush>
 #include <QDateEdit>
+#include <QMessageBox>
 #include <QSqlError>
 #include <QSqlQuery>
 
 #include "../OrderConstatnt/dbcolumnnames.h"
+#include "Utility/CreatorDbConveyance/querydriver.h"
 
 ModelOrderData::ModelOrderData( QObject* parent ) :
     QAbstractTableModel( parent ) {
@@ -83,6 +85,19 @@ int ModelOrderData::columnCount( const QModelIndex& ) const {
     return 9;
 }
 
+void ModelOrderData::insert( const LineHash& data ) {
+    QString qs = QueryDriver::insertQueryString( "orders", data );
+    qDebug( ) << "qs = " << qs;
+    QSqlQuery query;
+    if ( !query.exec( qs ) ) {
+        QMessageBox::warning( nullptr, "ERROR QUERY", query.lastError( ).text( ) );
+    } else {
+        tableData_[ tableData_.size( ) + 1 ] = data;
+        //вставка строки или в структуру (подумать что тут)
+        emit tmpDataCh( );
+    }
+}
+
 void ModelOrderData::addRecord( ) {
 }
 
@@ -108,7 +123,6 @@ void ModelOrderData::selectFromDb( ) {
     if ( !query.exec( qs ) )
         qDebug( ) << "EERROORR " << query.lastError( ).text( );
     while ( query.next( ) ) {
-
         LineHash tmp;
         tmp[ orders::ID ] = query.value( "order_id" ).toString( );
         tmp[ orders::NUMBER_CONTRACT ] = query.value( orders::NUMBER_CONTRACT ).toString( );

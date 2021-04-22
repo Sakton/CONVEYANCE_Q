@@ -3,11 +3,11 @@
 #include "Utility/AllConstants.h"
 
 class IBaseForm {
- public:
-  using Line = AllConstatnts::Line;
-  virtual void readDataOfForm( ) = 0;
-  virtual void setDataInForm( const Line &dataLine ) = 0;
-  virtual void clearForm( ) const = 0;
+public:
+    using Line = AllConstatnts::Line;
+    virtual void readDataOfForm( ) = 0;
+    virtual void setDataInForm( const Line &dataLine ) = 0;
+    virtual void clearForm( ) const = 0;
 };
 
 #endif // IBASEFORM_H

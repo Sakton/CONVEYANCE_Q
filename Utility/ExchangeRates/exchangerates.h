@@ -14,13 +14,15 @@ public:
     virtual ~ExchangeRates( );
 
     void dateCours( QDate date );
+    double getCurrentCours( ) const;
 
 public slots:
     void slotData( );
     void slotErrorCours( );
+    QString cours( const QByteArray &arr );
 
 private:
-    QString cours( const QByteArray &arr );
+    QString exchange( const QString &arr ) const;
     void sendToServer( QDate date );
     QDate correctDataToCours( QDate currentDate );
 

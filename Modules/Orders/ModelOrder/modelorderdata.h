@@ -5,6 +5,8 @@
 #include <QAbstractTableModel>
 
 class ModelOrderData : public QAbstractTableModel {
+    Q_OBJECT
+
 public:
     using Table1 = AllConstatnts::Table1;
     using LineHash = AllConstatnts::LineHash;
@@ -20,6 +22,9 @@ public:
     int rowCount( const QModelIndex & ) const override;
     int columnCount( const QModelIndex & ) const override;
 
+    //MyMethods
+    void insert( const LineHash &data );
+
 public:
     void addRecord( );
     void updateRecord( );
@@ -27,6 +32,9 @@ public:
 
 private:
     void selectFromDb( );
+
+signals:
+    void tmpDataCh( );
 
 private:
     Table1 tableData_;

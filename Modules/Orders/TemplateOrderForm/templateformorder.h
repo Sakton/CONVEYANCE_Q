@@ -13,35 +13,39 @@ class TemplateFormOrder;
 
 class ExchangeRates;
 
-class TemplateFormOrder : public BaseTemplateForm {
-  Q_OBJECT
+class TemplateFormOrder : public QWidget /*: public BaseTemplateForm*/ {
+    Q_OBJECT
 
-  using Line = AllConstatnts::Line;
+    using LineType = AllConstatnts::LineHash;
 
- public:
-  explicit TemplateFormOrder( QWidget *parent = nullptr );
-  ~TemplateFormOrder( );
+public:
+    explicit TemplateFormOrder( QWidget *parent = nullptr );
+    ~TemplateFormOrder( );
 
- public slots:
-  void slotCurrentCoursValut( double cours );
+public slots:
+    void slotCurrentCoursValut( double cours );
 
-  // IBaseForm interface
- public:
-  void readDataOfForm( ) override;
-  void setDataInForm( const Line &dataLine ) override;
-  void clearForm( ) const override;
+    // IBaseForm interface
+public:
+    //TODO может тут шаблон подумать
+    void setDataInForm( const LineType &dataLine ) /*override*/;
+    void clearForm( ) const /*override*/;
 
-  private:
-  void setDataToPloshcadka( );
-  void setDataToPaymentPeriod( );
-  void setPostalTrasferPeriod( );
+    void readDataOfForm( LineType &dataLine );
 
-  private:
-  Ui::TemplateFormOrder *ui;
-  ExchangeRates *cours;
-  QStringList ploschadka;
-  QStringList paymentPeriod;
-  QStringList postalPeriods;
+private:
+    void setDataToPloshcadka( );
+    void setValuta( );
+    void setPeriodOplaty( );
+    void setPostaPeriod( );
+
+private:
+    Ui::TemplateFormOrder *ui;
+    ExchangeRates *cours;
+    QStringList ploschadka;
+    QStringList valuta;
+    QStringList periodOplaty;
+    QStringList postaPeriod;
 };
 
 #endif // TEMPLATEFORMORDER_H

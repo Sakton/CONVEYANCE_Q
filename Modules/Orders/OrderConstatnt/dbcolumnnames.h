@@ -23,7 +23,7 @@ static const char* SEND_TWO_COPY = "order_send_two_copy_cmr";
 static const char* SEND_ORIGINAL = "order_send_original_contract";
 static const char* NOTE = "order_note";
 static const char* NET_PLOSCHADKA = "order_net_ploschadka";
-static const char* CONTACTS = "order_contcts";
+static const char* CONTACTS = "order_contacts_client";
 }
 
 #endif // DBCOLUMNNAMES_H
