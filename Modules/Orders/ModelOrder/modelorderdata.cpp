@@ -83,6 +83,15 @@ int ModelOrderData::columnCount( const QModelIndex& ) const {
     return 9;
 }
 
+void ModelOrderData::addRecord( ) {
+}
+
+void ModelOrderData::updateRecord( ) {
+}
+
+void ModelOrderData::removeRecord( ) {
+}
+
 void ModelOrderData::selectFromDb( ) {
     QString columns = QString( orders::ID ) + ","
         + QString( orders::NUMBER_CONTRACT ) + ","

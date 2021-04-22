@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="TemplateFormOrder" name="widget" native="true"/>
+      <widget class="TemplateFormOrder" name="templateFormOrder" native="true"/>
      </item>
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">

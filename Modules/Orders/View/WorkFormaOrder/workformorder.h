@@ -7,16 +7,25 @@ namespace Ui {
 class WorkFormOrder;
 }
 
-class WorkFormOrder : public QWidget
-{
-  Q_OBJECT
+class ModelOrderData;
 
- public:
-  explicit WorkFormOrder(QWidget *parent = nullptr);
-  ~WorkFormOrder();
+class WorkFormOrder : public QWidget {
+    Q_OBJECT
 
- private:
-  Ui::WorkFormOrder *ui;
+public:
+    explicit WorkFormOrder( ModelOrderData *model, QWidget *parent = nullptr );
+    ~WorkFormOrder( );
+
+private:
+    void connects( );
+
+public slots:
+    void slotOkButton( );
+    void slotCancelButton( );
+
+private:
+    Ui::WorkFormOrder *ui;
+    ModelOrderData *model_;
 };
 
 #endif // WORKFORMORDER_H

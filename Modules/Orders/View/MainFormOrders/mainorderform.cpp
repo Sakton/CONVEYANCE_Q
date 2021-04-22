@@ -55,15 +55,15 @@ void MainOrderForm::headerViewSettings( ) {
 }
 
 void MainOrderForm::slotClickOkButton( ) {
-  workForm = new WorkFormOrder;
-  workForm->setWindowTitle( "НОВЫЙ ОРДЕР" );
-  workForm->show( );
-  qDebug( ) << "slotClickOkButton";
+    workForm = new WorkFormOrder( model );
+    workForm->setWindowTitle( "НОВЫЙ ОРДЕР" );
+    workForm->show( );
+    qDebug( ) << "slotClickOkButton";
 }
 
 void MainOrderForm::slotClickedLineTable( const QModelIndex& index ) {
-  workForm = new WorkFormOrder;
-  workForm->setWindowTitle( "ПРАВКА ОРДЕРА ПО ДОГОВОРУ ..." );
-  workForm->show( );
-  qDebug( ) << "row = " << index.row( );
+    workForm = new WorkFormOrder( model );
+    workForm->setWindowTitle( "ПРАВКА ОРДЕРА ПО ДОГОВОРУ ..." );
+    workForm->show( );
+    qDebug( ) << "row = " << index.row( );
 }
