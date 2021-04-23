@@ -25,10 +25,14 @@ public:
 public slots:
     void slotCurrentCoursValut( double cours );
 
+private slots:
+    void slotSetStavkaEur( );
+
     // IBaseForm interface
 public:
     //TODO может тут шаблон подумать
-    void setDataInForm( const LineType &dataLine ) /*override*/;
+    void
+    setDataInForm( const LineType &dataLine ) /*override*/;
     void clearForm( ) const /*override*/;
 
     void readDataOfForm( LineType &dataLine );
@@ -38,6 +42,7 @@ private:
     void setValuta( );
     void setPeriodOplaty( );
     void setPostaPeriod( );
+    void connections( );
 
 private:
     Ui::TemplateFormOrder *ui;

@@ -1,6 +1,8 @@
 #include "templateformorder.h"
 
+#include <QDate>
 #include <QDebug>
+#include <stdexcept>
 
 #include "../OrderConstatnt/dbcolumnnames.h"
 #include "Utility/ExchangeRates/exchangerates.h"
@@ -14,8 +16,7 @@ TemplateFormOrder::TemplateFormOrder( QWidget *parent ) :
     setValuta( );
     setPeriodOplaty( );
     setPostaPeriod( );
-    cours = new ExchangeRates;
-    connect( cours, QOverload< double >::of( &ExchangeRates::signalCurrentCours ), this, QOverload< double >::of( &TemplateFormOrder::slotCurrentCoursValut ) );
+    connections( );
     cours->dateCours( QDate::currentDate( ) );
 }
 
@@ -28,7 +29,36 @@ void TemplateFormOrder::slotCurrentCoursValut( double cours ) {
     ui->labelCours->setText( "1EU = " + QString::number( cours ) + " PL" );
 }
 
+void TemplateFormOrder::slotSetStavkaEur( ) {
+    double stavka = ui->lineEditRate->text( ).toDouble( );
+    QString stavkaStr = QString::number( stavka / cours->getCurrentCours( ) );
+    stavkaStr.chop( 3 );
+    ui->labelStavkaEur->setText( stavkaStr );
+}
+
 void TemplateFormOrder::setDataInForm( const LineType &dataLine ) {
+    try {
+        ui->dateEditDate->setDate( QDate::fromString( dataLine.at( orders::DATE_CREATE ), "dd-MM-yyyy" ) );
+        ui->comboBoxPlace->setCurrentText( dataLine.at( orders::NET_PLOSCHADKA ) );
+        ui->lineEditContract->setText( dataLine.at( orders::NUMBER_CONTRACT ) );
+        ui->lineEditOrderNum->setText( dataLine.at( orders::NUMBER_ORDERS ) );
+        ui->comboBoxClient->setCurrentText( dataLine.at( orders::CLIENT ) );
+        ui->comboBoxContacts->setCurrentText( dataLine.at( orders::CONTACTS ) );
+        ui->comboBoxDriver->setCurrentText( dataLine.at( orders::DRIVER ) );
+        ui->lineEditArrival->setText( dataLine.at( orders::DOEZD ) );
+        ui->lineEditRoute->setText( dataLine.at( orders::ROUTE ) );
+        ui->lineEditRate->setText( dataLine.at( orders::RATE ) );
+        ui->lineEditPrice->setText( dataLine.at( orders::PRICE ) );
+        ui->comboBoxCurrency->setCurrentText( dataLine.at( orders::VALYTA ) );
+        ui->labelCours->setText( dataLine.at( orders::EXCHANGE ) );
+        ui->comboBoxPaymentPeriod->setCurrentText( dataLine.at( orders::PAYMENT_PERIOD ) );
+        ui->comboBoxPostalTransferPeriod->setCurrentText( dataLine.at( orders::POSTAL_TRANSFER ) );
+        ui->checkBoxCopyCMR->setCheckState( static_cast< Qt::CheckState >( dataLine.at( orders::SEND_TWO_COPY ).toInt( ) ) );
+        ui->checkBoxContractOriginal->setCheckState( static_cast< Qt::CheckState >( dataLine.at( orders::SEND_ORIGINAL ).toInt( ) ) );
+        ui->plainTextEditNotes->setPlainText( dataLine.at( orders::NOTE ) );
+    } catch ( std::out_of_range &e ) {
+        qDebug( ) << "ERROR TemplateFormOrder::setDataInForm " << e.what( );
+    }
 }
 
 void TemplateFormOrder::clearForm( ) const {}
@@ -87,4 +117,10 @@ void TemplateFormOrder::setPostaPeriod( ) {
                 << "60"
                 << "none";
     ui->comboBoxPostalTransferPeriod->addItems( postaPeriod );
+}
+
+void TemplateFormOrder::connections( ) {
+    cours = new ExchangeRates;
+    connect( cours, QOverload< double >::of( &ExchangeRates::signalCurrentCours ), this, QOverload< double >::of( &TemplateFormOrder::slotCurrentCoursValut ) );
+    connect( ui->lineEditRate, QOverload<>::of( &QLineEdit::editingFinished ), this, QOverload<>::of( &TemplateFormOrder::slotSetStavkaEur ) );
 }
