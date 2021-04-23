@@ -21,9 +21,11 @@ public:
         int role ) const override;
     int rowCount( const QModelIndex & ) const override;
     int columnCount( const QModelIndex & ) const override;
+    bool insertRows( int row, int count, const QModelIndex &parent ) override;
 
     //MyMethods
-    void insert( const LineHash &data );
+    bool insert( const LineHash &data );
+    // bool testInsert( const LineHash &data );
 
 public:
     void addRecord( );
@@ -38,6 +40,7 @@ signals:
 
 private:
     Table1 tableData_;
+    LineHash curentTmp_;
 };
 
 #endif // MODELORDERDATA_H

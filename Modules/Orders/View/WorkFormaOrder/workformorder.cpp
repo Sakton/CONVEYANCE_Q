@@ -25,9 +25,10 @@ void WorkFormOrder::slotOkButton( ) {
     using Line = AllConstatnts::LineHash;
     Line tmp;
     ui->templateFormOrder->readDataOfForm( tmp );
-    model_->insert( tmp );
+    if ( model_->insert( tmp ) )
+        close( );
 }
 
 void WorkFormOrder::slotCancelButton( ) {
-    qDebug( ) << "WorkFormOrder::slotCancelButton";
+    close( );
 }

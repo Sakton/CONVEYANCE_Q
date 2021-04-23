@@ -85,18 +85,35 @@ int ModelOrderData::columnCount( const QModelIndex& ) const {
     return 9;
 }
 
-void ModelOrderData::insert( const LineHash& data ) {
+bool ModelOrderData::insertRows( int row, int count, const QModelIndex& parent ) {
+    if ( parent.isValid( ) )
+        return false;
+
+    beginInsertRows( { }, row, row + count - 1 );
+    //tableData_[ row ] = curentTmp_;
+    endInsertRows( );
+    return true;
+}
+
+bool ModelOrderData::insert( const LineHash& data ) {
     QString qs = QueryDriver::insertQueryString( "orders", data );
     qDebug( ) << "qs = " << qs;
     QSqlQuery query;
     if ( !query.exec( qs ) ) {
         QMessageBox::warning( nullptr, "ERROR QUERY", query.lastError( ).text( ) );
-    } else {
-        tableData_[ tableData_.size( ) + 1 ] = data;
-        //вставка строки или в структуру (подумать что тут)
-        emit tmpDataCh( );
+        return false;
     }
+    //TODO  ТУТ!!!!
+    curentTmp_ = data;
+    tableData_[ tableData_.size( ) ] = data;
+    insertRows( tableData_.size( ), 1, { } );
+    //    emit tmpDataCh( );
+    return true;
 }
+
+//bool ModelOrderData::testInsert( const ModelOrderData::LineHash& data ) {
+//    in
+//}
 
 void ModelOrderData::addRecord( ) {
 }
