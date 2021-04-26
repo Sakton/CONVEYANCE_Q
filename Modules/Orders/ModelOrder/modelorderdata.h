@@ -37,6 +37,7 @@ private:
 
 signals:
     void tmpDataCh( );
+    void signalTestUpdate( );
 
 private:
     Table1 tableData_;

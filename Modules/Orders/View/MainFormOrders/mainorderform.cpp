@@ -21,10 +21,12 @@ MainOrderForm::MainOrderForm( QWidget* parent )
            QOverload<>::of( &MainOrderForm::slotClickOkButton ) );
 
   connect( ui->tableViewOrders,
-           QOverload< const QModelIndex& >::of( &QTableView::doubleClicked ),
-           this,
-           QOverload< const QModelIndex& >::of(
-               &MainOrderForm::slotClickedLineTable ) );
+      QOverload< const QModelIndex& >::of( &QTableView::doubleClicked ),
+      this,
+      QOverload< const QModelIndex& >::of(
+          &MainOrderForm::slotClickedLineTable ) );
+  connect( model, QOverload<>::of( &ModelOrderData::signalTestUpdate ),
+      this, QOverload<>::of( &MainOrderForm::testResetModel ) );
 }
 
 MainOrderForm::~MainOrderForm()
@@ -66,4 +68,12 @@ void MainOrderForm::slotClickedLineTable( const QModelIndex& index ) {
     workForm->setWindowTitle( "ПРАВКА ОРДЕРА ПО ДОГОВОРУ ..." );
     workForm->show( );
     qDebug( ) << "row = " << index.row( );
+}
+
+void MainOrderForm::testResetModel( ) {
+    //WARNING это плохое решение
+    //    ModelOrderData* del = model;
+    //    model = new ModelOrderData;
+    //    ui->tableViewOrders->setModel( model );
+    //    del->deleteLater( );
 }

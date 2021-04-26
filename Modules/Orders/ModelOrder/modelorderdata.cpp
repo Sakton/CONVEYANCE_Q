@@ -86,13 +86,35 @@ int ModelOrderData::columnCount( const QModelIndex& ) const {
 }
 
 bool ModelOrderData::insertRows( int row, int count, const QModelIndex& parent ) {
-    if ( parent.isValid( ) )
-        return false;
 
-    beginInsertRows( { }, row, row + count - 1 );
-    //tableData_[ row ] = curentTmp_;
-    endInsertRows( );
-    return true;
+    //    beginInsertRows( QModelIndex( ), row, row + count - 1 );
+
+    //    for ( int i = 0; i < count; ++i ) {
+    //        LineHash dataLine;
+    //        dataLine[ orders::DATE_CREATE ] = " data ";
+    //        dataLine[ orders::NET_PLOSCHADKA ] = " ploch ";
+    //        dataLine[ orders::NUMBER_CONTRACT ] = " contr ";
+    //        dataLine[ orders::NUMBER_ORDERS ] = " 5 ";
+    //        dataLine[ orders::CLIENT ] = " 6 ";
+    //        dataLine[ orders::CONTACTS ] = " 6 ";
+    //        dataLine[ orders::DRIVER ] = " 6 ";
+    //        dataLine[ orders::DOEZD ] = " 6 ";
+    //        dataLine[ orders::ROUTE ] = " 6 ";
+    //        dataLine[ orders::RATE ] = " 6 ";
+    //        dataLine[ orders::PRICE ] = " 6 ";
+    //        dataLine[ orders::VALYTA ] = " 6 ";
+    //        dataLine[ orders::EXCHANGE ] = " 6 ";
+    //        dataLine[ orders::PAYMENT_PERIOD ] = " 6 ";
+    //        dataLine[ orders::POSTAL_TRANSFER ] = " 6 ";
+    //        dataLine[ orders::SEND_TWO_COPY ] = " 6 ";
+    //        dataLine[ orders::SEND_ORIGINAL ] = " 6 ";
+    //        dataLine[ orders::NOTE ] = " 6 ";
+    //        tableData_[ row ] = std::move( dataLine );
+    //    }
+    //    endInsertRows( );
+    //    emit signalTestUpdate( );
+
+    return false;
 }
 
 bool ModelOrderData::insert( const LineHash& data ) {
@@ -106,8 +128,9 @@ bool ModelOrderData::insert( const LineHash& data ) {
     //TODO  ТУТ!!!!
     curentTmp_ = data;
     tableData_[ tableData_.size( ) ] = data;
-    insertRows( tableData_.size( ), 1, { } );
-    //    emit tmpDataCh( );
+    insertRow( tableData_.size( ) );
+    emit dataChanged( QAbstractTableModel::index( tableData_.size( ), 0 ), QAbstractTableModel::index( tableData_.size( ), 9 ) );
+
     return true;
 }
 

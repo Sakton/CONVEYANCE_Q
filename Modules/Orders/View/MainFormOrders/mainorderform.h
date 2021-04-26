@@ -25,8 +25,9 @@ class MainOrderForm : public QWidget
  public slots:
   void slotClickOkButton( );
   void slotClickedLineTable( const QModelIndex &index );
+  void testResetModel( );
 
- private:
+  private:
   Ui::MainOrderForm *ui;
   ModelOrderData *model;
   WorkFormOrder *workForm;
